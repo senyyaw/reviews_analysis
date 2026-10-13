@@ -1,0 +1,25 @@
+Loading weights:   0%|          | 0/390 [00:00<?, ?it/s]Loading weights:  14%|█▎        | 53/390 [00:00<00:00, 408.54it/s]Loading weights:  35%|███▌      | 137/390 [00:00<00:00, 619.36it/s]Loading weights:  52%|█████▏    | 202/390 [00:00<00:00, 300.63it/s]Loading weights:  63%|██████▎   | 245/390 [00:00<00:00, 304.14it/s]Loading weights:  85%|████████▍ | 330/390 [00:00<00:00, 427.55it/s]Loading weights: 100%|██████████| 390/390 [00:00<00:00, 420.62it/s]
+[transformers] [1mDebertaV2Model LOAD REPORT[0m from: microsoft/deberta-v3-large
+Key                                     | Status     |  | 
+----------------------------------------+------------+--+-
+lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED |  | 
+mask_predictions.dense.bias             | UNEXPECTED |  | 
+lm_predictions.lm_head.bias             | UNEXPECTED |  | 
+lm_predictions.lm_head.dense.bias       | UNEXPECTED |  | 
+mask_predictions.dense.weight           | UNEXPECTED |  | 
+lm_predictions.lm_head.dense.weight     | UNEXPECTED |  | 
+mask_predictions.LayerNorm.bias         | UNEXPECTED |  | 
+mask_predictions.LayerNorm.weight       | UNEXPECTED |  | 
+mask_predictions.classifier.weight      | UNEXPECTED |  | 
+lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED |  | 
+mask_predictions.classifier.bias        | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+/workspace/reviews/finetune.py:186: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  "loss_last": float(loss),
+{"epoch": 1, "val_sentiment_macro_f1": 0.8909096204729384, "val_complaint_f1": 0.9807037457434733, "loss_last": 0.26160821318626404}
+{"epoch": 2, "val_sentiment_macro_f1": 0.9059686339874232, "val_complaint_f1": 0.9876265466816648, "loss_last": 0.17630723118782043}
+{"epoch": 3, "val_sentiment_macro_f1": 0.9087250250464701, "val_complaint_f1": 0.9921436588103255, "loss_last": 0.004149687942117453}
+{"epoch": 4, "val_sentiment_macro_f1": 0.9009004023496995, "val_complaint_f1": 0.9898534385569335, "loss_last": 0.005322207696735859}

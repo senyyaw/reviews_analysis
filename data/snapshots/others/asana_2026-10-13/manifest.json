@@ -1,0 +1,42 @@
+{
+  "app": {
+    "app_id": 489969512,
+    "name": "Asana: Work Management",
+    "seller": "Asana, Inc.",
+    "storefront": "us",
+    "listing_avg_rating": 4.6658,
+    "listing_rating_count": 15653,
+    "version": "26.40.0",
+    "current_version_release_date": "2026-10-12T15:06:44Z",
+    "genre": "Business"
+  },
+  "since": "2024-10-13T15:11:37.041906Z",
+  "collected_at": "2026-10-13T15:12:05.732477Z",
+  "storefronts": [
+    {
+      "storefront": "us",
+      "pages_fetched": 8,
+      "reviews_seen": 160,
+      "reviews_in_window": 130,
+      "invalid_skipped": 0,
+      "oldest_date_seen": "2024-06-12T00:30:08Z",
+      "stop_reason": "reached_cutoff"
+    }
+  ],
+  "pool_size": 130,
+  "duplicates_removed": 0,
+  "warnings": [],
+  "collector_version": "0.1.0",
+  "params": {
+    "app_id": "489969512",
+    "storefronts": "us",
+    "window_days": 730,
+    "random_n": 100,
+    "recent_n": 50,
+    "seed": 42,
+    "max_pages": 60,
+    "out": "data/snapshots/others/asana_2026-10-13",
+    "verbose": false,
+    "since": "2024-10-13T15:11:37.041906+00:00"
+  }
+}

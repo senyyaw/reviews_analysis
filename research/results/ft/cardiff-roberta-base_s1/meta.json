@@ -1,0 +1,51 @@
+{
+ "model": "cardiffnlp/twitter-roberta-base-sentiment-latest",
+ "revision": "3216a57f2a",
+ "seed": 1,
+ "lr": 2e-05,
+ "epochs": 4,
+ "batch_size": 32,
+ "max_len": 320,
+ "train_n": 6796,
+ "val_n": 754,
+ "train_class_counts": [
+  3024,
+  251,
+  3521
+ ],
+ "class_weights": [
+  0.5557886362075806,
+  1.9291397333145142,
+  0.5150715112686157
+ ],
+ "best_epoch": 4,
+ "best_val_macro_f1": 0.8991108691707493,
+ "log": [
+  {
+   "epoch": 1,
+   "val_sentiment_macro_f1": 0.8564427973033176,
+   "val_complaint_f1": 0.9750566893424036,
+   "loss_last": 0.12434130907058716
+  },
+  {
+   "epoch": 2,
+   "val_sentiment_macro_f1": 0.8712554437783693,
+   "val_complaint_f1": 0.9796839729119639,
+   "loss_last": 0.16204401850700378
+  },
+  {
+   "epoch": 3,
+   "val_sentiment_macro_f1": 0.8972156703444539,
+   "val_complaint_f1": 0.9742441209406495,
+   "loss_last": 0.007620693650096655
+  },
+  {
+   "epoch": 4,
+   "val_sentiment_macro_f1": 0.8991108691707493,
+   "val_complaint_f1": 0.981941309255079,
+   "loss_last": 0.005862794350832701
+  }
+ ],
+ "seconds": 63.0,
+ "params_m": 125
+}

@@ -1,0 +1,39 @@
+{
+ "name": "sentiment-en",
+ "outputs": {
+  "logits[0:3]": [
+   "negative",
+   "neutral",
+   "positive"
+  ],
+  "logits[3]": "complaint (sigmoid)"
+ },
+ "max_len": 320,
+ "pad_token": "<pad>",
+ "languages": [
+  "en",
+  "und"
+ ],
+ "base_model": "cardiffnlp/twitter-roberta-base-sentiment-latest",
+ "base_revision": "3216a57f2a",
+ "fine_tuning": {
+  "seed": 1,
+  "lr": 2e-05,
+  "epochs": 4,
+  "batch_size": 32,
+  "train_n": 6796,
+  "val_n": 754,
+  "best_epoch": 4,
+  "best_val_macro_f1": 0.8991108691707493
+ },
+ "training_data": "LLM-consensus labels (Qwen3.8-27B + Gemma-4-31B) on 14 other productivity apps' App Store reviews; Notion never used",
+ "quantisation": "onnxruntime dynamic int8, per-channel weights",
+ "fp32_vs_int8": {
+  "n_reviews": 1143,
+  "sentiment_label_agreement": 0.9965004374453194,
+  "complaint_agreement": 0.9956255468066492,
+  "max_abs_prob_diff": 0.7446962594985962,
+  "mean_abs_prob_diff": 0.004391978960484266
+ },
+ "size_mb": 125.3
+}

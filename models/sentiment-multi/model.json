@@ -1,0 +1,38 @@
+{
+ "name": "sentiment-multi",
+ "outputs": {
+  "logits[0:3]": [
+   "negative",
+   "neutral",
+   "positive"
+  ],
+  "logits[3]": "complaint (sigmoid)"
+ },
+ "max_len": 320,
+ "pad_token": "<pad>",
+ "languages": [
+  "*"
+ ],
+ "base_model": "clapAI/roberta-base-multilingual-sentiment",
+ "base_revision": "5986405bd6",
+ "fine_tuning": {
+  "seed": 0,
+  "lr": 2e-05,
+  "epochs": 4,
+  "batch_size": 32,
+  "train_n": 6796,
+  "val_n": 754,
+  "best_epoch": 4,
+  "best_val_macro_f1": 0.9138011266957969
+ },
+ "training_data": "LLM-consensus labels (Qwen3.8-27B + Gemma-4-31B) on 14 other productivity apps' App Store reviews; Notion never used",
+ "quantisation": "onnxruntime dynamic int8, per-channel weights",
+ "fp32_vs_int8": {
+  "n_reviews": 1143,
+  "sentiment_label_agreement": 0.9921259842519685,
+  "complaint_agreement": 0.9973753280839895,
+  "max_abs_prob_diff": 0.8054794073104858,
+  "mean_abs_prob_diff": 0.004901769571006298
+ },
+ "size_mb": 278.7
+}

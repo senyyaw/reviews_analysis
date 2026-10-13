@@ -1,0 +1,42 @@
+{
+  "app": {
+    "app_id": 1557175442,
+    "name": "Obsidian - Connected Notes",
+    "seller": "Dynalist Inc.",
+    "storefront": "us",
+    "listing_avg_rating": 4.48318,
+    "listing_rating_count": 2765,
+    "version": "1.14.5",
+    "current_version_release_date": "2026-10-09T21:06:22Z",
+    "genre": "Productivity"
+  },
+  "since": "2024-10-13T14:52:28.350801Z",
+  "collected_at": "2026-10-13T14:53:28.777487Z",
+  "storefronts": [
+    {
+      "storefront": "us",
+      "pages_fetched": 17,
+      "reviews_seen": 340,
+      "reviews_in_window": 315,
+      "invalid_skipped": 0,
+      "oldest_date_seen": "2024-07-29T01:52:28Z",
+      "stop_reason": "reached_cutoff"
+    }
+  ],
+  "pool_size": 315,
+  "duplicates_removed": 0,
+  "warnings": [],
+  "collector_version": "0.1.0",
+  "params": {
+    "app_id": "1557175442",
+    "storefronts": "us",
+    "window_days": 730,
+    "random_n": 100,
+    "recent_n": 50,
+    "seed": 42,
+    "max_pages": 60,
+    "out": "data/snapshots/others/obsidian_2026-10-13",
+    "verbose": false,
+    "since": "2024-10-13T14:52:28.350801+00:00"
+  }
+}

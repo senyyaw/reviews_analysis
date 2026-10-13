@@ -1,0 +1,51 @@
+{
+ "model": "microsoft/mdeberta-v3-base",
+ "revision": "a0484667b2",
+ "seed": 2,
+ "lr": 2e-05,
+ "epochs": 4,
+ "batch_size": 32,
+ "max_len": 320,
+ "train_n": 6796,
+ "val_n": 754,
+ "train_class_counts": [
+  3024,
+  251,
+  3521
+ ],
+ "class_weights": [
+  0.5557886362075806,
+  1.9291397333145142,
+  0.5150715112686157
+ ],
+ "best_epoch": 3,
+ "best_val_macro_f1": 0.8888877313025075,
+ "log": [
+  {
+   "epoch": 1,
+   "val_sentiment_macro_f1": 0.8212345454054638,
+   "val_complaint_f1": 0.9652855543113102,
+   "loss_last": 0.1909956932067871
+  },
+  {
+   "epoch": 2,
+   "val_sentiment_macro_f1": 0.8759639694482226,
+   "val_complaint_f1": 0.9738339021615472,
+   "loss_last": 0.6498779654502869
+  },
+  {
+   "epoch": 3,
+   "val_sentiment_macro_f1": 0.8888877313025075,
+   "val_complaint_f1": 0.9752252252252253,
+   "loss_last": 0.014457677491009235
+  },
+  {
+   "epoch": 4,
+   "val_sentiment_macro_f1": 0.8758110979679817,
+   "val_complaint_f1": 0.9741863075196409,
+   "loss_last": 0.05551423877477646
+  }
+ ],
+ "seconds": 188.2,
+ "params_m": 278
+}

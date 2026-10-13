@@ -1,0 +1,21 @@
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights:   3%|▎         | 5/197 [00:00<00:08, 22.93it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 668.22it/s]
+[transformers] [1mXLMRobertaModel LOAD REPORT[0m from: clapAI/roberta-base-multilingual-sentiment
+Key                        | Status     | 
+---------------------------+------------+-
+classifier.dense.bias      | UNEXPECTED | 
+classifier.out_proj.weight | UNEXPECTED | 
+classifier.dense.weight    | UNEXPECTED | 
+classifier.out_proj.bias   | UNEXPECTED | 
+pooler.dense.weight        | MISSING    | 
+pooler.dense.bias          | MISSING    | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+- MISSING:	those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.
+/workspace/reviews/finetune.py:186: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  "loss_last": float(loss),
+{"epoch": 1, "val_sentiment_macro_f1": 0.886622880792661, "val_complaint_f1": 0.9830508474576272, "loss_last": 0.130130797624588}
+{"epoch": 2, "val_sentiment_macro_f1": 0.8985571575803569, "val_complaint_f1": 0.984304932735426, "loss_last": 0.007812749594449997}
+{"epoch": 3, "val_sentiment_macro_f1": 0.8864885601941573, "val_complaint_f1": 0.9854096520763187, "loss_last": 0.01683548279106617}
+{"epoch": 4, "val_sentiment_macro_f1": 0.9117884969627683, "val_complaint_f1": 0.9854096520763187, "loss_last": 0.006055760663002729}

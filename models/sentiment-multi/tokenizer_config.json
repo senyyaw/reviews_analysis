@@ -1,0 +1,20 @@
+{
+  "add_prefix_space": true,
+  "backend": "tokenizers",
+  "bos_token": "<s>",
+  "clean_up_tokenization_spaces": false,
+  "cls_token": "<s>",
+  "eos_token": "</s>",
+  "is_local": false,
+  "local_files_only": true,
+  "mask_token": "<mask>",
+  "max_len": 512,
+  "model_max_length": 512,
+  "pad_token": "<pad>",
+  "padding_side": "right",
+  "return_tensors": "pt",
+  "sep_token": "</s>",
+  "tokenizer_class": "XLMRobertaTokenizer",
+  "truncation": true,
+  "unk_token": "<unk>"
+}

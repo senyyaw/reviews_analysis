@@ -1,0 +1,25 @@
+Loading weights:   0%|          | 0/198 [00:00<?, ?it/s]Loading weights: 100%|██████████| 198/198 [00:00<00:00, 3647.09it/s]
+[transformers] [1mDebertaV2Model LOAD REPORT[0m from: microsoft/deberta-v3-base
+Key                                     | Status     |  | 
+----------------------------------------+------------+--+-
+lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED |  | 
+mask_predictions.LayerNorm.bias         | UNEXPECTED |  | 
+lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED |  | 
+mask_predictions.dense.weight           | UNEXPECTED |  | 
+lm_predictions.lm_head.dense.weight     | UNEXPECTED |  | 
+lm_predictions.lm_head.bias             | UNEXPECTED |  | 
+mask_predictions.classifier.bias        | UNEXPECTED |  | 
+mask_predictions.classifier.weight      | UNEXPECTED |  | 
+mask_predictions.dense.bias             | UNEXPECTED |  | 
+mask_predictions.LayerNorm.weight       | UNEXPECTED |  | 
+lm_predictions.lm_head.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+/workspace/reviews/finetune.py:186: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  "loss_last": float(loss),
+{"epoch": 1, "val_sentiment_macro_f1": 0.8726351366698618, "val_complaint_f1": 0.9795454545454545, "loss_last": 0.24499662220478058}
+{"epoch": 2, "val_sentiment_macro_f1": 0.8917599394181998, "val_complaint_f1": 0.9842342342342343, "loss_last": 0.38611674308776855}
+{"epoch": 3, "val_sentiment_macro_f1": 0.9154305200341005, "val_complaint_f1": 0.9865168539325843, "loss_last": 0.006688029505312443}
+{"epoch": 4, "val_sentiment_macro_f1": 0.9165777750942586, "val_complaint_f1": 0.984304932735426, "loss_last": 0.008669735863804817}

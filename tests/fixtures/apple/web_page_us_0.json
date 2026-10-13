@@ -1,0 +1,245 @@
+{
+ "next": "/v1/catalog/us/apps/1232780281/reviews?offset=20",
+ "data": [
+  {
+   "id": "14656572111",
+   "type": "user-reviews",
+   "attributes": {
+    "date": "2026-10-12T05:28:16Z",
+    "isEdited": false,
+    "rating": 1,
+    "review": "680mb is crazy",
+    "title": "Heavy",
+    "userName": "user_00"
+   }
+  },
+  {
+   "id": "14647609628",
+   "type": "user-reviews",
+   "attributes": {
+    "date": "2026-10-09T23:11:38Z",
+    "isEdited": false,
+    "rating": 5,
+    "review": "I love the app, still I feel something that should be added is a color wheel, that way we can make texts whatever color we want and not just be stuck with the ten colors that are already given.",
+    "title": "Colors",
+    "userName": "user_01"
+   }
+  },
+  {
+   "id": "14646831676",
+   "type": "user-reviews",
+   "attributes": {
+    "date": "2026-10-09T18:20:20Z",
+    "isEdited": false,
+    "rating": 1,
+    "review": "If I had not used it in writing notes in Mac already, I would never used it in my iPad cause the app here is disappointing for the following reasons \n\nThis app is difficult to use as a note taken in IOS : \n- Always lagging \n- when I try to type using iPad keyboard I can’t see what I am writing cause the page will scroll down every single time \n- not apple pencil friendly, text difficult to recognize (when I try to select words[writing and editing using it is something I had long since learned that they will never fix it{) \n- AI support is not optimum in iPad, whenever I will use it the app will lag and I need to close it and reopen to continue my notes taken \n- can not search in the page alone \n- I can not change the color of any text , it will immediately lag , and do not apply the color changes \n- difficult to move text \n\n\nKeep in mind I am using a new empty page !!!",
+    "title": "IOS iPad incompatible (I mentioned these issues prior >6mon , with no changes unfortunately )",
+    "userName": "user_02"
+   }
+  },
+  {
+   "id": "14643833817",
+   "type": "user-reviews",
+   "attributes": {
+    "date": "2026-10-08T23:46:49Z",
+    "isEdited": false,
+    "rating": 2,
+    "review": "Having reduced settings on the mobile app really hinders usability",
+    "title": "Reduced settings on mobile app",
+    "userName": "user_03"
+   }
+  },
+  {
+   "id": "14643562276",
+   "type": "user-reviews",
+   "attributes": {
+    "date": "2026-10-08T21:53:42Z",
+    "isEdited": false,
+    "rating": 1,
+    "review": "This is the only app I've ever used that I can't type in with my bluetooth keyboard. Unusable for iPads. Feel free to let me know when you fix this cause I wish I could use this app.",
+    "title": "Fix bluetooth keyboards",
+    "userName": "user_04"
+   }
+  },
+  {
+   "id": "14640806898",
+   "type": "user-reviews",
+   "attributes": {
+    "date": "2026-10-08T05:33:32Z",
+    "isEdited": false,
+    "rating": 1,
+    "review": "1 star because it interrupted what I was doing for a review",
+    "title": "Nuisances ruined it",
+    "userName": "user_05"
+   }
+  },
+  {
+   "id": "14639781571",
+   "type": "user-reviews",
+   "attributes": {
+    "date": "2026-10-07T22:15:36Z",
+    "isEdited": false,
+    "rating": 1,
+    "review": "I don’t understand why you people make apps that don’t work the same as the website or the desktop app!  I downloaded this app, the marketplace for templates wasn’t available.  The AI sent me to the mobile website and I tried browsing agents, clicked on one and it took me to a completely unrelated screen with the templates for Notion.  I downloaded the Agents app, tried searching for the one I found on the site, nope.  Didn’t work.  Like what the hell?  I never deleted an account so fast!  Shew",
+    "title": "WTH",
+    "userName": "user_06"
+   }
+  },
+  {
+   "id": "14639776126",
+   "type": "user-reviews",
+   "attributes": {
+    "date": "2026-10-07T22:13:22Z",
+    "isEdited": false,
+    "rating": 5,
+    "review": "designed great tbh/ no.1",
+    "title": "Great/ recommend much❤️",
+    "userName": "user_07"
+   }
+  },
+  {
+   "id": "14639610404",
+   "type": "user-reviews",
+   "attributes": {
+    "date": "2026-10-07T21:06:46Z",
+    "isEdited": false,
+    "rating": 1,
+    "review": "I took all my notes here. One random update later all of my notes for every single class were missing. Just as my mid term is coming up",
+    "title": "Notes missing",
+    "userName": "user_08"
+   }
+  },
+  {
+   "id": "14638722485",
+   "type": "user-reviews",
+   "attributes": {
+    "date": "2026-10-07T16:05:13Z",
+    "isEdited": false,
+    "rating": 1,
+    "review": "Too slow and waste my time and always asked money .",
+    "title": "I don’t like this app",
+    "userName": "user_09"
+   }
+  },
+  {
+   "id": "14636693392",
+   "type": "user-reviews",
+   "attributes": {
+    "date": "2026-10-07T03:18:16Z",
+    "isEdited": false,
+    "rating": 1,
+    "review": "It’d be really nice, but the AI ruins it.",
+    "title": "Mid",
+    "userName": "user_10"
+   }
+  },
+  {
+   "id": "14636017860",
+   "type": "user-reviews",
+   "attributes": {
+    "date": "2026-10-06T22:44:43Z",
+    "isEdited": false,
+    "rating": 5,
+    "review": "I picked it up because I wanted to keep some notes, and didn’t think much of it. But it’s so deeply customizable that I got basically hooked on it. I have tons of different sections for lots of different things, and it’s made me much more organized as a person. I use it daily and it genuinely makes my life so much easier. It makes me so happy to use and you can use it for anything. It’s amazing!",
+    "title": "I LOVE THIS APP",
+    "userName": "user_11"
+   }
+  },
+  {
+   "id": "14633493869",
+   "type": "user-reviews",
+   "attributes": {
+    "date": "2026-10-06T07:46:08Z",
+    "isEdited": false,
+    "rating": 1,
+    "review": "i’m so done with ai slop being shoved down our throats in every corner of the internet. there’s no reason why notion should need ai integrated into its app. you don’t want to spend the time writing original content? fine, use chatgpt. this app used to be so nice circa 2019, now it’s turning into every other lazy website.",
+    "title": "yet another company succumbs to the ai propaganda",
+    "userName": "user_12"
+   }
+  },
+  {
+   "id": "14616107171",
+   "type": "user-reviews",
+   "attributes": {
+    "date": "2026-10-01T19:22:59Z",
+    "isEdited": false,
+    "rating": 5,
+    "review": "Do I have Notion? ✅\nDo I love Notion? Again - ✅\nDo I use Notion for every household task imaginable? With enthusiasm. ✅\n\nDo I know anything about Notion? ❌❌❌❌\n\nI don’t even need to know how to use Notion to connect it and use it with my AI stack. It’s the best source-of-truth solution I’ve found to help this somewhat techy single mom keep her family’s life on track! 🫶🏻",
+    "title": "The next-gen notebook you actually NEED",
+    "userName": "user_13"
+   }
+  },
+  {
+   "id": "14612906146",
+   "type": "user-reviews",
+   "attributes": {
+    "date": "2026-10-01T00:19:38Z",
+    "isEdited": false,
+    "rating": 5,
+    "review": "1000% would recommend to everyone in my life. Sleek and simple enough to get the hang of pretty fast, but also sophisticated enough to explore creatively and to organize all the things I want (for reference I’ve been using Notion for about 5 years now for to-do lists and other planning and scheduling, so it’s A LOT). Genuinely keeping my life together!!!",
+    "title": "My Favorite Productivity App",
+    "userName": "user_14"
+   }
+  },
+  {
+   "id": "14608846571",
+   "type": "user-reviews",
+   "attributes": {
+    "date": "2026-09-29T22:57:26Z",
+    "isEdited": false,
+    "rating": 5,
+    "review": "This has replaced my notes app",
+    "title": "Love the shortcuts",
+    "userName": "user_15"
+   }
+  },
+  {
+   "id": "14607642357",
+   "type": "user-reviews",
+   "attributes": {
+    "date": "2026-09-29T15:51:13Z",
+    "isEdited": false,
+    "rating": 5,
+    "review": "Notion has really been a huge tool in helping my systems brain stay organized and sane in my business!  I also love that it’s one the few apps that I use that works both the same on my phone as well as when I’m on my iPad or desk top computer. Seamless, easy to use and love all the amazing updates that are being released as it’s making it simpler, faster, and more fun to use!  Limitless possibilities for sure!  #notiondiehardfanuser",
+    "title": "I LOVE Notion!",
+    "userName": "user_16"
+   }
+  },
+  {
+   "id": "14600808350",
+   "type": "user-reviews",
+   "attributes": {
+    "date": "2026-09-27T19:45:51Z",
+    "isEdited": false,
+    "rating": 3,
+    "review": "Generally enjoy notion a lot - it’s one of the better note apps out there. The range of features is really good. But - two major problems prevent it from being awesome - you can’t upgrade your subscription! I signed up through Apple and now I want to bring on two other people to my “business” subscription. You can’t do it!!! I have to wait for my current subscription to expire, a month away, or start a new account and. Transfer everything which loses history and maybe some associations. Not much of a business subscription if you can’t more people!!!! The other really really bad thing is app startup time. I open my phone for a morning meeting, go to notion to start AI notes and it just sits there… I’m on WiFi, and the app takes so long to load up it misses the first part of the meeting - often the MOST critical part!  These two things take the app from great to something I can’t rely on. And if I can’t rely on it, then I have to have something else that I can rely on. Really unfortunate. Could be the perfect app - and then isn’t.",
+    "title": "Pretty great until it isn’t",
+    "userName": "user_17"
+   }
+  },
+  {
+   "id": "14598140299",
+   "type": "user-reviews",
+   "attributes": {
+    "date": "2026-09-27T04:17:09Z",
+    "isEdited": false,
+    "rating": 1,
+    "review": "So far notion has been great, my number 1 go to for note taking among other things. But now the app has been more of nuisance than anything because it has several glitches now. For one, whenever I highlight a paragraph and try applying italic, or bold to it, it only applies to the first word and only allows me to edit that first word. Another recent development being that whenever I try highlighting a text to put it in a different color, by the time I go to the color menu the entire thing becomes deselected and uncolorable. Please fix this.",
+    "title": "what's happening?",
+    "userName": "user_18"
+   }
+  },
+  {
+   "id": "14592617839",
+   "type": "user-reviews",
+   "attributes": {
+    "date": "2026-09-25T18:04:57Z",
+    "isEdited": false,
+    "rating": 1,
+    "review": "You can only make check boxes one at a time in the mobile app. I uploaded a list of things to do, I want to create a checklist, and I cannot. Insane for this team to not have that feature.",
+    "title": "Can’t make checklists in Mobil app",
+    "userName": "user_19"
+   }
+  }
+ ]
+}

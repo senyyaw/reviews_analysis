@@ -1,0 +1,60 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Review labelling</title>
+<style>
+ :root{--bg:#fafaf9;--fg:#1c1917;--muted:#78716c;--card:#fff;--line:#e7e5e4;--pos:#15803d;--neu:#a16207;--neg:#b91c1c;--acc:#1d4ed8}
+ @media (prefers-color-scheme:dark){:root{--bg:#1c1917;--fg:#f5f5f4;--muted:#a8a29e;--card:#292524;--line:#44403c;--pos:#4ade80;--neu:#facc15;--neg:#f87171;--acc:#93c5fd}}
+ body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif}
+ main{max-width:760px;margin:0 auto;padding:24px 16px}
+ .top{display:flex;justify-content:space-between;color:var(--muted);font-size:14px}
+ .bar{height:6px;background:var(--line);border-radius:3px;margin:8px 0 20px}.bar>div{height:100%;background:var(--acc);border-radius:3px}
+ .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;min-height:140px;white-space:pre-wrap}
+ .tr{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);color:var(--muted)}
+ .row{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+ button{font:inherit;padding:10px 14px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--fg);cursor:pointer}
+ button.on{outline:3px solid var(--acc)}
+ .pos.on{border-color:var(--pos)}.neu.on{border-color:var(--neu)}.neg.on{border-color:var(--neg)}
+ kbd{font-size:12px;border:1px solid var(--line);border-radius:4px;padding:0 4px;color:var(--muted)}
+ .msg{color:var(--muted);font-size:14px;margin-top:12px;min-height:20px}
+ details{margin-top:28px;color:var(--muted)} details pre{white-space:pre-wrap;font:13px/1.45 ui-monospace,monospace}
+</style></head><body><main>
+<div class="top"><span id="pos"></span><span id="done"></span></div><div class="bar"><div id="prog"></div></div>
+<div class="card" id="text"></div>
+<div class="row">
+ <button class="pos" data-s="positive"><kbd>1</kbd> positive</button>
+ <button class="neu" data-s="neutral"><kbd>2</kbd> neutral</button>
+ <button class="neg" data-s="negative"><kbd>3</kbd> negative</button>
+</div>
+<div class="row">
+ <button id="complaint"><kbd>c</kbd> complaint: <b id="cval">no</b></button>
+ <button id="unsure"><kbd>u</kbd> unsure: <b id="uval">no</b></button>
+ <button id="prev"><kbd>&larr;</kbd> back</button>
+ <button id="save"><kbd>Enter</kbd> save &amp; next</button>
+</div>
+<div class="msg" id="msg"></div>
+<details><summary>Labelling guide</summary><pre id="guide"></pre></details>
+</main><script>
+let items=[],labels={},i=0,cur={};const PASS=__PASS_MODE__;
+const $=id=>document.getElementById(id);
+async function init(){const r=await (await fetch('/api/state')).json();items=r.items;labels=r.labels;$('guide').textContent=r.guide;
+ i=PASS?0:items.findIndex(x=>!labels[x.review_id]);if(i<0)i=items.length-1;
+ if(PASS)document.querySelector('.top').insertAdjacentHTML('afterend','<p><b>Complaint check:</b> these are reviews you labelled negative. Press <kbd>c</kbd> if the review mentions any problem, then <kbd>Enter</kbd>. Sentiment is already saved.</p>');show();}
+function show(){const it=items[i];const l=labels[it.review_id]||{};cur={sentiment:l.sentiment||null,complaint:!!l.complaint,unsure:!!l.unsure};
+ $('text').textContent=it.text;if(it.translation){const d=document.createElement('div');d.className='tr';d.textContent='EN ('+it.lang+'): '+it.translation;$('text').appendChild(d);}
+ $('pos').textContent=`Review ${i+1} of ${items.length}`;const n=Object.keys(labels).length;$('done').textContent=`${n} labelled`;
+ $('prog').style.width=(100*n/items.length)+'%';render();$('msg').textContent='';}
+function render(){document.querySelectorAll('[data-s]').forEach(b=>b.classList.toggle('on',b.dataset.s===cur.sentiment));
+ $('cval').textContent=cur.complaint?'yes':'no';$('uval').textContent=cur.unsure?'yes':'no';}
+async function save(){if(!cur.sentiment){$('msg').textContent='Pick a sentiment first (1/2/3).';return;}
+ const it=items[i];const body={review_id:it.review_id,...cur};
+ const r=await fetch('/api/label',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+ if(!r.ok){$('msg').textContent='Save failed: '+await r.text();return;}
+ labels[it.review_id]=body;if(i<items.length-1){i++;show();}else{show();$('msg').textContent='All done — thank you! You can close this tab.';}}
+document.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{cur.sentiment=b.dataset.s;render();});
+$('complaint').onclick=()=>{cur.complaint=!cur.complaint;render();};$('unsure').onclick=()=>{cur.unsure=!cur.unsure;render();};
+$('prev').onclick=()=>{if(i>0){i--;show();}};$('save').onclick=save;
+document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;
+ const k=e.key;if(k==='1')cur.sentiment='positive';else if(k==='2')cur.sentiment='neutral';else if(k==='3')cur.sentiment='negative';
+ else if(k==='c')cur.complaint=!cur.complaint;else if(k==='u')cur.unsure=!cur.unsure;else if(k==='Enter'){save();return;}
+ else if(k==='ArrowLeft'){if(i>0){i--;show();}return;}else return;render();});
+init();
+</script></body></html>

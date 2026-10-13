@@ -1,0 +1,12 @@
+{
+ "model": "Qwen/Qwen3.8-27B-FP8",
+ "revision": "017b9c7af6",
+ "vllm": "0.31.0",
+ "n": 8153,
+ "json_failures": 0,
+ "seconds": 1825.3,
+ "temperature": 0.0,
+ "seed": 0,
+ "thinking": false,
+ "instructions_chars": 4677
+}

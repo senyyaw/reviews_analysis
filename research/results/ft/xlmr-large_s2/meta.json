@@ -1,0 +1,51 @@
+{
+ "model": "FacebookAI/xlm-roberta-large",
+ "revision": "c23d21b062",
+ "seed": 2,
+ "lr": 8e-06,
+ "epochs": 4,
+ "batch_size": 32,
+ "max_len": 320,
+ "train_n": 6796,
+ "val_n": 754,
+ "train_class_counts": [
+  3024,
+  251,
+  3521
+ ],
+ "class_weights": [
+  0.5557886362075806,
+  1.9291397333145142,
+  0.5150715112686157
+ ],
+ "best_epoch": 4,
+ "best_val_macro_f1": 0.9069980087208028,
+ "log": [
+  {
+   "epoch": 1,
+   "val_sentiment_macro_f1": 0.8915658856135047,
+   "val_complaint_f1": 0.9740698985343855,
+   "loss_last": 0.03342684730887413
+  },
+  {
+   "epoch": 2,
+   "val_sentiment_macro_f1": 0.8897781207583519,
+   "val_complaint_f1": 0.9821428571428571,
+   "loss_last": 0.7466479539871216
+  },
+  {
+   "epoch": 3,
+   "val_sentiment_macro_f1": 0.9038469219922453,
+   "val_complaint_f1": 0.9842696629213483,
+   "loss_last": 0.057530686259269714
+  },
+  {
+   "epoch": 4,
+   "val_sentiment_macro_f1": 0.9069980087208028,
+   "val_complaint_f1": 0.9843400447427293,
+   "loss_last": 0.0037529245018959045
+  }
+ ],
+ "seconds": 1896.3,
+ "params_m": 560
+}

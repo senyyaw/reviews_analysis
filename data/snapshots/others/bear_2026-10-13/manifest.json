@@ -1,0 +1,42 @@
+{
+  "app": {
+    "app_id": 1016366447,
+    "name": "Bear - Markdown Notes",
+    "seller": "Shiny Frog Ltd.",
+    "storefront": "us",
+    "listing_avg_rating": 4.67773,
+    "listing_rating_count": 6870,
+    "version": "3.0.2",
+    "current_version_release_date": "2026-10-12T08:01:12Z",
+    "genre": "Productivity"
+  },
+  "since": "2024-10-13T14:58:40.413949Z",
+  "collected_at": "2026-10-13T14:59:14.132057Z",
+  "storefronts": [
+    {
+      "storefront": "us",
+      "pages_fetched": 8,
+      "reviews_seen": 160,
+      "reviews_in_window": 139,
+      "invalid_skipped": 0,
+      "oldest_date_seen": "2024-06-20T07:43:50Z",
+      "stop_reason": "reached_cutoff"
+    }
+  ],
+  "pool_size": 139,
+  "duplicates_removed": 0,
+  "warnings": [],
+  "collector_version": "0.1.0",
+  "params": {
+    "app_id": "1016366447",
+    "storefronts": "us",
+    "window_days": 730,
+    "random_n": 100,
+    "recent_n": 50,
+    "seed": 42,
+    "max_pages": 60,
+    "out": "data/snapshots/others/bear_2026-10-13",
+    "verbose": false,
+    "since": "2024-10-13T14:58:40.413949+00:00"
+  }
+}

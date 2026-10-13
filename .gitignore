@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.DS_Store
+
+# Raw Apple pages contain reviewer user names; keep them local only (pool.jsonl stores hashes).
+data/snapshots/**/raw/
+
+# Fine-tuned PyTorch checkpoints are large; only the int8 ONNX exports in models/ are versioned.
+*.pt

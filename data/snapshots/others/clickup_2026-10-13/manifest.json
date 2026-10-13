@@ -1,0 +1,42 @@
+{
+  "app": {
+    "app_id": 1535098836,
+    "name": "ClickUp: Tasks, Chat, Docs, AI",
+    "seller": "Mango Technologies, Inc.",
+    "storefront": "us",
+    "listing_avg_rating": 4.67914,
+    "listing_rating_count": 9886,
+    "version": "7.3.4",
+    "current_version_release_date": "2026-10-05T18:46:16Z",
+    "genre": "Productivity"
+  },
+  "since": "2024-10-13T14:59:52.397969Z",
+  "collected_at": "2026-10-13T15:00:33.445306Z",
+  "storefronts": [
+    {
+      "storefront": "us",
+      "pages_fetched": 12,
+      "reviews_seen": 240,
+      "reviews_in_window": 207,
+      "invalid_skipped": 0,
+      "oldest_date_seen": "2024-07-23T07:02:02Z",
+      "stop_reason": "reached_cutoff"
+    }
+  ],
+  "pool_size": 207,
+  "duplicates_removed": 0,
+  "warnings": [],
+  "collector_version": "0.1.0",
+  "params": {
+    "app_id": "1535098836",
+    "storefronts": "us",
+    "window_days": 730,
+    "random_n": 100,
+    "recent_n": 50,
+    "seed": 42,
+    "max_pages": 60,
+    "out": "data/snapshots/others/clickup_2026-10-13",
+    "verbose": false,
+    "since": "2024-10-13T14:59:52.397969+00:00"
+  }
+}

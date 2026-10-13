@@ -1,0 +1,39 @@
+{
+  "n_reviews": 1143,
+  "languages": {
+    "en": 1105,
+    "es": 14,
+    "zh": 10,
+    "und": 4,
+    "fr": 3,
+    "ru": 3,
+    "ko": 2,
+    "ar": 1,
+    "tr": 1
+  },
+  "language_methods": {
+    "detector": 1133,
+    "english_cue": 6,
+    "short_uncertain": 4
+  },
+  "translated": 34,
+  "untranslated": 0,
+  "short": 10,
+  "emoji_only": 0,
+  "exact_duplicates": 0,
+  "near_duplicate_groups": 0,
+  "near_duplicate_reviews": 0,
+  "domain_stopwords": [
+    "app",
+    "application",
+    "feature",
+    "like",
+    "need",
+    "note",
+    "notion",
+    "thing",
+    "use",
+    "want",
+    "work"
+  ]
+}

@@ -1,0 +1,19 @@
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 9344.36it/s]
+[transformers] [1mXLMRobertaModel LOAD REPORT[0m from: FacebookAI/xlm-roberta-large
+Key                       | Status     |  | 
+--------------------------+------------+--+-
+lm_head.bias              | UNEXPECTED |  | 
+lm_head.dense.weight      | UNEXPECTED |  | 
+lm_head.layer_norm.weight | UNEXPECTED |  | 
+lm_head.layer_norm.bias   | UNEXPECTED |  | 
+lm_head.dense.bias        | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+/workspace/reviews/finetune.py:186: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  "loss_last": float(loss),
+{"epoch": 1, "val_sentiment_macro_f1": 0.8123698885606482, "val_complaint_f1": 0.9692832764505119, "loss_last": 0.18178775906562805}
+{"epoch": 2, "val_sentiment_macro_f1": 0.875235524709209, "val_complaint_f1": 0.9832026875699889, "loss_last": 0.2382047474384308}
+{"epoch": 3, "val_sentiment_macro_f1": 0.8840487212653461, "val_complaint_f1": 0.9875986471251409, "loss_last": 0.014857235364615917}
+{"epoch": 4, "val_sentiment_macro_f1": 0.8744968347729349, "val_complaint_f1": 0.9854423292273237, "loss_last": 0.021848224103450775}

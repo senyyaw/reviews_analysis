@@ -1,0 +1,51 @@
+{
+ "model": "clapAI/roberta-base-multilingual-sentiment",
+ "revision": "5986405bd6",
+ "seed": 0,
+ "lr": 2e-05,
+ "epochs": 4,
+ "batch_size": 32,
+ "max_len": 320,
+ "train_n": 6796,
+ "val_n": 754,
+ "train_class_counts": [
+  3024,
+  251,
+  3521
+ ],
+ "class_weights": [
+  0.5557886362075806,
+  1.9291397333145142,
+  0.5150715112686157
+ ],
+ "best_epoch": 4,
+ "best_val_macro_f1": 0.9138011266957969,
+ "log": [
+  {
+   "epoch": 1,
+   "val_sentiment_macro_f1": 0.904494479097353,
+   "val_complaint_f1": 0.9796839729119639,
+   "loss_last": 0.11915240436792374
+  },
+  {
+   "epoch": 2,
+   "val_sentiment_macro_f1": 0.9032262860354914,
+   "val_complaint_f1": 0.9841986455981941,
+   "loss_last": 0.0608217790722847
+  },
+  {
+   "epoch": 3,
+   "val_sentiment_macro_f1": 0.9108126213612099,
+   "val_complaint_f1": 0.9831649831649831,
+   "loss_last": 0.004011169075965881
+  },
+  {
+   "epoch": 4,
+   "val_sentiment_macro_f1": 0.9138011266957969,
+   "val_complaint_f1": 0.9832026875699889,
+   "loss_last": 0.002824897412210703
+  }
+ ],
+ "seconds": 87.2,
+ "params_m": 278
+}

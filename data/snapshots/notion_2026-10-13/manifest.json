@@ -1,0 +1,95 @@
+{
+  "app": {
+    "app_id": 1232780281,
+    "name": "Notion: Notes, Tasks, AI",
+    "seller": "Notion Labs, Incorporated",
+    "storefront": "us",
+    "listing_avg_rating": 4.77527,
+    "listing_rating_count": 90377,
+    "version": "1.7.346",
+    "current_version_release_date": "2026-10-13T04:16:20Z",
+    "genre": "Productivity"
+  },
+  "since": "2025-10-13T13:26:56.365471Z",
+  "collected_at": "2026-10-13T13:37:08.073836Z",
+  "storefronts": [
+    {
+      "storefront": "us",
+      "pages_fetched": 40,
+      "reviews_seen": 800,
+      "reviews_in_window": 760,
+      "invalid_skipped": 0,
+      "oldest_date_seen": "2025-09-26T11:04:43Z",
+      "stop_reason": "reached_cutoff"
+    },
+    {
+      "storefront": "gb",
+      "pages_fetched": 8,
+      "reviews_seen": 160,
+      "reviews_in_window": 126,
+      "invalid_skipped": 0,
+      "oldest_date_seen": "2025-06-18T08:50:49Z",
+      "stop_reason": "reached_cutoff"
+    },
+    {
+      "storefront": "ca",
+      "pages_fetched": 7,
+      "reviews_seen": 140,
+      "reviews_in_window": 102,
+      "invalid_skipped": 0,
+      "oldest_date_seen": "2025-07-21T00:30:10Z",
+      "stop_reason": "reached_cutoff"
+    },
+    {
+      "storefront": "au",
+      "pages_fetched": 5,
+      "reviews_seen": 100,
+      "reviews_in_window": 66,
+      "invalid_skipped": 0,
+      "oldest_date_seen": "2025-03-21T04:32:48Z",
+      "stop_reason": "reached_cutoff"
+    },
+    {
+      "storefront": "in",
+      "pages_fetched": 5,
+      "reviews_seen": 100,
+      "reviews_in_window": 73,
+      "invalid_skipped": 0,
+      "oldest_date_seen": "2025-06-08T15:45:14Z",
+      "stop_reason": "reached_cutoff"
+    },
+    {
+      "storefront": "ie",
+      "pages_fetched": 2,
+      "reviews_seen": 32,
+      "reviews_in_window": 7,
+      "invalid_skipped": 0,
+      "oldest_date_seen": "2018-04-17T10:28:53Z",
+      "stop_reason": "reached_cutoff"
+    },
+    {
+      "storefront": "nz",
+      "pages_fetched": 2,
+      "reviews_seen": 35,
+      "reviews_in_window": 9,
+      "invalid_skipped": 0,
+      "oldest_date_seen": "2020-08-15T10:43:20Z",
+      "stop_reason": "reached_cutoff"
+    }
+  ],
+  "pool_size": 1143,
+  "duplicates_removed": 0,
+  "warnings": [],
+  "collector_version": "0.1.0",
+  "params": {
+    "app_id": "1232780281",
+    "storefronts": "us,gb,ca,au,in,ie,nz",
+    "window_days": 365,
+    "random_n": 300,
+    "recent_n": 100,
+    "seed": 42,
+    "out": "data/snapshots/notion_2026-10-13",
+    "verbose": true,
+    "since": "2025-10-13T13:26:56.365471+00:00"
+  }
+}

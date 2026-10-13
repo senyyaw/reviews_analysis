@@ -1,0 +1,18 @@
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 41569.13it/s]
+[transformers] [1mRobertaModel LOAD REPORT[0m from: cardiffnlp/twitter-roberta-base-sentiment-latest
+Key                        | Status     |  | 
+---------------------------+------------+--+-
+classifier.out_proj.weight | UNEXPECTED |  | 
+classifier.out_proj.bias   | UNEXPECTED |  | 
+classifier.dense.weight    | UNEXPECTED |  | 
+classifier.dense.bias      | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+/workspace/reviews/finetune.py:186: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  "loss_last": float(loss),
+{"epoch": 1, "val_sentiment_macro_f1": 0.8826007326007326, "val_complaint_f1": 0.9721913236929922, "loss_last": 0.1455996036529541}
+{"epoch": 2, "val_sentiment_macro_f1": 0.8738464045043868, "val_complaint_f1": 0.9772727272727273, "loss_last": 0.14017151296138763}
+{"epoch": 3, "val_sentiment_macro_f1": 0.8916528645592686, "val_complaint_f1": 0.9773242630385488, "loss_last": 0.004181486554443836}
+{"epoch": 4, "val_sentiment_macro_f1": 0.8824683298719966, "val_complaint_f1": 0.981941309255079, "loss_last": 0.4244562089443207}

@@ -1,0 +1,12 @@
+{
+ "model": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+ "revision": "d4ab4f579d",
+ "vllm": "0.31.0",
+ "n": 300,
+ "json_failures": 0,
+ "seconds": 17.7,
+ "temperature": 0.0,
+ "seed": 0,
+ "thinking": false,
+ "instructions_chars": 4677
+}

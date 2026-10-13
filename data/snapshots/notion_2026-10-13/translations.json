@@ -1,0 +1,172 @@
+{
+ "13308812622": {
+  "src_lang": "ar",
+  "text_en": "and Iraq. I gave the app one star for being I couldn’t use it or try it! Due to the problem of Arabic text orientation (RTL) and due to the lack of Arabic interface (Arabic UI), we analyze the problem and the solution that developers should adopt. Description of the problem (Issue Description): Arab users suffer from the heart of the curvature and deformation of the lecture while writing in Arabic within the Notion. Errors occur especially when inserting short English words within an Arabic line, resulting in a disturbance in the direction of the text and inconsistency in presentation. - Steps to Reproduction: 1 is Write an Arabic line starting with an Arabic letter. 2nd Add an English term between two words after the Arabic word, such as: My name is Ahmed and the house of Baghdad. Three Notice the change in the direction of the slide or the blending of the slider to the right and the slider, especially when copying or modifying the slide. Current Result (Actual Result) Disturbance in the direction of the movement and disturbance of the spine, which makes it difficult to read, write and coordinate. Expected Results (Expected Results) The Arabic text direction from right to left (RTL) is stable even with short English phrases within the thread, with a stable and reliable syntax. The impact is: The Arab user’s writing experience is negatively affected, and it is difficult to use Notion to manage daily or professional content. This causes annoyance and forces some to stop using the app. The Environment (The Environment) The Arabic language (Arabic) The problem appears both on the web and on the mobile app, according to user observations. Examples for example: My name is Ahmed and the house of Baghdad. Script and Key Points. Request for Improvement: 1 is Full support for left-to-right Arabic text (RTL) within the editor. 2nd Add an Arabic UI option in Settings. Three Improve the handling of short English phrases within the Arabic language without corrupting the trend. Additional notes (Additional notes) Prefer to provide preparation to force the paragraph direction in Arabic when needed, and a quick coordination option ensures that there is no trend heart even with symbols and links.",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "13312055400": {
+  "src_lang": "ko",
+  "text_en": "and disappointment. Money is revealed.",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "13479477382": {
+  "src_lang": "fr",
+  "text_en": "Really useful . I like this app very much, I can start from the model already done everything, I can use it both for work and for my personal things",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "13507862935": {
+  "src_lang": "ko",
+  "text_en": "But don't forget that there is also a notion app on the iPad.No, and when the color baseline will appear in the choice of multiple choices. Only the same color is used to change a few colors each time a new option occurs. The gallery is only three years old and you can hide the title even without the gallery cover. It’s big, but I can’t even catch all the eyes.",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "13537562269": {
+  "src_lang": "es",
+  "text_en": "and genius. A great tool to put tasks and day-to-day work in order",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "13600117034": {
+  "src_lang": "es",
+  "text_en": "I love the app. We didn’t have it before!! is incredible",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "13632143010": {
+  "src_lang": "es",
+  "text_en": "An excellent tool for achieving the goals. Recommended for students, entrepreneurs and the general public.",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "13678443946": {
+  "src_lang": "zh",
+  "text_en": "A little more text notes are always unlimited to refresh, collapse, and go into a variety of refreshed black screens. Sorry, the experience was bad.",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "13678993633": {
+  "src_lang": "es",
+  "text_en": "Something disappointing . It’s very complete, but sincerely leaves a lot to be desired, there’s no way it doesn’t freeze after a few actions while working on it. It is very frustrating to have to close it and re-open it constantly, in order to continue working.",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "13737252563": {
+  "src_lang": "zh",
+  "text_en": "Optimization is bad. 16pro should not be a junk phone, I have a note page that is a little longer and can not be opened, and notes are long, copies are also card, I hope the official can optimize a little",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "13742247743": {
+  "src_lang": "es",
+  "text_en": "by RD. I love doing your shifting and also to work.",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "13830549602": {
+  "src_lang": "zh",
+  "text_en": "Compulsory pushing AI functions, damaging the user experience. The previous Notion pages were simple, beautiful, and functional, allowing users to focus on the notes themselves. However, the updated version compulsorily added three ugly and disturbing buttons at the bottom of each page: 1 of The search button (repeated function, which originally had shortcuts and the top search box); 2nd The AI button that occupies the most space (obviously not good for promoting its impractical AI functionality); Three New page button (the same repeats). The core question: Compulsory marketing: AI functions are not only useless, but also occupy interface space, seriously affecting the visual cleanliness of the notes. • Unable to turn off: Users do not have the option to customize hiding these buttons. It feels like the platform is forcing users to leave. Has the level of abuse begun? has it begun to enter this phase so soon?",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "13848910888": {
+  "src_lang": "es",
+  "text_en": "Notes for my diary. I love it because I can only save it with my email and I can open it anywhere, such as mobile phones, computers and more.",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "13887706778": {
+  "src_lang": "es",
+  "text_en": "Seeing it makes me a little scared, but... It’s really great. The best app you can find on the way to organize your life and work. You write it all with supreme elegance and perfect organization.",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "13902593878": {
+  "src_lang": "es",
+  "text_en": "Notion is the best. I love this app I love very easy to use and with a lot of work tools",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "13903116141": {
+  "src_lang": "ru",
+  "text_en": "Thanks for the cool appendix. I recommend . If you understand, it has a very useful function.",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "13927248112": {
+  "src_lang": "tr",
+  "text_en": "Expensive but no support. Good price, but no Turkish support, unfortunately I would buy it.",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "13999491850": {
+  "src_lang": "es",
+  "text_en": "and . It is a very good application 100x recommended :)",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "14007213967": {
+  "src_lang": "ru",
+  "text_en": "Let me speak Russian!! If you want to make a lot of money - add Russian and make a one-time purchase all the time. Give the Russians a good service and you will be happy.",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "14012083388": {
+  "src_lang": "zh",
+  "text_en": "Used well . Really very useful.",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "14036682526": {
+  "src_lang": "es",
+  "text_en": "Place where you put all your documents. I've reviewed 5 of 5 ⭐️⭐️☀️⭐️",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "14039051616": {
+  "src_lang": "ru",
+  "text_en": "Known by Fitzgerald. It is not a bad idea to combine several icons into one. But that chat gpt was so stupid I hadn’t seen. My respect you took all the bad from the gpt chat and stuck in the app. I didn’t get to Claudio yet.",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "14075088030": {
+  "src_lang": "es",
+  "text_en": "He organized my life. I’ve always liked to write my tasks and my personal thoughts, but in notebooks I disorganized a lot and didn’t always have them at hand. When I started using Notion on the recommendation of a friend, it was a rare transition between the paper and the screen, but once used to it I was able to take a lot of benefit from it. I use it every day because it’s easy and intuitive. A very personal methodology can be found. It also has a beautiful aesthetic. It has its limitations naturally, especially as far as tables are concerned, but it’s a great note app.",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "14098497809": {
+  "src_lang": "es",
+  "text_en": "Love it! The best tool to organize in my company and in my personal life!! Love it!!",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "14102776043": {
+  "src_lang": "fr",
+  "text_en": "I would recommend 1000%. Easy to use and allows me to outsource my ideas by organizing them and having a perfectly clear view of the evolution of my projects.",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "14139612764": {
+  "src_lang": "es",
+  "text_en": "I love this app. It really makes my work easier, organized and with clear goals",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "14188165998": {
+  "src_lang": "zh",
+  "text_en": "The software I was looking for! Looking for software for years, I finally found it!",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "14333208082": {
+  "src_lang": "zh",
+  "text_en": "Free pay too little inconvenience. In the fierce competition of the moment, you have the software is not unique technology, there is not really free full basic version, very few users, the road will go narrower, in the end can only naturally withdraw the end ... even if there is always willing to pay the fee, not convenient to pay, really don't know how you are thinking.",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "14351228983": {
+  "src_lang": "zh",
+  "text_en": "The garbage . This is the most rubbish thing I've ever seen, what I just wrote is gone and I can't find the content of the document. That damn goods.",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "14372500095": {
+  "src_lang": "zh",
+  "text_en": "newly emerging problems. In the recent update, on the iOS 18, the bottom pop-up of the photo added turned into a transparent background, losing readability; the recent item on the top of the workspace changed the title list, with no original horizontal sliding square display more elegant; the quick component button on the keyboard seemed to be re-loaded every time it was opened, and sometimes no icons were visible.",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "14393894358": {
+  "src_lang": "zh",
+  "text_en": "Very good note application. I can’t get rid of notion now. Please don’t get upset like evernote, I can’t accept a big note migration anymore. For ordinary people like me, notes are the whole of my knowledge. Congratulations to Notion!",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "14504124708": {
+  "src_lang": "es",
+  "text_en": "Excellent app. is recommended.",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "14509289709": {
+  "src_lang": "zh",
+  "text_en": "It is not compatible with the iPad Pro 2022. as above",
+  "model": "facebook/m2m100_1.2B"
+ },
+ "14586730460": {
+  "src_lang": "fr",
+  "text_en": "A waste of time. The worst software correction, it is useless. It uses the Apple fix tools.. don't waste your time and money!",
+  "model": "facebook/m2m100_1.2B"
+ }
+}

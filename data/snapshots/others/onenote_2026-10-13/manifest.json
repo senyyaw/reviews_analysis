@@ -1,0 +1,44 @@
+{
+  "app": {
+    "app_id": 410395246,
+    "name": "Microsoft OneNote",
+    "seller": "Microsoft Corporation",
+    "storefront": "us",
+    "listing_avg_rating": 4.71075,
+    "listing_rating_count": 1067799,
+    "version": "16.114.5",
+    "current_version_release_date": "2026-10-12T04:10:00Z",
+    "genre": "Productivity"
+  },
+  "since": "2024-10-13T14:53:29.071342Z",
+  "collected_at": "2026-10-13T14:57:00.210786Z",
+  "storefronts": [
+    {
+      "storefront": "us",
+      "pages_fetched": 60,
+      "reviews_seen": 1200,
+      "reviews_in_window": 1200,
+      "invalid_skipped": 0,
+      "oldest_date_seen": "2025-05-30T14:43:38Z",
+      "stop_reason": "max_pages"
+    }
+  ],
+  "pool_size": 1200,
+  "duplicates_removed": 0,
+  "warnings": [
+    "us: stopped at max_pages=60"
+  ],
+  "collector_version": "0.1.0",
+  "params": {
+    "app_id": "410395246",
+    "storefronts": "us",
+    "window_days": 730,
+    "random_n": 100,
+    "recent_n": 50,
+    "seed": 42,
+    "max_pages": 60,
+    "out": "data/snapshots/others/onenote_2026-10-13",
+    "verbose": false,
+    "since": "2024-10-13T14:53:29.071342+00:00"
+  }
+}

@@ -1,0 +1,25 @@
+Loading weights:   0%|          | 0/390 [00:00<?, ?it/s]Loading weights:  14%|█▍        | 56/390 [00:00<00:00, 559.73it/s]Loading weights:  70%|███████   | 273/390 [00:00<00:00, 1492.31it/s]Loading weights: 100%|██████████| 390/390 [00:00<00:00, 991.29it/s] 
+[transformers] [1mDebertaV2Model LOAD REPORT[0m from: microsoft/deberta-v3-large
+Key                                     | Status     |  | 
+----------------------------------------+------------+--+-
+mask_predictions.dense.bias             | UNEXPECTED |  | 
+lm_predictions.lm_head.LayerNorm.weight | UNEXPECTED |  | 
+mask_predictions.dense.weight           | UNEXPECTED |  | 
+mask_predictions.LayerNorm.weight       | UNEXPECTED |  | 
+lm_predictions.lm_head.LayerNorm.bias   | UNEXPECTED |  | 
+mask_predictions.LayerNorm.bias         | UNEXPECTED |  | 
+lm_predictions.lm_head.dense.weight     | UNEXPECTED |  | 
+mask_predictions.classifier.bias        | UNEXPECTED |  | 
+lm_predictions.lm_head.bias             | UNEXPECTED |  | 
+mask_predictions.classifier.weight      | UNEXPECTED |  | 
+lm_predictions.lm_head.dense.bias       | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+/workspace/reviews/finetune.py:186: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:822.)
+  "loss_last": float(loss),
+{"epoch": 1, "val_sentiment_macro_f1": 0.8998571233039993, "val_complaint_f1": 0.9808773903262092, "loss_last": 0.010418860241770744}
+{"epoch": 2, "val_sentiment_macro_f1": 0.9028612881431632, "val_complaint_f1": 0.9921259842519685, "loss_last": 0.6854757070541382}
+{"epoch": 3, "val_sentiment_macro_f1": 0.9041242571677746, "val_complaint_f1": 0.9910313901345291, "loss_last": 0.0020541162230074406}
+{"epoch": 4, "val_sentiment_macro_f1": 0.9212227257262358, "val_complaint_f1": 0.9921259842519685, "loss_last": 0.0017500682733953}
