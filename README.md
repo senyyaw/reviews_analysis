@@ -16,10 +16,10 @@ Everything runs offline on free, open models. No paid API is called at any point
 | | |
 |---|---|
 | **Sample report** (Notion, 1,143 reviews) | [`reports/REPORT.md`](reports/REPORT.md) |
-| **Interactive HTML reports** | [`docs/`](docs/), served by GitHub Pages at `https://senyyaw.github.io/reviews_analysis/` once enabled ([deployment](#deployment)) |
+| **Interactive HTML reports** | **https://senyyaw.github.io/reviews_analysis/** (GitHub Pages, built from [`docs/`](docs/)) |
 | **Charts** | 13 PNGs in [`reports/figures/`](reports/figures/) |
 | **Live run on a second app** | Nebula: 100 random reviews collected through the API on 2026-10-14 ([report appendix](reports/REPORT.md#appendix-the-same-api-on-a-new-app-nebula-live-run), `data/snapshots/nebula_2026-10-14`) |
-| **API docs** | `/docs` (Swagger UI) on any running server |
+| **Live API** (read-only, Vercel) | **https://reviews-analysis-ten.vercel.app/docs**. For example: [insights](https://reviews-analysis-ten.vercel.app/v1/collections/notion_2026-10-13.pool/insights), [HTML report](https://reviews-analysis-ten.vercel.app/v1/collections/notion_2026-10-13.pool/report), [CSV](https://reviews-analysis-ten.vercel.app/v1/collections/notion_2026-10-13.A_random/reviews?format=csv) |
 
 ## The brief, and where each requirement is met
 
@@ -448,7 +448,7 @@ The same process builds a taxonomy for a new app.
 
 All three options are free and need no credit card.
 
-- **Vercel (API, read-only).**
+- **Vercel (API, read-only), live at https://reviews-analysis-ten.vercel.app/docs.**
   - `app.py` is the entrypoint and `vercel.json` excludes the models and research files.
   - It serves the committed snapshots and their precomputed cache. Collection returns 503, because a
     serverless function has no disk and a collection runs for minutes.
