@@ -1762,12 +1762,11 @@
    "note": "Complaint sentences no theme covers. A rising share or a new recurring word is the trigger to refresh the taxonomy."
   }
  },
- "recommendations": [
+ "improvement_areas": [
   {
    "theme": "c_stability",
    "name": "App stability & crashes",
    "evidence": "14% of reviews (95% CI 12%\u201316%); reviews mentioning it average 2.0\u2605, 1.3\u2605 below the rest",
-   "action": "Prioritise crash/freeze fixes: triage crash reports by device and OS, add a stability gate to releases, and target long pages and large workspaces first.",
    "priority": 0.18130233720784902,
    "prevalence": 0.1426071741032371,
    "rating_impact": -1.2713409290096407,
@@ -1792,7 +1791,6 @@
    "theme": "c_ai_intrusive",
    "name": "AI forced / intrusive",
    "evidence": "10% of reviews (95% CI 9%\u201312%); reviews mentioning it average 1.9\u2605, 1.4\u2605 below the rest",
-   "action": "Give users control over AI: an off switch or a quieter AI entry point, and keep core note-taking free of AI clutter.",
    "priority": 0.14187042409172537,
    "prevalence": 0.10236220472440945,
    "rating_impact": -1.3859649122807016,
@@ -1817,7 +1815,6 @@
    "theme": "c_mobile",
    "name": "iPhone / mobile app experience",
    "evidence": "12% of reviews (95% CI 10%\u201314%); reviews mentioning it average 2.1\u2605, 1.2\u2605 below the rest",
-   "action": "Close the mobile-desktop gap: bring the most-missed settings and features to iPhone and fix mobile-only bugs before adding new features.",
    "priority": 0.13506805714567574,
    "prevalence": 0.11548556430446194,
    "rating_impact": -1.1695665857386923,
@@ -1842,7 +1839,6 @@
    "theme": "c_ui_ux",
    "name": "UI / UX & usability",
    "evidence": "11% of reviews (95% CI 10%\u201313%); reviews mentioning it average 2.1\u2605, 1.1\u2605 below the rest",
-   "action": "Simplify the interface: reduce clutter and navigation depth, and test design changes with existing users before rollout.",
    "priority": 0.12638545921404798,
    "prevalence": 0.11286089238845144,
    "rating_impact": -1.1198339525709833,
@@ -1867,7 +1863,6 @@
    "theme": "c_ipad",
    "name": "iPad-specific issues",
    "evidence": "9% of reviews (95% CI 7%\u201311%); reviews mentioning it average 2.0\u2605, 1.3\u2605 below the rest",
-   "action": "Treat iPad as a first-class platform: fix landscape/layout, Apple Pencil and hardware-keyboard input, and test every release on iPad.",
    "priority": 0.11485523963683214,
    "prevalence": 0.08923884514435695,
    "rating_impact": -1.2870543029892072,

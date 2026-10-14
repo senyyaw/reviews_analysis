@@ -111,5 +111,8 @@ class InsightsResponse(BaseModel):
         description="theme prevalence, rating impact and "
         "quotes (available once themes are assigned)",
     )
-    recommendations: list[dict[str, Any]] = Field(default_factory=list)
+    improvement_areas: list[dict[str, Any]] = Field(
+        default_factory=list,
+        description="biggest problem areas, ranked, with evidence and verbatim quotes",
+    )
     notes: list[str] = Field(default_factory=list)

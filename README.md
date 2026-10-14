@@ -5,7 +5,7 @@ NLP insights:
 - rating metrics with confidence intervals;
 - sentiment, and complaints hidden inside positive reviews;
 - the phrases that set negative reviews apart, and rating drivers;
-- complaint and praise themes, a ranked "what to fix first" list with verbatim quotes, and what
+- complaint and praise themes, a ranked list of the biggest problem areas with verbatim quotes, and what
   changed recently.
 
 Raw reviews download as CSV or JSON, and every collection has an HTML report with charts.
@@ -30,7 +30,7 @@ Everything runs offline on free, open models. No paid API is called at any point
 | Average rating and rating distribution | `GET /v1/collections/{id}/metrics`: mean with a 95% CI (finite-population corrected), % per star with Wilson CIs, plus a check that the sample is representative |
 | Sentiment (positive / negative / neutral) | Fine-tuned RoBERTa / XLM-R, evaluated against human labels: macro-F1 0.78, negative recall 0.95 ([evaluation](#4-sentiment)) |
 | Keywords and phrases in negative reviews | Fightin' Words (Monroe et al. 2008) against a background of 14 other apps, plus a rating-driver model ([keywords](#5-keywords-and-phrases-in-negative-reviews)) |
-| Actionable insights / areas of improvement | Themes ranked by prevalence × rating drag, each with an action and verbatim quotes, a recent-vs-earlier comparison and a drift monitor ([insights](#6-actionable-insights-themes-priorities-recommendations)) |
+| Actionable insights / areas of improvement | Problem areas ranked by prevalence × rating drag, each with evidence and verbatim quotes, a recent-vs-earlier comparison and a drift monitor ([insights](#6-actionable-insights-themes-and-ranked-problem-areas)) |
 | REST API: collect, metrics + insights, raw-data download | [API reference](#api) |
 | README and sample report | This file and [`reports/REPORT.md`](reports/REPORT.md) |
 | Bonus: visualisations | 13 static charts plus an interactive HTML report per collection (`/report`) |
@@ -38,13 +38,13 @@ Everything runs offline on free, open models. No paid API is called at any point
 
 ## Results for Notion (from the sample report)
 
-![Fix first](reports/figures/theme_priority.png)
+![Biggest problem areas](reports/figures/theme_priority.png)
 
 - **Ratings.** Written reviews average 3.13★ [3.03, 3.23], against 4.78★ on the listing. The 100 most
   recent average **2.54★**, and the share of 1–2★ reviews rose from 27% (June) to 47–64%
   (August–October).
 - **Complaints.** **65%** of reviews contain a complaint, including **89% of 4★ reviews**.
-- **Fix first:**
+- **Biggest problem areas:**
 
   | Theme | Reviews | Rating drag |
   |---|---|---|
@@ -149,7 +149,7 @@ collection: every review in its window.
 | GET | `/v1/collections` and `/v1/collections/{id}` | Collections: parameters, sizes, window, warnings, links |
 | GET | `/v1/collections/{id}/reviews` | **Raw data download.** `?format=json\|csv`, `include_analysis` (language, translation, sentiment, complaint), filters `rating`, `sentiment`, `lang`, plus `limit`/`offset`. The CSV is streamed with a filename. Usernames are never stored, only a pseudonymous `author_hash` |
 | GET | `/v1/collections/{id}/metrics` | n, mean rating with a 95% CI (FPC for random samples), median, % per star with Wilson CIs, by storefront, by month, listing vs written, representativeness (random samples), stars × text sentiment |
-| GET | `/v1/collections/{id}/insights` | Sentiment and complaint shares with CIs, most-mentioned aspects with tone, distinctive phrases of negative reviews, rating drivers, themes (prevalence, rating impact, quotes), **recommendations**, drift monitor, notes |
+| GET | `/v1/collections/{id}/insights` | Sentiment and complaint shares with CIs, most-mentioned aspects with tone, distinctive phrases of negative reviews, rating drivers, themes (prevalence, rating impact, quotes), **improvement areas**, drift monitor, notes |
 | GET | `/v1/collections/{id}/report` | The metrics and insights as an HTML report with interactive charts |
 | GET | `/v1/compare?base=&target=` | Emerging, fading and persistent themes (two-proportion tests, Benjamini–Hochberg), plus taxonomy-free rising phrases |
 
@@ -360,7 +360,7 @@ Metrics follow Chicco & Jurman (2020) for MCC, with bootstrap CIs. Details are i
 - **Most-mentioned aspects** replace a word cloud: share of reviews per aspect, split by tone. A word
   cloud shows neither size nor tone reliably.
 
-### 6. Actionable insights: themes, priorities, recommendations
+### 6. Actionable insights: themes and ranked problem areas
 
 - **Why not clustering.** Clustering sentence embeddings failed (silhouette 0.02–0.04), and it grouped
   sentences by *tone* rather than topic. Embeddings put "I love X" and "I hate X" close together
@@ -371,7 +371,7 @@ Metrics follow Chicco & Jurman (2020) for MCC, with bootstrap CIs. Details are i
   2. Qwen consolidated them into a draft taxonomy.
   3. **A human reviewed and edited** the draft into
      [`data/themes.json`](data/themes.json) v1.0: 17 complaint and 8 praise themes, each with a
-     definition and a suggested action.
+     definition.
   4. Qwen tagged every sentence; 92% of reviews have a theme.
   5. A spot-check of 30 tagged sentences found 27 correct and 3 partly correct (none wrong). The
      verdicts are AI-reviewed and human-confirmed, in `data/labels/theme_spotcheck.jsonl`.
@@ -386,8 +386,11 @@ Metrics follow Chicco & Jurman (2020) for MCC, with bootstrap CIs. Details are i
   - **rating impact** = mean stars of reviews mentioning the theme minus the rest (Welch CI);
   - **priority** = prevalence × (−impact);
   - verbatim quotes, preferring single-theme sentences from distinct reviews.
-- **Recommendations** are generated from templates. Every number comes from the statistics, the
-  action from the reviewed taxonomy, and the quotes are copied, so nothing is invented.
+- **Areas of improvement** are the top complaint themes ranked by that priority, each with its
+  evidence and two quotes. The API says *where* the problems are and how big they are, and leaves
+  *what to do* to the product team. That keeps it honest (every number comes from the statistics and
+  every quote is copied, so nothing is invented) and keeps it useful for any app, because no advice is
+  written for one product.
 - **Recent vs earlier.** Theme shares in the most recent sample are compared with earlier reviews
   using two-proportion tests and Benjamini–Hochberg correction. Each theme is labelled:
   - *emerging* or *fading*: confirmed after the correction;
@@ -395,7 +398,7 @@ Metrics follow Chicco & Jurman (2020) for MCC, with bootstrap CIs. Details are i
   - *persistent* or *no change*.
 - **Per-app scope.** The taxonomy was built from Notion reviews, and `themes.json` records which apps
   it covers. For any other app the theme step is **skipped**, because tagging an astrology app with
-  note-taking themes would be fiction. Recommendations then come from the distinctive phrases and
+  note-taking themes would be fiction. Problem areas then come from the distinctive phrases and
   drivers instead, with quotes.
 
 ### 7. Monitoring and maintaining the themes
@@ -439,6 +442,7 @@ The same process builds a taxonomy for a new app.
 | LLMs only as offline annotators and teachers | Free, local, and validated against human labels (κ 0.81) | Paid API (kept as future work) |
 | Negative at P ≥ 0.30 | Missing an unhappy user costs more than a false alarm | Argmax |
 | Fightin' Words with a background of other apps | It asks for contrast, with significance and stability | Raw counts or TF-IDF of negative reviews |
+| Report ranked problem areas, not advice | The data shows where the problems are; the decision belongs to the product team. Works for any app | Canned action sentences per theme (written for one product) |
 | Human-approved TopicGPT taxonomy, plus a student classifier | Readable themes with actions; no LLM at runtime; maintainable | Embedding clustering (failed); LDA (weak on short text) |
 | Per-app taxonomy scope | Themes from one app do not transfer | Applying Notion themes everywhere |
 | Background jobs (202 + polling) | A collection takes minutes | A blocking request |
@@ -499,7 +503,7 @@ src/review_analysis/
   sentiment.py                                                ONNX sentiment + complaint router
   keywords.py, drivers.py                                     Fightin' Words, rating drivers
   themes.py, theme_classifier.py                              theme statistics, student classifier
-  analysis.py                                                 insight blocks, recommendations, drift monitor
+  analysis.py                                                 insight blocks, improvement areas, drift monitor
   api/                                                        FastAPI app, jobs, schemas, store and cache
   report.py, templates/                                       HTML report  (viz.py: PNG charts, cli.py: commands)
 data/snapshots/notion_2026-10-13/                             the Notion pool, samples, analysis outputs, cache

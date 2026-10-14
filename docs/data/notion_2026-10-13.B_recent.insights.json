@@ -78,7 +78,7 @@
     "not_negative": 7
    },
    {
-    "term": "type",
+    "term": "fix",
     "count": 10,
     "n": 99,
     "share": 0.10101010101010101,
@@ -88,7 +88,7 @@
     "not_negative": 1
    },
    {
-    "term": "fix",
+    "term": "type",
     "count": 10,
     "n": 99,
     "share": 0.10101010101010101,
@@ -1399,7 +1399,11 @@
      "sentences": 1
     },
     {
-     "word": "mess",
+     "word": "fully",
+     "sentences": 1
+    },
+    {
+     "word": "google",
      "sentences": 1
     },
     {
@@ -1407,11 +1411,7 @@
      "sentences": 1
     },
     {
-     "word": "fully",
-     "sentences": 1
-    },
-    {
-     "word": "docs",
+     "word": "mess",
      "sentences": 1
     }
    ],
@@ -1460,12 +1460,11 @@
    "note": "Complaint sentences no theme covers. A rising share or a new recurring word is the trigger to refresh the taxonomy."
   }
  },
- "recommendations": [
+ "improvement_areas": [
   {
    "theme": "c_stability",
    "name": "App stability & crashes",
    "evidence": "14% of reviews (95% CI 9%\u201322%); reviews mentioning it average 1.6\u2605, 1.1\u2605 below the rest",
-   "action": "Prioritise crash/freeze fixes: triage crash reports by device and OS, add a stability gate to releases, and target long pages and large workspaces first.",
    "priority": 0.15767441860465117,
    "prevalence": 0.14,
    "rating_impact": -1.1262458471760797,
@@ -1490,7 +1489,6 @@
    "theme": "c_updates_compat",
    "name": "Updates & compatibility",
    "evidence": "9% of reviews (95% CI 5%\u201316%); reviews mentioning it average 1.2\u2605, 1.4\u2605 below the rest",
-   "action": "Protect users from regressions: staged rollouts with regression checks, and avoid dropping OS versions without notice.",
    "priority": 0.1303296703296703,
    "prevalence": 0.09,
    "rating_impact": -1.4481074481074478,
@@ -1515,7 +1513,6 @@
    "theme": "c_ipad",
    "name": "iPad-specific issues",
    "evidence": "14% of reviews (95% CI 9%\u201322%); reviews mentioning it average 1.8\u2605, 0.9\u2605 below the rest",
-   "action": "Treat iPad as a first-class platform: fix landscape/layout, Apple Pencil and hardware-keyboard input, and test every release on iPad.",
    "priority": 0.12279069767441858,
    "prevalence": 0.14,
    "rating_impact": -0.8770764119601326,
@@ -1540,7 +1537,6 @@
    "theme": "c_performance",
    "name": "Performance & loading speed",
    "evidence": "12% of reviews (95% CI 7%\u201320%); reviews mentioning it average 1.8\u2605, 0.9\u2605 below the rest",
-   "action": "Make speed a release metric: measure page open/scroll times on real devices, lazy-load heavy blocks, and reduce app size and startup work.",
    "priority": 0.10772727272727274,
    "prevalence": 0.12,
    "rating_impact": -0.8977272727272729,
@@ -1565,7 +1561,6 @@
    "theme": "c_mobile",
    "name": "iPhone / mobile app experience",
    "evidence": "12% of reviews (95% CI 7%\u201320%); reviews mentioning it average 1.8\u2605, 0.8\u2605 below the rest",
-   "action": "Close the mobile-desktop gap: bring the most-missed settings and features to iPhone and fix mobile-only bugs before adding new features.",
    "priority": 0.09636363636363636,
    "prevalence": 0.12,
    "rating_impact": -0.803030303030303,

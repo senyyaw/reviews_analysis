@@ -155,11 +155,12 @@ def test_insights_degrade_gracefully_on_small_collections(api: TestClient):
 
 
 def test_themes_only_for_apps_the_taxonomy_covers(api: TestClient, monkeypatch):
-    # The test app is not in data/themes.json: no themes, a note, phrase-based recommendations.
+    # The test app is not in data/themes.json: no themes, a note, phrase-based problem areas.
     pool_id = collect(api)["collection_ids"][1]
     ins = api.get(f"/v1/collections/{pool_id}/insights").json()
     assert ins["themes"] is None and any("taxonomy" in n for n in ins["notes"])
-    assert all(r["source"] == "phrases" for r in ins["recommendations"])
+    assert all(r["source"] == "phrases" for r in ins["improvement_areas"])
+    assert not any("action" in r for r in ins["improvement_areas"])
 
     # Once the taxonomy covers the app, the (fake) classifier tags its sentences.
     monkeypatch.setattr("review_analysis.themes.taxonomy_apps", lambda: {APP})
@@ -167,8 +168,9 @@ def test_themes_only_for_apps_the_taxonomy_covers(api: TestClient, monkeypatch):
     ins = api.get(f"/v1/collections/{pool_id}/insights").json()
     themes = {t["id"]: t for t in ins["themes"]["complaint"]}
     assert themes["c_stability"]["n_reviews"] > 0
-    assert ins["recommendations"][0]["theme"] == "c_stability"
-    assert ins["recommendations"][0]["source"] == "themes"
+    assert ins["improvement_areas"][0]["theme"] == "c_stability"
+    assert ins["improvement_areas"][0]["source"] == "themes"
+    assert "action" not in ins["improvement_areas"][0]
 
 
 def test_report_is_html_with_the_numbers(api: TestClient):

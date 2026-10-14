@@ -20,7 +20,7 @@ from review_analysis.errors import ReviewAnalysisError
 from review_analysis.snapshot import Manifest, SampleDef, load_manifest
 
 # Bump when analysis code changes the results, so stale cached JSON is never served.
-CACHE_VERSION = 1
+CACHE_VERSION = 2
 
 
 def read_jsonl(path: Path) -> dict[str, dict[str, Any]]:

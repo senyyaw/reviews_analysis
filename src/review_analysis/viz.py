@@ -466,7 +466,7 @@ def theme_priority(data: dict[str, Any], path: Path) -> None:
     _save(
         fig,
         path,
-        f"Fix first: {first['name']} ({first['prevalence']:.0%} of reviews, "
+        f"Biggest problem area: {first['name']} ({first['prevalence']:.0%} of reviews, "
         f"{first['rating_impact']:+.1f}★)",
         "Complaint themes · x = how common · y = how much lower those reviews rate (Artefact "
         "rating impact) · bubble = reviews · bottom-right = frequent and severe",

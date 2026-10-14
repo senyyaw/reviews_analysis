@@ -1,4 +1,4 @@
-# Notion on the App Store: what reviewers say and what to fix first
+# Notion on the App Store: what reviewers say and where the problems are
 
 **Sample report** produced by this repository's API and pipeline. Every number below comes from
 `GET /v1/collections/{id}/metrics`, `/insights`, `/v1/compare` and the charts in `reports/figures/`.
@@ -24,7 +24,7 @@ Every quote is verbatim.
    - **65%** of reviews contain a complaint.
    - That includes **89% of 4★ reviews** and 14% of 5★ reviews.
    - A "4★, but…" review is a user who would be happy if one thing were fixed.
-3. **Fix first** (share of reviews × rating drag):
+3. **Biggest problem areas** (share of reviews × rating drag):
 
    | Theme | Reviews | Rating drag |
    |---|---|---|
@@ -157,7 +157,7 @@ These go with high ratings: *life* (×0.31), *tool* (×0.37), *free*, *organize*
 
 They are associations, not causes, but they point the same way as the themes.
 
-## 4. Themes: what to fix and what to keep
+## 4. Themes: what hurts and what works
 
 Themes come from the sentences, not the stars. A human-approved taxonomy of **17 complaint** and **8
 praise** themes was built from these reviews with the TopicGPT method:
@@ -203,7 +203,7 @@ The table omits smaller themes (AI quality 4.5%, data loss 2.8%, support 2.4%, a
 | Free tier & value | 3.5% | +1.68★ |
 
 AI appears on both sides: 6% of reviews praise it and 10% complain that it is forced on them. The
-recommendation below is to give users control, not to remove AI.
+the point is that users want control over it, not that AI is unwelcome.
 
 ![Themes by star rating](figures/themes_by_stars.png)
 
@@ -243,58 +243,41 @@ That is consistent with the typing and iPad findings.
 
 ![Theme shares by month](figures/theme_monthly.png)
 
-## 6. Recommendations (what to fix first)
+## 6. Areas of improvement
 
-The recommendations are ranked by priority = share of reviews × rating drag. The actions come from the
-reviewed taxonomy, and each one is backed by verbatim quotes.
+The problem areas are ranked by priority = share of reviews × rating drag. The ranking shows **where**
+the problems are and how big they are; what to do about them is for the product team. Each area is
+backed by verbatim quotes.
 
 1. **App stability & crashes.** 14% of reviews (95% CI 12–16%) mention it, and they average 2.0★, 1.3★
    below the rest.
-   - **Action:** prioritise crash and freeze fixes. Triage crash reports by device and OS, add a
-     stability gate to releases, and target long pages and large workspaces first.
-   - Quotes:
-     > "I love Notion, but *all the time* I find myself trying to update a field on a table and the app
-     > just won't let me type, exit the page, or do anything except select." (3★)
+   > "I love Notion, but *all the time* I find myself trying to update a field on a table and the app
+   > just won't let me type, exit the page, or do anything except select." (3★)
 
-     > "Love Notion, but the app is so buggy." (1★)
+   > "Love Notion, but the app is so buggy." (1★)
 2. **AI forced / intrusive.** 10% of reviews (9–12%), averaging 1.9★, 1.4★ below the rest.
-   - **Action:** give users control over AI. Add an off switch or a quieter AI entry point, and keep
-     core note-taking free of AI clutter.
-   - Quotes:
-     > "Notion is amazing but I hate ai and it is so hard to work around please make options for us
-     > available." (2★)
+   > "Notion is amazing but I hate ai and it is so hard to work around please make options for us
+   > available." (2★)
 
-     > "Good... but the AI features have ruined it." (3★)
+   > "Good... but the AI features have ruined it." (3★)
 3. **iPhone / mobile app experience.** 12% of reviews (10–14%), averaging 2.1★, 1.2★ below the rest.
-   - **Action:** close the mobile–desktop gap. Bring the most-missed settings and features to iPhone,
-     and fix mobile-only bugs before adding new features.
-   - Quote:
-     > "The overall trajectory of the platform has been great since then, but the mobile app has always
-     > had issues." (1★)
+   > "The overall trajectory of the platform has been great since then, but the mobile app has always
+   > had issues." (1★)
 4. **UI / UX & usability.** 11% of reviews (10–13%), averaging 2.1★, 1.1★ below the rest.
-   - **Action:** simplify the interface. Reduce clutter and navigation depth, and test design changes
-     with existing users before rollout.
-   - Quote:
-     > "The three-dots at the top right of each image was always very useful to quickly use other
-     > options such as captioning, but now its gone." (4★)
+   > "The three-dots at the top right of each image was always very useful to quickly use other
+   > options such as captioning, but now its gone." (4★)
 5. **iPad-specific issues.** 9% of reviews (7–11%), averaging 2.0★, 1.3★ below the rest. This theme is
    also rising (7% → 14%).
-   - **Action:** treat iPad as a first-class platform. Fix landscape layout, Apple Pencil and
-     hardware-keyboard input, and test every release on iPad.
-   - Quote:
-     > "The overall and features work great however when using with a appropriate IPad and Keyboard
-     > with trackpad doesn't seem to work and makes this super unproductive." (2★)
+   > "The overall and features work great however when using with a appropriate IPad and Keyboard
+   > with trackpad doesn't seem to work and makes this super unproductive." (2★)
 
-**Also act on:**
-- **Typing & text editing**, the emerging theme. Fix the editor's input path: typing lag, cursor
-  jumps, text that disappears while typing, and copy-paste or selection bugs.
+**Also worth a look:**
+- **Typing & text editing**, the emerging area (6% → 15%):
   > "Its a good app besides the ai slop but its got this recurring bug where if you highlight
   > multiple lines of text and try to delete it it doesnt delete, making you manually hold delete."
-- **Updates & compatibility**, the strongest drag at −1.6★. Use staged rollouts with regression checks,
-  and avoid dropping OS versions without notice.
+- **Updates & compatibility**, the strongest drag at −1.6★:
   > "I love this app but your last update made it super glitch"
-- **Reply to reviews.** Notion answered 1 of 1,143. App Store reviewers can update their rating, and
-  every "please fix this" review is a user waiting for an answer.
+- **Developer replies.** Notion answered 1 of 1,143 reviews.
 
 ## 7. Drift monitor: what the themes do not cover
 
@@ -373,5 +356,5 @@ POST /v1/apps/1459969523/collections   {"count": 100, "window_days": 90, "storef
   the significance test, so the API falls back to plain counts and labels them as such: *money* and
   *pay* each appear in 5 of the 14 negative reviews, and *charge*, *refund* and *subscription* in 3.
 - **Reading.** The quotes share one thread: charges users did not expect, and refunds or
-  cancellations that are hard to get. Billing transparency is the first area to investigate. A theme
-  taxonomy for Nebula would turn this into named themes with actions; the process is in the README.
+  cancellations that are hard to get. Billing is the first area worth a closer look. A theme
+  taxonomy for Nebula would turn these phrases into named themes; the process is in the README.

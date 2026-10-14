@@ -471,14 +471,14 @@ def create_app(
             keyword_block = analysis.keyword_insights(data, ids)
             negative_block = analysis.negative_keywords(data, ids)
             driver_block = analysis.driver_insights(data, ids)
-            recommendations = analysis.recommendations(theme_stats)
+            areas = analysis.improvement_areas(theme_stats)
             if not theme_stats:
                 notes.append(
                     "No themes for this app: the theme taxonomy (data/themes.json) is built per "
-                    "app and covers Notion. Recommendations come from the phrases that set "
+                    "app and covers Notion. Problem areas come from the phrases that set "
                     "negative reviews apart; build a taxonomy to get named themes (README)."
                 )
-                recommendations = analysis.phrase_recommendations(
+                areas = analysis.phrase_improvement_areas(
                     data, ids, keyword_block, driver_block, negative_block
                 )
             return {
@@ -497,7 +497,7 @@ def create_app(
                 "distinctive_terms": keyword_block,
                 "drivers": driver_block,
                 "themes": theme_stats,
-                "recommendations": recommendations,
+                "improvement_areas": areas,
                 "notes": notes,
             }
 
@@ -513,7 +513,7 @@ def create_app(
         """NLP insights: sentiment and complaint shares (fine-tuned models), most-mentioned
         product aspects with tone, distinctive phrases of negative vs other reviews (Fightin'
         Words), rating drivers (logistic regression, bootstrap-stable), themes, and the top
-        recommendations (complaint themes ranked by prevalence x rating drag, with quotes)."""
+        improvement areas (complaint themes ranked by prevalence x rating drag, with quotes)."""
         return InsightsResponse.model_validate(insights_of(collection_id))
 
     def comparison_of(base: str, target: str) -> dict[str, Any]:

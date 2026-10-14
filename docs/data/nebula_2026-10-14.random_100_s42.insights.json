@@ -138,7 +138,7 @@
     "not_negative": 4
    },
    {
-    "term": "astrology",
+    "term": "chart",
     "count": 5,
     "n": 98,
     "share": 0.05102040816326531,
@@ -148,7 +148,7 @@
     "not_negative": 3
    },
    {
-    "term": "chart",
+    "term": "astrology",
     "count": 5,
     "n": 98,
     "share": 0.05102040816326531,
@@ -329,13 +329,12 @@
   "reason": "needs >= 30 reviews with 1-2 and with 4-5 stars"
  },
  "themes": null,
- "recommendations": [
+ "improvement_areas": [
   {
    "theme": null,
    "phrase": "money",
    "name": "Reviews about \u201cmoney\u201d",
    "evidence": "in 36% of negative reviews vs 0% of the others (5 of 14 negative reviews; too few for a significance test)",
-   "action": "Read the negative reviews that mention \u201cmoney\u201d (CSV, sentiment=negative) and turn the recurring problem into a ticket. For a product you track, build a theme taxonomy (README) to get named themes with actions.",
    "priority": 0.35714285714285715,
    "prevalence": 0.35714285714285715,
    "rating_impact": null,
@@ -362,7 +361,6 @@
    "phrase": "pay",
    "name": "Reviews about \u201cpay\u201d",
    "evidence": "in 36% of negative reviews vs 1% of the others (5 of 14 negative reviews; too few for a significance test)",
-   "action": "Read the negative reviews that mention \u201cpay\u201d (CSV, sentiment=negative) and turn the recurring problem into a ticket. For a product you track, build a theme taxonomy (README) to get named themes with actions.",
    "priority": 0.34523809523809523,
    "prevalence": 0.35714285714285715,
    "rating_impact": null,
@@ -389,7 +387,6 @@
    "phrase": "charge",
    "name": "Reviews about \u201ccharge\u201d",
    "evidence": "in 21% of negative reviews vs 0% of the others (3 of 14 negative reviews; too few for a significance test)",
-   "action": "Read the negative reviews that mention \u201ccharge\u201d (CSV, sentiment=negative) and turn the recurring problem into a ticket. For a product you track, build a theme taxonomy (README) to get named themes with actions.",
    "priority": 0.21428571428571427,
    "prevalence": 0.21428571428571427,
    "rating_impact": null,
@@ -416,7 +413,6 @@
    "phrase": "refund",
    "name": "Reviews about \u201crefund\u201d",
    "evidence": "in 21% of negative reviews vs 0% of the others (3 of 14 negative reviews; too few for a significance test)",
-   "action": "Read the negative reviews that mention \u201crefund\u201d (CSV, sentiment=negative) and turn the recurring problem into a ticket. For a product you track, build a theme taxonomy (README) to get named themes with actions.",
    "priority": 0.21428571428571427,
    "prevalence": 0.21428571428571427,
    "rating_impact": null,
@@ -443,7 +439,6 @@
    "phrase": "subscription",
    "name": "Reviews about \u201csubscription\u201d",
    "evidence": "in 21% of negative reviews vs 0% of the others (3 of 14 negative reviews; too few for a significance test)",
-   "action": "Read the negative reviews that mention \u201csubscription\u201d (CSV, sentiment=negative) and turn the recurring problem into a ticket. For a product you track, build a theme taxonomy (README) to get named themes with actions.",
    "priority": 0.21428571428571427,
    "prevalence": 0.21428571428571427,
    "rating_impact": null,
@@ -468,6 +463,6 @@
  ],
  "notes": [
   "Small collection (n=100): phrase and driver statistics need a few hundred reviews; use the pool collection for those.",
-  "No themes for this app: the theme taxonomy (data/themes.json) is built per app and covers Notion. Recommendations come from the phrases that set negative reviews apart; build a taxonomy to get named themes (README)."
+  "No themes for this app: the theme taxonomy (data/themes.json) is built per app and covers Notion. Problem areas come from the phrases that set negative reviews apart; build a taxonomy to get named themes (README)."
  ]
 }

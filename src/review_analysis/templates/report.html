@@ -114,24 +114,23 @@ footer { margin-top: 48px; color: var(--muted); font-size: 12px; }
     {{ "%.2f" | format(metrics.representativeness.pool_mean) }}★, star mix χ² p = {{ "%.2f" | format(metrics.representativeness.chi2_p_value) }}
     ({{ "representative" if metrics.representativeness.chi2_p_value > 0.05 else "differs from the pool" }}).{% endif %}</p>
 
-  {% if insights.recommendations %}
-  {% set by_theme = insights.recommendations[0].source == "themes" %}
-  <h2 id="fix-first">What to fix first</h2>
+  {% if insights.improvement_areas %}
+  {% set by_theme = insights.improvement_areas[0].source == "themes" %}
+  <h2 id="problem-areas">Biggest problem areas</h2>
   {% if by_theme %}
   <p class="sub">Complaint themes ranked by priority = share of reviews × how far below the rest those reviews rate.
-    Every number is computed from the reviews; actions come from the reviewed theme taxonomy; quotes are verbatim.</p>
+    Every number is computed from the reviews and quotes are verbatim. The ranking shows where the problems are;
+    what to do about them is a product decision.</p>
   {% else %}
-  <p class="sub">This app has no theme taxonomy yet, so these are the phrases that set its negative reviews apart, with
-    verbatim examples. They show where the problems are. <strong>Action:</strong> read the negative reviews that mention
-    each phrase (CSV, <code>sentiment=negative</code>) and turn the recurring problem into a ticket; for an app you track,
-    build a theme taxonomy (README) to get named themes with suggested actions.</p>
+  <p class="sub">This app has no theme taxonomy, so these are the phrases that set its negative reviews apart, with
+    verbatim examples. They show where the problems are; the quotes show what users mean. Download the reviews
+    (CSV, <code>sentiment=negative</code>) to read more.</p>
   {% endif %}
   <div class="card">
-    {% for r in insights.recommendations %}
+    {% for r in insights.improvement_areas %}
     <div class="rec">
       <h3><span class="rank">{{ loop.index }}</span>{{ r.name }}{% if r.trend %}<span class="chip">{{ r.trend }}</span>{% endif %}</h3>
       <p class="note">{{ r.evidence }}</p>
-      {% if by_theme %}<p><strong>Action:</strong> {{ r.action }}</p>{% endif %}
       {% for q in r.quotes %}
       <blockquote>“{{ q.translation or q.text }}” <span class="muted">({{ q.rating }}★{% if q.translation %}, translated{% endif %})</span></blockquote>
       {% endfor %}

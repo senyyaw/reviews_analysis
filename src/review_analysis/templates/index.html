@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>App Store Review Reports</title>
-<meta name="description" content="App Store review analysis reports: metrics, sentiment, themes and recommendations per collection.">
+<meta name="description" content="App Store review analysis reports: metrics, sentiment, themes and problem areas per collection.">
 <style>
 :root { color-scheme: light; --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
   --muted: #898781; --grid: #e1e0d9; --border: rgba(11,11,11,0.10); --blue: #2a78d6; }
@@ -32,7 +32,7 @@ footer { margin-top: 32px; color: var(--muted); font-size: 12px; }
 <body>
 <main>
   <h1>App Store review reports</h1>
-  <p>Each report shows the rating metrics, text sentiment, complaint and praise themes, what to fix first, recent
+  <p>Each report shows the rating metrics, text sentiment, complaint and praise themes, the biggest problem areas, recent
     changes and the drift monitor for one collection. Raw reviews download as CSV from each report.
     {% if api_url %}The same data is served by the REST API: <a href="{{ api_url }}/docs">{{ api_url }}/docs</a>.{% endif %}</p>
   <div class="card"><table>
