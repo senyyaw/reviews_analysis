@@ -16,17 +16,22 @@ dependencies = [
     "scikit-learn>=1.9",
     "scipy>=1.14",
     "spacy>=3.8,<3.9",
+    "tokenizers>=0.21",
+    "vadersentiment>=3.3",  # its lexicon defines "generic sentiment words" (keywords.py)
 ]
 
 [project.scripts]
 review-analysis = "review_analysis.cli:main"
 
 [project.optional-dependencies]
+report = [
+    "matplotlib>=3.9",
+]
 research = [
+    "sentence-transformers>=6.1",
     "onnx>=1.17",
     "onnxscript>=0.2",
     "protobuf>=5",  # SentencePiece tokenizers (XLM-T)
-    "vadersentiment>=3.3",
 ]
 translate = [
     "sentencepiece>=0.2",
@@ -69,8 +74,12 @@ files = ["src"]
 plugins = ["pydantic.mypy"]
 
 [[tool.mypy.overrides]]
-module = ["sklearn.*", "scipy.*"]
+module = ["sklearn.*", "scipy.*", "onnxruntime.*", "vaderSentiment.*", "matplotlib.*"]
 ignore_missing_imports = true
 
 [tool.uv.sources]
 en-core-web-sm = { url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl" }
+
+[tool.ruff.lint.per-file-ignores]
+# Charts use typographic characters on purpose: ★ – × “ ” ≥
+"src/review_analysis/viz.py" = ["RUF001"]

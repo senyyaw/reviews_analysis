@@ -124,6 +124,45 @@ def _preprocess(args: argparse.Namespace) -> int:
     return 0
 
 
+def _analyze(args: argparse.Namespace) -> int:
+    import json
+    from dataclasses import asdict
+
+    from review_analysis.sentiment import SentimentRouter
+
+    snap = Path(args.snapshot)
+    rows = [
+        json.loads(line) for line in (snap / "processed.jsonl").read_text().splitlines() if line
+    ]
+    results = SentimentRouter().predict([r["text_model"] for r in rows], [r["lang"] for r in rows])
+    with (snap / "sentiment.jsonl").open("w", encoding="utf-8") as fh:
+        for row, res in zip(rows, results, strict=True):
+            fh.write(json.dumps({"review_id": row["review_id"], **asdict(res)}) + "\n")
+    counts: dict[str, int] = {}
+    for res in results:
+        counts[res.label] = counts.get(res.label, 0) + 1
+    print(
+        f"sentiment for {len(results)} reviews: {counts}; "
+        f"complaints: {sum(r.complaint for r in results)}; "
+        f"multilingual model used for {sum(r.model == 'sentiment-multi' for r in results)}"
+    )
+    return 0
+
+
+def _figures(args: argparse.Namespace) -> int:
+    import json
+
+    from review_analysis import analysis, viz
+
+    snap, out = Path(args.snapshot), Path(args.out)
+    data = analysis.build(snap)
+    (out / "data").mkdir(parents=True, exist_ok=True)
+    (out / "data" / "insights.json").write_text(json.dumps(data, indent=1, default=float))
+    for path in viz.render_all(data, out / "figures"):
+        print(f"wrote {path}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="review-analysis")
     sub = parser.add_subparsers(required=True)
@@ -149,6 +188,17 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--retranslate", action="store_true", help="ignore cached translations")
     p.add_argument("-v", "--verbose", action="store_true")
     p.set_defaults(func=_preprocess)
+
+    a = sub.add_parser("analyze", help="sentiment + complaint for every review in a snapshot")
+    a.add_argument("--snapshot", required=True)
+    a.add_argument("-v", "--verbose", action="store_true")
+    a.set_defaults(func=_analyze)
+
+    f = sub.add_parser("figures", help="insight data (JSON) + charts (PNG) for a snapshot")
+    f.add_argument("--snapshot", required=True)
+    f.add_argument("--out", default="reports")
+    f.add_argument("-v", "--verbose", action="store_true")
+    f.set_defaults(func=_figures)
 
     args = parser.parse_args(argv)
     logging.basicConfig(

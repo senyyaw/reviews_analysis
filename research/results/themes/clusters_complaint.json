@@ -1,0 +1,288 @@
+{
+ "kind": "complaint",
+ "n_sentences": 2579,
+ "k": 8,
+ "silhouette": {
+  "8": 0.02327522076666355,
+  "9": 0.014021478593349457,
+  "10": 0.01581507734954357,
+  "11": 0.015840521082282066,
+  "12": 0.019053936004638672,
+  "13": 0.01453007385134697,
+  "14": 0.00871727243065834,
+  "15": 0.010721809230744839,
+  "16": 0.009742185473442078,
+  "17": 0.012336887419223785,
+  "18": 0.015241613611578941,
+  "19": 0.013436439447104931,
+  "20": 0.009668424725532532,
+  "21": 0.003396720625460148,
+  "22": 0.0009734568884596229,
+  "23": 0.003097409848123789,
+  "24": 0.003826361848041415,
+  "25": 0.004070504102855921,
+  "26": 0.006410533562302589,
+  "27": 0.008360547013580799,
+  "28": 0.01045795064419508,
+  "29": 0.01248345896601677,
+  "30": 0.010865745134651661
+ },
+ "clusters": [
+  {
+   "cluster": 1,
+   "n_sentences": 635,
+   "n_reviews": 386,
+   "mean_rating": 1.9984251968503937,
+   "terms": [
+    "page",
+    "not",
+    "time",
+    "open",
+    "notes",
+    "work",
+    "type",
+    "try",
+    "don",
+    "pages"
+   ],
+   "examples": [
+    "The app is really good but the main issues I'm having is that whenever I type something the screen scrolls up until I can't see what I'm typing.",
+    "I routinely have to close the app and reopen because the scrolling locks up.",
+    "i'll be typing in a page and then all of a sudden it won't let me type or paste anything.",
+    "Whenever I try to type in anything, the screen gets swiped upward, making me unable to see what I'm typing.",
+    "Every time I seem to write a lot, it's so glitchy to the point I can't write in it anymore, nor copy and paste to a different page.",
+    "Really glitchy and crashes often, I have to keep closing the app down.",
+    "Certain pages won't load when I try to open them, it'll display the loading icon for awhile and then seemingly crash and close the app.",
+    "When I type something the line goes up, beyond the screen and you cannot see what you're typing or deleting etc."
+   ],
+   "langs": {
+    "en": 634,
+    "ru": 1
+   }
+  },
+  {
+   "cluster": 2,
+   "n_sentences": 427,
+   "n_reviews": 272,
+   "mean_rating": 2.6651053864168617,
+   "terms": [
+    "mobile",
+    "add",
+    "like",
+    "fix",
+    "use",
+    "update",
+    "button",
+    "notes",
+    "better",
+    "want"
+   ],
+   "examples": [
+    "Forget the Ai updates, can you please just make the app usable?!",
+    "Please figure out a way to make the mobile version more (intuitively) like the PC version.",
+    "Please optimize ur app, devs.",
+    "Please focus on fixing the performance and making this a usable app...",
+    "Great platform but the mobile app is missing some things that would really help.",
+    "Seriously, why is it so hard to do literally anything on the app?",
+    "Feel free to let me know when you fix this cause I wish I could use this app.",
+    "Oh and a quick note/todo add widget would be nice."
+   ],
+   "langs": {
+    "en": 381,
+    "ar": 21,
+    "zh": 9,
+    "es": 5
+   }
+  },
+  {
+   "cluster": 3,
+   "n_sentences": 377,
+   "n_reviews": 277,
+   "mean_rating": 2.0450928381962865,
+   "terms": [
+    "not",
+    "slow",
+    "fix",
+    "don",
+    "too",
+    "time",
+    "waste",
+    "good",
+    "use",
+    "like"
+   ],
+   "examples": [
+    "This is very frustrating.",
+    "This is incredibly frustrating.",
+    "It's so laggy.",
+    "It's so laggy.",
+    "Unusable and frustrating.",
+    "It's basically unusable",
+    "This is very annoying. -",
+    "Not working properly."
+   ],
+   "langs": {
+    "en": 375,
+    "es": 1,
+    "fr": 1
+   }
+  },
+  {
+   "cluster": 0,
+   "n_sentences": 239,
+   "n_reviews": 185,
+   "mean_rating": 1.7238493723849373,
+   "terms": [
+    "ipad",
+    "bugs",
+    "unusable",
+    "great",
+    "update",
+    "not",
+    "performance",
+    "buggy",
+    "too",
+    "use"
+   ],
+   "examples": [
+    "The app is incredibly buggy.",
+    "And the iPad app is atrocious.",
+    "This makes the app practically unusable.",
+    "App keeps becoming unresponsive.",
+    "Too many bugs, falwful app.",
+    "it makes the app completely unusable on ipad!",
+    "Horrible for iPad OS.",
+    "Great concept but the app is so buggy."
+   ],
+   "langs": {
+    "en": 239
+   }
+  },
+  {
+   "cluster": 4,
+   "n_sentences": 239,
+   "n_reviews": 167,
+   "mean_rating": 2.0585774058577404,
+   "terms": [
+    "ai",
+    "ai features",
+    "features",
+    "bar",
+    "need",
+    "ask",
+    "ask ai",
+    "like",
+    "search",
+    "use"
+   ],
+   "examples": [
+    "Also the way they've jammed AI into the app where it doesn't help at all is very frustrating.",
+    "i don't mind the idea of ai being a feature, but the way it's overrun everything is atrocious.",
+    "Please for the love of God, stop adding more AI features NOBODY asked for and fix the app so we can actually use it.",
+    "Love the app, used it for ages but I hate the use of AI now",
+    "Hate that ai is shoved down your throat at every turn.",
+    "Was a very good app, then they started shoving AI features inside without even the possibility to disable them",
+    "I am so disappointed to see ai integrated into this app, I won't be using anymore for this exact reason ewww",
+    "Good... but the AI features have ruined it."
+   ],
+   "langs": {
+    "en": 239
+   }
+  },
+  {
+   "cluster": 6,
+   "n_sentences": 235,
+   "n_reviews": 171,
+   "mean_rating": 2.391489361702128,
+   "terms": [
+    "ipad",
+    "iphone",
+    "mobile",
+    "ios",
+    "love",
+    "use",
+    "desktop",
+    "text",
+    "version",
+    "not"
+   ],
+   "examples": [
+    "It's wild to me that the iPad version of this app is as poorly optimised as it is.",
+    "I really want to like this app but it is so frustrating to have an Apple Pencil work flow on this app.",
+    "I think that this could be a really great resource for me but it is so laggy on IOS like my iPad.",
+    "Very useful app on desktop but the user experience while typing on ipad is abysmal.",
+    "The one app which is supposed to increase our productivity has soo many glitches that just frustrate me and throw my iPad in to pieces.",
+    "Many things lag and for a app of this quality this is just so disappointing to see on iPad.",
+    "Terrible lag in iPad OS, totally unresponsive pages since the last update.",
+    "i know that this critique seems minor, but it's very cumbersome to use the app when the look of it gets in the way."
+   ],
+   "langs": {
+    "en": 235
+   }
+  },
+  {
+   "cluster": 7,
+   "n_sentences": 216,
+   "n_reviews": 156,
+   "mean_rating": 2.0787037037037037,
+   "terms": [
+    "text",
+    "not",
+    "no",
+    "too",
+    "size",
+    "change",
+    "plan",
+    "way",
+    "type",
+    "expensive"
+   ],
+   "examples": [
+    "Intentional Lack of Important, Basic Features.",
+    "It literally will not let me type an option.",
+    "Can't make any edits to my Mindmap.",
+    "I am unable to select text and edit easily.",
+    "Having hard time getting notes made and nested",
+    "Please fix this it's unacceptable for a product at this scale.",
+    "2 stars because I can't reliably copy/paste.",
+    "No support, full of bugs."
+   ],
+   "langs": {
+    "en": 213,
+    "fr": 2,
+    "ru": 1
+   }
+  },
+  {
+   "cluster": 5,
+   "n_sentences": 211,
+   "n_reviews": 160,
+   "mean_rating": 2.184834123222749,
+   "terms": [
+    "ipad",
+    "love",
+    "use",
+    "ai",
+    "not",
+    "like",
+    "great",
+    "better",
+    "work",
+    "desktop"
+   ],
+   "examples": [
+    "I loved Notion on my Mac and pc but this app is unusable.",
+    "I really love Notion and I use it frequently, but trying to use it on my iPad is a nightmare.",
+    "notion has been my favourite note taking and todo list app for years, but now it struggles to even load a single page.",
+    "Overall my experience of notion on IOS has been terrible please fix the bugs.",
+    "I really enjoy using Notion, but lately it's been crashing and not uploading my pages on my iPad.",
+    "I use a lot of pictures on Notion but ever since the last couple updates Notion has been unusable.",
+    "I loved using Notion back in 2024 but now it's always making me annoyed or frustrated.",
+    "I love using Notion in a browser, but the iOS app version is nearly useless."
+   ],
+   "langs": {
+    "en": 211
+   }
+  }
+ ]
+}

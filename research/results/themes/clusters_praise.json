@@ -1,0 +1,413 @@
+{
+ "kind": "praise",
+ "n_sentences": 1303,
+ "k": 12,
+ "silhouette": {
+  "8": 0.026193292811512947,
+  "9": 0.03170071542263031,
+  "10": 0.036615919321775436,
+  "11": 0.03953271359205246,
+  "12": 0.04280524328351021,
+  "13": 0.04086735099554062,
+  "14": 0.04226936772465706,
+  "15": 0.042309243232011795,
+  "16": 0.023696094751358032,
+  "17": 0.017545772716403008,
+  "18": 0.020235583186149597,
+  "19": 0.013461969792842865,
+  "20": 0.015750186517834663,
+  "21": 0.017924150452017784,
+  "22": 0.020808013156056404,
+  "23": 0.02140110731124878,
+  "24": 0.02365882880985737,
+  "25": 0.02526853419840336,
+  "26": 0.027286529541015625,
+  "27": 0.02505948767066002,
+  "28": 0.025652313604950905,
+  "29": 0.024596523493528366,
+  "30": 0.025559239089488983
+ },
+ "clusters": [
+  {
+   "cluster": 0,
+   "n_sentences": 289,
+   "n_reviews": 216,
+   "mean_rating": 4.380622837370242,
+   "terms": [
+    "use",
+    "life",
+    "notes",
+    "projects",
+    "personal",
+    "ve",
+    "work",
+    "love",
+    "organize",
+    "like"
+   ],
+   "examples": [
+    "I've been using it for school and keeping track of assignments and projects and it's so helpful.",
+    "I absolutely adore it and it makes my life leaps and bounds easier and more organized.",
+    "Super helpful for helping me stay organized, journaling, logging activities, and completing tasks.",
+    "This app has simplified so many aspects of my life when it comes to organization.",
+    "Love the ai helper and so far the app has made my life that much more virtually organized",
+    "I've been using this app to store my notes in a systematic way and this app has been very helpful.",
+    "It's incredibly helpful and makes my workflow so much smoother.",
+    "I have been using it for multiple projects and I just love how much more I can complete now because it organizes my projects in a way that it helps me be more productive."
+   ],
+   "langs": {
+    "en": 287,
+    "fr": 2
+   }
+  },
+  {
+   "cluster": 5,
+   "n_sentences": 177,
+   "n_reviews": 147,
+   "mean_rating": 4.124293785310734,
+   "terms": [
+    "ve",
+    "use",
+    "years",
+    "great",
+    "love",
+    "ai",
+    "life",
+    "notes",
+    "organize",
+    "productivity"
+   ],
+   "examples": [
+    "Notion has become one of my favorite tools for taking notes and organizing ideas.",
+    "Notion is great, very versatile and keeps my notes in order.",
+    "Notion is great for helping me organize classwork, personal lists, tracking habits, etc.",
+    "I love Notion, Not AI... I use Notion everyday to help me stick to a schedule and plan my life.",
+    "I've been using Notion for a while now and I use it to organize absolutely everything.",
+    "I've been using Notion for a while, and I really love the app.",
+    "Notion is one of the most versatile productivity apps I've used.",
+    "I really enjoy using Notion on the desktop to organize writing projects and reading lists."
+   ],
+   "langs": {
+    "en": 176,
+    "es": 1
+   }
+  },
+  {
+   "cluster": 3,
+   "n_sentences": 122,
+   "n_reviews": 103,
+   "mean_rating": 4.483606557377049,
+   "terms": [
+    "great",
+    "software",
+    "far",
+    "tool",
+    "excellent",
+    "easy",
+    "product",
+    "flexible",
+    "overall",
+    "good"
+   ],
+   "examples": [
+    "Truly Outstanding in Many Ways.",
+    "It really gets the job done.",
+    "The best tool out there.",
+    "Really helpful and easy to navigate.",
+    "Such a powerful tool.",
+    "The range of features is really good.",
+    "Excellent for business.",
+    "A must have for organization."
+   ],
+   "langs": {
+    "en": 121,
+    "ru": 1
+   }
+  },
+  {
+   "cluster": 9,
+   "n_sentences": 107,
+   "n_reviews": 97,
+   "mean_rating": 4.373831775700935,
+   "terms": [
+    "recommend",
+    "love",
+    "amazing",
+    "best",
+    "perfect",
+    "highly",
+    "nothing",
+    "try",
+    "helped",
+    "product"
+   ],
+   "examples": [
+    "This is amazing.",
+    "Love it so much.",
+    "I absolutely love it!",
+    "best thing ever!!!",
+    "It's so great.",
+    "Best all ever.",
+    "Just love it so much.",
+    "appreciate it so much!!"
+   ],
+   "langs": {
+    "en": 106,
+    "fr": 1
+   }
+  },
+  {
+   "cluster": 1,
+   "n_sentences": 90,
+   "n_reviews": 86,
+   "mean_rating": 4.477777777777778,
+   "terms": [
+    "love",
+    "best",
+    "amazing",
+    "good",
+    "love amazing",
+    "love love",
+    "favorite",
+    "useful",
+    "perfect",
+    "best ve"
+   ],
+   "examples": [
+    "Favorite app ever.",
+    "My favorite app ever.",
+    "Best app ever.",
+    "Best app ever.",
+    "Best app ever.",
+    "Best app ever.",
+    "The best app ever.",
+    "The best app ever."
+   ],
+   "langs": {
+    "en": 89,
+    "ru": 1
+   }
+  },
+  {
+   "cluster": 8,
+   "n_sentences": 90,
+   "n_reviews": 68,
+   "mean_rating": 4.677777777777778,
+   "terms": [
+    "easy",
+    "easy use",
+    "need",
+    "templates",
+    "use",
+    "works",
+    "interface",
+    "clean",
+    "place",
+    "simple"
+   ],
+   "examples": [
+    "It's so easy to use and the templates option is a godsend.",
+    "Great for planning and organizing your life especially with the right template.",
+    "It's great for flushing out ideas, getting clarity and organizing concepts.",
+    "It's also very simple and nice looking, and intuitive to use.",
+    "Absolutely love the clean interface and the shortcuts.",
+    "Then the fact that you can use it to save articles and the rest is just amazing.",
+    "It has infinite potential if you are willing to learn and customize it to your liking.",
+    "Honestly, it does everything you need and then everything you didn't know it could do."
+   ],
+   "langs": {
+    "en": 90
+   }
+  },
+  {
+   "cluster": 7,
+   "n_sentences": 86,
+   "n_reviews": 77,
+   "mean_rating": 4.465116279069767,
+   "terms": [
+    "best",
+    "productivity",
+    "better",
+    "notes",
+    "taking",
+    "note taking",
+    "note",
+    "project management",
+    "organization",
+    "better notes"
+   ],
+   "examples": [
+    "The best app for productivity.",
+    "One of the best productivity apps!",
+    "The best organizational app ever.",
+    "Top productivity app.",
+    "The best productivity App I've Ever used.",
+    "The best app I have found to keep me organized.",
+    "My Favorite Productivity App.",
+    "A great productivity app!"
+   ],
+   "langs": {
+    "en": 86
+   }
+  },
+  {
+   "cluster": 2,
+   "n_sentences": 84,
+   "n_reviews": 74,
+   "mean_rating": 4.226190476190476,
+   "terms": [
+    "years",
+    "life",
+    "ve",
+    "without",
+    "changed life",
+    "changed",
+    "use",
+    "second brain",
+    "second",
+    "brain"
+   ],
+   "examples": [
+    "I've been using this app for years.",
+    "I have used this app every day for many years now.",
+    "I use this app for EVERYTHING.",
+    "My go to source for tracking my life.",
+    "I rely on it for hours every day.",
+    "I use it for so much!",
+    "It's become a huge part of my daily routine.",
+    "i loved this app for so long."
+   ],
+   "langs": {
+    "en": 84
+   }
+  },
+  {
+   "cluster": 4,
+   "n_sentences": 81,
+   "n_reviews": 72,
+   "mean_rating": 4.493827160493828,
+   "terms": [
+    "love",
+    "love love",
+    "thank",
+    "without",
+    "live without",
+    "live",
+    "not",
+    "life",
+    "life love",
+    "love great"
+   ],
+   "examples": [
+    "I absolutely love Notion.",
+    "I love Notion.",
+    "I love Notion.",
+    "I love Notion.",
+    "I love Notion.",
+    "I love Notion.",
+    "I love Notion!",
+    "I'm very pleased with Notion."
+   ],
+   "langs": {
+    "en": 80,
+    "es": 1
+   }
+  },
+  {
+   "cluster": 6,
+   "n_sentences": 79,
+   "n_reviews": 61,
+   "mean_rating": 4.632911392405063,
+   "terms": [
+    "way",
+    "work",
+    "ai",
+    "pages",
+    "build",
+    "systems",
+    "like",
+    "free",
+    "tasks",
+    "better"
+   ],
+   "examples": [
+    "It's not just a note-taking app—it's a flexible workspace that adapts to how you think and work.",
+    "I can build detailed workflow maps one minute and brainstorm future ideas the next without switching platforms.",
+    "i struggled with finding an app that helps me organize the chaos in my brain and is ADHD friendly and honestly the customization in notion makes it so fun and easy to keep my stuff organized.",
+    "There are some things that I wish it had that other tools do but the ease of use and just the way it's laid out is hands down better for me and my team.",
+    "It is a very flexible app if you take the time to organize databases and properties/tags effectively.",
+    "I can just tell the AI tool to create a list, create pages, add check boxes or time slots, etc and it will do it!",
+    "This app has helped me get back on track with my life and it helps sm bc i have adhd and its hard to stay on track but with this app you have so many things you can use without paying so thanks!!",
+    "Great but.. The app excels in note-taking and task management, offering a user-friendly interface and reliable performance."
+   ],
+   "langs": {
+    "en": 77,
+    "zh": 2
+   }
+  },
+  {
+   "cluster": 10,
+   "n_sentences": 74,
+   "n_reviews": 69,
+   "mean_rating": 4.472972972972973,
+   "terms": [
+    "ai",
+    "integration",
+    "changer",
+    "claude",
+    "chatgpt",
+    "game changer",
+    "game",
+    "writing",
+    "shifting",
+    "ultimate"
+   ],
+   "examples": [
+    "Incredible tool especially with AI agent worked in.",
+    "Works amazingly with ai, so easy to navigate and use.",
+    "Project Management A+/Excellent AI Tools.",
+    "It's become my go-to model for note-keeping and the AI functionality is fantastic.",
+    "Fantastic integration with my GPT .",
+    "Review: The Ultimate \"Brain\" for AI Development.",
+    "Good for AI integration for project tracking and coding.",
+    "I really love the integrated AI."
+   ],
+   "langs": {
+    "en": 73,
+    "ar": 1
+   }
+  },
+  {
+   "cluster": 11,
+   "n_sentences": 24,
+   "n_reviews": 16,
+   "mean_rating": 4.791666666666667,
+   "terms": [
+    "para",
+    "en",
+    "de",
+    "el",
+    "la",
+    "es",
+    "una",
+    "lo",
+    "mejor",
+    "personal"
+   ],
+   "examples": [
+    "Excelente app❤️. Es recomendable 🔥",
+    "Realmente hace mi trabajo más fácil, organizado y con objetivos claros",
+    "Extraordinaria herramienta para lograr los objetivos a alcanzar.",
+    "Me encanta esta app.",
+    "Lo anotas todo con suprema elegancia y perfecta organización.",
+    "Amo esta app me encanta muy fácil de usar y con muchas herramientas de trabajo",
+    "Una gran herramienta para llevar en orden las tareas y el día a día",
+    "Sitio donde pones toda tu documentación."
+   ],
+   "langs": {
+    "es": 21,
+    "en": 3
+   }
+  }
+ ]
+}
