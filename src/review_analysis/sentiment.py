@@ -54,11 +54,15 @@ def decide(p_neg: float, p_neu: float, p_pos: float) -> Label:
 
 
 class OnnxSentimentModel:
-    """One exported model directory: model.int8.onnx, tokenizer.json and model.json."""
+    """One exported model directory: model.int8.onnx, tokenizer.json and model.json.
 
-    def __init__(
-        self, directory: Path, *, batch_size: int = 32, threads: int | None = None
-    ) -> None:
+    batch_size defaults to 1 on purpose. Dynamic int8 quantisation computes activation scales per
+    batch, so in batches of 32 a review's label could depend on which other reviews shared its
+    batch (6 of 1,143 labels changed). One review at a time is deterministic, and on CPU it is
+    also faster (no padding): 8.2 s vs 9.6 s for the pool.
+    """
+
+    def __init__(self, directory: Path, *, batch_size: int = 1, threads: int | None = None) -> None:
         self.directory = directory
         self.batch_size = batch_size
         self.threads = threads

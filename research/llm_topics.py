@@ -69,6 +69,8 @@ def main() -> None:
     ap.add_argument("--output", required=True)
     ap.add_argument("--taxonomy", help="themes.json (stage assign)")
     ap.add_argument("--gpu-memory-utilization", type=float, default=0.90)
+    ap.add_argument("--max-num-seqs", type=int, default=32)  # Qwen hybrid: <= Mamba cache blocks
+    ap.add_argument("--max-model-len", type=int, default=2048)  # sentence + review <= ~1.2k tokens
     args = ap.parse_args()
 
     import vllm
@@ -107,7 +109,7 @@ def main() -> None:
                     {"role": "user", "content": user_message(it)},
                 ]
             )
-        ids = sorted({t["id"] for side in taxonomy.values() for t in side})
+        ids = sorted({t["id"] for kind in ("complaint", "praise") for t in taxonomy[kind]})
         schema = {
             "type": "object",
             "additionalProperties": False,
@@ -121,10 +123,10 @@ def main() -> None:
     llm = LLM(
         model=args.model,
         revision=args.revision,
-        max_model_len=4096,
+        max_model_len=args.max_model_len,
         gpu_memory_utilization=args.gpu_memory_utilization,
         enable_prefix_caching=True,
-        max_num_seqs=64,
+        max_num_seqs=args.max_num_seqs,
         seed=0,
         language_model_only=True,
         generation_config="vllm",

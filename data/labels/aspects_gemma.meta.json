@@ -1,0 +1,9 @@
+{
+ "stage": "extract",
+ "model": "RedHatAI/gemma-4-31B-it-FP8-dynamic",
+ "revision": "d4ab4f579d",
+ "vllm": "0.31.0",
+ "n": 3882,
+ "json_failures": 0,
+ "seconds": 865.2
+}

@@ -1,0 +1,228 @@
+{
+  "themes": [
+    {
+      "id": "c_app_stability_and_crashes",
+      "name": "App Stability & Crashes",
+      "definition": "Covers general app crashes, freezing, unresponsiveness, and stability issues across all platforms. Excludes specific performance lag or platform-specific bugs.",
+      "aspects": [
+        "app stability",
+        "app freezing",
+        "app crashing",
+        "general app stability",
+        "app stability and speed",
+        "app performance and stability",
+        "app stability and crashes",
+        "screen freezing",
+        "app errors",
+        "general app bugs"
+      ]
+    },
+    {
+      "id": "c_performance_and_speed",
+      "name": "Performance & Loading Speed",
+      "definition": "Covers slow loading times, lag, sluggish responsiveness, and general performance degradation. Excludes crashes or freezing.",
+      "aspects": [
+        "app performance",
+        "page loading speed",
+        "app loading speed",
+        "app lag",
+        "app responsiveness",
+        "app speed and lag",
+        "loading lag",
+        "app speed",
+        "long page loading",
+        "app startup time"
+      ]
+    },
+    {
+      "id": "c_ipad_experience",
+      "name": "iPad Specific Issues",
+      "definition": "Covers stability, functionality, usability, and hardware integration (Apple Pencil, Magic Keyboard) issues specific to the iPad platform. Excludes general iOS/iPhone issues.",
+      "aspects": [
+        "ipad app stability",
+        "ipad app quality",
+        "ipad app functionality",
+        "ipad compatibility",
+        "ipad app bugs",
+        "ipad usability",
+        "ipad performance",
+        "ipad typing glitch",
+        "apple pencil support",
+        "ipad feature parity"
+      ]
+    },
+    {
+      "id": "c_mobile_ios_experience",
+      "name": "Mobile iOS Experience",
+      "definition": "Covers stability, functionality, usability, and performance issues specific to the iPhone/iOS mobile app. Excludes iPad-specific issues and general web/desktop issues.",
+      "aspects": [
+        "mobile app stability",
+        "ios app stability",
+        "mobile app quality",
+        "mobile app functionality",
+        "mobile app usability",
+        "ios app performance",
+        "mobile app performance",
+        "iphone app stability",
+        "mobile app bugs",
+        "ios app quality"
+      ]
+    },
+    {
+      "id": "c_ai_features_and_pricing",
+      "name": "AI Features & Pricing",
+      "definition": "Covers complaints about AI feature availability, forced integration, pricing, credit limits, and specific AI tool functionality. Excludes general app stability.",
+      "aspects": [
+        "ai features",
+        "ai features forced",
+        "forced ai features",
+        "ai integration",
+        "notion ai",
+        "ai feature pricing",
+        "notion ai price",
+        "ai agent pricing",
+        "ai credit limit",
+        "generative ai features"
+      ]
+    },
+    {
+      "id": "c_ui_ux_and_usability",
+      "name": "UI/UX & Usability",
+      "definition": "Covers user interface design, navigation, intuitiveness, complexity, and general ease of use. Excludes specific feature bugs or performance issues.",
+      "aspects": [
+        "user interface intuitiveness",
+        "user interface",
+        "app usability",
+        "user interface complexity",
+        "ease of use",
+        "user friendliness",
+        "app complexity",
+        "ui design",
+        "ui navigation",
+        "mobile user interface"
+      ]
+    },
+    {
+      "id": "c_learning_curve_and_onboarding",
+      "name": "Learning Curve & Onboarding",
+      "definition": "Covers the difficulty of learning the app, steep learning curves, and the initial onboarding experience. Excludes general usability or feature requests.",
+      "aspects": [
+        "learning curve",
+        "initial learning curve",
+        "onboarding experience",
+        "onboarding process",
+        "steep learning curve",
+        "onboarding instructions"
+      ]
+    },
+    {
+      "id": "c_data_sync_and_offline",
+      "name": "Data Sync & Offline Access",
+      "definition": "Covers issues with data synchronization between devices, offline mode availability, and data loss. Excludes general app stability.",
+      "aspects": [
+        "data loss",
+        "sync between devices",
+        "offline access",
+        "offline mode missing",
+        "syncing issues",
+        "real time sync",
+        "data loss after update",
+        "access to notes"
+      ]
+    },
+    {
+      "id": "c_pricing_and_subscriptions",
+      "name": "Pricing & Subscriptions",
+      "definition": "Covers subscription costs, paywalls, price increases, cancellation processes, and refund policies. Excludes AI-specific pricing.",
+      "aspects": [
+        "subscription cost",
+        "paywall",
+        "subscription price",
+        "subscription price increase",
+        "subscription upgrade process",
+        "subscription cancellation process",
+        "refund policy",
+        "subscription pricing and cancellation",
+        "money back guarantee",
+        "subscription management"
+      ]
+    },
+    {
+      "id": "c_account_and_auth",
+      "name": "Account & Authentication",
+      "definition": "Covers login processes, sign-in issues, password resets, and account access problems. Excludes general app stability.",
+      "aspects": [
+        "login process",
+        "account access issues",
+        "password reset link",
+        "sign in process",
+        "password reset loop",
+        "apple id sign-in options",
+        "password protection"
+      ]
+    },
+    {
+      "id": "c_updates_and_compatibility",
+      "name": "Updates & Compatibility",
+      "definition": "Covers issues related to app updates, forced updates, OS version requirements, and device compatibility. Excludes general app stability.",
+      "aspects": [
+        "update frequency",
+        "ios version requirement",
+        "forced ios update",
+        "forced app updates",
+        "app update stability",
+        "software update stability",
+        "app update requirement",
+        "device compatibility",
+        "latest update",
+        "recent update"
+      ]
+    },
+    {
+      "id": "c_typing_and_text_editing",
+      "name": "Typing & Text Editing",
+      "definition": "Covers issues with the typing experience, text selection, deletion, formatting, and specific text-related bugs. Excludes general UI/UX.",
+      "aspects": [
+        "typing experience",
+        "text deletion bug",
+        "typing bugs",
+        "text selection",
+        "iphone text deletion",
+        "ipad typing lag",
+        "ipad typing jump",
+        "mobile typing view",
+        "copy and paste functionality",
+        "undo function"
+      ]
+    },
+    {
+      "id": "c_customer_support",
+      "name": "Customer Support",
+      "definition": "Covers the quality, responsiveness, and availability of customer support services. Excludes AI customer support bots if they are part of the AI feature set, but generally includes human support complaints.",
+      "aspects": [
+        "customer support",
+        "customer service",
+        "customer support responsiveness",
+        "customer support quality",
+        "ai customer support"
+      ]
+    },
+    {
+      "id": "c_feature_functionality_gaps",
+      "name": "Feature Functionality Gaps",
+      "definition": "Covers missing features, specific functional bugs in non-core areas (like images, videos, databases), and feature bloat. Excludes general stability or UI/UX.",
+      "aspects": [
+        "feature bloat",
+        "bugs and missing features",
+        "image viewing process",
+        "code formatting",
+        "gif playback",
+        "spreadsheet functionality",
+        "database creation",
+        "youtube video embeds",
+        "web clipper",
+        "calendar month view"
+      ]
+    }
+  ]
+}

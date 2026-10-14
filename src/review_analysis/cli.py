@@ -163,6 +163,15 @@ def _figures(args: argparse.Namespace) -> int:
     return 0
 
 
+def _serve(args: argparse.Namespace) -> int:
+    import uvicorn
+
+    from review_analysis.api.app import create_app
+
+    uvicorn.run(create_app(), host=args.host, port=args.port)
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="review-analysis")
     sub = parser.add_subparsers(required=True)
@@ -199,6 +208,12 @@ def main(argv: list[str] | None = None) -> int:
     f.add_argument("--out", default="reports")
     f.add_argument("-v", "--verbose", action="store_true")
     f.set_defaults(func=_figures)
+
+    sv = sub.add_parser("serve", help="run the REST API (docs at /docs)")
+    sv.add_argument("--host", default="127.0.0.1")
+    sv.add_argument("--port", type=int, default=8000)
+    sv.add_argument("-v", "--verbose", action="store_true")
+    sv.set_defaults(func=_serve)
 
     args = parser.parse_args(argv)
     logging.basicConfig(

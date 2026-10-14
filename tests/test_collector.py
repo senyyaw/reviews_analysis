@@ -36,7 +36,7 @@ def fake_storefront(cc: str, n_reviews: int, *, duplicate_at_boundary: bool = Fa
                         "date": (NOW - timedelta(days=i)).isoformat().replace("+00:00", "Z"),
                         "rating": 1 + i % 5,
                         "title": f"t{i}",
-                        "review": f"body {i}",
+                        "review": f"This is the body of review {i}",
                         "userName": f"u{i}",
                         "isEdited": False,
                     },

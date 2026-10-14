@@ -7,8 +7,10 @@ requires-python = ">=3.12,<3.14"
 dependencies = [
     "emoji>=2.16",
     "en-core-web-sm",
+    "fastapi>=0.143",
     "ftfy>=6.3",
     "httpx>=0.28,<1",
+    "jinja2>=3.1",
     "lingua-language-detector>=2.2.0",
     "onnxruntime>=1.20",
     "pydantic>=2.9",
@@ -17,6 +19,7 @@ dependencies = [
     "scipy>=1.14",
     "spacy>=3.8,<3.9",
     "tokenizers>=0.21",
+    "uvicorn>=0.54",
     "vadersentiment>=3.3",  # its lexicon defines "generic sentiment words" (keywords.py)
 ]
 
@@ -57,6 +60,10 @@ packages = ["src/review_analysis"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-ra"
+filterwarnings = [
+    # Starlette 1.x nudges towards httpx2; httpx 0.28 is still the supported client here.
+    "ignore:Using `httpx` with `starlette.testclient` is deprecated",
+]
 
 [tool.ruff]
 line-length = 100
@@ -83,3 +90,4 @@ en-core-web-sm = { url = "https://github.com/explosion/spacy-models/releases/dow
 [tool.ruff.lint.per-file-ignores]
 # Charts use typographic characters on purpose: ★ – × “ ” ≥
 "src/review_analysis/viz.py" = ["RUF001"]
+"src/review_analysis/analysis.py" = ["RUF001"]

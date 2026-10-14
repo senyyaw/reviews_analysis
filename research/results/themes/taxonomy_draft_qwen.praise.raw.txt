@@ -1,0 +1,140 @@
+{
+  "themes": [
+    {
+      "id": "p_organizational_core",
+      "name": "Core Organization & Structure",
+      "definition": "Fundamental capabilities for structuring, categorizing, and managing information, notes, and projects. Includes databases, hierarchies, and general 'second brain' functionality. Excludes specific use-case versatility or AI-driven organization.",
+      "aspects": [
+        "organization capabilities",
+        "organization",
+        "organizational capabilities",
+        "organizing capabilities",
+        "organization of content",
+        "page organization",
+        "task organization",
+        "organization of thoughts and projects",
+        "organization of information",
+        "core organizational features"
+      ]
+    },
+    {
+      "id": "p_versatility_use_cases",
+      "name": "Versatility & Use Cases",
+      "definition": "The breadth of scenarios in which the app can be used, from personal life to business, education, and creative projects. Focuses on the 'all-in-one' nature and adaptability to different workflows. Excludes specific feature mechanics like databases or AI.",
+      "aspects": [
+        "versatility of use cases",
+        "versatility of use",
+        "versatility",
+        "all-in-one functionality",
+        "all-in-one workspace",
+        "flexibility",
+        "productivity",
+        "range of features",
+        "feature variety",
+        "use cases"
+      ]
+    },
+    {
+      "id": "p_ai_intelligence",
+      "name": "AI Features & Integration",
+      "definition": "Capabilities related to artificial intelligence, including built-in AI tools, integrations with external LLMs (Claude, ChatGPT, etc.), and AI-driven assistance. Excludes general automation or non-AI integrations.",
+      "aspects": [
+        "ai features",
+        "ai integration",
+        "integrated ai",
+        "notion ai",
+        "integration with claude",
+        "claude integration",
+        "chatgpt integration",
+        "ai feature",
+        "ai functionality",
+        "ai workspace context"
+      ]
+    },
+    {
+      "id": "p_customization_templates",
+      "name": "Customization & Templates",
+      "definition": "User control over the appearance, layout, and structure of their workspace, including the use of pre-made templates and the ability to modify them. Excludes general ease of use or performance.",
+      "aspects": [
+        "templates",
+        "customization",
+        "customizability",
+        "customization options",
+        "page customization",
+        "template design and functionality",
+        "customizable templates",
+        "template customization",
+        "customizable layout and aesthetics",
+        "page layout customization"
+      ]
+    },
+    {
+      "id": "p_pricing_plans",
+      "name": "Pricing & Free Tier",
+      "definition": "Perceptions of the app's cost, value proposition, and the limitations or benefits of the free version versus paid plans. Excludes general feature availability unless tied to cost.",
+      "aspects": [
+        "free version",
+        "free plan",
+        "free price",
+        "free functionality",
+        "free plan value",
+        "free pricing",
+        "education plus plan",
+        "pricing plans",
+        "free tier",
+        "price of features"
+      ]
+    },
+    {
+      "id": "p_platform_performance",
+      "name": "Platform Performance & Stability",
+      "definition": "Technical reliability, speed, and stability of the application across different devices (iOS, Android, Desktop, Web). Includes crashes, lag, sync issues, and general app health. Excludes UI design or feature requests.",
+      "aspects": [
+        "app stability",
+        "sync between devices",
+        "desktop version",
+        "desktop app",
+        "ios app quality",
+        "page loading speed",
+        "performance and reliability",
+        "app speed",
+        "ipad performance",
+        "cross-platform synchronization"
+      ]
+    },
+    {
+      "id": "p_ui_ux",
+      "name": "UI/UX & Ease of Use",
+      "definition": "The user interface design, navigation, intuitiveness, and overall learning curve. Focuses on how easy or difficult it is to interact with the app. Excludes specific feature capabilities or performance speed.",
+      "aspects": [
+        "ease of use",
+        "user experience",
+        "user friendliness",
+        "user interface",
+        "navigation",
+        "learning curve",
+        "onboarding process",
+        "minimalist design",
+        "clean interface and design",
+        "basic interface"
+      ]
+    },
+    {
+      "id": "p_support_community",
+      "name": "Support & Community",
+      "definition": "Quality of customer service, responsiveness of support teams, and the value of community resources like tutorials, forums, and user-generated content. Excludes in-app help features unless they are part of the broader support ecosystem.",
+      "aspects": [
+        "customer service",
+        "customer support",
+        "customer and community support",
+        "ui and community support",
+        "tutorials",
+        "youtube tutorials",
+        "community templates",
+        "customer support response time",
+        "customer support team",
+        "onboarding information"
+      ]
+    }
+  ]
+}

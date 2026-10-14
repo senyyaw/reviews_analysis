@@ -1,0 +1,2806 @@
+{
+"complaint": [
+[
+"ai features",
+103
+],
+[
+"app stability",
+53
+],
+[
+"learning curve",
+32
+],
+[
+"ai features forced",
+26
+],
+[
+"app freezing",
+22
+],
+[
+"app performance",
+22
+],
+[
+"mobile app stability",
+22
+],
+[
+"ipad app stability",
+17
+],
+[
+"data loss",
+16
+],
+[
+"general app stability",
+14
+],
+[
+"page loading speed",
+12
+],
+[
+"mobile app quality",
+11
+],
+[
+"mobile app functionality",
+11
+],
+[
+"ios app stability",
+10
+],
+[
+"apple pencil support",
+10
+],
+[
+"mobile app usability",
+9
+],
+[
+"sync between devices",
+8
+],
+[
+"app responsiveness",
+8
+],
+[
+"ipad app quality",
+8
+],
+[
+"ipad app functionality",
+8
+],
+[
+"offline access",
+8
+],
+[
+"forced ai features",
+7
+],
+[
+"ipad app",
+7
+],
+[
+"ai integration",
+7
+],
+[
+"ipad compatibility",
+7
+],
+[
+"update frequency",
+7
+],
+[
+"app loading speed",
+6
+],
+[
+"app lag",
+6
+],
+[
+"mobile app performance",
+6
+],
+[
+"user interface intuitiveness",
+6
+],
+[
+"user interface",
+6
+],
+[
+"subscription cost",
+5
+],
+[
+"arabic rtl support",
+5
+],
+[
+"ios app performance",
+5
+],
+[
+"app usability",
+5
+],
+[
+"ipad app bugs",
+5
+],
+[
+"ios version requirement",
+5
+],
+[
+"user interface complexity",
+5
+],
+[
+"login process",
+5
+],
+[
+"notion ai",
+5
+],
+[
+"ipad typing glitch",
+5
+],
+[
+"account access issues",
+5
+],
+[
+"ease of use",
+4
+],
+[
+"slash command functionality",
+4
+],
+[
+"general bugs",
+4
+],
+[
+"font size adjustment",
+4
+],
+[
+"ios app quality",
+4
+],
+[
+"app stability and speed",
+4
+],
+[
+"mobile app experience",
+4
+],
+[
+"paywall",
+4
+],
+[
+"subscription price",
+4
+],
+[
+"ipad usability",
+4
+],
+[
+"iphone app stability",
+4
+],
+[
+"software bugs",
+4
+],
+[
+"app bugs",
+4
+],
+[
+"initial learning curve",
+4
+],
+[
+"customer support",
+4
+],
+[
+"font size",
+4
+],
+[
+"text size adjustment",
+4
+],
+[
+"home button removal",
+4
+],
+[
+"missing home button",
+4
+],
+[
+"customer service",
+4
+],
+[
+"ai feature pricing",
+4
+],
+[
+"app crashing",
+4
+],
+[
+"mobile version",
+4
+],
+[
+"gallery card preview",
+4
+],
+[
+"iphone app performance",
+4
+],
+[
+"apple neo compatibility",
+4
+],
+[
+"subscription upgrade process",
+4
+],
+[
+"ipad app freezing",
+3
+],
+[
+"image viewing process",
+3
+],
+[
+"code formatting",
+3
+],
+[
+"app loading failure",
+3
+],
+[
+"mobile breadcrumb block",
+3
+],
+[
+"onboarding experience",
+3
+],
+[
+"subscription price increase",
+3
+],
+[
+"onboarding process",
+3
+],
+[
+"app performance and stability",
+3
+],
+[
+"ai button placement",
+3
+],
+[
+"customer support responsiveness",
+3
+],
+[
+"feature bloat",
+3
+],
+[
+"ipad bugs",
+3
+],
+[
+"user friendliness",
+3
+],
+[
+"data privacy",
+3
+],
+[
+"apple pencil responsiveness",
+3
+],
+[
+"generative ai features",
+3
+],
+[
+"ipad app usability",
+3
+],
+[
+"subscription cancellation process",
+3
+],
+[
+"mobile user interface",
+3
+],
+[
+"app complexity",
+3
+],
+[
+"app update stability",
+3
+],
+[
+"general app bugs",
+3
+],
+[
+"gif playback",
+3
+],
+[
+"home favorites button",
+3
+],
+[
+"ai agent pricing",
+3
+],
+[
+"ipad typing bug",
+3
+],
+[
+"search bar placement",
+3
+],
+[
+"notion ai price",
+3
+],
+[
+"voice to text",
+3
+],
+[
+"russian language support",
+3
+],
+[
+"customer support quality",
+3
+],
+[
+"marketplace navigation",
+3
+],
+[
+"font size customization",
+3
+],
+[
+"share sheet",
+3
+],
+[
+"mobile double spacing",
+3
+],
+[
+"mobile app bugs",
+3
+],
+[
+"offline mode missing",
+3
+],
+[
+"color options",
+3
+],
+[
+"text deletion bug",
+3
+],
+[
+"moving objects",
+3
+],
+[
+"ipad performance",
+3
+],
+[
+"data loss after update",
+3
+],
+[
+"loss of comments",
+2
+],
+[
+"password reset link",
+2
+],
+[
+"unresponsive buttons",
+2
+],
+[
+"ipad cursor disappearance",
+2
+],
+[
+"app errors",
+2
+],
+[
+"app stability after update",
+2
+],
+[
+"table page loading",
+2
+],
+[
+"select all option",
+2
+],
+[
+"database creation",
+2
+],
+[
+"ai credit limit",
+2
+],
+[
+"image options menu",
+2
+],
+[
+"image captioning scroll bug",
+2
+],
+[
+"viewing images",
+2
+],
+[
+"ipad os stability",
+2
+],
+[
+"ipad magic keyboard support",
+2
+],
+[
+"device compatibility",
+2
+],
+[
+"forced ios update",
+2
+],
+[
+"forced app updates",
+2
+],
+[
+"ios app lag",
+2
+],
+[
+"bugs and missing features",
+2
+],
+[
+"software update stability",
+2
+],
+[
+"breadcrumb navigation placement",
+2
+],
+[
+"glitches and bugs",
+2
+],
+[
+"block equations rendering",
+2
+],
+[
+"vision pro compatibility",
+2
+],
+[
+"ai customer support",
+2
+],
+[
+"model picker",
+2
+],
+[
+"ipad feature parity",
+2
+],
+[
+"font accessibility",
+2
+],
+[
+"multi-select color defaults",
+2
+],
+[
+"subscription pricing and cancellation",
+2
+],
+[
+"feature complexity",
+2
+],
+[
+"refund policy",
+2
+],
+[
+"scrolling lock up",
+2
+],
+[
+"dynamic text sizes",
+2
+],
+[
+"spreadsheet functionality",
+2
+],
+[
+"ios dynamic text size",
+2
+],
+[
+"apple pencil integration",
+2
+],
+[
+"ipad ux",
+2
+],
+[
+"copy and paste functionality",
+2
+],
+[
+"notion ai free trial",
+2
+],
+[
+"windows and android availability",
+2
+],
+[
+"ios shortcuts functionality",
+2
+],
+[
+"ios shortcuts templates",
+2
+],
+[
+"button customization options",
+2
+],
+[
+"long page loading",
+2
+],
+[
+"template customization",
+2
+],
+[
+"ai pricing",
+2
+],
+[
+"syncing issues",
+2
+],
+[
+"calendar month view",
+2
+],
+[
+"ipad performance and formatting",
+2
+],
+[
+"ai message limit",
+2
+],
+[
+"notifications placement",
+2
+],
+[
+"mobile app freezing",
+2
+],
+[
+"app update requirement",
+2
+],
+[
+"ui design",
+2
+],
+[
+"typing experience",
+2
+],
+[
+"mobile page duplication",
+2
+],
+[
+"ai search bar",
+2
+],
+[
+"monetization strategy",
+2
+],
+[
+"free plan ai credits",
+2
+],
+[
+"ipad app glitches",
+2
+],
+[
+"free plan limitations",
+2
+],
+[
+"mobile user experience",
+2
+],
+[
+"text size options",
+2
+],
+[
+"loading lag",
+2
+],
+[
+"app speed and lag",
+2
+],
+[
+"mobile app speed",
+2
+],
+[
+"mobile ai bar",
+2
+],
+[
+"adjustable font size",
+2
+],
+[
+"apple pencil optimization",
+2
+],
+[
+"onboarding instructions",
+2
+],
+[
+"steep learning curve",
+2
+],
+[
+"long page crashes",
+2
+],
+[
+"latest update",
+2
+],
+[
+"real time sync",
+2
+],
+[
+"subscription management",
+2
+],
+[
+"device overheating",
+2
+],
+[
+"text selection",
+2
+],
+[
+"ios app experience",
+2
+],
+[
+"ipad experience",
+2
+],
+[
+"turkish language support",
+2
+],
+[
+"app speed",
+2
+],
+[
+"ipad typing visibility",
+2
+],
+[
+"image loading issues",
+2
+],
+[
+"ui navigation",
+2
+],
+[
+"access to notes",
+2
+],
+[
+"tablet usability",
+2
+],
+[
+"removed ai features",
+2
+],
+[
+"recent update",
+2
+],
+[
+"ipad typing lag",
+2
+],
+[
+"general app glitches",
+2
+],
+[
+"money back guarantee",
+2
+],
+[
+"ai voice chat",
+2
+],
+[
+"apple id sign-in options",
+2
+],
+[
+"recent updates",
+2
+],
+[
+"app stability and crashes",
+2
+],
+[
+"gallery view card photos",
+2
+],
+[
+"gallery view photo saving",
+2
+],
+[
+"sign in process",
+2
+],
+[
+"bug fix speed",
+2
+],
+[
+"youtube video embeds",
+2
+],
+[
+"iphone search functionality",
+2
+],
+[
+"notion ai agent stability",
+2
+],
+[
+"ai chat button",
+2
+],
+[
+"ipad support",
+2
+],
+[
+"undo function",
+2
+],
+[
+"ipad cursor jumping",
+2
+],
+[
+"select property options",
+2
+],
+[
+"ai feature",
+2
+],
+[
+"forced updates and sign-in",
+2
+],
+[
+"mobile typing view",
+2
+],
+[
+"web clipper",
+2
+],
+[
+"app glitches",
+2
+],
+[
+"password reset loop",
+2
+],
+[
+"mobile recents section",
+2
+],
+[
+"visual design updates",
+2
+],
+[
+"screen freezing",
+2
+],
+[
+"moving screen bug",
+2
+],
+[
+"limited color options",
+2
+],
+[
+"password protection",
+2
+],
+[
+"mobile template browsing",
+2
+],
+[
+"iphone app lag",
+2
+],
+[
+"iphone text deletion",
+2
+],
+[
+"app storage size",
+2
+],
+[
+"screen scrolling bug",
+2
+],
+[
+"ipad typing jump",
+2
+],
+[
+"update file size",
+2
+],
+[
+"typing bugs",
+2
+],
+[
+"mac app stability",
+2
+],
+[
+"in app animations",
+2
+],
+[
+"mobile checklist creation",
+2
+],
+[
+"app startup time",
+2
+],
+[
+"dropdown tabs",
+2
+],
+[
+"mobile app settings",
+2
+]
+],
+"praise": [
+[
+"ai features",
+19
+],
+[
+"organization capabilities",
+17
+],
+[
+"ease of use",
+15
+],
+[
+"versatility of use cases",
+12
+],
+[
+"versatility of use",
+11
+],
+[
+"templates",
+9
+],
+[
+"all-in-one functionality",
+8
+],
+[
+"versatility",
+8
+],
+[
+"life organization",
+7
+],
+[
+"note taking",
+7
+],
+[
+"desktop version",
+7
+],
+[
+"sync between devices",
+6
+],
+[
+"free version",
+6
+],
+[
+"customization",
+6
+],
+[
+"organization",
+5
+],
+[
+"customizability",
+5
+],
+[
+"customer service",
+5
+],
+[
+"ai integration",
+4
+],
+[
+"project organization",
+4
+],
+[
+"flexibility",
+4
+],
+[
+"organizational capabilities",
+4
+],
+[
+"all-in-one workspace",
+4
+],
+[
+"integration with claude",
+4
+],
+[
+"integrated ai",
+4
+],
+[
+"notion ai",
+4
+],
+[
+"free plan",
+3
+],
+[
+"user experience",
+3
+],
+[
+"organizing capabilities",
+3
+],
+[
+"productivity",
+3
+],
+[
+"project management",
+3
+],
+[
+"desktop app",
+3
+],
+[
+"app stability",
+3
+],
+[
+"free price",
+3
+],
+[
+"customization options",
+3
+],
+[
+"information organization",
+3
+],
+[
+"claude integration",
+3
+],
+[
+"task management",
+3
+],
+[
+"website creation",
+2
+],
+[
+"collaboration",
+2
+],
+[
+"third-party integrations",
+2
+],
+[
+"workspace flexibility",
+2
+],
+[
+"organization and planning",
+2
+],
+[
+"learning curve",
+2
+],
+[
+"page customization",
+2
+],
+[
+"planning",
+2
+],
+[
+"chatgpt integration",
+2
+],
+[
+"work organization",
+2
+],
+[
+"navigation",
+2
+],
+[
+"free functionality",
+2
+],
+[
+"task organization",
+2
+],
+[
+"organization of content",
+2
+],
+[
+"page organization",
+2
+],
+[
+"user friendliness",
+2
+],
+[
+"user interface",
+2
+],
+[
+"free plan value",
+2
+],
+[
+"range of features",
+2
+],
+[
+"ai feature",
+2
+],
+[
+"home button",
+2
+],
+[
+"ai functionality",
+2
+],
+[
+"onboarding process",
+2
+],
+[
+"organization of thoughts and projects",
+2
+],
+[
+"sharing notes",
+2
+],
+[
+"evernote import feature",
+2
+],
+[
+"dashboard page",
+2
+],
+[
+"free pricing",
+2
+],
+[
+"feature variety",
+2
+],
+[
+"education plus plan",
+2
+],
+[
+"customer support",
+2
+],
+[
+"flexibility and versatility",
+1
+],
+[
+"ai workspace context",
+1
+],
+[
+"note taking versatility",
+1
+],
+[
+"note saving",
+1
+],
+[
+"ios app quality",
+1
+],
+[
+"page format",
+1
+],
+[
+"arabic rtl support",
+1
+],
+[
+"page layout and organization",
+1
+],
+[
+"image zoom and quality",
+1
+],
+[
+"image zoom quality",
+1
+],
+[
+"document structure",
+1
+],
+[
+"organization of life",
+1
+],
+[
+"customer and community support",
+1
+],
+[
+"organization and task management",
+1
+],
+[
+"project suggestions",
+1
+],
+[
+"notion suggestions",
+1
+],
+[
+"design and performance",
+1
+],
+[
+"pages and database features",
+1
+],
+[
+"drag-and-drop interface",
+1
+],
+[
+"page loading speed",
+1
+],
+[
+"minimalist design",
+1
+],
+[
+"visual design options",
+1
+],
+[
+"all-in-one toolkit",
+1
+],
+[
+"pricing plans",
+1
+],
+[
+"planning capabilities",
+1
+],
+[
+"organization tools",
+1
+],
+[
+"modular and functional design",
+1
+],
+[
+"system building",
+1
+],
+[
+"customizable systems",
+1
+],
+[
+"organization and note typing",
+1
+],
+[
+"free features",
+1
+],
+[
+"ai tools",
+1
+],
+[
+"ai page generation",
+1
+],
+[
+"breadcrumb navigation",
+1
+],
+[
+"homework tracking",
+1
+],
+[
+"list management",
+1
+],
+[
+"free website creation",
+1
+],
+[
+"customizable header photos and icons",
+1
+],
+[
+"customizable icons",
+1
+],
+[
+"project tracking",
+1
+],
+[
+"tracking and managing",
+1
+],
+[
+"minimal interface",
+1
+],
+[
+"memory journaling",
+1
+],
+[
+"studying",
+1
+],
+[
+"task and workload management",
+1
+],
+[
+"active learning and engagement",
+1
+],
+[
+"page structure",
+1
+],
+[
+"organizing notes and projects",
+1
+],
+[
+"personal organization",
+1
+],
+[
+"app refreshing",
+1
+],
+[
+"ease of use and aesthetic",
+1
+],
+[
+"performance and reliability",
+1
+],
+[
+"free tier",
+1
+],
+[
+"price of features",
+1
+],
+[
+"in app organization",
+1
+],
+[
+"interlinked pages",
+1
+],
+[
+"ai agent",
+1
+],
+[
+"use cases",
+1
+],
+[
+"note organization",
+1
+],
+[
+"model picker",
+1
+],
+[
+"record ownership segregation",
+1
+],
+[
+"saving instagram videos",
+1
+],
+[
+"organizing saved links",
+1
+],
+[
+"workflow organization",
+1
+],
+[
+"flexibility and power",
+1
+],
+[
+"workflow tool",
+1
+],
+[
+"research vault capabilities",
+1
+],
+[
+"ai tooling",
+1
+],
+[
+"freemium model",
+1
+],
+[
+"productivity planner",
+1
+],
+[
+"versatility of organization",
+1
+],
+[
+"ai search functionality",
+1
+],
+[
+"natural language searches",
+1
+],
+[
+"ai agents",
+1
+],
+[
+"affordability",
+1
+],
+[
+"updating files",
+1
+],
+[
+"formatting preservation",
+1
+],
+[
+"template design and functionality",
+1
+],
+[
+"cross-platform availability",
+1
+],
+[
+"internal docs, notes, kanban boards",
+1
+],
+[
+"toggles",
+1
+],
+[
+"template customization",
+1
+],
+[
+"dashboard maintenance",
+1
+],
+[
+"task planner",
+1
+],
+[
+"blocks",
+1
+],
+[
+"page layout customization",
+1
+],
+[
+"system customization",
+1
+],
+[
+"task tracking",
+1
+],
+[
+"integration with lifa app",
+1
+],
+[
+"simplicity of note taking",
+1
+],
+[
+"app complexity",
+1
+],
+[
+"content planning and creation",
+1
+],
+[
+"wide range of features",
+1
+],
+[
+"intern quality",
+1
+],
+[
+"random page refreshing",
+1
+],
+[
+"page decoration and styling",
+1
+],
+[
+"ai data recovery",
+1
+],
+[
+"use of tables",
+1
+],
+[
+"app concept and design",
+1
+],
+[
+"productivity and focus",
+1
+],
+[
+"flexibility and customization",
+1
+],
+[
+"autosave functionality",
+1
+],
+[
+"business and personal organization",
+1
+],
+[
+"system building capabilities",
+1
+],
+[
+"number of options",
+1
+],
+[
+"data set",
+1
+],
+[
+"inline link summaries",
+1
+],
+[
+"comprehensive system",
+1
+],
+[
+"feature depth",
+1
+],
+[
+"price",
+1
+],
+[
+"organizational versatility",
+1
+],
+[
+"accountability and organization",
+1
+],
+[
+"quick note taking",
+1
+],
+[
+"ai collaborative tool",
+1
+],
+[
+"flexibility and capability",
+1
+],
+[
+"database and organization features",
+1
+],
+[
+"ipad performance",
+1
+],
+[
+"user interface and performance",
+1
+],
+[
+"functional flexibility",
+1
+],
+[
+"educational use",
+1
+],
+[
+"gif playback",
+1
+],
+[
+"built-in ai",
+1
+],
+[
+"ease of use and layout",
+1
+],
+[
+"google integration",
+1
+],
+[
+"overall platform functionality",
+1
+],
+[
+"flexible workspace",
+1
+],
+[
+"custom organization",
+1
+],
+[
+"ai research tool",
+1
+],
+[
+"platform for creation",
+1
+],
+[
+"export to unlisted websites",
+1
+],
+[
+"exporting",
+1
+],
+[
+"mobile app",
+1
+],
+[
+"meeting summarization",
+1
+],
+[
+"crm and media library",
+1
+],
+[
+"personal note taking",
+1
+],
+[
+"structure, flexibility and integrations",
+1
+],
+[
+"notes and planning",
+1
+],
+[
+"staff productivity",
+1
+],
+[
+"information accessibility",
+1
+],
+[
+"ui and community support",
+1
+],
+[
+"auto save and integrations",
+1
+],
+[
+"ai assistants",
+1
+],
+[
+"para method organization",
+1
+],
+[
+"workload and schedule organization",
+1
+],
+[
+"online scheduling",
+1
+],
+[
+"all rounder workspace",
+1
+],
+[
+"all-rounder workspace",
+1
+],
+[
+"basic interface",
+1
+],
+[
+"pricing and organization",
+1
+],
+[
+"external keyboard support",
+1
+],
+[
+"scheduling",
+1
+],
+[
+"cross-platform compatibility",
+1
+],
+[
+"handwriting to text",
+1
+],
+[
+"free version options and interface",
+1
+],
+[
+"complex project management",
+1
+],
+[
+"mobile experience and keyboard shortcuts",
+1
+],
+[
+"flexibility for power users",
+1
+],
+[
+"versatile use cases",
+1
+],
+[
+"workflow control",
+1
+],
+[
+"customizable templates",
+1
+],
+[
+"home/favorites button",
+1
+],
+[
+"autonomous agents",
+1
+],
+[
+"tutorials",
+1
+],
+[
+"travel planning",
+1
+],
+[
+"clean interface and design",
+1
+],
+[
+"family scheduling",
+1
+],
+[
+"routine tracking",
+1
+],
+[
+"routines",
+1
+],
+[
+"apple notes integration",
+1
+],
+[
+"organization and productivity",
+1
+],
+[
+"notion premium price",
+1
+],
+[
+"centralized information management",
+1
+],
+[
+"customizable note structure",
+1
+],
+[
+"interface and shortcuts",
+1
+],
+[
+"organization of information",
+1
+],
+[
+"lazy loading",
+1
+],
+[
+"organization and task tracking",
+1
+],
+[
+"templates option",
+1
+],
+[
+"phone app",
+1
+],
+[
+"page visual design",
+1
+],
+[
+"customization of organization",
+1
+],
+[
+"business organization capabilities",
+1
+],
+[
+"platform flexibility",
+1
+],
+[
+"organizational benefits",
+1
+],
+[
+"core organizational features",
+1
+],
+[
+"databases and properties/tags",
+1
+],
+[
+"customizable user interface",
+1
+],
+[
+"creative freedom",
+1
+],
+[
+"customizable layout and aesthetics",
+1
+],
+[
+"app speed",
+1
+],
+[
+"ios app",
+1
+],
+[
+"layout and user experience",
+1
+],
+[
+"app customisability",
+1
+],
+[
+"user interface design",
+1
+],
+[
+"organization and structure",
+1
+],
+[
+"continuous app updates",
+1
+],
+[
+"planning and listing",
+1
+],
+[
+"ease of revising",
+1
+],
+[
+"script storage and tracking",
+1
+],
+[
+"life and work organization",
+1
+],
+[
+"organization and aesthetics",
+1
+],
+[
+"switching between pages",
+1
+],
+[
+"ai tool",
+1
+],
+[
+"versatility for business and personal use",
+1
+],
+[
+"ease of use and tools",
+1
+],
+[
+"app functionality",
+1
+],
+[
+"mac app quality",
+1
+],
+[
+"rich feature set",
+1
+],
+[
+"openclaw integration",
+1
+],
+[
+"flexible page structure",
+1
+],
+[
+"organization of lists",
+1
+],
+[
+"flexibility for brainstorming",
+1
+],
+[
+"sharing notes via url",
+1
+],
+[
+"mobile database layout",
+1
+],
+[
+"saving articles",
+1
+],
+[
+"overall user interface",
+1
+],
+[
+"relational databases",
+1
+],
+[
+"app timeouts",
+1
+],
+[
+"mac and iphone apps",
+1
+],
+[
+"task prioritization and tracking",
+1
+],
+[
+"centralized workspace",
+1
+],
+[
+"relational database",
+1
+],
+[
+"notes graph visualization",
+1
+],
+[
+"versatility and templates",
+1
+],
+[
+"mobile accessibility",
+1
+],
+[
+"continue writing button",
+1
+],
+[
+"free templates",
+1
+],
+[
+"simplicity and reliability",
+1
+],
+[
+"cross-platform synchronization",
+1
+],
+[
+"callout feature",
+1
+],
+[
+"documentation storage",
+1
+],
+[
+"workflow integration",
+1
+],
+[
+"system flexibility",
+1
+],
+[
+"connecting ideas and workflows",
+1
+],
+[
+"flexibility for different thinking styles",
+1
+],
+[
+"adaptability for living systems",
+1
+],
+[
+"data management structure",
+1
+],
+[
+"interface setup speed",
+1
+],
+[
+"hierarchical page organization",
+1
+],
+[
+"formatting options",
+1
+],
+[
+"template creation",
+1
+],
+[
+"ai subscription",
+1
+],
+[
+"ai meeting organization",
+1
+],
+[
+"platform versatility",
+1
+],
+[
+"journaling",
+1
+],
+[
+"content organization",
+1
+],
+[
+"grok integration",
+1
+],
+[
+"calendar features",
+1
+],
+[
+"customizable usage methodology",
+1
+],
+[
+"visual aesthetic",
+1
+],
+[
+"knowledge management",
+1
+],
+[
+"versatility and organization",
+1
+],
+[
+"onboarding information",
+1
+],
+[
+"ease of use and templates",
+1
+],
+[
+"free access",
+1
+],
+[
+"cross-device availability",
+1
+],
+[
+"homepage layout",
+1
+],
+[
+"notion nomenclature",
+1
+],
+[
+"revision utility",
+1
+],
+[
+"organizing notes",
+1
+],
+[
+"sign up process",
+1
+],
+[
+"community templates",
+1
+],
+[
+"organization of work and life",
+1
+],
+[
+"wiki-like note taking",
+1
+],
+[
+"assignment and project tracking",
+1
+],
+[
+"page customization and organization",
+1
+],
+[
+"variety of options",
+1
+],
+[
+"laptop app performance",
+1
+],
+[
+"word processing and documentation",
+1
+],
+[
+"planning and execution",
+1
+],
+[
+"mind map functionality",
+1
+],
+[
+"duplicating content on ipad",
+1
+],
+[
+"search and retrieval",
+1
+],
+[
+"real time saving",
+1
+],
+[
+"cross-device accessibility",
+1
+],
+[
+"search function speed",
+1
+],
+[
+"clean writing space",
+1
+],
+[
+"information storage",
+1
+],
+[
+"technical project management",
+1
+],
+[
+"central knowledge repository",
+1
+],
+[
+"organization of structured data",
+1
+],
+[
+"markdown support",
+1
+],
+[
+"organized hierarchy",
+1
+],
+[
+"dynamic knowledge base",
+1
+],
+[
+"planning and organization",
+1
+],
+[
+"customizability and power",
+1
+],
+[
+"gpt integration",
+1
+],
+[
+"business use case",
+1
+],
+[
+"pages for work and family",
+1
+],
+[
+"app flow",
+1
+],
+[
+"ipad app functionality",
+1
+],
+[
+"free version integrations",
+1
+],
+[
+"page layout",
+1
+],
+[
+"database linking",
+1
+],
+[
+"ai and navigation",
+1
+],
+[
+"structuring and organising",
+1
+],
+[
+"all-in-one organization",
+1
+],
+[
+"goal tracking",
+1
+],
+[
+"organization and tracking",
+1
+],
+[
+"platform aesthetics and customization",
+1
+],
+[
+"free form creativity",
+1
+],
+[
+"versatility for different use cases",
+1
+],
+[
+"study system and calendar",
+1
+],
+[
+"organizing concepts",
+1
+],
+[
+"app features",
+1
+],
+[
+"tracking capabilities",
+1
+],
+[
+"collaboration and sharing",
+1
+],
+[
+"ai helper",
+1
+],
+[
+"ai tool capabilities",
+1
+],
+[
+"scheduling and planning",
+1
+],
+[
+"writing experience",
+1
+],
+[
+"intuitive intelligence system",
+1
+],
+[
+"multi-device availability",
+1
+],
+[
+"removal of ai tools",
+1
+],
+[
+"app speed and usability",
+1
+],
+[
+"customizable options",
+1
+],
+[
+"organization tool",
+1
+],
+[
+"planning and note-taking",
+1
+],
+[
+"business utility",
+1
+],
+[
+"project planning and building",
+1
+],
+[
+"workspace sharing and flexibility",
+1
+],
+[
+"design and ease of use",
+1
+],
+[
+"organization and planning features",
+1
+],
+[
+"versatility for organization",
+1
+],
+[
+"customer support response time",
+1
+],
+[
+"customer support team",
+1
+],
+[
+"database implementation",
+1
+],
+[
+"setup process",
+1
+],
+[
+"initial app performance",
+1
+],
+[
+"memory extension",
+1
+],
+[
+"platform integration",
+1
+],
+[
+"script shifting and manifestation",
+1
+],
+[
+"personal documentation",
+1
+],
+[
+"user interface and usability",
+1
+],
+[
+"note taking system",
+1
+],
+[
+"links in tables and databases",
+1
+],
+[
+"compatibility across devices",
+1
+],
+[
+"project flexibility",
+1
+],
+[
+"feature versatility",
+1
+],
+[
+"free pricing model",
+1
+],
+[
+"organisation",
+1
+],
+[
+"versatility for different users",
+1
+],
+[
+"laptop customization options",
+1
+],
+[
+"second brain database",
+1
+],
+[
+"overall functionality",
+1
+],
+[
+"product planning",
+1
+],
+[
+"flexibility and collaborative functionality",
+1
+],
+[
+"handwritten and pencil support",
+1
+],
+[
+"studying and planning",
+1
+],
+[
+"ai production tool",
+1
+],
+[
+"work platform ecosystem",
+1
+],
+[
+"suitability for adhd",
+1
+],
+[
+"organization and tasks",
+1
+],
+[
+"customizable business systems",
+1
+],
+[
+"evernote import",
+1
+],
+[
+"organization and content types",
+1
+],
+[
+"mobile app functionality",
+1
+],
+[
+"youtube tutorials",
+1
+],
+[
+"reliability for school",
+1
+],
+[
+"organization and note taking",
+1
+],
+[
+"configurability",
+1
+],
+[
+"customizability for gtd systems",
+1
+],
+[
+"organization for business",
+1
+],
+[
+"cross-platform consistency",
+1
+],
+[
+"recent updates",
+1
+],
+[
+"shortcuts",
+1
+],
+[
+"databases",
+1
+],
+[
+"calendar and notes integration",
+1
+],
+[
+"organizational folders",
+1
+],
+[
+"grade tracker",
+1
+],
+[
+"grade calculation",
+1
+],
+[
+"journal templates",
+1
+],
+[
+"to do list calendar integration",
+1
+],
+[
+"ease of learning",
+1
+],
+[
+"user interface and versatility",
+1
+],
+[
+"ai stack integration",
+1
+],
+[
+"source-of-truth solution",
+1
+],
+[
+"setup and ai assistant",
+1
+],
+[
+"ai reliability",
+1
+],
+[
+"ai answers",
+1
+],
+[
+"ai customization",
+1
+],
+[
+"organization and categorization design",
+1
+],
+[
+"visual design",
+1
+],
+[
+"bluetooth keyboard support",
+1
+],
+[
+"app size",
+1
+]
+]
+}

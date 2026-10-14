@@ -1,4 +1,2199 @@
 {
+ "themes": {
+  "n_reviews": 1143,
+  "complaint": [
+   {
+    "id": "c_stability",
+    "name": "App stability & crashes",
+    "definition": "The app crashes, freezes, hangs or becomes unresponsive, on any platform. Not mere slowness (see performance) and not losing content (see data loss).",
+    "n_reviews": 163,
+    "prevalence": 0.1426071741032371,
+    "prevalence_ci": [
+     0.12353141369236008,
+     0.16407717970456204
+    ],
+    "mean_rating": 2.042944785276074,
+    "rating_impact": -1.2713409290096407,
+    "rating_impact_ci": [
+     -1.480753517472075,
+     -1.0619283405472064
+    ],
+    "quotes": [
+     {
+      "text": "I love Notion, but *all the time* I find myself trying to update a field on a table and the app just won't let me type, exit the page, or do anything except select.",
+      "translation": null,
+      "rating": 3,
+      "review_id": "13590024514"
+     },
+     {
+      "text": "Love Notion, but the app is so buggy.",
+      "translation": null,
+      "rating": 1,
+      "review_id": "13349252973"
+     },
+     {
+      "text": "Love notion, but has been super glitchy for me recently",
+      "translation": null,
+      "rating": 3,
+      "review_id": "13403182530"
+     }
+    ],
+    "priority": 0.18130233720784902
+   },
+   {
+    "id": "c_ai_intrusive",
+    "name": "AI forced / intrusive",
+    "definition": "AI features are pushed into the interface or workflow against the user's wish: AI buttons everywhere, cannot turn AI off, the app shifting focus to AI instead of core features.",
+    "n_reviews": 117,
+    "prevalence": 0.10236220472440945,
+    "prevalence_ci": [
+     0.08610012189843896,
+     0.12128814174636188
+    ],
+    "mean_rating": 1.8888888888888888,
+    "rating_impact": -1.3859649122807016,
+    "rating_impact_ci": [
+     -1.6184319075771088,
+     -1.1534979169842945
+    ],
+    "quotes": [
+     {
+      "text": "Notion is amazing but I hate ai and it is so hard to work around please make options for us available.",
+      "translation": null,
+      "rating": 2,
+      "review_id": "13945077772"
+     },
+     {
+      "text": "Good... but the AI features have ruined it.",
+      "translation": null,
+      "rating": 3,
+      "review_id": "13348888923"
+     },
+     {
+      "text": "D. Great app, just hate how ai features are shoved in your face, you will be writing whatever with the little icon looking at your work, and one of the first options for using it \"continue writing\" truly disappointing.",
+      "translation": null,
+      "rating": 4,
+      "review_id": "13596709718"
+     }
+    ],
+    "priority": 0.14187042409172537
+   },
+   {
+    "id": "c_mobile",
+    "name": "iPhone / mobile app experience",
+    "definition": "The iPhone or mobile app is worse than desktop: missing settings or features on mobile, mobile-only bugs, poor mobile usability. Not iPad-specific.",
+    "n_reviews": 132,
+    "prevalence": 0.11548556430446194,
+    "prevalence_ci": [
+     0.09823126117285276,
+     0.13531580565198764
+    ],
+    "mean_rating": 2.0984848484848486,
+    "rating_impact": -1.1695665857386923,
+    "rating_impact_ci": [
+     -1.4059629608598736,
+     -0.933170210617511
+    ],
+    "quotes": [
+     {
+      "text": "This has been a problem for a while now and I would appreciate attention to this matter - a fix, and workaround (that actually works - accessibility settings per app and increasing it there also doesn't work).",
+      "translation": null,
+      "rating": 4,
+      "review_id": "13538275625"
+     },
+     {
+      "text": "The overall trajectory of the platform has been great since then, but the mobile app has always had issues.",
+      "translation": null,
+      "rating": 1,
+      "review_id": "13652234946"
+     },
+     {
+      "text": "I love the desktop version but I was never able to make the mobile app work even after many updates.",
+      "translation": null,
+      "rating": 1,
+      "review_id": "13933974551"
+     }
+    ],
+    "priority": 0.13506805714567574
+   },
+   {
+    "id": "c_ui_ux",
+    "name": "UI / UX & usability",
+    "definition": "The interface is confusing, cluttered, hard to navigate or unintuitive; design changes users dislike. Not the initial learning curve (see learning curve).",
+    "n_reviews": 129,
+    "prevalence": 0.11286089238845144,
+    "prevalence_ci": [
+     0.09579860856702774,
+     0.13251669762180476
+    ],
+    "mean_rating": 2.13953488372093,
+    "rating_impact": -1.1198339525709833,
+    "rating_impact_ci": [
+     -1.3576408128842221,
+     -0.8820270922577443
+    ],
+    "quotes": [
+     {
+      "text": "However the collaboration process is a little complicated and annoying sometimes.",
+      "translation": null,
+      "rating": 3,
+      "review_id": "13311571872"
+     },
+     {
+      "text": "The three-dots at the top right of each image was always very useful to quickly use other options such as captioning, but now its gone.",
+      "translation": null,
+      "rating": 4,
+      "review_id": "13314925762"
+     },
+     {
+      "text": "I love the website/service, but the app is very janky and difficult to use.",
+      "translation": null,
+      "rating": 3,
+      "review_id": "13738539428"
+     }
+    ],
+    "priority": 0.12638545921404798
+   },
+   {
+    "id": "c_ipad",
+    "name": "iPad-specific issues",
+    "definition": "Problems that the review ties to the iPad app: iPad layout/landscape, Apple Pencil, Magic Keyboard / external keyboards, iPad-only bugs. Not generic iPhone problems.",
+    "n_reviews": 102,
+    "prevalence": 0.08923884514435695,
+    "prevalence_ci": [
+     0.07405777935991564,
+     0.10717168110484562
+    ],
+    "mean_rating": 1.9607843137254901,
+    "rating_impact": -1.2870543029892072,
+    "rating_impact_ci": [
+     -1.5231981592316535,
+     -1.050910446746761
+    ],
+    "quotes": [
+     {
+      "text": "The overall and features work great however when using with a appropriate IPad and Keyboard with trackpad doesn't seem to work and makes this super unproductive.",
+      "translation": null,
+      "rating": 2,
+      "review_id": "13609541303"
+     },
+     {
+      "text": "I'm glad I can use notion on iPad, but man... I use this for simple writing, google docs level stuff, and this app has a lot off issues.",
+      "translation": null,
+      "rating": 2,
+      "review_id": "13263131547"
+     },
+     {
+      "text": "But I feel like the iPad app is just a port of the macOS app without any changes, and it can feel frustrating trying to navigate it using fingers and Apple Pencil.",
+      "translation": null,
+      "rating": 3,
+      "review_id": "13914840332"
+     }
+    ],
+    "priority": 0.11485523963683214
+   },
+   {
+    "id": "c_updates_compat",
+    "name": "Updates & compatibility",
+    "definition": "A recent update broke or worsened something, forced updates, OS version requirements, device compatibility.",
+    "n_reviews": 82,
+    "prevalence": 0.07174103237095363,
+    "prevalence_ci": [
+     0.05817146789937717,
+     0.08817958832533132
+    ],
+    "mean_rating": 1.6829268292682926,
+    "rating_impact": -1.5621250086204916,
+    "rating_impact_ci": [
+     -1.7900006646860798,
+     -1.3342493525549035
+    ],
+    "quotes": [
+     {
+      "text": "My iOS is 16.3.1, can't update the new version, but it always pops out the update page, maybe re-support my iOS version?",
+      "translation": null,
+      "rating": 4,
+      "review_id": "13804380026"
+     },
+     {
+      "text": "I love this app but your last update made it super glitch",
+      "translation": null,
+      "rating": 4,
+      "review_id": "13703009151"
+     },
+     {
+      "text": "And is there any way at all to revert to the older version because this update honestly feels like a downgrade \ud83d\ude2d",
+      "translation": null,
+      "rating": 1,
+      "review_id": "14014964471"
+     }
+    ],
+    "priority": 0.1120684608109189
+   },
+   {
+    "id": "c_performance",
+    "name": "Performance & loading speed",
+    "definition": "Slow loading of pages or the app, lag, sluggish scrolling or responsiveness, heavy resource use or app size. Not crashes/freezes.",
+    "n_reviews": 96,
+    "prevalence": 0.08398950131233596,
+    "prevalence_ci": [
+     0.06926949609640762,
+     0.10149644309633782
+    ],
+    "mean_rating": 1.9791666666666667,
+    "rating_impact": -1.2596107927411653,
+    "rating_impact_ci": [
+     -1.504391751450028,
+     -1.0148298340323025
+    ],
+    "quotes": [
+     {
+      "text": "Not bad, but it is wayyy to slow and laggy.",
+      "translation": null,
+      "rating": 1,
+      "review_id": "13778083239"
+     },
+     {
+      "text": "It's great, but... It cannot, especially the app, or the website on mobile, cannot handle large pages of 5k+ text.",
+      "translation": null,
+      "rating": 2,
+      "review_id": "13815147435"
+     },
+     {
+      "text": "The app so far seems amazing in prospect but the lag of it being online chips a piece of my soul every time I come back to the app.",
+      "translation": null,
+      "rating": 4,
+      "review_id": "13870392398"
+     }
+    ],
+    "priority": 0.10579408232996663
+   },
+   {
+    "id": "c_typing_editing",
+    "name": "Typing & text editing",
+    "definition": "Typing lag or jumping cursor, text deleted while typing, selection, copy-paste, formatting, emoji or keyboard input problems inside the editor.",
+    "n_reviews": 74,
+    "prevalence": 0.0647419072615923,
+    "prevalence_ci": [
+     0.05188394302290441,
+     0.08051575150578297
+    ],
+    "mean_rating": 1.8918918918918919,
+    "rating_impact": -1.3270042727479583,
+    "rating_impact_ci": [
+     -1.5915288497256501,
+     -1.0624796957702665
+    ],
+    "quotes": [
+     {
+      "text": "Its a good app besides the ai slop but its got this recurring bug where if you highlight multiple lines of text and try to delete it it doesnt delete, making you manually hold delete.",
+      "translation": null,
+      "rating": 3,
+      "review_id": "14431164262"
+     },
+     {
+      "text": "However I have a concern, whenever i use the ai and try to write on the normal page again it stops working",
+      "translation": null,
+      "rating": 5,
+      "review_id": "14085778680"
+     },
+     {
+      "text": "A very useful platform, but the app is almost unusable for anything other than viewing due to this.",
+      "translation": null,
+      "rating": 1,
+      "review_id": "13433873147"
+     }
+    ],
+    "priority": 0.08591278756198506
+   },
+   {
+    "id": "c_feature_gaps",
+    "name": "Missing features & feature bugs",
+    "definition": "A specific feature is missing or broken (databases, images, embeds, calendar, widgets, export, colours...), or feature bloat. Use only when no more specific theme fits.",
+    "n_reviews": 141,
+    "prevalence": 0.12335958005249344,
+    "prevalence_ci": [
+     0.10554700549513488,
+     0.14369534323772926
+    ],
+    "mean_rating": 2.5815602836879434,
+    "rating_impact": -0.629018558627426,
+    "rating_impact_ci": [
+     -0.8929713564284834,
+     -0.36506576082636855
+    ],
+    "quotes": [
+     {
+      "text": "My original review: it really needs a few things\u2014most importantly, encryption for us poor folks.",
+      "translation": null,
+      "rating": 2,
+      "review_id": "13980539451"
+     },
+     {
+      "text": "I know this app has almost 70k mostly good reviews but I simply cannot get it to do the most basic of what it is meant to do, which is build a database.",
+      "translation": null,
+      "rating": 1,
+      "review_id": "13298074940"
+     },
+     {
+      "text": "Guys come on... I'm all in with AI but there's very basic stuff that needs fixing before you release more and more shiny features.",
+      "translation": null,
+      "rating": 2,
+      "review_id": "13472193946"
+     }
+    ],
+    "priority": 0.07759546523750399
+   },
+   {
+    "id": "c_pricing",
+    "name": "Pricing & subscriptions",
+    "definition": "Subscription price, paywalls, block/feature limits on the free plan, price increases, cancellation or refund problems. AI-specific pricing belongs to AI quality & limits.",
+    "n_reviews": 69,
+    "prevalence": 0.06036745406824147,
+    "prevalence_ci": [
+     0.047977558632729275,
+     0.07570253483594491
+    ],
+    "mean_rating": 2.101449275362319,
+    "rating_impact": -1.0978058456805115,
+    "rating_impact_ci": [
+     -1.4664956926159602,
+     -0.7291159987450628
+    ],
+    "quotes": [
+     {
+      "text": "I love the app but at some point you have to upgrade..it's just not affordable.",
+      "translation": null,
+      "rating": 1,
+      "review_id": "13297843234"
+     },
+     {
+      "text": "My only problem is that I would pay for the app but the price tag is too steep.",
+      "translation": null,
+      "rating": 4,
+      "review_id": "14182859539"
+     },
+     {
+      "text": "I hate that there are 'limited blocks'",
+      "translation": null,
+      "rating": 4,
+      "review_id": "13324045298"
+     }
+    ],
+    "priority": 0.06627174396496527
+   },
+   {
+    "id": "c_ai_quality",
+    "name": "AI quality & limits",
+    "definition": "The AI itself disappoints: wrong or poor answers, usage/credit limits, AI being paywalled or too expensive, specific AI tools not working.",
+    "n_reviews": 52,
+    "prevalence": 0.045494313210848646,
+    "prevalence_ci": [
+     0.03486054697491693,
+     0.059172902889712414
+    ],
+    "mean_rating": 2.3076923076923075,
+    "rating_impact": -0.8646266657265742,
+    "rating_impact_ci": [
+     -1.26143016534824,
+     -0.4678231661049083
+    ],
+    "quotes": [
+     {
+      "text": "However, the free usage is limited to 20 messages and it will not reset after it runs out, which can be restrictive for active users.",
+      "translation": null,
+      "rating": 4,
+      "review_id": "13676492918"
+     },
+     {
+      "text": "The AI and creation aspects need heavy attention and upgrade if they plan on keeping me as a paid subscription customer.",
+      "translation": null,
+      "rating": 3,
+      "review_id": "13811135831"
+     },
+     {
+      "text": "The \"Continue writing\" AI feature was gold, but now it only makes an appearance in my app every blue moon.",
+      "translation": null,
+      "rating": 2,
+      "review_id": "13988267868"
+     }
+    ],
+    "priority": 0.0393355963410165
+   },
+   {
+    "id": "c_data_loss",
+    "name": "Data loss",
+    "definition": "Notes, pages, text or edits disappear, get deleted or overwritten, or cannot be recovered.",
+    "n_reviews": 32,
+    "prevalence": 0.02799650043744532,
+    "prevalence_ci": [
+     0.01990016531862254,
+     0.03925488030595403
+    ],
+    "mean_rating": 1.875,
+    "rating_impact": -1.2942169216921693,
+    "rating_impact_ci": [
+     -1.7415140965715874,
+     -0.8469197468127512
+    ],
+    "quotes": [
+     {
+      "text": "I don't know what they did, but they need to fix it because I have important notes that I know for a fact I saved.",
+      "translation": null,
+      "rating": 1,
+      "review_id": "13985711841"
+     },
+     {
+      "text": "As of (at least) a few weeks ago, the iOS app is not correctly saving new notes I create in my notes database.",
+      "translation": null,
+      "rating": 1,
+      "review_id": "13282986327"
+     },
+     {
+      "text": "Content ideas there but every detail in the comments was wiped clean.",
+      "translation": null,
+      "rating": 2,
+      "review_id": "13261957466"
+     }
+    ],
+    "priority": 0.036233544614303954
+   },
+   {
+    "id": "c_account",
+    "name": "Account & login",
+    "definition": "Cannot log in, sign-in or password-reset loops, being logged out, account access or workspace access problems.",
+    "n_reviews": 23,
+    "prevalence": 0.020122484689413824,
+    "prevalence_ci": [
+     0.01344557885377127,
+     0.03001418486278156
+    ],
+    "mean_rating": 1.608695652173913,
+    "rating_impact": -1.555590062111801,
+    "rating_impact_ci": [
+     -2.012001836489789,
+     -1.099178287733813
+    ],
+    "quotes": [
+     {
+      "text": "Good, but it's locking my out of my own account.",
+      "translation": null,
+      "rating": 3,
+      "review_id": "14335706045"
+     },
+     {
+      "text": "it's nice but all of a sudden it stopped letting me in.",
+      "translation": null,
+      "rating": 2,
+      "review_id": "14591835305"
+     },
+     {
+      "text": "As mentioned in title, can't go beyond login screen So many login option but none of them is working.",
+      "translation": null,
+      "rating": 1,
+      "review_id": "13663293796"
+     }
+    ],
+    "priority": 0.031302337207849015
+   },
+   {
+    "id": "c_support",
+    "name": "Customer support",
+    "definition": "Support is unresponsive, unhelpful or hard to reach (human or bot).",
+    "n_reviews": 27,
+    "prevalence": 0.023622047244094488,
+    "prevalence_ci": [
+     0.016284554815184198,
+     0.03415088974937918
+    ],
+    "mean_rating": 1.8518518518518519,
+    "rating_impact": -1.3121266427718041,
+    "rating_impact_ci": [
+     -1.7834563157291148,
+     -0.8407969698144935
+    ],
+    "quotes": [
+     {
+      "text": "The big shock was that whenever I've run into trouble, I heard back from the development / support team immediately with a fix.",
+      "translation": null,
+      "rating": 5,
+      "review_id": "14195858314"
+     },
+     {
+      "text": "While customer support is fast, it's likely a bot coz they don't seem to understand the issue and mostly just kicks it to \"engineering\" without any workarounds or understanding.",
+      "translation": null,
+      "rating": 2,
+      "review_id": "14027073414"
+     },
+     {
+      "text": "But the dev team's inability to promptly resolve glaring issues is a concern.",
+      "translation": null,
+      "rating": 2,
+      "review_id": "14115133407"
+     }
+    ],
+    "priority": 0.030995117545790648
+   },
+   {
+    "id": "c_sync_offline",
+    "name": "Sync & offline access",
+    "definition": "Content not syncing between devices, sync conflicts or delays, no or poor offline mode.",
+    "n_reviews": 21,
+    "prevalence": 0.01837270341207349,
+    "prevalence_ci": [
+     0.012047881889987871,
+     0.027924041402559684
+    ],
+    "mean_rating": 2.5714285714285716,
+    "rating_impact": -0.5720651897122484,
+    "rating_impact_ci": [
+     -1.1653393430116123,
+     0.02120896358711566
+    ],
+    "quotes": [
+     {
+      "text": "My main concern, however, is that I'm unable to access my notes without a Wi-Fi or cellular connection.",
+      "translation": null,
+      "rating": 3,
+      "review_id": "13860685015"
+     },
+     {
+      "text": "If you don't have it opened together it disorganizes your information you wrote down.",
+      "translation": null,
+      "rating": 1,
+      "review_id": "13861295893"
+     },
+     {
+      "text": "App is showing offline even after there is network",
+      "translation": null,
+      "rating": 4,
+      "review_id": "13477029075"
+     }
+    ],
+    "priority": 0.010510384062954695
+   },
+   {
+    "id": "c_localisation",
+    "name": "Localisation & language support",
+    "definition": "Missing interface languages, right-to-left (Arabic/Hebrew) text problems, poor support for non-English content.",
+    "n_reviews": 6,
+    "prevalence": 0.005249343832020997,
+    "prevalence_ci": [
+     0.0024079756805414788,
+     0.011405144431966503
+    ],
+    "mean_rating": 2.1666666666666665,
+    "rating_impact": -0.9714160070360598,
+    "rating_impact_ci": [
+     -2.5150792347781383,
+     0.5722472207060185
+    ],
+    "quotes": [
+     {
+      "text": "Notion still doesn't support RTL (right-to-left) text for Persian, Hebrew, and other RTL languages!",
+      "translation": null,
+      "rating": 2,
+      "review_id": "13375049725"
+     },
+     {
+      "text": "\u0647\u0630\u0627 \u064a\u0633\u0628\u0628 \u0625\u062d\u0628\u0627\u0637\u064b\u0627 \u0648\u064a\u062c\u0628\u0631 \u0627\u0644\u0628\u0639\u0636 \u0639\u0644\u0649 \u0627\u0644\u062a\u0648\u0642\u0641 \u0639\u0646 \u0627\u0633\u062a\u062e\u062f\u0627\u0645 \u0627\u0644\u062a\u0637\u0628\u064a\u0642. -",
+      "translation": "and Iraq. I gave the app one star for being I couldn\u2019t use it or try it! Due to the problem of Arabic text orientation (RTL) and due to the lack of Arabic interface (Arabic UI), we analyze the problem and the solution that developers should adopt. Description of the problem (Issue Description): Arab users suffer from the heart of the curvature and deformation of the lecture while writing in Arabic within the Notion. Errors occur especially when inserting short English words within an Arabic line, resulting in a disturbance in the direction of the text and inconsistency in presentation. - Steps to Reproduction: 1 is Write an Arabic line starting with an Arabic letter. 2nd Add an English term between two words after the Arabic word, such as: My name is Ahmed and the house of Baghdad. Three Notice the change in the direction of the slide or the blending of the slider to the right and the slider, especially when copying or modifying the slide. Current Result (Actual Result) Disturbance in the direction of the movement and disturbance of the spine, which makes it difficult to read, write and coordinate. Expected Results (Expected Results) The Arabic text direction from right to left (RTL) is stable even with short English phrases within the thread, with a stable and reliable syntax. The impact is: The Arab user\u2019s writing experience is negatively affected, and it is difficult to use Notion to manage daily or professional content. This causes annoyance and forces some to stop using the app. The Environment (The Environment) The Arabic language (Arabic) The problem appears both on the web and on the mobile app, according to user observations. Examples for example: My name is Ahmed and the house of Baghdad. Script and Key Points. Request for Improvement: 1 is Full support for left-to-right Arabic text (RTL) within the editor. 2nd Add an Arabic UI option in Settings. Three Improve the handling of short English phrases within the Arabic language without corrupting the trend. Additional notes (Additional notes) Prefer to provide preparation to force the paragraph direction in Arabic when needed, and a quick coordination option ensures that there is no trend heart even with symbols and links.",
+      "rating": 1,
+      "review_id": "13308812622"
+     },
+     {
+      "text": "theres no Turkish language.",
+      "translation": null,
+      "rating": 2,
+      "review_id": "13971294764"
+     }
+    ],
+    "priority": 0.005099296624861206
+   },
+   {
+    "id": "c_learning_curve",
+    "name": "Learning curve & onboarding",
+    "definition": "The app is hard to learn or get started with: steep learning curve, overwhelming at first, unclear how to begin, poor onboarding or guidance.",
+    "n_reviews": 65,
+    "prevalence": 0.0568678915135608,
+    "prevalence_ci": [
+     0.04486683071347916,
+     0.07183758190718448
+    ],
+    "mean_rating": 3.2,
+    "rating_impact": 0.07105751391465676,
+    "rating_impact_ci": [
+     -0.3808521031234593,
+     0.5229671309527728
+    ],
+    "quotes": [
+     {
+      "text": "My problem with Notion is the set up on the emergency.",
+      "translation": null,
+      "rating": 5,
+      "review_id": "13929845032"
+     },
+     {
+      "text": "I've seen people do wonderful things for this app, but I don't see enough guidance within the app itself to show me how to do those wonderful things so I'm frustrated",
+      "translation": null,
+      "rating": 3,
+      "review_id": "14366655168"
+     },
+     {
+      "text": "A lot of users complain about how hard the app formatting is, personally I didn't struggle with it.",
+      "translation": null,
+      "rating": 5,
+      "review_id": "14570135911"
+     }
+    ],
+    "priority": -0.004040890992522038
+   }
+  ],
+  "praise": [
+   {
+    "id": "p_versatility",
+    "name": "Versatility & use cases",
+    "definition": "Works for many purposes (school, work, business, personal, creative); all-in-one workspace; adapts to the user's workflow.",
+    "n_reviews": 249,
+    "prevalence": 0.2178477690288714,
+    "prevalence_ci": [
+     0.19488404418975178,
+     0.24270168743939732
+    ],
+    "mean_rating": 4.526104417670683,
+    "rating_impact": 1.7811379747176628,
+    "rating_impact_ci": [
+     1.6100312105086463,
+     1.9522447389266793
+    ],
+    "quotes": [
+     {
+      "text": "I've saved so many instagram videos.",
+      "translation": null,
+      "rating": 5,
+      "review_id": "13506394010"
+     },
+     {
+      "text": "Notion is flexible and powerful.",
+      "translation": null,
+      "rating": 5,
+      "review_id": "13517952384"
+     },
+     {
+      "text": "All my life's most important work lives on Notion.",
+      "translation": null,
+      "rating": 5,
+      "review_id": "13638247394"
+     }
+    ]
+   },
+   {
+    "id": "p_organisation",
+    "name": "Organisation & structure",
+    "definition": "Structuring and organising notes, tasks, projects or life; databases, hierarchy, a 'second brain'.",
+    "n_reviews": 207,
+    "prevalence": 0.18110236220472442,
+    "prevalence_ci": [
+     0.1598568481076298,
+     0.2044842346174085
+    ],
+    "mean_rating": 4.657004830917875,
+    "rating_impact": 1.8610646599777039,
+    "rating_impact_ci": [
+     1.6969921499231961,
+     2.0251371700322114
+    ],
+    "quotes": [
+     {
+      "text": "Notion actually got me to organise and plan EVERYTHING.",
+      "translation": null,
+      "rating": 5,
+      "review_id": "13358560283"
+     },
+     {
+      "text": "I've been using this app to store my notes in a systematic way and this app has been very helpful.",
+      "translation": null,
+      "rating": 5,
+      "review_id": "13484991835"
+     },
+     {
+      "text": "Notion has really helped me stay on track.",
+      "translation": null,
+      "rating": 5,
+      "review_id": "13576817745"
+     }
+    ]
+   },
+   {
+    "id": "p_ease_of_use",
+    "name": "Ease of use & design",
+    "definition": "Easy to use, intuitive, clean and beautiful interface.",
+    "n_reviews": 94,
+    "prevalence": 0.08223972003499562,
+    "prevalence_ci": [
+     0.06767742001913488,
+     0.09960067874960526
+    ],
+    "mean_rating": 4.0638297872340425,
+    "rating_impact": 1.0142587672149768,
+    "rating_impact_ci": [
+     0.6972023557849187,
+     1.3313151786450348
+    ],
+    "quotes": [
+     {
+      "text": "It's so crucial for quickly navigating your favorites.",
+      "translation": null,
+      "rating": 1,
+      "review_id": "13795049221"
+     },
+     {
+      "text": "It feels smooth, looks great, and keeps me on track.",
+      "translation": null,
+      "rating": 5,
+      "review_id": "14149235767"
+     },
+     {
+      "text": "Easy to use and like how you can share it with other people so everyone's on the same page",
+      "translation": null,
+      "rating": 5,
+      "review_id": "14235914418"
+     }
+    ]
+   },
+   {
+    "id": "p_performance",
+    "name": "Reliability, sync & platforms",
+    "definition": "Works reliably and fast, syncs across devices, good desktop/mobile apps.",
+    "n_reviews": 77,
+    "prevalence": 0.0673665791776028,
+    "prevalence_ci": [
+     0.05423664291979334,
+     0.08339481224490196
+    ],
+    "mean_rating": 3.2987012987012987,
+    "rating_impact": 0.17768816549304356,
+    "rating_impact_ci": [
+     -0.20794273602080876,
+     0.5633190670068959
+    ],
+    "quotes": [
+     {
+      "text": "Moved hundreds (All) of my notes to Notion in a few hours.",
+      "translation": null,
+      "rating": 5,
+      "review_id": "13974671080"
+     },
+     {
+      "text": "This important thing is it saves in real time as you go.",
+      "translation": null,
+      "rating": 5,
+      "review_id": "14137553410"
+     },
+     {
+      "text": "I imported over s hundred notes from Evernote via the desktop app.",
+      "translation": null,
+      "rating": 1,
+      "review_id": "14530736987"
+     }
+    ]
+   },
+   {
+    "id": "p_ai",
+    "name": "AI features & integrations",
+    "definition": "Praise for Notion AI or integrations with external AI (Claude, ChatGPT).",
+    "n_reviews": 71,
+    "prevalence": 0.0621172353455818,
+    "prevalence_ci": [
+     0.0495378100567911,
+     0.07763012383588834
+    ],
+    "mean_rating": 4.422535211267606,
+    "rating_impact": 1.3749605844019341,
+    "rating_impact_ci": [
+     1.0625226543985737,
+     1.6873985144052945
+    ],
+    "quotes": [
+     {
+      "text": "I love that it has context of my entire workspace and access to the latest state of the art models.",
+      "translation": null,
+      "rating": 5,
+      "review_id": "13267323643"
+     },
+     {
+      "text": "the ai is a helpful tool for when you need to research while writing.",
+      "translation": null,
+      "rating": 4,
+      "review_id": "13695498680"
+     },
+     {
+      "text": "It's incredibly helpful and makes my workflow so much smoother.",
+      "translation": null,
+      "rating": 3,
+      "review_id": "13800709251"
+     }
+    ]
+   },
+   {
+    "id": "p_customisation",
+    "name": "Customisation & templates",
+    "definition": "Templates, customising pages, layouts and the look of the workspace.",
+    "n_reviews": 50,
+    "prevalence": 0.04374453193350831,
+    "prevalence_ci": [
+     0.033337457546580226,
+     0.05720815189404384
+    ],
+    "mean_rating": 4.46,
+    "rating_impact": 1.38772186642269,
+    "rating_impact_ci": [
+     1.0569420631737367,
+     1.7185016696716433
+    ],
+    "quotes": [
+     {
+      "text": "This is hands down one of the most customisable apps you can literally build/ use to suit your life.",
+      "translation": null,
+      "rating": 5,
+      "review_id": "13865533706"
+     },
+     {
+      "text": "but laptop opens much more possibilities in terms of customization which really ignites the creative spark in me too.",
+      "translation": null,
+      "rating": 5,
+      "review_id": "14391608992"
+     },
+     {
+      "text": "Templates are so helpful!",
+      "translation": null,
+      "rating": 5,
+      "review_id": "14612072498"
+     }
+    ]
+   },
+   {
+    "id": "p_pricing",
+    "name": "Free tier & value",
+    "definition": "The free plan is generous, good value for money, student/education plans.",
+    "n_reviews": 40,
+    "prevalence": 0.03499562554680665,
+    "prevalence_ci": [
+     0.025804011905741442,
+     0.047302395414856244
+    ],
+    "mean_rating": 4.75,
+    "rating_impact": 1.6756572982774252,
+    "rating_impact_ci": [
+     1.399128840901713,
+     1.9521857556531372
+    ],
+    "quotes": [
+     {
+      "text": "Notion premium has been so worth the investment for me.",
+      "translation": null,
+      "rating": 5,
+      "review_id": "13810404686"
+     },
+     {
+      "text": "Such an amazing free app.",
+      "translation": null,
+      "rating": 5,
+      "review_id": "13726896385"
+     },
+     {
+      "text": "I love its functionality and just the fact being free, is a gift for a great tool like this!",
+      "translation": null,
+      "rating": 5,
+      "review_id": "14093898659"
+     }
+    ]
+   },
+   {
+    "id": "p_support_community",
+    "name": "Support & community",
+    "definition": "Helpful customer support, tutorials, community templates and resources.",
+    "n_reviews": 11,
+    "prevalence": 0.009623797025371828,
+    "prevalence_ci": [
+     0.005382174742706391,
+     0.017150546429814784
+    ],
+    "mean_rating": 4.2727272727272725,
+    "rating_impact": 1.150819145518792,
+    "rating_impact_ci": [
+     0.29271060968689466,
+     2.008927681350689
+    ],
+    "quotes": [
+     {
+      "text": "There is a great deal of support both from notion as well as from the community.",
+      "translation": null,
+      "rating": 5,
+      "review_id": "13339806818"
+     },
+     {
+      "text": "I genuinely can't express how relieved and grateful I was.",
+      "translation": null,
+      "rating": 5,
+      "review_id": "14295440722"
+     },
+     {
+      "text": "\ud83e\udd29\ud83e\udd2a\ud83d\ude0e\ud83e\udd13\ud83e\udd78. I love how you can see other people ideas \ud83e\udd29",
+      "translation": null,
+      "rating": 4,
+      "review_id": "14105566349"
+     }
+    ]
+   }
+  ],
+  "coverage": {
+   "reviews_with_a_theme": 1054,
+   "share": 0.9221347331583553
+  },
+  "source": "Qwen/Qwen3.8-27B-FP8",
+  "method": "Sentence-level themes from a human-approved taxonomy (data/themes.json); labels by Qwen/Qwen3.8-27B-FP8; impact = mean stars of reviews mentioning the theme minus the rest (Welch 95% CI)",
+  "unassigned": {
+   "complaint_sentences": 2579,
+   "unassigned": 445,
+   "share": 0.17254749903063202,
+   "top_words": [
+    {
+     "word": "fix",
+     "sentences": 24
+    },
+    {
+     "word": "years",
+     "sentences": 12
+    },
+    {
+     "word": "better",
+     "sentences": 11
+    },
+    {
+     "word": "notes",
+     "sentences": 10
+    },
+    {
+     "word": "needs",
+     "sentences": 9
+    },
+    {
+     "word": "issue",
+     "sentences": 9
+    },
+    {
+     "word": "fixed",
+     "sentences": 8
+    },
+    {
+     "word": "point",
+     "sentences": 8
+    },
+    {
+     "word": "wish",
+     "sentences": 8
+    },
+    {
+     "word": "issues",
+     "sentences": 7
+    },
+    {
+     "word": "frustrating",
+     "sentences": 7
+    },
+    {
+     "word": "writing",
+     "sentences": 7
+    }
+   ],
+   "examples": [
+    {
+     "text": "If this can get fixed then the app would easily go back up to 5 stars.",
+     "rating": 3,
+     "review_id": "13532191895"
+    },
+    {
+     "text": "I've been very pleased with motion the past few years, but recently I've run into a problem.",
+     "rating": 4,
+     "review_id": "13725840419"
+    },
+    {
+     "text": "I have so much data here I almost have to use it - but in the back of my mind I kind of want out.",
+     "rating": 2,
+     "review_id": "14101025279"
+    },
+    {
+     "text": "1 star because it interrupted what I was doing for a review",
+     "rating": 1,
+     "review_id": "14640806898"
+    },
+    {
+     "text": "Feel free to let me know when you fix this cause I wish I could use this app.",
+     "rating": 1,
+     "review_id": "14643562276"
+    },
+    {
+     "text": "I hope you as a company take my experience into account as a user of four years to improve your app.",
+     "rating": 3,
+     "review_id": "13311571872"
+    },
+    {
+     "text": "GREAT APP but... This app used to be my absolute favorite.",
+     "rating": 2,
+     "review_id": "13347478332"
+    },
+    {
+     "text": "It is such an inconvenience of a good app.",
+     "rating": 1,
+     "review_id": "13402644382"
+    }
+   ],
+   "note": "Complaint sentences no theme covers. A rising share or a new recurring word is the trigger to refresh the taxonomy."
+  }
+ },
+ "theme_change": {
+  "base": "A (random, last 12 months) before B's window",
+  "n_base": 270,
+  "target": "B (100 most recent)",
+  "n_target": 100,
+  "b_window_start": "2026-08-25",
+  "themes": [
+   {
+    "id": "c_stability",
+    "kind": "complaint",
+    "name": "App stability & crashes",
+    "base_share": 0.12962962962962962,
+    "target_share": 0.14,
+    "base_ci": [
+     0.09470390151818794,
+     0.17494649816451321
+    ],
+    "target_ci": [
+     0.08526343659939134,
+     0.22137188210963837
+    ],
+    "diff": 0.010370370370370391,
+    "z": 0.26135237743284573,
+    "p": 0.7938207783237667,
+    "q": 0.9851375516893303,
+    "status": "persistent"
+   },
+   {
+    "id": "c_performance",
+    "kind": "complaint",
+    "name": "Performance & loading speed",
+    "base_share": 0.08888888888888889,
+    "target_share": 0.12,
+    "base_ci": [
+     0.06046010562330504,
+     0.1288518380244933
+    ],
+    "target_ci": [
+     0.06999406437019488,
+     0.19812099426711421
+    ],
+    "diff": 0.031111111111111103,
+    "z": 0.8967549491917941,
+    "p": 0.3698496921981481,
+    "q": 0.8086213781745554,
+    "status": "persistent"
+   },
+   {
+    "id": "c_ipad",
+    "kind": "complaint",
+    "name": "iPad-specific issues",
+    "base_share": 0.07407407407407407,
+    "target_share": 0.14,
+    "base_ci": [
+     0.04846034055525452,
+     0.11163761907985184
+    ],
+    "target_ci": [
+     0.08526343659939134,
+     0.22137188210963837
+    ],
+    "diff": 0.06592592592592594,
+    "z": 1.9495298312468743,
+    "p": 0.051232183875509374,
+    "q": 0.6404022984438672,
+    "status": "persistent"
+   },
+   {
+    "id": "c_mobile",
+    "kind": "complaint",
+    "name": "iPhone / mobile app experience",
+    "base_share": 0.1259259259259259,
+    "target_share": 0.12,
+    "base_ci": [
+     0.09153025540293111,
+     0.17081664827659707
+    ],
+    "target_ci": [
+     0.06999406437019488,
+     0.19812099426711421
+    ],
+    "diff": -0.005925925925925918,
+    "z": -0.15342196530284333,
+    "p": 0.878065524135712,
+    "q": 0.9851375516893303,
+    "status": "persistent"
+   },
+   {
+    "id": "c_ai_intrusive",
+    "kind": "complaint",
+    "name": "AI forced / intrusive",
+    "base_share": 0.09259259259259259,
+    "target_share": 0.13,
+    "base_ci": [
+     0.06350416536271027,
+     0.13311127428826103
+    ],
+    "target_ci": [
+     0.07757167427240512,
+     0.20980351440076428
+    ],
+    "diff": 0.03740740740740742,
+    "z": 1.0526391383979015,
+    "p": 0.2925064122346148,
+    "q": 0.8086213781745554,
+    "status": "persistent"
+   },
+   {
+    "id": "c_ai_quality",
+    "kind": "complaint",
+    "name": "AI quality & limits",
+    "base_share": 0.05185185185185185,
+    "target_share": 0.04,
+    "base_ci": [
+     0.03113505350079201,
+     0.0851419301152764
+    ],
+    "target_ci": [
+     0.01566330399154762,
+     0.0983707143588792
+    ],
+    "diff": -0.01185185185185185,
+    "z": -0.47061024133753926,
+    "p": 0.6379190927891603,
+    "q": 0.9851375516893303,
+    "status": "no significant change"
+   },
+   {
+    "id": "c_ui_ux",
+    "kind": "complaint",
+    "name": "UI / UX & usability",
+    "base_share": 0.07777777777777778,
+    "target_share": 0.11,
+    "base_ci": [
+     0.05143170085009249,
+     0.11596975478818686
+    ],
+    "target_ci": [
+     0.06254196357064568,
+     0.18631296503080313
+    ],
+    "diff": 0.03222222222222222,
+    "z": 0.9792755090792611,
+    "p": 0.32744386808044457,
+    "q": 0.8086213781745554,
+    "status": "persistent"
+   },
+   {
+    "id": "c_learning_curve",
+    "kind": "complaint",
+    "name": "Learning curve & onboarding",
+    "base_share": 0.05555555555555555,
+    "target_share": 0.06,
+    "base_ci": [
+     0.03395302728618324,
+     0.08962745233305817
+    ],
+    "target_ci": [
+     0.027786123963188192,
+     0.1247681544589592
+    ],
+    "diff": 0.004444444444444445,
+    "z": 0.16408839427892374,
+    "p": 0.8696615580023872,
+    "q": 0.9851375516893303,
+    "status": "persistent"
+   },
+   {
+    "id": "c_sync_offline",
+    "kind": "complaint",
+    "name": "Sync & offline access",
+    "base_share": 0.014814814814814815,
+    "target_share": 0.0,
+    "base_ci": [
+     0.005775877859582057,
+     0.037466145724756476
+    ],
+    "target_ci": [
+     3.469446951953614e-18,
+     0.03699349820698568
+    ],
+    "diff": -0.014814814814814815,
+    "z": -1.2237943192889489,
+    "p": 0.22102982785017,
+    "q": 0.8086213781745554,
+    "status": "no significant change"
+   },
+   {
+    "id": "c_data_loss",
+    "kind": "complaint",
+    "name": "Data loss",
+    "base_share": 0.014814814814814815,
+    "target_share": 0.03,
+    "base_ci": [
+     0.005775877859582057,
+     0.037466145724756476
+    ],
+    "target_ci": [
+     0.010254524024038925,
+     0.0845193642905276
+    ],
+    "diff": 0.015185185185185184,
+    "z": 0.9521393283068892,
+    "p": 0.341026325855332,
+    "q": 0.8086213781745554,
+    "status": "no significant change"
+   },
+   {
+    "id": "c_pricing",
+    "kind": "complaint",
+    "name": "Pricing & subscriptions",
+    "base_share": 0.04814814814814815,
+    "target_share": 0.06,
+    "base_ci": [
+     0.028350915878327814,
+     0.08062257173456762
+    ],
+    "target_ci": [
+     0.027786123963188192,
+     0.1247681544589592
+    ],
+    "diff": 0.01185185185185185,
+    "z": 0.4587104136093326,
+    "p": 0.6464421349177877,
+    "q": 0.9851375516893303,
+    "status": "no significant change"
+   },
+   {
+    "id": "c_account",
+    "kind": "complaint",
+    "name": "Account & login",
+    "base_share": 0.02962962962962963,
+    "target_share": 0.03,
+    "base_ci": [
+     0.015088733874431985,
+     0.05736727372259851
+    ],
+    "target_ci": [
+     0.010254524024038925,
+     0.0845193642905276
+    ],
+    "diff": 0.00037037037037036813,
+    "z": 0.0186283939218865,
+    "p": 0.9851375516893304,
+    "q": 0.9851375516893303,
+    "status": "no significant change"
+   },
+   {
+    "id": "c_updates_compat",
+    "kind": "complaint",
+    "name": "Updates & compatibility",
+    "base_share": 0.09259259259259259,
+    "target_share": 0.09,
+    "base_ci": [
+     0.06350416536271027,
+     0.13311127428826103
+    ],
+    "target_ci": [
+     0.04807254000256516,
+     0.1622621285271631
+    ],
+    "diff": -0.002592592592592591,
+    "z": -0.07666690347600061,
+    "p": 0.9388885342201132,
+    "q": 0.9851375516893303,
+    "status": "persistent"
+   },
+   {
+    "id": "c_typing_editing",
+    "kind": "complaint",
+    "name": "Typing & text editing",
+    "base_share": 0.05925925925925926,
+    "target_share": 0.15,
+    "base_ci": [
+     0.03680188195465954,
+     0.09408209366775487
+    ],
+    "target_ci": [
+     0.0930598528365663,
+     0.23283559590832364
+    ],
+    "diff": 0.09074074074074073,
+    "z": 2.7977207782578266,
+    "p": 0.005146458148347512,
+    "q": 0.12866145370868778,
+    "status": "rising signal (unconfirmed)"
+   },
+   {
+    "id": "c_support",
+    "kind": "complaint",
+    "name": "Customer support",
+    "base_share": 0.011111111111111112,
+    "target_share": 0.01,
+    "base_ci": [
+     0.003785840092852641,
+     0.03215268748831291
+    ],
+    "target_ci": [
+     0.0017674320641406505,
+     0.054486196178705315
+    ],
+    "diff": -0.0011111111111111113,
+    "z": -0.09178457394667118,
+    "p": 0.9268692005288645,
+    "q": 0.9851375516893303,
+    "status": "no significant change"
+   },
+   {
+    "id": "c_localisation",
+    "kind": "complaint",
+    "name": "Localisation & language support",
+    "base_share": 0.007407407407407408,
+    "target_share": 0.0,
+    "base_ci": [
+     0.0020337342875902976,
+     0.02660129729040226
+    ],
+    "target_ci": [
+     3.469446951953614e-18,
+     0.03699349820698568
+    ],
+    "diff": -0.007407407407407408,
+    "z": -0.862998554828495,
+    "p": 0.3881382615237866,
+    "q": 0.8086213781745554,
+    "status": "no significant change"
+   },
+   {
+    "id": "c_feature_gaps",
+    "kind": "complaint",
+    "name": "Missing features & feature bugs",
+    "base_share": 0.11851851851851852,
+    "target_share": 0.12,
+    "base_ci": [
+     0.08521541485978879,
+     0.16252449681339343
+    ],
+    "target_ci": [
+     0.06999406437019488,
+     0.19812099426711421
+    ],
+    "diff": 0.0014814814814814725,
+    "z": 0.039097035893974896,
+    "p": 0.96881302417802,
+    "q": 0.9851375516893303,
+    "status": "persistent"
+   },
+   {
+    "id": "p_organisation",
+    "kind": "praise",
+    "name": "Organisation & structure",
+    "base_share": 0.18518518518518517,
+    "target_share": 0.14,
+    "base_ci": [
+     0.14338219314391326,
+     0.2358206465863827
+    ],
+    "target_ci": [
+     0.08526343659939134,
+     0.22137188210963837
+    ],
+    "diff": -0.04518518518518516,
+    "z": -1.0205354855750188,
+    "p": 0.3074745686218928,
+    "q": 0.8086213781745554,
+    "status": "no significant change"
+   },
+   {
+    "id": "p_versatility",
+    "kind": "praise",
+    "name": "Versatility & use cases",
+    "base_share": 0.23703703703703705,
+    "target_share": 0.16,
+    "base_ci": [
+     0.19022257178226634,
+     0.29122921199245155
+    ],
+    "target_ci": [
+     0.10095288488804782,
+     0.24420269389270244
+    ],
+    "diff": -0.07703703703703704,
+    "z": -1.5985945295750355,
+    "p": 0.10991072603597386,
+    "q": 0.8086213781745554,
+    "status": "no significant change"
+   },
+   {
+    "id": "p_ai",
+    "kind": "praise",
+    "name": "AI features & integrations",
+    "base_share": 0.040740740740740744,
+    "target_share": 0.07,
+    "base_ci": [
+     0.022898792510834234,
+     0.07146770309571522
+    ],
+    "target_ci": [
+     0.03431926106727268,
+     0.137495147390735
+    ],
+    "diff": 0.029259259259259263,
+    "z": 1.1618190333020504,
+    "p": 0.24530898106061738,
+    "q": 0.8086213781745554,
+    "status": "no significant change"
+   },
+   {
+    "id": "p_customisation",
+    "kind": "praise",
+    "name": "Customisation & templates",
+    "base_share": 0.04814814814814815,
+    "target_share": 0.04,
+    "base_ci": [
+     0.028350915878327814,
+     0.08062257173456762
+    ],
+    "target_ci": [
+     0.01566330399154762,
+     0.0983707143588792
+    ],
+    "diff": -0.008148148148148147,
+    "z": -0.332452686977205,
+    "p": 0.7395474601741494,
+    "q": 0.9851375516893303,
+    "status": "no significant change"
+   },
+   {
+    "id": "p_pricing",
+    "kind": "praise",
+    "name": "Free tier & value",
+    "base_share": 0.037037037037037035,
+    "target_share": 0.04,
+    "base_ci": [
+     0.02024003752175542,
+     0.06682296208162104
+    ],
+    "target_ci": [
+     0.01566330399154762,
+     0.0983707143588792
+    ],
+    "diff": 0.002962962962962966,
+    "z": 0.13265387783595511,
+    "p": 0.8944671205496291,
+    "q": 0.9851375516893303,
+    "status": "no significant change"
+   },
+   {
+    "id": "p_performance",
+    "kind": "praise",
+    "name": "Reliability, sync & platforms",
+    "base_share": 0.07037037037037037,
+    "target_share": 0.09,
+    "base_ci": [
+     0.0455101034111534,
+     0.10728436022077999
+    ],
+    "target_ci": [
+     0.04807254000256516,
+     0.1622621285271631
+    ],
+    "diff": 0.019629629629629622,
+    "z": 0.6340197416713345,
+    "p": 0.5260679385014936,
+    "q": 0.9394070330383814,
+    "status": "no significant change"
+   },
+   {
+    "id": "p_ease_of_use",
+    "kind": "praise",
+    "name": "Ease of use & design",
+    "base_share": 0.05185185185185185,
+    "target_share": 0.08,
+    "base_ci": [
+     0.03113505350079201,
+     0.0851419301152764
+    ],
+    "target_ci": [
+     0.041093461484380624,
+     0.14998107700948735
+    ],
+    "diff": 0.02814814814814815,
+    "z": 1.016790804251625,
+    "p": 0.3092529576025317,
+    "q": 0.8086213781745554,
+    "status": "no significant change"
+   },
+   {
+    "id": "p_support_community",
+    "kind": "praise",
+    "name": "Support & community",
+    "base_share": 0.003703703703703704,
+    "target_share": 0.01,
+    "base_ci": [
+     0.0006540941063273003,
+     0.02067744146849227
+    ],
+    "target_ci": [
+     0.0017674320641406505,
+     0.054486196178705315
+    ],
+    "diff": 0.006296296296296296,
+    "z": 0.7335487716042207,
+    "p": 0.4632237927460525,
+    "q": 0.890814986050101,
+    "status": "no significant change"
+   }
+  ]
+ },
+ "theme_monthly": [
+  {
+   "month": "2025-10",
+   "n": 57,
+   "c_stability": 0.17543859649122806,
+   "c_ai_intrusive": 0.08771929824561403,
+   "c_mobile": 0.08771929824561403,
+   "c_ui_ux": 0.17543859649122806
+  },
+  {
+   "month": "2025-11",
+   "n": 94,
+   "c_stability": 0.19148936170212766,
+   "c_ai_intrusive": 0.06382978723404255,
+   "c_mobile": 0.13829787234042554,
+   "c_ui_ux": 0.0425531914893617
+  },
+  {
+   "month": "2025-12",
+   "n": 92,
+   "c_stability": 0.09782608695652174,
+   "c_ai_intrusive": 0.021739130434782608,
+   "c_mobile": 0.11956521739130435,
+   "c_ui_ux": 0.10869565217391304
+  },
+  {
+   "month": "2026-01",
+   "n": 123,
+   "c_stability": 0.1951219512195122,
+   "c_ai_intrusive": 0.0975609756097561,
+   "c_mobile": 0.0975609756097561,
+   "c_ui_ux": 0.0975609756097561
+  },
+  {
+   "month": "2026-02",
+   "n": 119,
+   "c_stability": 0.08403361344537816,
+   "c_ai_intrusive": 0.11764705882352941,
+   "c_mobile": 0.1092436974789916,
+   "c_ui_ux": 0.12605042016806722
+  },
+  {
+   "month": "2026-03",
+   "n": 123,
+   "c_stability": 0.12195121951219512,
+   "c_ai_intrusive": 0.17073170731707318,
+   "c_mobile": 0.17073170731707318,
+   "c_ui_ux": 0.13008130081300814
+  },
+  {
+   "month": "2026-04",
+   "n": 88,
+   "c_stability": 0.22727272727272727,
+   "c_ai_intrusive": 0.1590909090909091,
+   "c_mobile": 0.09090909090909091,
+   "c_ui_ux": 0.14772727272727273
+  },
+  {
+   "month": "2026-05",
+   "n": 111,
+   "c_stability": 0.16216216216216217,
+   "c_ai_intrusive": 0.06306306306306306,
+   "c_mobile": 0.11711711711711711,
+   "c_ui_ux": 0.09009009009009009
+  },
+  {
+   "month": "2026-06",
+   "n": 93,
+   "c_stability": 0.06451612903225806,
+   "c_ai_intrusive": 0.07526881720430108,
+   "c_mobile": 0.08602150537634409,
+   "c_ui_ux": 0.12903225806451613
+  },
+  {
+   "month": "2026-07",
+   "n": 86,
+   "c_stability": 0.08139534883720931,
+   "c_ai_intrusive": 0.08139534883720931,
+   "c_mobile": 0.08139534883720931,
+   "c_ui_ux": 0.05813953488372093
+  },
+  {
+   "month": "2026-08",
+   "n": 64,
+   "c_stability": 0.21875,
+   "c_ai_intrusive": 0.15625,
+   "c_mobile": 0.171875,
+   "c_ui_ux": 0.171875
+  },
+  {
+   "month": "2026-09",
+   "n": 68,
+   "c_stability": 0.14705882352941177,
+   "c_ai_intrusive": 0.1323529411764706,
+   "c_mobile": 0.08823529411764706,
+   "c_ui_ux": 0.10294117647058823
+  },
+  {
+   "month": "2026-10",
+   "n": 25,
+   "c_stability": 0.08,
+   "c_ai_intrusive": 0.12,
+   "c_mobile": 0.16,
+   "c_ui_ux": 0.16
+  }
+ ],
+ "theme_monthly_ids": [
+  "c_stability",
+  "c_ai_intrusive",
+  "c_mobile",
+  "c_ui_ux"
+ ],
+ "emerging_phrases": {
+  "available": true,
+  "n_recent": 99,
+  "n_earlier": 268,
+  "rising": [
+   {
+    "term": "add",
+    "z": 2.683330241043652,
+    "df_a": 10,
+    "df_b": 12,
+    "share_a": 0.10101010101010101,
+    "share_b": 0.04477611940298507
+   },
+   {
+    "term": "etc",
+    "z": 2.5422571820175537,
+    "df_a": 5,
+    "df_b": 1,
+    "share_a": 0.050505050505050504,
+    "share_b": 0.0037313432835820895
+   },
+   {
+    "term": "ipad",
+    "z": 2.539736450727891,
+    "df_a": 16,
+    "df_b": 20,
+    "share_a": 0.16161616161616163,
+    "share_b": 0.07462686567164178
+   },
+   {
+    "term": "mac",
+    "z": 2.3743733106417455,
+    "df_a": 4,
+    "df_b": 0,
+    "share_a": 0.04040404040404041,
+    "share_b": 0.0
+   },
+   {
+    "term": "bug",
+    "z": 2.3501746071001706,
+    "df_a": 9,
+    "df_b": 8,
+    "share_a": 0.09090909090909091,
+    "share_b": 0.029850746268656716
+   },
+   {
+    "term": "task",
+    "z": 2.303959491641165,
+    "df_a": 4,
+    "df_b": 10,
+    "share_a": 0.04040404040404041,
+    "share_b": 0.03731343283582089
+   },
+   {
+    "term": "list",
+    "z": 2.225531438294408,
+    "df_a": 5,
+    "df_b": 11,
+    "share_a": 0.050505050505050504,
+    "share_b": 0.041044776119402986
+   },
+   {
+    "term": "mess",
+    "z": 2.1529831962654655,
+    "df_a": 5,
+    "df_b": 2,
+    "share_a": 0.050505050505050504,
+    "share_b": 0.007462686567164179
+   },
+   {
+    "term": "color",
+    "z": 2.1487567980183617,
+    "df_a": 4,
+    "df_b": 1,
+    "share_a": 0.04040404040404041,
+    "share_b": 0.0037313432835820895
+   },
+   {
+    "term": "simple",
+    "z": 2.1343712024110544,
+    "df_a": 6,
+    "df_b": 7,
+    "share_a": 0.06060606060606061,
+    "share_b": 0.026119402985074626
+   }
+  ],
+  "falling": []
+ },
+ "themes_by_stars": {
+  "n_by_star": {
+   "1": 343,
+   "2": 144,
+   "3": 116,
+   "4": 98,
+   "5": 442
+  },
+  "themes": [
+   {
+    "id": "c_stability",
+    "name": "App stability & crashes",
+    "kind": "complaint",
+    "shares": {
+     "1": 0.20116618075801748,
+     "2": 0.3194444444444444,
+     "3": 0.25,
+     "4": 0.10204081632653061,
+     "5": 0.020361990950226245
+    }
+   },
+   {
+    "id": "c_performance",
+    "name": "Performance & loading speed",
+    "kind": "complaint",
+    "shares": {
+     "1": 0.12536443148688048,
+     "2": 0.1736111111111111,
+     "3": 0.14655172413793102,
+     "4": 0.09183673469387756,
+     "5": 0.004524886877828055
+    }
+   },
+   {
+    "id": "c_ipad",
+    "name": "iPad-specific issues",
+    "kind": "complaint",
+    "shares": {
+     "1": 0.13411078717201166,
+     "2": 0.1875,
+     "3": 0.15517241379310345,
+     "4": 0.09183673469387756,
+     "5": 0.004524886877828055
+    }
+   },
+   {
+    "id": "c_mobile",
+    "name": "iPhone / mobile app experience",
+    "kind": "complaint",
+    "shares": {
+     "1": 0.1661807580174927,
+     "2": 0.25,
+     "3": 0.11206896551724138,
+     "4": 0.21428571428571427,
+     "5": 0.011312217194570135
+    }
+   },
+   {
+    "id": "c_ai_intrusive",
+    "name": "AI forced / intrusive",
+    "kind": "complaint",
+    "shares": {
+     "1": 0.17784256559766765,
+     "2": 0.16666666666666666,
+     "3": 0.1810344827586207,
+     "4": 0.061224489795918366,
+     "5": 0.011312217194570135
+    }
+   },
+   {
+    "id": "c_ai_quality",
+    "name": "AI quality & limits",
+    "kind": "complaint",
+    "shares": {
+     "1": 0.0641399416909621,
+     "2": 0.05555555555555555,
+     "3": 0.09482758620689655,
+     "4": 0.061224489795918366,
+     "5": 0.011312217194570135
+    }
+   },
+   {
+    "id": "c_ui_ux",
+    "name": "UI / UX & usability",
+    "kind": "complaint",
+    "shares": {
+     "1": 0.16326530612244897,
+     "2": 0.18055555555555555,
+     "3": 0.21551724137931033,
+     "4": 0.17346938775510204,
+     "5": 0.011312217194570135
+    }
+   },
+   {
+    "id": "c_learning_curve",
+    "name": "Learning curve & onboarding",
+    "kind": "complaint",
+    "shares": {
+     "1": 0.061224489795918366,
+     "2": 0.041666666666666664,
+     "3": 0.034482758620689655,
+     "4": 0.07142857142857142,
+     "5": 0.06108597285067873
+    }
+   },
+   {
+    "id": "c_sync_offline",
+    "name": "Sync & offline access",
+    "kind": "complaint",
+    "shares": {
+     "1": 0.011661807580174927,
+     "2": 0.05555555555555555,
+     "3": 0.04310344827586207,
+     "4": 0.01020408163265306,
+     "5": 0.006787330316742082
+    }
+   },
+   {
+    "id": "c_data_loss",
+    "name": "Data loss",
+    "kind": "complaint",
+    "shares": {
+     "1": 0.052478134110787174,
+     "2": 0.034722222222222224,
+     "3": 0.05172413793103448,
+     "4": 0.01020408163265306,
+     "5": 0.004524886877828055
+    }
+   },
+   {
+    "id": "c_pricing",
+    "name": "Pricing & subscriptions",
+    "kind": "complaint",
+    "shares": {
+     "1": 0.11370262390670553,
+     "2": 0.05555555555555555,
+     "3": 0.05172413793103448,
+     "4": 0.08163265306122448,
+     "5": 0.01809954751131222
+    }
+   },
+   {
+    "id": "c_account",
+    "name": "Account & login",
+    "kind": "complaint",
+    "shares": {
+     "1": 0.04664723032069971,
+     "2": 0.013888888888888888,
+     "3": 0.02586206896551724,
+     "4": 0.02040816326530612,
+     "5": 0.0
+    }
+   },
+   {
+    "id": "c_updates_compat",
+    "name": "Updates & compatibility",
+    "kind": "complaint",
+    "shares": {
+     "1": 0.13411078717201166,
+     "2": 0.1527777777777778,
+     "3": 0.06896551724137931,
+     "4": 0.061224489795918366,
+     "5": 0.0
+    }
+   },
+   {
+    "id": "c_typing_editing",
+    "name": "Typing & text editing",
+    "kind": "complaint",
+    "shares": {
+     "1": 0.10495626822157435,
+     "2": 0.125,
+     "3": 0.11206896551724138,
+     "4": 0.061224489795918366,
+     "5": 0.0022624434389140274
+    }
+   },
+   {
+    "id": "c_support",
+    "name": "Customer support",
+    "kind": "complaint",
+    "shares": {
+     "1": 0.043731778425655975,
+     "2": 0.034722222222222224,
+     "3": 0.034482758620689655,
+     "4": 0.02040816326530612,
+     "5": 0.0022624434389140274
+    }
+   },
+   {
+    "id": "c_localisation",
+    "name": "Localisation & language support",
+    "kind": "complaint",
+    "shares": {
+     "1": 0.0058309037900874635,
+     "2": 0.020833333333333332,
+     "3": 0.0,
+     "4": 0.0,
+     "5": 0.0022624434389140274
+    }
+   },
+   {
+    "id": "c_feature_gaps",
+    "name": "Missing features & feature bugs",
+    "kind": "complaint",
+    "shares": {
+     "1": 0.13702623906705538,
+     "2": 0.19444444444444445,
+     "3": 0.19827586206896552,
+     "4": 0.23469387755102042,
+     "5": 0.04524886877828054
+    }
+   },
+   {
+    "id": "p_organisation",
+    "name": "Organisation & structure",
+    "kind": "praise",
+    "shares": {
+     "1": 0.011661807580174927,
+     "2": 0.06944444444444445,
+     "3": 0.06896551724137931,
+     "4": 0.09183673469387756,
+     "5": 0.39819004524886875
+    }
+   },
+   {
+    "id": "p_versatility",
+    "name": "Versatility & use cases",
+    "kind": "praise",
+    "shares": {
+     "1": 0.03498542274052478,
+     "2": 0.0625,
+     "3": 0.07758620689655173,
+     "4": 0.25510204081632654,
+     "5": 0.43891402714932126
+    }
+   },
+   {
+    "id": "p_ai",
+    "name": "AI features & integrations",
+    "kind": "praise",
+    "shares": {
+     "1": 0.01749271137026239,
+     "2": 0.020833333333333332,
+     "3": 0.008620689655172414,
+     "4": 0.061224489795918366,
+     "5": 0.1244343891402715
+    }
+   },
+   {
+    "id": "p_customisation",
+    "name": "Customisation & templates",
+    "kind": "praise",
+    "shares": {
+     "1": 0.0058309037900874635,
+     "2": 0.020833333333333332,
+     "3": 0.02586206896551724,
+     "4": 0.04081632653061224,
+     "5": 0.08597285067873303
+    }
+   },
+   {
+    "id": "p_pricing",
+    "name": "Free tier & value",
+    "kind": "praise",
+    "shares": {
+     "1": 0.0029154518950437317,
+     "2": 0.006944444444444444,
+     "3": 0.0,
+     "4": 0.030612244897959183,
+     "5": 0.07918552036199095
+    }
+   },
+   {
+    "id": "p_performance",
+    "name": "Reliability, sync & platforms",
+    "kind": "praise",
+    "shares": {
+     "1": 0.052478134110787174,
+     "2": 0.0763888888888889,
+     "3": 0.0603448275862069,
+     "4": 0.12244897959183673,
+     "5": 0.06561085972850679
+    }
+   },
+   {
+    "id": "p_ease_of_use",
+    "name": "Ease of use & design",
+    "kind": "praise",
+    "shares": {
+     "1": 0.037900874635568516,
+     "2": 0.020833333333333332,
+     "3": 0.08620689655172414,
+     "4": 0.07142857142857142,
+     "5": 0.13800904977375567
+    }
+   },
+   {
+    "id": "p_support_community",
+    "name": "Support & community",
+    "kind": "praise",
+    "shares": {
+     "1": 0.0029154518950437317,
+     "2": 0.0,
+     "3": 0.008620689655172414,
+     "4": 0.02040816326530612,
+     "5": 0.01583710407239819
+    }
+   }
+  ]
+ },
+ "recommendations": [
+  {
+   "theme": "c_stability",
+   "name": "App stability & crashes",
+   "evidence": "14% of reviews (95% CI 12%\u201316%); reviews mentioning it average 2.0\u2605, 1.3\u2605 below the rest; recent trend: persistent (13% \u2192 14%)",
+   "action": "Prioritise crash/freeze fixes: triage crash reports by device and OS, add a stability gate to releases, and target long pages and large workspaces first.",
+   "priority": 0.18130233720784902,
+   "prevalence": 0.1426071741032371,
+   "rating_impact": -1.2713409290096407,
+   "trend": "persistent",
+   "quotes": [
+    {
+     "text": "I love Notion, but *all the time* I find myself trying to update a field on a table and the app just won't let me type, exit the page, or do anything except select.",
+     "translation": null,
+     "rating": 3,
+     "review_id": "13590024514"
+    },
+    {
+     "text": "Love Notion, but the app is so buggy.",
+     "translation": null,
+     "rating": 1,
+     "review_id": "13349252973"
+    }
+   ]
+  },
+  {
+   "theme": "c_ai_intrusive",
+   "name": "AI forced / intrusive",
+   "evidence": "10% of reviews (95% CI 9%\u201312%); reviews mentioning it average 1.9\u2605, 1.4\u2605 below the rest; recent trend: persistent (9% \u2192 13%)",
+   "action": "Give users control over AI: an off switch or a quieter AI entry point, and keep core note-taking free of AI clutter.",
+   "priority": 0.14187042409172537,
+   "prevalence": 0.10236220472440945,
+   "rating_impact": -1.3859649122807016,
+   "trend": "persistent",
+   "quotes": [
+    {
+     "text": "Notion is amazing but I hate ai and it is so hard to work around please make options for us available.",
+     "translation": null,
+     "rating": 2,
+     "review_id": "13945077772"
+    },
+    {
+     "text": "Good... but the AI features have ruined it.",
+     "translation": null,
+     "rating": 3,
+     "review_id": "13348888923"
+    }
+   ]
+  },
+  {
+   "theme": "c_mobile",
+   "name": "iPhone / mobile app experience",
+   "evidence": "12% of reviews (95% CI 10%\u201314%); reviews mentioning it average 2.1\u2605, 1.2\u2605 below the rest; recent trend: persistent (13% \u2192 12%)",
+   "action": "Close the mobile-desktop gap: bring the most-missed settings and features to iPhone and fix mobile-only bugs before adding new features.",
+   "priority": 0.13506805714567574,
+   "prevalence": 0.11548556430446194,
+   "rating_impact": -1.1695665857386923,
+   "trend": "persistent",
+   "quotes": [
+    {
+     "text": "This has been a problem for a while now and I would appreciate attention to this matter - a fix, and workaround (that actually works - accessibility settings per app and increasing it there also doesn't work).",
+     "translation": null,
+     "rating": 4,
+     "review_id": "13538275625"
+    },
+    {
+     "text": "The overall trajectory of the platform has been great since then, but the mobile app has always had issues.",
+     "translation": null,
+     "rating": 1,
+     "review_id": "13652234946"
+    }
+   ]
+  },
+  {
+   "theme": "c_ui_ux",
+   "name": "UI / UX & usability",
+   "evidence": "11% of reviews (95% CI 10%\u201313%); reviews mentioning it average 2.1\u2605, 1.1\u2605 below the rest; recent trend: persistent (8% \u2192 11%)",
+   "action": "Simplify the interface: reduce clutter and navigation depth, and test design changes with existing users before rollout.",
+   "priority": 0.12638545921404798,
+   "prevalence": 0.11286089238845144,
+   "rating_impact": -1.1198339525709833,
+   "trend": "persistent",
+   "quotes": [
+    {
+     "text": "However the collaboration process is a little complicated and annoying sometimes.",
+     "translation": null,
+     "rating": 3,
+     "review_id": "13311571872"
+    },
+    {
+     "text": "The three-dots at the top right of each image was always very useful to quickly use other options such as captioning, but now its gone.",
+     "translation": null,
+     "rating": 4,
+     "review_id": "13314925762"
+    }
+   ]
+  },
+  {
+   "theme": "c_ipad",
+   "name": "iPad-specific issues",
+   "evidence": "9% of reviews (95% CI 7%\u201311%); reviews mentioning it average 2.0\u2605, 1.3\u2605 below the rest; recent trend: persistent (7% \u2192 14%)",
+   "action": "Treat iPad as a first-class platform: fix landscape/layout, Apple Pencil and hardware-keyboard input, and test every release on iPad.",
+   "priority": 0.11485523963683214,
+   "prevalence": 0.08923884514435695,
+   "rating_impact": -1.2870543029892072,
+   "trend": "persistent",
+   "quotes": [
+    {
+     "text": "The overall and features work great however when using with a appropriate IPad and Keyboard with trackpad doesn't seem to work and makes this super unproductive.",
+     "translation": null,
+     "rating": 2,
+     "review_id": "13609541303"
+    },
+    {
+     "text": "I'm glad I can use notion on iPad, but man... I use this for simple writing, google docs level stuff, and this app has a lot off issues.",
+     "translation": null,
+     "rating": 2,
+     "review_id": "13263131547"
+    }
+   ]
+  }
+ ],
  "snapshot": "notion_2026-10-13",
  "n_pool": 1143,
  "samples": {
@@ -310,27 +2505,27 @@
    },
    "3": {
     "negative": 80,
-    "neutral": 4,
-    "positive": 32
+    "neutral": 3,
+    "positive": 33
    },
    "4": {
-    "negative": 29,
+    "negative": 28,
     "neutral": 6,
-    "positive": 63
+    "positive": 64
    },
    "5": {
-    "negative": 12,
+    "negative": 13,
     "neutral": 7,
-    "positive": 423
+    "positive": 422
    }
   },
   "complaint_share": {
    "1": {
-    "count": 342,
+    "count": 341,
     "n": 343,
-    "share": 0.9970845481049563,
-    "ci_low": 0.9836729641929948,
-    "ci_high": 0.9994851656322118
+    "share": 0.9941690962099126,
+    "ci_low": 0.9789923097374047,
+    "ci_high": 0.9983994967457184
    },
    "2": {
     "count": 144,
@@ -347,18 +2542,18 @@
     "ci_high": 0.9865101724350616
    },
    "4": {
-    "count": 86,
+    "count": 87,
     "n": 98,
-    "share": 0.8775510204081632,
-    "ci_low": 0.798071601716968,
-    "ci_high": 0.9285479975789057
+    "share": 0.8877551020408163,
+    "ci_low": 0.8101006663032684,
+    "ci_high": 0.9361573005411425
    },
    "5": {
-    "count": 60,
+    "count": 61,
     "n": 442,
-    "share": 0.13574660633484162,
-    "ci_low": 0.10693672251930497,
-    "ci_high": 0.1708334497483664
+    "share": 0.13800904977375567,
+    "ci_low": 0.10896076808230813,
+    "ci_high": 0.17329530373649576
    }
   }
  },
@@ -382,8 +2577,8 @@
     "share": 0.12797881729920565,
     "ci_low": 0.10977608298419113,
     "ci_high": 0.14869571758289188,
-    "negative": 104,
-    "not_negative": 41
+    "negative": 102,
+    "not_negative": 43
    },
    {
     "term": "ipad",
@@ -392,8 +2587,8 @@
     "share": 0.09179170344218888,
     "ci_low": 0.07633059131953399,
     "ci_high": 0.1100115386028287,
-    "negative": 86,
-    "not_negative": 18
+    "negative": 87,
+    "not_negative": 17
    },
    {
     "term": "life",
@@ -412,8 +2607,8 @@
     "share": 0.08737864077669903,
     "ci_low": 0.07229861045245928,
     "ci_high": 0.1052472181717668,
-    "negative": 80,
-    "not_negative": 19
+    "negative": 79,
+    "not_negative": 20
    },
    {
     "term": "update",
@@ -422,8 +2617,8 @@
     "share": 0.08473080317740513,
     "ci_low": 0.0698853191469554,
     "ci_high": 0.10238272869838871,
-    "negative": 85,
-    "not_negative": 11
+    "negative": 84,
+    "not_negative": 12
    },
    {
     "term": "help",
@@ -502,8 +2697,8 @@
     "share": 0.0617828773168579,
     "ci_low": 0.049190169486290736,
     "ci_high": 0.07733711160874293,
-    "negative": 46,
-    "not_negative": 24
+    "negative": 45,
+    "not_negative": 25
    },
    {
     "term": "change",
@@ -512,28 +2707,8 @@
     "share": 0.06001765225066196,
     "ci_low": 0.047617624070083124,
     "ci_high": 0.07539113650569593,
-    "negative": 40,
-    "not_negative": 28
-   },
-   {
-    "term": "open",
-    "count": 67,
-    "n": 1133,
-    "share": 0.05913503971756399,
-    "ci_low": 0.04683258450912035,
-    "ci_high": 0.07441691580703136,
-    "negative": 55,
-    "not_negative": 12
-   },
-   {
-    "term": "issue",
-    "count": 67,
-    "n": 1133,
-    "share": 0.05913503971756399,
-    "ci_low": 0.04683258450912035,
-    "ci_high": 0.07441691580703136,
-    "negative": 53,
-    "not_negative": 14
+    "negative": 39,
+    "not_negative": 29
    },
    {
     "term": "text",
@@ -544,6 +2719,26 @@
     "ci_high": 0.07441691580703136,
     "negative": 46,
     "not_negative": 21
+   },
+   {
+    "term": "issue",
+    "count": 67,
+    "n": 1133,
+    "share": 0.05913503971756399,
+    "ci_low": 0.04683258450912035,
+    "ci_high": 0.07441691580703136,
+    "negative": 52,
+    "not_negative": 15
+   },
+   {
+    "term": "open",
+    "count": 67,
+    "n": 1133,
+    "share": 0.05913503971756399,
+    "ci_low": 0.04683258450912035,
+    "ci_high": 0.07441691580703136,
+    "negative": 55,
+    "not_negative": 12
    },
    {
     "term": "option",
@@ -562,13 +2757,14 @@
     "share": 0.05913503971756399,
     "ci_low": 0.04683258450912035,
     "ci_high": 0.07441691580703136,
-    "negative": 50,
-    "not_negative": 17
+    "negative": 51,
+    "not_negative": 16
    }
   ]
  },
  "distinctive_terms": {
-  "method": "Fightin' Words (Monroe et al. 2008), informative Dirichlet prior from 14 other productivity apps; document-level counts; generic sentiment words removed",
+  "available": true,
+  "method": "Fightin' Words (Monroe et al. 2008), informative Dirichlet prior from 14 other productivity apps + this corpus; document-level counts; generic sentiment and filler words removed",
   "group_a": "negative reviews (model)",
   "group_b": "neutral + positive reviews (model)",
   "n_a": 580,
@@ -577,7 +2773,7 @@
   "negative": [
    {
     "term": "unusable",
-    "z": 3.617435161771465,
+    "z": 3.6875973340548414,
     "df_a": 44,
     "df_b": 2,
     "share_a": 0.07586206896551724,
@@ -585,7 +2781,7 @@
    },
    {
     "term": "not work",
-    "z": 3.4013996047255644,
+    "z": 3.4914024211486376,
     "df_a": 52,
     "df_b": 4,
     "share_a": 0.0896551724137931,
@@ -593,23 +2789,23 @@
    },
    {
     "term": "ipad",
-    "z": 3.1374268732396398,
-    "df_a": 86,
-    "df_b": 18,
-    "share_a": 0.1482758620689655,
-    "share_b": 0.0325497287522604
+    "z": 3.4251591679674216,
+    "df_a": 87,
+    "df_b": 17,
+    "share_a": 0.15,
+    "share_b": 0.03074141048824593
    },
    {
     "term": "update",
-    "z": 3.099376403146771,
-    "df_a": 85,
-    "df_b": 11,
-    "share_a": 0.14655172413793102,
-    "share_b": 0.019891500904159132
+    "z": 3.093252110402297,
+    "df_a": 84,
+    "df_b": 12,
+    "share_a": 0.14482758620689656,
+    "share_b": 0.0216998191681736
    },
    {
     "term": "buggy",
-    "z": 2.930657820550429,
+    "z": 3.0089826867211578,
     "df_a": 43,
     "df_b": 7,
     "share_a": 0.07413793103448275,
@@ -617,7 +2813,7 @@
    },
    {
     "term": "slow",
-    "z": 2.607120385174431,
+    "z": 2.6853073886210894,
     "df_a": 38,
     "df_b": 6,
     "share_a": 0.06551724137931035,
@@ -625,23 +2821,15 @@
    },
    {
     "term": "delete",
-    "z": 2.580071609808168,
+    "z": 2.6743781469679475,
     "df_a": 44,
     "df_b": 5,
     "share_a": 0.07586206896551724,
     "share_b": 0.009041591320072333
    },
    {
-    "term": "fix",
-    "z": 2.5579716608556042,
-    "df_a": 80,
-    "df_b": 19,
-    "share_a": 0.13793103448275862,
-    "share_b": 0.034358047016274866
-   },
-   {
     "term": "bug",
-    "z": 2.554675973524098,
+    "z": 2.6597104164618863,
     "df_a": 57,
     "df_b": 13,
     "share_a": 0.09827586206896552,
@@ -649,7 +2837,7 @@
    },
    {
     "term": "type",
-    "z": 2.511229054233729,
+    "z": 2.6093954988403687,
     "df_a": 52,
     "df_b": 12,
     "share_a": 0.0896551724137931,
@@ -657,25 +2845,33 @@
    },
    {
     "term": "constantly",
-    "z": 2.492713126758234,
+    "z": 2.5591784984733126,
     "df_a": 27,
     "df_b": 1,
     "share_a": 0.04655172413793104,
     "share_b": 0.0018083182640144665
    },
    {
-    "term": "press",
-    "z": 2.417169484564932,
-    "df_a": 16,
-    "df_b": 0,
-    "share_a": 0.027586206896551724,
-    "share_b": 0.0
+    "term": "fix",
+    "z": 2.5345022090900717,
+    "df_a": 79,
+    "df_b": 20,
+    "share_a": 0.13620689655172413,
+    "share_b": 0.03616636528028933
+   },
+   {
+    "term": "happen",
+    "z": 2.474423830391946,
+    "df_a": 25,
+    "df_b": 1,
+    "share_a": 0.04310344827586207,
+    "share_b": 0.0018083182640144665
    }
   ],
   "positive": [
    {
     "term": "life",
-    "z": -7.7926572167363135,
+    "z": -7.661944367980979,
     "df_a": 14,
     "df_b": 88,
     "share_a": 0.02413793103448276,
@@ -683,7 +2879,7 @@
    },
    {
     "term": "organize",
-    "z": -6.696298659445387,
+    "z": -6.569613068528559,
     "df_a": 11,
     "df_b": 67,
     "share_a": 0.01896551724137931,
@@ -691,7 +2887,7 @@
    },
    {
     "term": "tool",
-    "z": -5.475028461742491,
+    "z": -5.349514056554275,
     "df_a": 20,
     "df_b": 59,
     "share_a": 0.034482758620689655,
@@ -699,7 +2895,7 @@
    },
    {
     "term": "help",
-    "z": -5.287287513905784,
+    "z": -5.151935511660833,
     "df_a": 23,
     "df_b": 60,
     "share_a": 0.039655172413793106,
@@ -707,7 +2903,7 @@
    },
    {
     "term": "easy",
-    "z": -5.139425765043491,
+    "z": -5.00682201378509,
     "df_a": 15,
     "df_b": 50,
     "share_a": 0.02586206896551724,
@@ -715,7 +2911,7 @@
    },
    {
     "term": "personal",
-    "z": -4.370251476163352,
+    "z": -4.286239612043068,
     "df_a": 6,
     "df_b": 30,
     "share_a": 0.010344827586206896,
@@ -723,7 +2919,7 @@
    },
    {
     "term": "brain",
-    "z": -4.237653892172643,
+    "z": -4.165968727540239,
     "df_a": 6,
     "df_b": 28,
     "share_a": 0.010344827586206896,
@@ -731,7 +2927,7 @@
    },
    {
     "term": "organization",
-    "z": -4.168377376701956,
+    "z": -4.1037505699619246,
     "df_a": 2,
     "df_b": 23,
     "share_a": 0.0034482758620689655,
@@ -739,23 +2935,15 @@
    },
    {
     "term": "task",
-    "z": -4.10192169901014,
+    "z": -3.9637983706143824,
     "df_a": 13,
     "df_b": 35,
     "share_a": 0.022413793103448276,
     "share_b": 0.06329113924050633
    },
    {
-    "term": "project",
-    "z": -4.096505338688593,
-    "df_a": 12,
-    "df_b": 34,
-    "share_a": 0.020689655172413793,
-    "share_b": 0.06148282097649186
-   },
-   {
     "term": "track",
-    "z": -4.037839399376859,
+    "z": -3.950789467020836,
     "df_a": 7,
     "df_b": 28,
     "share_a": 0.01206896551724138,
@@ -763,22 +2951,31 @@
    },
    {
     "term": "appreciate",
-    "z": -3.985188129419453,
+    "z": -3.9318519672704753,
     "df_a": 2,
     "df_b": 21,
     "share_a": 0.0034482758620689655,
     "share_b": 0.0379746835443038
+   },
+   {
+    "term": "build",
+    "z": -3.8029683259862543,
+    "df_a": 9,
+    "df_b": 28,
+    "share_a": 0.015517241379310345,
+    "share_b": 0.05063291139240506
    }
   ],
   "prior_sensitivity_top12_overlap": {
    "0.05": 0.9166666666666666,
    "0.1": 1.0,
-   "0.2": 0.8333333333333334
+   "0.2": 0.7916666666666666
   }
  },
  "drivers": {
+  "available": true,
   "method": "L2 logistic regression, 1-2 vs 4-5 stars, aspect n-grams; C by 5-fold CV; 200 bootstraps, sign stability >= 0.9",
-  "cv_auc": 0.9000950294949635,
+  "cv_auc": 0.9062245311622877,
   "c": 0.21544346900318834,
   "n_low": 486,
   "n_high": 532,
@@ -786,85 +2983,85 @@
   "towards_low": [
    {
     "term": "update",
-    "coef": 1.009705145571789,
-    "odds_ratio": 2.7447915817378954,
+    "coef": 1.0145957680918714,
+    "odds_ratio": 2.758248200059295,
     "stability": 1.0,
     "df": 81
    },
    {
     "term": "not work",
-    "coef": 0.9200366021746651,
-    "odds_ratio": 2.5093822371023284,
+    "coef": 0.9109060172698034,
+    "odds_ratio": 2.4865743924613914,
     "stability": 1.0,
     "df": 53
    },
    {
     "term": "unusable",
-    "coef": 0.8008914251216276,
-    "odds_ratio": 2.2275257160986706,
+    "coef": 0.7830293340660497,
+    "odds_ratio": 2.188090693399402,
     "stability": 1.0,
     "df": 44
    },
    {
     "term": "delete",
-    "coef": 0.7537302958495598,
-    "odds_ratio": 2.1249118004609477,
+    "coef": 0.7815472222265865,
+    "odds_ratio": 2.1848501003307783,
     "stability": 1.0,
     "df": 38
    },
    {
-    "term": "ipad",
-    "coef": 0.721723675850152,
-    "odds_ratio": 2.057977441229649,
-    "stability": 1.0,
-    "df": 85
-   },
-   {
     "term": "ai",
-    "coef": 0.7186342554379984,
-    "odds_ratio": 2.0516292948106916,
+    "coef": 0.7474294318285906,
+    "odds_ratio": 2.1115651121400623,
     "stability": 1.0,
     "df": 205
    },
    {
+    "term": "ipad",
+    "coef": 0.7454023549296441,
+    "odds_ratio": 2.1072891426043325,
+    "stability": 1.0,
+    "df": 85
+   },
+   {
     "term": "slow",
-    "coef": 0.6924301161953157,
-    "odds_ratio": 1.9985663853291655,
+    "coef": 0.6908933534524248,
+    "odds_ratio": 1.9954974217074561,
     "stability": 1.0,
     "df": 36
    },
    {
     "term": "crash",
-    "coef": 0.6871758072524202,
-    "odds_ratio": 1.9880928398156066,
+    "coef": 0.6888699555677031,
+    "odds_ratio": 1.9914638186135674,
     "stability": 1.0,
     "df": 33
    },
    {
+    "term": "useless",
+    "coef": 0.6708234118253428,
+    "odds_ratio": 1.9558471254304746,
+    "stability": 1.0,
+    "df": 20
+   },
+   {
     "term": "buggy",
-    "coef": 0.6646951455220256,
-    "odds_ratio": 1.9438978250416727,
+    "coef": 0.6691277631023064,
+    "odds_ratio": 1.9525335059110873,
     "stability": 1.0,
     "df": 41
    },
    {
     "term": "money",
-    "coef": 0.6619176593986039,
-    "odds_ratio": 1.9385061669012336,
-    "stability": 1.0,
-    "df": 20
-   },
-   {
-    "term": "useless",
-    "coef": 0.6458567971222787,
-    "odds_ratio": 1.9076207732673358,
+    "coef": 0.6436605010675329,
+    "odds_ratio": 1.903435670833352,
     "stability": 1.0,
     "df": 20
    },
    {
     "term": "waste",
-    "coef": 0.6042017574416121,
-    "odds_ratio": 1.8297910087111702,
+    "coef": 0.5969285854084924,
+    "odds_ratio": 1.8165309038857846,
     "stability": 1.0,
     "df": 16
    }
@@ -872,87 +3069,87 @@
   "towards_high": [
    {
     "term": "life",
-    "coef": -0.9367194051107304,
-    "odds_ratio": 0.39191143136685325,
+    "coef": -0.9694994920202837,
+    "odds_ratio": 0.37927281967857923,
     "stability": 1.0,
     "df": 100
    },
    {
     "term": "tool",
-    "coef": -0.7995692955163938,
-    "odds_ratio": 0.44952253379935364,
+    "coef": -0.7983060561349866,
+    "odds_ratio": 0.45009074718608083,
     "stability": 1.0,
     "df": 78
    },
    {
     "term": "organize",
-    "coef": -0.561982944199104,
-    "odds_ratio": 0.5700775104236092,
+    "coef": -0.5439070342076656,
+    "odds_ratio": 0.5804758770322378,
     "stability": 1.0,
     "df": 76
    },
    {
     "term": "free",
-    "coef": -0.5104588656622723,
-    "odds_ratio": 0.6002200952206168,
+    "coef": -0.5011363428914222,
+    "odds_ratio": 0.6058418243597407,
     "stability": 1.0,
     "df": 53
    },
    {
     "term": "appreciate",
-    "coef": -0.4929699536524416,
-    "odds_ratio": 0.6108096213883489,
+    "coef": -0.4918685308405447,
+    "odds_ratio": 0.6114827516715472,
     "stability": 1.0,
     "df": 20
    },
    {
-    "term": "easy",
-    "coef": -0.4533954202901863,
-    "odds_ratio": 0.6354668074705445,
+    "term": "school",
+    "coef": -0.44612680407671923,
+    "odds_ratio": 0.6401025992961278,
     "stability": 1.0,
-    "df": 63
-   },
-   {
-    "term": "wish",
-    "coef": -0.44305865935328315,
-    "odds_ratio": 0.6420695425989871,
-    "stability": 1.0,
-    "df": 26
+    "df": 20
    },
    {
     "term": "organization",
-    "coef": -0.44221430138906026,
-    "odds_ratio": 0.6426119080739467,
+    "coef": -0.44481653992508124,
+    "odds_ratio": 0.6409418524869722,
     "stability": 1.0,
     "df": 25
    },
    {
-    "term": "help",
-    "coef": -0.44211728367043723,
-    "odds_ratio": 0.6426742558395983,
+    "term": "easy",
+    "coef": -0.4429365437927575,
+    "odds_ratio": 0.6421479540686109,
     "stability": 1.0,
-    "df": 74
-   },
-   {
-    "term": "school",
-    "coef": -0.4394572429385841,
-    "odds_ratio": 0.6443860712774657,
-    "stability": 1.0,
-    "df": 20
+    "df": 63
    },
    {
     "term": "allow",
-    "coef": -0.4391446497266572,
-    "odds_ratio": 0.6445875334754246,
+    "coef": -0.43857620229942507,
+    "odds_ratio": 0.6449540517637742,
     "stability": 1.0,
     "df": 26
    },
    {
     "term": "productivity",
-    "coef": -0.4338593296845395,
-    "odds_ratio": 0.6480034039175095,
+    "coef": -0.4345977657412091,
+    "odds_ratio": 0.6475250714699111,
     "stability": 1.0,
     "df": 38
+   },
+   {
+    "term": "help",
+    "coef": -0.4287928763697291,
+    "odds_ratio": 0.6512948137578608,
+    "stability": 0.995,
+    "df": 74
+   },
+   {
+    "term": "far",
+    "coef": -0.4258040703722511,
+    "odds_ratio": 0.6532443194993347,
+    "stability": 1.0,
+    "df": 35
    }
   ]
  }

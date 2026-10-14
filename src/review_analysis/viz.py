@@ -441,6 +441,253 @@ def most_mentioned(data: dict[str, Any], path: Path) -> None:
     )
 
 
+def theme_priority(data: dict[str, Any], path: Path) -> None:
+    """Priority matrix: how many reviews mention a complaint theme vs how much it drags stars."""
+    _style()
+    rows = [t for t in data["themes"]["complaint"] if t["n_reviews"] >= 5]
+    fig, ax = plt.subplots(figsize=(9, 6))
+    xs = [t["prevalence"] * 100 for t in rows]
+    ys = [t["rating_impact"] for t in rows]
+    sizes = [30 + 6 * t["n_reviews"] for t in rows]
+    ax.scatter(xs, ys, s=sizes, color=RED, alpha=0.75, edgecolor=SURFACE, linewidth=2, zorder=3)
+    ax.axhline(0, color=AXIS, linewidth=1)
+    ax.set_xlabel("% of reviews mentioning the theme")
+    ax.set_ylabel("rating impact (★ vs reviews without it)")
+    _clean(ax, grid_axis="both")
+    ax.grid(True)
+    ax.set_xlim(0, max(xs) * 1.35)
+    top = sorted(rows, key=lambda t: -t["priority"])
+    _place_labels(fig, ax, [(t["prevalence"] * 100, t["rating_impact"], t["name"]) for t in top])
+    first = top[0]
+    _save(
+        fig,
+        path,
+        f"Fix first: {first['name']} ({first['prevalence']:.0%} of reviews, "
+        f"{first['rating_impact']:+.1f}★)",
+        "Complaint themes · x = how common · y = how much lower those reviews rate (Artefact "
+        "rating impact) · bubble = reviews · bottom-right = frequent and severe",
+    )
+
+
+def _place_labels(fig: Any, ax: Axes, points: list[tuple[float, float, str]]) -> None:
+    """Greedy collision-free direct labels: try 6 offsets around each point, in priority order,
+    and keep the first that overlaps no label placed so far. A label with no free spot is dropped
+    (the value stays in the data table)."""
+    renderer = fig.canvas.get_renderer()
+    placed: list[Any] = []
+    offsets = [
+        (9, -4, "left"),
+        (9, 9, "left"),
+        (9, -17, "left"),
+        (-9, -4, "right"),
+        (-9, 9, "right"),
+        (-9, -17, "right"),
+    ]
+    for x, y, name in points:
+        for dx, dy, ha in offsets:
+            text = ax.annotate(
+                name,
+                (x, y),
+                textcoords="offset points",
+                xytext=(dx, dy),
+                fontsize=8.5,
+                color=INK2,
+                ha=ha,
+            )
+            box = text.get_window_extent(renderer).expanded(1.04, 1.15)
+            if not any(box.overlaps(p) for p in placed):
+                placed.append(box)
+                break
+            text.remove()
+
+
+def _theme_bars(ax: Axes, rows: list[dict[str, Any]], color: str, title: str) -> None:
+    ys = list(range(len(rows)))
+    vals = [t["prevalence"] * 100 for t in rows]
+    lo = [v - t["prevalence_ci"][0] * 100 for v, t in zip(vals, rows, strict=True)]
+    hi = [t["prevalence_ci"][1] * 100 - v for v, t in zip(vals, rows, strict=True)]
+    ax.barh(ys, vals, height=0.55, color=color, zorder=2)
+    ax.errorbar(
+        vals, ys, xerr=[lo, hi], fmt="none", ecolor=INK2, elinewidth=0.9, capsize=2.5, zorder=3
+    )
+    for y, v, h, t in zip(ys, vals, hi, rows, strict=True):
+        impact = t["rating_impact"]
+        label = f"{v:.0f}%" + (f" · {impact:+.1f}★" if impact == impact else "")
+        ax.text(v + h + 0.6, y, label, va="center", fontsize=8.5, color=INK2)
+    ax.set_yticks(ys, [t["name"] for t in rows], fontsize=9)
+    ax.invert_yaxis()
+    ax.set_xlim(0, max(vals) * 1.6 if vals else 1)
+    ax.grid(axis="y", visible=False)
+    ax.spines["left"].set_visible(False)
+    ax.tick_params(length=0)
+    ax.set_title(title, fontsize=10, color=INK2)
+    ax.set_xlabel("% of reviews (95% CI) · label: share · rating impact")
+
+
+def likes_dislikes(data: dict[str, Any], path: Path) -> None:
+    _style()
+    comp = sorted(data["themes"]["complaint"], key=lambda t: -t["prevalence"])
+    praise = sorted(data["themes"]["praise"], key=lambda t: -t["prevalence"])
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 6.4), gridspec_kw={"width_ratios": [1.2, 1]})
+    _theme_bars(ax1, comp, RED, "What users dislike")
+    _theme_bars(ax2, praise, BLUE, "What users like")
+    _save(
+        fig,
+        path,
+        f"Most common complaint: {comp[0]['name']} ({comp[0]['prevalence']:.0%}); "
+        f"most common praise: {praise[0]['name']} ({praise[0]['prevalence']:.0%})",
+        f"Share of all {data['themes']['n_reviews']} reviews with at least one sentence on the "
+        "theme · sentence-level themes from the approved taxonomy",
+    )
+
+
+def theme_change(data: dict[str, Any], path: Path) -> None:
+    _style()
+    ch = data["theme_change"]
+    rows = sorted(
+        (t for t in ch["themes"] if t["kind"] == "complaint"),
+        key=lambda t: -max(t["base_share"], t["target_share"]),
+    )
+    fig, ax = plt.subplots(figsize=(9, 6.4))
+    for y, t in enumerate(rows):
+        a, b = t["base_share"] * 100, t["target_share"] * 100
+        ax.plot([a, b], [y, y], color=AXIS, linewidth=2, solid_capstyle="round", zorder=1)
+        ax.scatter([a], [y], s=55, color=BLUE, edgecolor=SURFACE, linewidth=1.5, zorder=3)
+        ax.scatter([b], [y], s=55, color=ORANGE, edgecolor=SURFACE, linewidth=1.5, zorder=3)
+        if t["p"] < 0.05:  # confirmed (bold) or an unconfirmed signal (regular)
+            confirmed = t["q"] < 0.05
+            ax.text(
+                max(a, b) + 0.6,
+                y,
+                f"{t['status']} · p={t['p']:.3f}, q={t['q']:.2f}",
+                va="center",
+                fontsize=8.5,
+                color=INK if confirmed else INK2,
+                fontweight="bold" if confirmed else "normal",
+            )
+    ax.set_yticks(range(len(rows)), [t["name"] for t in rows], fontsize=9)
+    ax.invert_yaxis()
+    ax.set_xlabel("% of reviews mentioning the theme")
+    ax.grid(axis="y", visible=False)
+    ax.spines["left"].set_visible(False)
+    ax.tick_params(length=0)
+    sig = [t for t in rows if t["q"] < 0.05]
+    signals = sorted(
+        (t for t in rows if t["p"] < 0.05 and t["q"] >= 0.05 and t["diff"] > 0),
+        key=lambda t: t["p"],
+    )
+    if sig:
+        title = f"{len(sig)} complaint theme(s) changed significantly in recent reviews"
+    elif signals:
+        s0 = signals[0]
+        title = (
+            f"{s0['name']} complaints rose {s0['base_share']:.0%} → {s0['target_share']:.0%} "
+            f"recently (p={s0['p']:.3f}): a signal, not yet confirmed"
+        )
+    else:
+        title = (
+            "No complaint theme changed significantly: recent problems are the long-standing ones"
+        )
+    _save(
+        fig,
+        path,
+        title,
+        f"A before {ch['b_window_start']} (n={ch['n_base']}) vs the 100 most recent · "
+        "bold = q < 0.05 after Benjamini-Hochberg (25 themes), regular = p < 0.05 only",
+        legend=[
+            _key(BLUE, f"earlier (n={ch['n_base']})", "o"),
+            _key(ORANGE, f"recent (n={ch['n_target']})", "o"),
+        ],
+    )
+
+
+def theme_monthly(data: dict[str, Any], path: Path) -> None:
+    _style()
+    rows, ids = data["theme_monthly"], data["theme_monthly_ids"]
+    names = {t["id"]: t["name"] for t in data["themes"]["complaint"]}
+    fig, axes = plt.subplots(2, 2, figsize=(10, 6), sharex=True, sharey=True)
+    x = list(range(len(rows)))
+    for ax, tid in zip(axes.flat, ids, strict=False):
+        shares = [r[tid] * 100 for r in rows]
+        ns = [r["n"] for r in rows]
+        lo = [100 * wilson_ci(r[tid], n)[0] for r, n in zip(rows, ns, strict=True)]
+        hi = [100 * wilson_ci(r[tid], n)[1] for r, n in zip(rows, ns, strict=True)]
+        ax.fill_between(x, lo, hi, color=RED, alpha=0.10, linewidth=0)
+        ax.plot(
+            x,
+            shares,
+            color=RED,
+            linewidth=2,
+            marker="o",
+            markersize=5,
+            markeredgecolor=SURFACE,
+            markeredgewidth=1.5,
+        )
+        ax.set_title(names.get(tid, tid), fontsize=10, color=INK2)
+        _clean(ax)
+    for ax in axes[1]:
+        ax.set_xticks(x[::2], [r["month"][2:] for r in rows][::2], fontsize=8)
+    for ax in axes[:, 0]:
+        ax.set_ylabel("% of reviews")
+    _save(
+        fig,
+        path,
+        "How the top complaint themes moved over the year",
+        "Monthly share of reviews mentioning each of the 4 highest-priority complaint themes · "
+        "shaded = 95% Wilson CI (wide where a month has few reviews)",
+    )
+
+
+def wilson_ci(share: float, n: int) -> tuple[float, float]:
+    from review_analysis.metrics import wilson
+
+    p = wilson(round(share * n), n)
+    return p.ci_low, p.ci_high
+
+
+def themes_by_stars(data: dict[str, Any], path: Path) -> None:
+    _style()
+    d = data["themes_by_stars"]
+    rows = d["themes"]
+    stars = [str(s) for s in range(1, 6)]
+    mat = [[r["shares"][s] for s in stars] for r in rows]
+    fig, ax = plt.subplots(figsize=(8, 8.5))
+    vmax = max(max(row) for row in mat) or 1
+    ax.imshow(mat, cmap=BLUES, vmin=0, vmax=vmax, aspect="auto")
+    for i, row in enumerate(mat):
+        for j, v in enumerate(row):
+            if v >= 0.005:
+                ax.text(
+                    j,
+                    i,
+                    f"{v:.0%}",
+                    ha="center",
+                    va="center",
+                    fontsize=8,
+                    color="white" if v > 0.55 * vmax else INK,
+                )
+    ax.set_xticks(range(5), [f"{s}★\nn={d['n_by_star'][s]}" for s in stars], fontsize=8.5)
+    ax.set_yticks(
+        range(len(rows)),
+        [("− " if r["kind"] == "complaint" else "+ ") + r["name"] for r in rows],
+        fontsize=8.5,
+    )
+    split = sum(r["kind"] == "complaint" for r in rows) - 0.5
+    ax.axhline(split, color=SURFACE, linewidth=3)
+    ax.grid(False)
+    for spine in ax.spines.values():
+        spine.set_visible(False)
+    ax.tick_params(length=0)
+    four = sorted((r for r in rows if r["kind"] == "complaint"), key=lambda r: -r["shares"]["4"])[0]
+    _save(
+        fig,
+        path,
+        f"Even 4★ reviewers complain, most often about {four['name']} ({four['shares']['4']:.0%})",
+        "Share of reviews at each star level that mention the theme (columns) · − complaint "
+        "themes, + praise themes",
+    )
+
+
 ALL = {
     "most_mentioned": most_mentioned,
     "star_distribution": star_distribution,
@@ -449,11 +696,21 @@ ALL = {
     "distinctive_terms": distinctive_terms,
     "drivers": drivers,
 }
+THEME_CHARTS = {
+    "theme_priority": theme_priority,
+    "likes_dislikes": likes_dislikes,
+    "theme_change": theme_change,
+    "theme_monthly": theme_monthly,
+    "themes_by_stars": themes_by_stars,
+}
 
 
 def render_all(data: dict[str, Any], out_dir: Path) -> list[Path]:
+    charts = dict(ALL)
+    if data.get("themes"):
+        charts |= THEME_CHARTS
     paths = []
-    for name, fn in ALL.items():
+    for name, fn in charts.items():
         path = out_dir / f"{name}.png"
         fn(data, path)
         paths.append(path)

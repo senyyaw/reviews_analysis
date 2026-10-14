@@ -1,0 +1,47 @@
+{
+ "minilm-l12": {
+  "complaint": {
+   "micro_f1": 0.557508597630875,
+   "macro_f1": 0.533032578716214,
+   "prevalence_mae_pp": 3.4378055684215947,
+   "n_sentences": 2579,
+   "prevalence_rank_spearman": 0.9534313725490198
+  },
+  "praise": {
+   "micro_f1": 0.6455639768167633,
+   "macro_f1": 0.6212321964263621,
+   "prevalence_mae_pp": 1.23578302712161,
+   "n_sentences": 1303
+  }
+ },
+ "e5-base": {
+  "complaint": {
+   "micro_f1": 0.6160419498931832,
+   "macro_f1": 0.6072833089613303,
+   "prevalence_mae_pp": 2.9077247696979054,
+   "n_sentences": 2579,
+   "prevalence_rank_spearman": 0.9436274509803922
+  },
+  "praise": {
+   "micro_f1": 0.6866338846669647,
+   "macro_f1": 0.6666964468089451,
+   "prevalence_mae_pp": 1.2795275590551176,
+   "n_sentences": 1303
+  }
+ },
+ "bge-m3": {
+  "complaint": {
+   "micro_f1": 0.6290672451193059,
+   "macro_f1": 0.6179805512070481,
+   "prevalence_mae_pp": 2.609232669445731,
+   "n_sentences": 2579,
+   "prevalence_rank_spearman": 0.9724097474569846
+  },
+  "praise": {
+   "micro_f1": 0.7139524031731218,
+   "macro_f1": 0.7000532787096603,
+   "prevalence_mae_pp": 0.9405074365704277,
+   "n_sentences": 1303
+  }
+ }
+}

@@ -1,0 +1,191 @@
+{
+ "comparison": [
+  {
+   "name": "always negative (baseline)",
+   "f1": 0.24472573839662448,
+   "ci": [
+    0.21621621621621623,
+    0.2698412698412698
+   ],
+   "group": "baseline"
+  },
+  {
+   "name": "VADER (lexicon)",
+   "f1": 0.5272514658591341,
+   "ci": [
+    0.4327137034872484,
+    0.6319624832057006
+   ],
+   "group": "off-the-shelf"
+  },
+  {
+   "name": "TF-IDF + logistic regression",
+   "f1": 0.5178187071144817,
+   "ci": [
+    0.44192041066284193,
+    0.5956740984550618
+   ],
+   "group": "off-the-shelf"
+  },
+  {
+   "name": "nlptown mBERT",
+   "f1": 0.582905982905983,
+   "ci": [
+    0.5050455771970572,
+    0.6742312846226934
+   ],
+   "group": "off-the-shelf"
+  },
+  {
+   "name": "clapAI XLM-R",
+   "f1": 0.5958707958707958,
+   "ci": [
+    0.5099052665066712,
+    0.700019173518753
+   ],
+   "group": "off-the-shelf"
+  },
+  {
+   "name": "cardiffnlp XLM-T",
+   "f1": 0.6088471808246398,
+   "ci": [
+    0.5072083721920947,
+    0.7330929851598338
+   ],
+   "group": "off-the-shelf"
+  },
+  {
+   "name": "cardiffnlp RoBERTa",
+   "f1": 0.686204485762334,
+   "ci": [
+    0.5678651336185204,
+    0.8035049366810034
+   ],
+   "group": "off-the-shelf"
+  },
+  {
+   "name": "mDeBERTa-v3-base, fine-tuned",
+   "f1": 0.6745616054641035,
+   "ci": [
+    0.557421987591743,
+    0.8300008897078386
+   ],
+   "group": "fine-tuned"
+  },
+  {
+   "name": "XLM-R-large, fine-tuned",
+   "f1": 0.7320309320309321,
+   "ci": [
+    0.5795947155216818,
+    0.8533097723647961
+   ],
+   "group": "fine-tuned"
+  },
+  {
+   "name": "clapAI XLM-R, fine-tuned",
+   "f1": 0.7351825509720248,
+   "ci": [
+    0.5701896282569181,
+    0.8584465026211893
+   ],
+   "group": "fine-tuned"
+  },
+  {
+   "name": "DeBERTa-v3-base, fine-tuned",
+   "f1": 0.7512209648600358,
+   "ci": [
+    0.5862968951866943,
+    0.8742617880485528
+   ],
+   "group": "fine-tuned"
+  },
+  {
+   "name": "RoBERTa-large, fine-tuned",
+   "f1": 0.7546413592705514,
+   "ci": [
+    0.5802412142255893,
+    0.8815307001353512
+   ],
+   "group": "fine-tuned"
+  },
+  {
+   "name": "ensemble (top-2 by val), fine-tuned",
+   "f1": 0.7615902615902616,
+   "ci": [
+    0.5851148927414598,
+    0.8801826393164782
+   ],
+   "group": "fine-tuned"
+  },
+  {
+   "name": "DeBERTa-v3-large, fine-tuned",
+   "f1": 0.7615902615902616,
+   "ci": [
+    0.5851148927414598,
+    0.8801826393164782
+   ],
+   "group": "fine-tuned"
+  },
+  {
+   "name": "cardiffnlp RoBERTa, fine-tuned",
+   "f1": 0.7625467364597799,
+   "ci": [
+    0.584211813124055,
+    0.8890801359979441
+   ],
+   "group": "fine-tuned"
+  },
+  {
+   "name": "SHIPPED: router, int8 ONNX",
+   "f1": 0.7836324573015907,
+   "ci": [
+    0.6063468465924549,
+    0.9044616821867346
+   ],
+   "group": "shipped"
+  },
+  {
+   "name": "LLM annotator (Qwen3.8-27B)",
+   "f1": 0.8070307595731324,
+   "ci": [
+    0.6114093619723305,
+    0.9230669385990694
+   ],
+   "group": "reference"
+  }
+ ],
+ "confusion": {
+  "sentiment": [
+   [
+    55,
+    1,
+    2
+   ],
+   [
+    1,
+    3,
+    3
+   ],
+   [
+    4,
+    0,
+    31
+   ]
+  ],
+  "complaint": [
+   [
+    22,
+    5
+   ],
+   [
+    1,
+    72
+   ]
+  ],
+  "labels": [
+   "negative",
+   "neutral",
+   "positive"
+  ]
+ }
+}

@@ -1,0 +1,9 @@
+{
+ "stage": "assign",
+ "model": "Qwen/Qwen3.8-27B-FP8",
+ "revision": "017b9c7af6",
+ "vllm": "0.31.0",
+ "n": 3882,
+ "json_failures": 0,
+ "seconds": 722.6
+}

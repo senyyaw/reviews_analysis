@@ -1,0 +1,153 @@
+{
+ "_meta": {
+  "version": "1.0",
+  "approved": "2026-10-14, by the user (option a: LLM draft + 4 edits)",
+  "source": "TopicGPT-style: Gemma-4-31B extracted aspects from 3,882 sentences; Qwen3.8-27B consolidated them into a draft (research/results/themes/taxonomy_draft_qwen.json); edits: split AI into intrusive vs quality/limits, data loss as its own theme, added localisation, renamed feature gaps"
+ },
+ "complaint": [
+  {
+   "id": "c_stability",
+   "name": "App stability & crashes",
+   "definition": "The app crashes, freezes, hangs or becomes unresponsive, on any platform. Not mere slowness (see performance) and not losing content (see data loss).",
+   "action": "Prioritise crash/freeze fixes: triage crash reports by device and OS, add a stability gate to releases, and target long pages and large workspaces first."
+  },
+  {
+   "id": "c_performance",
+   "name": "Performance & loading speed",
+   "definition": "Slow loading of pages or the app, lag, sluggish scrolling or responsiveness, heavy resource use or app size. Not crashes/freezes.",
+   "action": "Make speed a release metric: measure page open/scroll times on real devices, lazy-load heavy blocks, and reduce app size and startup work."
+  },
+  {
+   "id": "c_ipad",
+   "name": "iPad-specific issues",
+   "definition": "Problems that the review ties to the iPad app: iPad layout/landscape, Apple Pencil, Magic Keyboard / external keyboards, iPad-only bugs. Not generic iPhone problems.",
+   "action": "Treat iPad as a first-class platform: fix landscape/layout, Apple Pencil and hardware-keyboard input, and test every release on iPad."
+  },
+  {
+   "id": "c_mobile",
+   "name": "iPhone / mobile app experience",
+   "definition": "The iPhone or mobile app is worse than desktop: missing settings or features on mobile, mobile-only bugs, poor mobile usability. Not iPad-specific.",
+   "action": "Close the mobile-desktop gap: bring the most-missed settings and features to iPhone and fix mobile-only bugs before adding new features."
+  },
+  {
+   "id": "c_ai_intrusive",
+   "name": "AI forced / intrusive",
+   "definition": "AI features are pushed into the interface or workflow against the user's wish: AI buttons everywhere, cannot turn AI off, the app shifting focus to AI instead of core features.",
+   "action": "Give users control over AI: an off switch or a quieter AI entry point, and keep core note-taking free of AI clutter."
+  },
+  {
+   "id": "c_ai_quality",
+   "name": "AI quality & limits",
+   "definition": "The AI itself disappoints: wrong or poor answers, usage/credit limits, AI being paywalled or too expensive, specific AI tools not working.",
+   "action": "Improve AI where it disappoints: answer quality, clearer usage limits and pricing, and fix the AI tools users report as broken."
+  },
+  {
+   "id": "c_ui_ux",
+   "name": "UI / UX & usability",
+   "definition": "The interface is confusing, cluttered, hard to navigate or unintuitive; design changes users dislike. Not the initial learning curve (see learning curve).",
+   "action": "Simplify the interface: reduce clutter and navigation depth, and test design changes with existing users before rollout."
+  },
+  {
+   "id": "c_learning_curve",
+   "name": "Learning curve & onboarding",
+   "definition": "The app is hard to learn or get started with: steep learning curve, overwhelming at first, unclear how to begin, poor onboarding or guidance.",
+   "action": "Lower the entry barrier: guided first-run setup, starter templates by use case, and in-context tips."
+  },
+  {
+   "id": "c_sync_offline",
+   "name": "Sync & offline access",
+   "definition": "Content not syncing between devices, sync conflicts or delays, no or poor offline mode.",
+   "action": "Make sync trustworthy: visible sync status, conflict handling, and a dependable offline mode."
+  },
+  {
+   "id": "c_data_loss",
+   "name": "Data loss",
+   "definition": "Notes, pages, text or edits disappear, get deleted or overwritten, or cannot be recovered.",
+   "action": "Treat data loss as critical: find and fix the root causes, add autosave/version recovery that users can find, and communicate fixes."
+  },
+  {
+   "id": "c_pricing",
+   "name": "Pricing & subscriptions",
+   "definition": "Subscription price, paywalls, block/feature limits on the free plan, price increases, cancellation or refund problems. AI-specific pricing belongs to AI quality & limits.",
+   "action": "Revisit free-plan limits and price communication: make limits transparent, review block limits, and simplify cancellation and refunds."
+  },
+  {
+   "id": "c_account",
+   "name": "Account & login",
+   "definition": "Cannot log in, sign-in or password-reset loops, being logged out, account access or workspace access problems.",
+   "action": "Fix sign-in reliability: password-reset and login loops, unexpected logouts, and workspace access errors."
+  },
+  {
+   "id": "c_updates_compat",
+   "name": "Updates & compatibility",
+   "definition": "A recent update broke or worsened something, forced updates, OS version requirements, device compatibility.",
+   "action": "Protect users from regressions: staged rollouts with regression checks, and avoid dropping OS versions without notice."
+  },
+  {
+   "id": "c_typing_editing",
+   "name": "Typing & text editing",
+   "definition": "Typing lag or jumping cursor, text deleted while typing, selection, copy-paste, formatting, emoji or keyboard input problems inside the editor.",
+   "action": "Fix the editor's input path: typing lag, cursor jumps, text disappearing while typing, and copy-paste/selection bugs."
+  },
+  {
+   "id": "c_support",
+   "name": "Customer support",
+   "definition": "Support is unresponsive, unhelpful or hard to reach (human or bot).",
+   "action": "Make support reachable and responsive: a clear contact path from the app and response-time targets."
+  },
+  {
+   "id": "c_localisation",
+   "name": "Localisation & language support",
+   "definition": "Missing interface languages, right-to-left (Arabic/Hebrew) text problems, poor support for non-English content.",
+   "action": "Expand language support: interface localisation for frequently requested languages and proper right-to-left text."
+  },
+  {
+   "id": "c_feature_gaps",
+   "name": "Missing features & feature bugs",
+   "definition": "A specific feature is missing or broken (databases, images, embeds, calendar, widgets, export, colours...), or feature bloat. Use only when no more specific theme fits.",
+   "action": "Review the most-requested missing or broken features (see quotes) and fix the broken ones before adding new ones."
+  }
+ ],
+ "praise": [
+  {
+   "id": "p_organisation",
+   "name": "Organisation & structure",
+   "definition": "Structuring and organising notes, tasks, projects or life; databases, hierarchy, a 'second brain'."
+  },
+  {
+   "id": "p_versatility",
+   "name": "Versatility & use cases",
+   "definition": "Works for many purposes (school, work, business, personal, creative); all-in-one workspace; adapts to the user's workflow."
+  },
+  {
+   "id": "p_ai",
+   "name": "AI features & integrations",
+   "definition": "Praise for Notion AI or integrations with external AI (Claude, ChatGPT)."
+  },
+  {
+   "id": "p_customisation",
+   "name": "Customisation & templates",
+   "definition": "Templates, customising pages, layouts and the look of the workspace."
+  },
+  {
+   "id": "p_pricing",
+   "name": "Free tier & value",
+   "definition": "The free plan is generous, good value for money, student/education plans."
+  },
+  {
+   "id": "p_performance",
+   "name": "Reliability, sync & platforms",
+   "definition": "Works reliably and fast, syncs across devices, good desktop/mobile apps."
+  },
+  {
+   "id": "p_ease_of_use",
+   "name": "Ease of use & design",
+   "definition": "Easy to use, intuitive, clean and beautiful interface."
+  },
+  {
+   "id": "p_support_community",
+   "name": "Support & community",
+   "definition": "Helpful customer support, tutorials, community templates and resources."
+  }
+ ]
+}

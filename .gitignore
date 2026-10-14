@@ -11,3 +11,6 @@ data/snapshots/**/raw/
 
 # Fine-tuned PyTorch checkpoints are large; only the int8 ONNX exports in models/ are versioned.
 *.pt
+
+# Cached sentence embeddings (re-computable, ~40 MB)
+research/results/themes/emb_*.npy
