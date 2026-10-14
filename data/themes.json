@@ -2,7 +2,14 @@
  "_meta": {
   "version": "1.0",
   "approved": "2026-10-14, by the user (option a: LLM draft + 4 edits)",
-  "source": "TopicGPT-style: Gemma-4-31B extracted aspects from 3,882 sentences; Qwen3.8-27B consolidated them into a draft (research/results/themes/taxonomy_draft_qwen.json); edits: split AI into intrusive vs quality/limits, data loss as its own theme, added localisation, renamed feature gaps"
+  "source": "TopicGPT-style: Gemma-4-31B extracted aspects from 3,882 sentences; Qwen3.8-27B consolidated them into a draft (research/results/themes/taxonomy_draft_qwen.json); edits: split AI into intrusive vs quality/limits, data loss as its own theme, added localisation, renamed feature gaps",
+  "apps": [
+   {
+    "id": 1232780281,
+    "name": "Notion"
+   }
+  ],
+  "scope": "Built from Notion reviews. Other apps get taxonomy-free insights (phrases, drivers) until a taxonomy is built for them (README: maintaining the themes)."
  },
  "complaint": [
   {

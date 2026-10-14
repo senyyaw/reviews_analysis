@@ -1,4 +1,4 @@
-"""Sentiment model comparison (DESIGN.md §5.2-5.5).
+"""Sentiment model comparison (README, Sentiment).
 
     uv run --extra translate --extra research python research/sentiment_bakeoff.py
 
@@ -11,7 +11,7 @@ Candidates: VADER, TF-IDF + logistic regression (trained on the other apps' star
 Face models (pinned revisions), an ensemble of the two best on D2, an always-negative baseline,
 and the two LLM annotators as a non-deployable reference.
 
-Decision rules: argmax, and the negative-priority rule (negative if P(neg) >= 0.30, DESIGN.md §5.4).
+Decision rules: argmax, and the negative-priority rule (negative if P(neg) >= 0.30).
 Metrics: macro-F1 with a bootstrap 95% CI, accuracy, MCC, Cohen's kappa, per-class
 precision/recall/F1, negative recall/precision, complaint recall (human complaint label) and exact
 McNemar tests against the best model. Also CPU latency and model size.
@@ -352,7 +352,7 @@ def main() -> None:
                     "_pred": pred,
                 }
 
-    # Threshold safety check on D2 (DESIGN.md §5.4: negative precision must stay >= ~0.75).
+    # Threshold safety check on D2 (negative precision must stay >= ~0.75).
     for name, by_rule in results["eval"]["D2"].items():
         r = by_rule["neg@0.30"]["per_class"]["negative"]
         results["threshold_check"][name] = {

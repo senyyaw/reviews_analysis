@@ -11,6 +11,7 @@ Each title states the finding, computed from the data, and each chart shows n an
 Requires the optional extra:  uv sync --extra report
 """
 
+import math
 from pathlib import Path
 from typing import Any
 
@@ -372,8 +373,11 @@ def drivers(data: dict[str, Any], path: Path) -> None:
     ax.axvline(1, color=AXIS, linewidth=1)
     ax.set_xscale("log")
     ax.xaxis.set_minor_locator(NullLocator())  # no "3x10^-1" minor labels
-    ax.set_xlim(0.25, 5)
-    ax.set_xticks([0.25, 0.5, 1, 2, 4], ["×0.25", "×0.5", "×1", "×2", "×4"])
+    # symmetric in log space, with room for the end labels on both sides
+    reach = math.exp(1.6 * max(abs(math.log(r["odds_ratio"])) for r in rows))
+    ax.set_xlim(1 / reach, reach)
+    ticks = [t for t in (0.125, 0.25, 0.5, 1, 2, 4, 8) if 1 / reach <= t <= reach]
+    ax.set_xticks(ticks, [f"×{t:g}" for t in ticks])
     ax.set_yticks(ys, [r["term"] for r in rows])
     ax.invert_yaxis()
     ax.grid(axis="y", visible=False)

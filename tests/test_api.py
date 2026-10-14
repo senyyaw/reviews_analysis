@@ -151,9 +151,89 @@ def test_insights_degrade_gracefully_on_small_collections(api: TestClient):
     assert ins["sentiment"]["n"] == 30
     assert abs(sum(p["share"] for p in ins["sentiment"]["distribution"].values()) - 1) < 1e-9
     assert ins["drivers"]["available"] is False and "needs" in ins["drivers"]["reason"]
-    assert ins["notes"]  # small-collection warning
+    assert any("Small collection" in n for n in ins["notes"])
+
+
+def test_themes_only_for_apps_the_taxonomy_covers(api: TestClient, monkeypatch):
+    # The test app is not in data/themes.json: no themes, a note, phrase-based recommendations.
+    pool_id = collect(api)["collection_ids"][1]
+    ins = api.get(f"/v1/collections/{pool_id}/insights").json()
+    assert ins["themes"] is None and any("taxonomy" in n for n in ins["notes"])
+    assert all(r["source"] == "phrases" for r in ins["recommendations"])
+
+    # Once the taxonomy covers the app, the (fake) classifier tags its sentences.
+    monkeypatch.setattr("review_analysis.themes.taxonomy_apps", lambda: {APP})
+    pool_id = collect(api)["collection_ids"][1]
+    ins = api.get(f"/v1/collections/{pool_id}/insights").json()
     themes = {t["id"]: t for t in ins["themes"]["complaint"]}
-    assert themes["c_stability"]["n_reviews"] > 0  # tagged by the (fake) theme classifier
+    assert themes["c_stability"]["n_reviews"] > 0
+    assert ins["recommendations"][0]["theme"] == "c_stability"
+    assert ins["recommendations"][0]["source"] == "themes"
+
+
+def test_report_is_html_with_the_numbers(api: TestClient):
+    sample_id, pool_id = collect(api)["collection_ids"]
+    for cid in (sample_id, pool_id):
+        r = api.get(f"/v1/collections/{cid}/report")
+        assert r.status_code == 200 and r.headers["content-type"].startswith("text/html")
+        assert "Test App" in r.text and 'id="report-data"' in r.text
+        assert f"/v1/collections/{cid}/reviews?format=csv" in r.text
+    assert api.get("/v1/collections/missing.pool/report").status_code == 404
+
+
+def test_report_escapes_review_text(api: TestClient, monkeypatch):
+    monkeypatch.setattr("review_analysis.themes.taxonomy_apps", lambda: {APP})
+    pool_id = collect(api)["collection_ids"][1]
+    snap = api.app.state.store.resolve(pool_id)[0]  # type: ignore[attr-defined]
+    # plant markup in a theme quote: it must come out escaped
+    path = snap / "sentences.jsonl"
+    path.write_text(path.read_text().replace("This is the body", "<script>alert(1)</script> body"))
+    from review_analysis import analysis
+
+    analysis._theme_files.cache_clear()
+    for f in (snap / "cache").glob("*"):
+        f.unlink()
+    html = api.get(f"/v1/collections/{pool_id}/report").text
+    assert "<script>alert(1)</script>" not in html and "&lt;script&gt;alert(1)" in html
+
+
+def test_compare_is_cached_and_validated(api: TestClient, monkeypatch):
+    monkeypatch.setattr("review_analysis.themes.taxonomy_apps", lambda: {APP})
+    job = collect(api)
+    sample_id, pool_id = job["collection_ids"]
+    recent = collect(api, strategy="recent", count=20)["collection_ids"][0]
+    # different collection runs are different snapshots: refused
+    r = api.get("/v1/compare", params={"base": pool_id, "target": recent})
+    assert r.status_code == 422 and r.headers["content-type"] == "application/problem+json"
+    r = api.get("/v1/compare", params={"base": sample_id, "target": sample_id})
+    assert r.status_code == 409  # nothing in base is older than the target window
+
+
+def test_root_redirects_to_docs(api: TestClient):
+    r = api.get("/", follow_redirects=False)
+    assert r.status_code in (302, 307) and r.headers["location"] == "/docs"
+
+
+def test_collection_needs_the_nlp_extra(tmp_path: Path, monkeypatch):
+    monkeypatch.setattr("review_analysis.api.app.nlp_installed", lambda: False)
+    api = TestClient(create_app(Settings(snapshots_dir=tmp_path), client_factory=fast_client))
+    r = api.post(f"/v1/apps/{APP}/collections", json={})
+    assert r.status_code == 503 and "nlp" in r.json()["detail"]
+
+
+def test_serving_does_not_import_the_nlp_stack():
+    """Read-only hosting installs only the core dependencies: importing the API must not need
+    spaCy, lingua, onnxruntime or scikit-learn."""
+    import subprocess
+    import sys
+
+    code = (
+        "import sys; import review_analysis.api.app, review_analysis.report; "
+        "heavy = {'spacy', 'lingua', 'onnxruntime', 'sklearn', 'tokenizers', 'vaderSentiment'}; "
+        "print(sorted(heavy & set(sys.modules)))"
+    )
+    out = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True, check=True)
+    assert out.stdout.strip() == "[]", out.stdout + out.stderr
 
 
 def test_errors_are_problem_json(api: TestClient):
@@ -182,3 +262,17 @@ def test_collection_can_be_disabled_for_read_only_hosting(tmp_path: Path):
     r = api.post(f"/v1/apps/{APP}/collections", json={})
     assert r.status_code == 503 and "read-only" in r.json()["detail"]
     assert api.get("/ready").json()["collection_enabled"] is False
+
+
+def test_empty_window_is_a_valid_collection(api: TestClient):
+    """No reviews in the window: the job succeeds, warns, and every endpoint still answers."""
+    job = collect(api, window_days=1)  # the fake storefront's newest review is older than a day
+    sample_id, pool_id = job["collection_ids"]
+    assert any(
+        "only 0 of 30" in w for w in api.get(f"/v1/collections/{sample_id}").json()["warnings"]
+    )
+    for cid in (sample_id, pool_id):
+        assert api.get(f"/v1/collections/{cid}/metrics").json()["metrics"]["n"] == 0
+        assert api.get(f"/v1/collections/{cid}/insights").status_code == 200
+        report = api.get(f"/v1/collections/{cid}/report")
+        assert report.status_code == 200 and "no written reviews" in report.text

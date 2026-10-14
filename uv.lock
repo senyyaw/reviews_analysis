@@ -1510,25 +1510,27 @@ name = "review-analysis"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
-    { name = "emoji" },
-    { name = "en-core-web-sm" },
     { name = "fastapi" },
-    { name = "ftfy" },
     { name = "httpx" },
     { name = "jinja2" },
-    { name = "lingua-language-detector" },
-    { name = "onnxruntime" },
     { name = "pydantic" },
     { name = "pydantic-settings" },
-    { name = "scikit-learn" },
     { name = "scipy" },
-    { name = "spacy" },
-    { name = "tokenizers" },
     { name = "uvicorn" },
-    { name = "vadersentiment" },
 ]
 
 [package.optional-dependencies]
+nlp = [
+    { name = "emoji" },
+    { name = "en-core-web-sm" },
+    { name = "ftfy" },
+    { name = "lingua-language-detector" },
+    { name = "onnxruntime" },
+    { name = "scikit-learn" },
+    { name = "spacy" },
+    { name = "tokenizers" },
+    { name = "vadersentiment" },
+]
 report = [
     { name = "matplotlib" },
 ]
@@ -1554,32 +1556,32 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "emoji", specifier = ">=2.16" },
-    { name = "en-core-web-sm", url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl" },
+    { name = "emoji", marker = "extra == 'nlp'", specifier = ">=2.16" },
+    { name = "en-core-web-sm", marker = "extra == 'nlp'", url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl" },
     { name = "fastapi", specifier = ">=0.143" },
-    { name = "ftfy", specifier = ">=6.3" },
+    { name = "ftfy", marker = "extra == 'nlp'", specifier = ">=6.3" },
     { name = "httpx", specifier = ">=0.28,<1" },
     { name = "jinja2", specifier = ">=3.1" },
-    { name = "lingua-language-detector", specifier = ">=2.2.0" },
+    { name = "lingua-language-detector", marker = "extra == 'nlp'", specifier = ">=2.2.0" },
     { name = "matplotlib", marker = "extra == 'report'", specifier = ">=3.9" },
     { name = "onnx", marker = "extra == 'research'", specifier = ">=1.17" },
-    { name = "onnxruntime", specifier = ">=1.20" },
+    { name = "onnxruntime", marker = "extra == 'nlp'", specifier = ">=1.20" },
     { name = "onnxscript", marker = "extra == 'research'", specifier = ">=0.2" },
     { name = "protobuf", marker = "extra == 'research'", specifier = ">=5" },
     { name = "pydantic", specifier = ">=2.9" },
     { name = "pydantic-settings", specifier = ">=2.5" },
-    { name = "scikit-learn", specifier = ">=1.9" },
+    { name = "scikit-learn", marker = "extra == 'nlp'", specifier = ">=1.9" },
     { name = "scipy", specifier = ">=1.14" },
     { name = "sentence-transformers", marker = "extra == 'research'", specifier = ">=6.1" },
     { name = "sentencepiece", marker = "extra == 'translate'", specifier = ">=0.2" },
-    { name = "spacy", specifier = ">=3.8,<3.9" },
-    { name = "tokenizers", specifier = ">=0.21" },
+    { name = "spacy", marker = "extra == 'nlp'", specifier = ">=3.8,<3.9" },
+    { name = "tokenizers", marker = "extra == 'nlp'", specifier = ">=0.21" },
     { name = "torch", marker = "extra == 'translate'", specifier = ">=2.14" },
     { name = "transformers", marker = "extra == 'translate'", specifier = ">=5.19" },
     { name = "uvicorn", specifier = ">=0.54" },
-    { name = "vadersentiment", specifier = ">=3.3" },
+    { name = "vadersentiment", marker = "extra == 'nlp'", specifier = ">=3.3" },
 ]
-provides-extras = ["report", "research", "translate"]
+provides-extras = ["nlp", "report", "research", "translate"]
 
 [package.metadata.requires-dev]
 dev = [

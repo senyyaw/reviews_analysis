@@ -99,7 +99,12 @@ class InsightsResponse(BaseModel):
     collection_id: str
     sentiment: SentimentSummary
     most_mentioned: dict[str, Any]
-    distinctive_terms: dict[str, Any]
+    negative_keywords: dict[str, Any] | None = Field(
+        None, description="most common aspect phrases of negative reviews (counts, any size)"
+    )
+    distinctive_terms: dict[str, Any] = Field(
+        description="phrases that set negative reviews apart (Fightin' Words, tested)"
+    )
     drivers: dict[str, Any]
     themes: dict[str, Any] | None = Field(
         None,

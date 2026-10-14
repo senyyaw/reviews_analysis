@@ -139,10 +139,20 @@ def themes_snapshot(
 
     Same sentence rules as the research pipeline: original-language sentences of >= min_words
     words; complaint = negative or P(complaint) >= 0.5; praise = positive and no complaint.
+
+    The taxonomy is app-specific (data/themes.json lists the apps it was built for). For any other
+    app the step is skipped: tagging an astrology app with note-taking themes would be fiction. The
+    insights then rely on the taxonomy-free phrases and drivers.
     """
     from review_analysis.preprocessing.normalize import words
     from review_analysis.sentiment import SentimentRouter
+    from review_analysis.snapshot import load_manifest
     from review_analysis.theme_classifier import ThemeClassifier
+    from review_analysis.themes import taxonomy_apps
+
+    app = load_manifest(snap).app
+    if app.app_id not in taxonomy_apps():
+        return {"skipped": 1}
 
     processed = [
         json.loads(line) for line in (snap / "processed.jsonl").read_text().splitlines() if line

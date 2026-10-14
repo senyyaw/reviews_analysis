@@ -12,6 +12,7 @@ them pre-computed.
 
 import json
 from collections.abc import Callable
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -20,6 +21,20 @@ from review_analysis.snapshot import Manifest, SampleDef, load_manifest
 
 # Bump when analysis code changes the results, so stale cached JSON is never served.
 CACHE_VERSION = 1
+
+
+def read_jsonl(path: Path) -> dict[str, dict[str, Any]]:
+    """review_id -> row of a JSONL file (processed.jsonl, sentiment.jsonl); cached per version."""
+    return _read_jsonl(path, path.stat().st_mtime_ns)
+
+
+@lru_cache(maxsize=16)
+def _read_jsonl(path: Path, _mtime: int) -> dict[str, dict[str, Any]]:
+    return {
+        (row := json.loads(line))["review_id"]: row
+        for line in path.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    }
 
 
 class CollectionNotFoundError(ReviewAnalysisError):

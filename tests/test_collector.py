@@ -4,9 +4,11 @@ import re
 from datetime import UTC, datetime, timedelta
 
 import httpx
+import pytest
 import respx
 
 from review_analysis.collector import collect_window
+from review_analysis.errors import UpstreamError
 from review_analysis.sources import apple_web
 
 APP = 42
@@ -113,3 +115,28 @@ def test_resume_uses_cached_pages(make_client, tmp_path):
         second = collect_window(client, APP, ["us"], since, raw_dir=tmp_path)
     assert route.call_count == calls_first_run  # nothing re-fetched
     assert [r.review_id for r in first.reviews] == [r.review_id for r in second.reviews]
+
+
+@respx.mock
+def test_sustained_throttling_keeps_partial_data_with_a_warning(make_client):
+    serve = fake_storefront("us", 100)
+
+    def throttled_after_two_pages(request: httpx.Request) -> httpx.Response:
+        if int(request.url.params["offset"]) >= 40:
+            return httpx.Response(429, json={"errors": [{"code": "API capacity exceeded"}]})
+        return serve(request)
+
+    route_for("us").mock(side_effect=throttled_after_two_pages)
+    route_for("gb").mock(side_effect=fake_storefront("gb", 10))
+    result = collect_window(make_client(), APP, ["us", "gb"], NOW - timedelta(days=365))
+    us, gb = result.storefronts
+    assert us.stop_reason == "upstream_error" and us.reviews_in_window == 40
+    assert gb.stop_reason == "end_of_reviews" and len(result.reviews) == 50
+    assert any("us: stopped after 2 pages" in w for w in result.warnings)
+
+
+@respx.mock
+def test_nothing_collected_is_an_error(make_client):
+    route_for("us").mock(return_value=httpx.Response(503))
+    with pytest.raises(UpstreamError):
+        collect_window(make_client(), APP, ["us"], NOW - timedelta(days=365))

@@ -59,5 +59,6 @@ class StorefrontStats(BaseModel):
     invalid_skipped: int = 0
     oldest_date_seen: datetime | None = None
     stop_reason: (
-        Literal["reached_cutoff", "end_of_reviews", "max_pages", "not_available"] | None
+        Literal["reached_cutoff", "end_of_reviews", "max_pages", "not_available", "upstream_error"]
+        | None
     ) = None

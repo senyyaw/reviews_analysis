@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ summary.app.name }} review report</title>
+<meta name="description" content="App Store review analysis for {{ summary.app.name }}: {{ summary.collection_id }}">
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+  --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,0.10);
+  --blue: #2a78d6; --blue-light: #86b6ef; --red: #e34948; --orange: #eb6834; --neutral: #c3c2b7;
+  --good: #006300; --chip: #f0efec;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+    --blue: #3987e5; --blue-light: #184f95; --red: #e66767; --orange: #d95926; --neutral: #5a5955;
+    --good: #0ca30c; --chip: #383835;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+  --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+  --blue: #3987e5; --blue-light: #184f95; --red: #e66767; --orange: #d95926; --neutral: #5a5955;
+  --good: #0ca30c; --chip: #383835;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif; }
+main { max-width: 1120px; margin: 0 auto; padding: 24px 16px 64px; }
+h1 { font-size: 26px; line-height: 1.2; margin: 0 0 4px; }
+h2 { font-size: 19px; margin: 40px 0 4px; }
+h3 { font-size: 15px; margin: 0 0 2px; }
+p { margin: 4px 0 8px; }
+a { color: var(--blue); }
+.sub, .note { color: var(--ink-2); }
+.note { font-size: 13px; }
+.muted { color: var(--muted); }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+.grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.kpis { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); margin-top: 20px; }
+.kpi .v { font-size: 26px; font-weight: 600; line-height: 1.2; }
+.kpi .l { color: var(--ink-2); font-size: 13px; }
+.kpi .c { color: var(--muted); font-size: 12px; }
+.chart { position: relative; width: 100%; }
+.links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.links a { font-size: 13px; padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px;
+  text-decoration: none; background: var(--surface); }
+.rec { display: grid; gap: 6px; }
+.rec + .rec { margin-top: 12px; }
+.rank { display: inline-block; min-width: 24px; height: 24px; border-radius: 12px; background: var(--chip);
+  text-align: center; font-weight: 600; font-size: 13px; line-height: 24px; margin-right: 6px; }
+.chip { display: inline-block; font-size: 12px; padding: 1px 8px; border-radius: 999px; background: var(--chip);
+  color: var(--ink-2); margin-left: 6px; }
+blockquote { margin: 0; padding: 6px 10px; border-left: 3px solid var(--axis); color: var(--ink-2);
+  font-size: 14px; overflow-wrap: anywhere; }
+blockquote .muted { font-size: 12px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+th { color: var(--ink-2); font-weight: 600; }
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.scroll { overflow-x: auto; }
+details { margin-top: 10px; }
+summary { cursor: pointer; color: var(--ink-2); font-size: 13px; }
+.fallback { display: none; color: var(--ink-2); font-size: 13px; }
+.no-chart .fallback { display: block; }
+.no-chart .chart { display: none; }
+footer { margin-top: 48px; color: var(--muted); font-size: 12px; }
+@media (max-width: 520px) { h1 { font-size: 22px; } .kpi .v { font-size: 22px; } }
+</style>
+</head>
+<body>
+<main id="top">
+  <header>
+    <p class="sub">App Store review analysis · {{ summary.strategy }}{% if summary.seed is not none %} (seed {{ summary.seed }}){% endif %} · {{ summary.collection_id }}</p>
+    <h1>{{ summary.app.name }}: {{ m.n }} reviews</h1>
+    <p class="sub">{{ summary.app.seller }}{% if m.n %} · written reviews from {{ m.date_min }} to {{ m.date_max }}{% endif %} ·
+      storefronts {{ summary.storefronts | join(", ") }} · pool of {{ summary.pool_size }} reviews in the window</p>
+    <div class="links">
+      <a href="{{ links.csv }}">Download reviews (CSV)</a>
+      <a href="{{ links.reviews }}">Reviews (JSON)</a>
+      <a href="{{ links.metrics }}">Metrics (JSON)</a>
+      <a href="{{ links.insights }}">Insights (JSON)</a>
+    </div>
+  </header>
+
+  {% set s = insights.sentiment %}
+  {% if not m.n %}
+  <div class="card" style="margin-top:20px"><p>This collection has no written reviews: the app had none in the
+    window on these storefronts. Try a longer <code>window_days</code> or more storefronts.</p></div>
+  {% else %}
+  <section class="kpis" aria-label="Key numbers">
+    <div class="card kpi"><div class="v">{{ m.rating.mean | stars }}</div><div class="l">average rating</div>
+      <div class="c">95% CI {{ "%.2f" | format(m.rating.ci_low) }}–{{ "%.2f" | format(m.rating.ci_high) }}{% if m.rating.fpc_applied %}, finite-population corrected{% endif %}</div></div>
+    <div class="card kpi"><div class="v">{{ m.distribution["1"].share | pct }} · {{ m.distribution["5"].share | pct }}</div><div class="l">1★ · 5★ reviews</div>
+      <div class="c">median {{ m.median_rating }}★</div></div>
+    <div class="card kpi"><div class="v">{{ s.distribution.negative.share | pct }}</div><div class="l">negative text (model)</div>
+      <div class="c">{{ s.distribution.neutral.share | pct }} neutral, {{ s.distribution.positive.share | pct }} positive</div></div>
+    <div class="card kpi"><div class="v">{{ s.complaint.share | pct }}</div><div class="l">contain a complaint</div>
+      <div class="c">including complaints inside 4–5★ reviews</div></div>
+    {% if metrics.listing.listing_avg_rating %}
+    <div class="card kpi"><div class="v">{{ metrics.listing.listing_avg_rating | stars(2) }}</div><div class="l">App Store listing</div>
+      <div class="c">{{ "{:,}".format(metrics.listing.listing_rating_count) }} ratings, most without text</div></div>
+    {% endif %}
+  </section>
+  <p class="note">Written reviews skew negative compared with the listing: people with a problem write. Read the
+    shares below as "what reviewers say", not as the opinion of all users.
+    {% if metrics.representativeness %}Sample vs pool: mean {{ "%.2f" | format(metrics.representativeness.sample_mean) }}★ vs
+    {{ "%.2f" | format(metrics.representativeness.pool_mean) }}★, star mix χ² p = {{ "%.2f" | format(metrics.representativeness.chi2_p_value) }}
+    ({{ "representative" if metrics.representativeness.chi2_p_value > 0.05 else "differs from the pool" }}).{% endif %}</p>
+
+  {% if insights.recommendations %}
+  {% set by_theme = insights.recommendations[0].source == "themes" %}
+  <h2 id="fix-first">What to fix first</h2>
+  {% if by_theme %}
+  <p class="sub">Complaint themes ranked by priority = share of reviews × how far below the rest those reviews rate.
+    Every number is computed from the reviews; actions come from the reviewed theme taxonomy; quotes are verbatim.</p>
+  {% else %}
+  <p class="sub">This app has no theme taxonomy yet, so these are the phrases that set its negative reviews apart, with
+    verbatim examples. They show where the problems are. <strong>Action:</strong> read the negative reviews that mention
+    each phrase (CSV, <code>sentiment=negative</code>) and turn the recurring problem into a ticket; for an app you track,
+    build a theme taxonomy (README) to get named themes with suggested actions.</p>
+  {% endif %}
+  <div class="card">
+    {% for r in insights.recommendations %}
+    <div class="rec">
+      <h3><span class="rank">{{ loop.index }}</span>{{ r.name }}{% if r.trend %}<span class="chip">{{ r.trend }}</span>{% endif %}</h3>
+      <p class="note">{{ r.evidence }}</p>
+      {% if by_theme %}<p><strong>Action:</strong> {{ r.action }}</p>{% endif %}
+      {% for q in r.quotes %}
+      <blockquote>“{{ q.translation or q.text }}” <span class="muted">({{ q.rating }}★{% if q.translation %}, translated{% endif %})</span></blockquote>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if data.complaint_themes %}
+  <h2 id="themes">Themes: what users complain about and what they love</h2>
+  <p class="sub">Share of reviews mentioning each theme (95% CI). The label adds the rating impact: how many stars
+    those reviews average below (−) or above (+) the others. Coverage: {{ insights.themes.coverage.share | pct }} of reviews
+    have at least one theme; labels by {{ insights.themes.source }}.</p>
+  <div class="grid">
+    <div class="card js-chart"><h3>Complaint themes, by priority</h3>
+      <div class="chart" style="height: {{ 60 + 26 * data.complaint_themes | length }}px"><canvas id="c-complaints" role="img" aria-label="Bar chart of complaint themes by share of reviews"></canvas></div>
+      <p class="fallback">Charts need JavaScript and an internet connection (Chart.js); the table has the same data.</p>
+      <details><summary>Data table</summary><div class="scroll"><table>
+        <tr><th>Theme</th><th class="n">Reviews</th><th class="n">Share (95% CI)</th><th class="n">Impact (95% CI)</th></tr>
+        {% for t in insights.themes.complaint if t.n_reviews %}
+        <tr><td>{{ t.name }}</td><td class="n">{{ t.n_reviews }}</td><td class="n">{{ t.prevalence | pct }} ({{ t.prevalence_ci[0] | pct }}–{{ t.prevalence_ci[1] | pct }})</td>
+          <td class="n">{{ t.rating_impact | signed }}★{% if t.rating_impact_ci %} ({{ t.rating_impact_ci[0] | signed }} to {{ t.rating_impact_ci[1] | signed }}){% endif %}</td></tr>
+        {% endfor %}
+      </table></div></details>
+    </div>
+    <div class="card js-chart"><h3>Praise themes</h3>
+      <div class="chart" style="height: {{ 60 + 26 * data.praise_themes | length }}px"><canvas id="c-praise" role="img" aria-label="Bar chart of praise themes by share of reviews"></canvas></div>
+      <p class="fallback">Charts need JavaScript; the table has the same data.</p>
+      <details><summary>Data table</summary><div class="scroll"><table>
+        <tr><th>Theme</th><th class="n">Reviews</th><th class="n">Share (95% CI)</th><th class="n">Impact</th></tr>
+        {% for t in insights.themes.praise if t.n_reviews %}
+        <tr><td>{{ t.name }}</td><td class="n">{{ t.n_reviews }}</td><td class="n">{{ t.prevalence | pct }} ({{ t.prevalence_ci[0] | pct }}–{{ t.prevalence_ci[1] | pct }})</td><td class="n">{{ t.rating_impact | signed }}★</td></tr>
+        {% endfor %}
+      </table></div></details>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if comparison %}
+  {% set changed = comparison.themes | rejectattr("status", "equalto", "no significant change") | rejectattr("status", "equalto", "persistent") | list %}
+  <h2 id="recent">Recent vs earlier</h2>
+  <p class="sub">{{ comparison.target }} (n = {{ comparison.n_target }}, from {{ comparison.target_window_start[:10] }}) vs the
+    {{ comparison.n_base }} earlier reviews of {{ comparison.base }}. Two-proportion tests with Benjamini–Hochberg
+    correction across all themes: "emerging" is confirmed after correction, "signal" is p &lt; 0.05 before correction only.</p>
+  <div class="grid">
+    <div class="card js-chart"><h3>Complaint themes, earlier vs recent</h3>
+      <div class="chart" style="height: {{ 80 + 34 * ([data.comparison | length, 10] | min) }}px"><canvas id="c-compare" role="img" aria-label="Grouped bar chart of complaint theme shares, earlier vs recent"></canvas></div>
+      <p class="fallback">Charts need JavaScript; the table has the changes.</p>
+    </div>
+    <div class="card">
+      <h3>Changes worth watching</h3>
+      {% if changed %}
+      <div class="scroll"><table>
+        <tr><th>Theme</th><th class="n">Earlier</th><th class="n">Recent</th><th class="n">p</th><th class="n">q (BH)</th><th>Status</th></tr>
+        {% for t in changed %}
+        <tr><td>{{ t.name }}</td><td class="n">{{ t.base_share | pct }}</td><td class="n">{{ t.target_share | pct }}</td>
+          <td class="n">{{ "%.3f" | format(t.p) }}</td><td class="n">{{ "%.2f" | format(t.q) }}</td><td>{{ t.status }}</td></tr>
+        {% endfor %}
+      </table></div>
+      {% else %}<p class="note">No theme changed significantly (p &lt; 0.05).</p>{% endif %}
+      {% set ep = comparison.emerging_phrases %}
+      {% if ep and ep.available %}
+      <h3 style="margin-top:16px">Rising phrases (no taxonomy needed)</h3>
+      <p class="note">Words over-represented in recent reviews (Fightin' Words): new problems show up here first.</p>
+      <div class="scroll"><table>
+        <tr><th>Phrase</th><th class="n">Earlier</th><th class="n">Recent</th></tr>
+        {% for t in ep.rising[:8] %}
+        <tr><td>{{ t.term }}</td><td class="n">{{ t.share_b | pct }}</td><td class="n">{{ t.share_a | pct }}</td></tr>
+        {% endfor %}
+      </table></div>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+
+  <h2 id="ratings">Ratings</h2>
+  <div class="grid">
+    <div class="card js-chart"><h3>Rating distribution</h3>
+      <p class="note">Share of reviews per star, 95% Wilson CI.</p>
+      <div class="chart" style="height: 260px"><canvas id="c-stars" role="img" aria-label="Bar chart of the rating distribution"></canvas></div>
+      <details><summary>Data table</summary><table>
+        <tr><th>Stars</th><th class="n">Reviews</th><th class="n">Share (95% CI)</th></tr>
+        {% for st in data.stars %}<tr><td>{{ st.star }}★</td><td class="n">{{ st.count }}</td><td class="n">{{ st.share | pct(1) }} ({{ st.ci_low | pct(1) }}–{{ st.ci_high | pct(1) }})</td></tr>{% endfor %}
+      </table></details>
+    </div>
+    <div class="card js-chart"><h3>1–2★ reviews by month</h3>
+      <p class="note">Share of low ratings per month with 95% CI; hover for the average rating and n.</p>
+      <div class="chart" style="height: 260px"><canvas id="c-monthly" role="img" aria-label="Line chart of the share of 1-2 star reviews by month"></canvas></div>
+      <details><summary>Data table</summary><div class="scroll"><table>
+        <tr><th>Month</th><th class="n">Reviews</th><th class="n">Average</th><th class="n">1–2★ share</th></tr>
+        {% for g in data.monthly %}<tr><td>{{ g.month }}</td><td class="n">{{ g.n }}</td><td class="n">{{ g.mean | stars }}</td><td class="n">{{ g.share | pct }}</td></tr>{% endfor %}
+      </table></div></details>
+    </div>
+  </div>
+
+  {% if data.stars_vs_text %}
+  <h2 id="text">What the text says at each star rating</h2>
+  <p class="sub">Text sentiment from the fine-tuned model, per star rating. Stars and text disagree most at 3–4★:
+    a "4★ with a complaint" is a fixable problem the star average hides.</p>
+  <div class="card js-chart">
+    <div class="chart" style="height: 240px"><canvas id="c-svt" role="img" aria-label="Stacked bar chart of text sentiment per star rating"></canvas></div>
+    <details><summary>Data table</summary><table>
+      <tr><th>Stars</th><th class="n">Negative</th><th class="n">Neutral</th><th class="n">Positive</th><th class="n">With a complaint</th></tr>
+      {% for r in data.stars_vs_text %}<tr><td>{{ r.star }}★</td><td class="n">{{ r.negative }}</td><td class="n">{{ r.neutral }}</td><td class="n">{{ r.positive }}</td><td class="n">{{ r.complaint.share | pct }}</td></tr>{% endfor %}
+    </table></details>
+  </div>
+  {% endif %}
+
+  <h2 id="topics">What users talk about</h2>
+  <div class="grid">
+    <div class="card js-chart"><h3>Most-mentioned product aspects</h3>
+      <p class="note">Share of reviews mentioning each aspect, split by the review's tone.</p>
+      <div class="chart" style="height: {{ 70 + 24 * data.most_mentioned | length }}px"><canvas id="c-mentions" role="img" aria-label="Stacked bar chart of the most-mentioned aspects"></canvas></div>
+    </div>
+    {% if data.distinctive %}
+    <div class="card js-chart"><h3>Phrases that set negative reviews apart</h3>
+      <p class="note">Fightin' Words z-scores: right = typical of negative reviews, left = typical of the rest. Generic
+        sentiment words are removed, so what remains are product aspects.</p>
+      <div class="chart" style="height: {{ 70 + 22 * ((data.distinctive.negative | length) + (data.distinctive.positive | length)) }}px"><canvas id="c-distinct" role="img" aria-label="Diverging bar chart of distinctive phrases"></canvas></div>
+    </div>
+    {% elif insights.negative_keywords %}
+    {% set nk = insights.negative_keywords %}
+    <div class="card"><h3>Common keywords in negative reviews</h3>
+      <p class="note">Aspect phrases in the {{ nk.n_negative }} negative reviews, kept when more common there than in the
+        {{ nk.n_other }} others. Counts only: this collection is too small for the significance test
+        ({{ insights.distinctive_terms.reason }}).</p>
+      {% if nk.terms %}
+      <div class="scroll"><table>
+        <tr><th>Phrase</th><th class="n">Negative reviews</th><th class="n">Share of negative</th><th class="n">Share of others</th></tr>
+        {% for t in nk.terms %}<tr><td>{{ t.term }}</td><td class="n">{{ t.count }}</td><td class="n">{{ t.share_negative | pct }}</td><td class="n">{{ t.share_other | pct }}</td></tr>{% endfor %}
+      </table></div>
+      {% else %}<p class="note">No phrase recurs in the negative reviews yet.</p>{% endif %}
+    </div>
+    {% endif %}
+  </div>
+  {% if data.drivers %}
+  <div class="card js-chart" style="margin-top:16px"><h3>Rating drivers</h3>
+    <p class="note">Odds of a 1–2★ (vs 4–5★) rating when a review mentions the aspect: logistic regression, cross-validated
+      AUC {{ "%.2f" | format(insights.drivers.cv_auc) }}, only aspects whose sign holds in ≥ 90% of 200 bootstraps. Associations, not causes.</p>
+    <div class="chart" style="height: {{ 70 + 22 * ((data.drivers.low | length) + (data.drivers.high | length)) }}px"><canvas id="c-drivers" role="img" aria-label="Diverging bar chart of rating drivers"></canvas></div>
+  </div>
+  {% else %}
+  <p class="note">Rating drivers: {{ insights.drivers.reason }} (this collection is too small; see the pool collection).</p>
+  {% endif %}
+
+  {% if insights.themes and insights.themes.unassigned %}
+  {% set u = insights.themes.unassigned %}
+  <h2 id="drift">Drift monitor: complaints no theme covers</h2>
+  <p class="sub">{{ u.unassigned }} of {{ u.complaint_sentences }} complaint sentences ({{ u.share | pct }}) fit no theme.
+    A rising share or a new recurring word means a new problem: the trigger to refresh the theme taxonomy.</p>
+  <div class="grid">
+    <div class="card"><h3>Recurring words</h3>
+      <p>{% for w in u.top_words %}<span class="chip">{{ w.word }} · {{ w.sentences }}</span>{% endfor %}</p></div>
+    <div class="card"><h3>Examples</h3>
+      {% for e in u.examples[:5] %}<blockquote>“{{ e.text }}” <span class="muted">({{ e.rating }}★)</span></blockquote>{% endfor %}</div>
+  </div>
+  {% endif %}
+
+  {% endif %}
+
+  <h2 id="method">Method and caveats</h2>
+  <div class="card note">
+    <p><strong>Sentiment and complaints:</strong> {{ s.model }}. Negative if P(negative) ≥ 0.30 (missing a negative review costs
+      more than a false alarm). A separate head flags complaints, also inside positive reviews.</p>
+    {% if insights.distinctive_terms.available %}<p><strong>Phrases:</strong> {{ insights.distinctive_terms.method }}.</p>{% endif %}
+    {% if insights.drivers.available %}<p><strong>Drivers:</strong> {{ insights.drivers.method }}.</p>{% endif %}
+    {% if insights.themes %}<p><strong>Themes:</strong> {{ insights.themes.method }}.</p>{% endif %}
+    <p><strong>Uncertainty:</strong> shares use Wilson 95% intervals; the mean rating a t-interval{% if m.rating and m.rating.fpc_applied %} with the
+      finite-population correction (a random sample without replacement from a known pool){% endif %}.</p>
+    {% for n in insights.notes %}<p>{{ n }}</p>{% endfor %}
+    {% for w in summary.warnings %}<p>Collection warning: {{ w }}</p>{% endfor %}
+  </div>
+  <footer>review-analysis {{ version }} · generated {{ generated }} · collected {{ summary.collected_at[:10] }}</footer>
+</main>
+
+<script id="report-data" type="application/json">{{ data | tojson }}</script>
+<script src="{{ chart_js }}" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+(function () {
+  "use strict";
+  var D = JSON.parse(document.getElementById("report-data").textContent);
+  if (!window.Chart) { document.body.classList.add("no-chart"); return; }
+  var charts = [];
+  function v(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+  function pct(x, d) { return (x * 100).toFixed(d || 0) + "%"; }
+  function signed(x) { return (x >= 0 ? "+" : "−") + Math.abs(x).toFixed(1); }
+
+  // Draws 95% CI whiskers (dataset.ci = [[lo, hi], ...] in data units) and end labels (dataset.ends).
+  var annotate = {
+    id: "annotate",
+    afterDatasetsDraw: function (chart) {
+      var ctx = chart.ctx, horizontal = chart.options.indexAxis === "y";
+      var vs = horizontal ? chart.scales.x : chart.scales.y;
+      chart.data.datasets.forEach(function (ds, i) {
+        var meta = chart.getDatasetMeta(i);
+        if (meta.hidden) return;
+        meta.data.forEach(function (el, j) {
+          var far = horizontal ? el.x : el.y;
+          ctx.save();
+          if (ds.ci && ds.ci[j]) {
+            var a = vs.getPixelForValue(ds.ci[j][0]), b = vs.getPixelForValue(ds.ci[j][1]);
+            ctx.strokeStyle = v("--ink-2"); ctx.lineWidth = 1.5; ctx.beginPath();
+            if (horizontal) { ctx.moveTo(a, el.y); ctx.lineTo(b, el.y); ctx.moveTo(a, el.y - 4); ctx.lineTo(a, el.y + 4); ctx.moveTo(b, el.y - 4); ctx.lineTo(b, el.y + 4); far = Math.max(far, b); }
+            else { ctx.moveTo(el.x, a); ctx.lineTo(el.x, b); ctx.moveTo(el.x - 4, a); ctx.lineTo(el.x + 4, a); ctx.moveTo(el.x - 4, b); ctx.lineTo(el.x + 4, b); far = Math.min(far, b); }
+            ctx.stroke();
+          }
+          if (ds.ends && ds.ends[j]) {
+            ctx.fillStyle = v("--ink-2"); ctx.font = "12px " + Chart.defaults.font.family;
+            var left = horizontal && el.x < el.base;
+            if (horizontal) { ctx.textBaseline = "middle"; ctx.textAlign = left ? "right" : "left"; ctx.fillText(ds.ends[j], left ? Math.min(el.x, far) - 6 : far + 6, el.y); }
+            else { ctx.textBaseline = "bottom"; ctx.textAlign = "center"; ctx.fillText(ds.ends[j], el.x, far - 4); }
+          }
+          ctx.restore();
+        });
+      });
+    }
+  };
+
+  function base(horizontal, extra) {
+    var grid = { color: v("--grid"), drawTicks: false }, ticks = { color: v("--muted"), padding: 6 };
+    var o = {
+      responsive: true, maintainAspectRatio: false, animation: false,
+      indexAxis: horizontal ? "y" : "x",
+      layout: { padding: { right: horizontal ? 96 : 8, top: horizontal ? 0 : 18 } },
+      interaction: { mode: "nearest", intersect: horizontal ? false : true, axis: horizontal ? "y" : "x" },
+      plugins: {
+        legend: { display: false, position: "top", align: "start", labels: { color: v("--ink-2"), boxWidth: 12, boxHeight: 12, usePointStyle: false } },
+        tooltip: { backgroundColor: v("--surface"), titleColor: v("--ink"), bodyColor: v("--ink-2"), borderColor: v("--axis"), borderWidth: 1, padding: 10 }
+      },
+      scales: {
+        x: { grid: horizontal ? grid : { display: false }, border: { display: !horizontal, color: v("--axis") }, ticks: ticks },
+        y: { grid: horizontal ? { display: false } : grid, border: { display: horizontal, color: v("--axis") }, ticks: { color: v("--ink-2"), padding: 6 } }
+      }
+    };
+    return deepMerge(o, extra || {});
+  }
+  function deepMerge(a, b) {
+    Object.keys(b).forEach(function (k) {
+      if (b[k] && typeof b[k] === "object" && !Array.isArray(b[k]) && a[k] && typeof a[k] === "object") deepMerge(a[k], b[k]);
+      else a[k] = b[k];
+    });
+    return a;
+  }
+  function bar(color, extra) {
+    return Object.assign({ backgroundColor: color, borderRadius: 4, borderSkipped: "start", maxBarThickness: 18, categoryPercentage: 0.8, barPercentage: 0.9 }, extra || {});
+  }
+  function make(id, cfg) {
+    var el = document.getElementById(id);
+    if (el) charts.push(new Chart(el, cfg));
+  }
+
+  function draw() {
+    charts.forEach(function (c) { c.destroy(); }); charts = [];
+    Chart.defaults.font.family = getComputedStyle(document.body).fontFamily;
+    Chart.defaults.font.size = 12;
+    Chart.defaults.color = v("--ink-2");
+    var percentAxis = { ticks: { callback: function (x) { return x + "%"; } }, beginAtZero: true };
+
+    function themeChart(id, rows, color) {
+      make(id, {
+        type: "bar", plugins: [annotate],
+        data: { labels: rows.map(function (t) { return t.name; }), datasets: [bar(color, {
+          label: "share of reviews",
+          data: rows.map(function (t) { return t.prevalence * 100; }),
+          ci: rows.map(function (t) { return [t.prevalence_ci[0] * 100, t.prevalence_ci[1] * 100]; }),
+          ends: rows.map(function (t) { return pct(t.prevalence) + " · " + signed(t.rating_impact) + "★"; })
+        })] },
+        options: base(true, { layout: { padding: { right: 112 } }, scales: { x: percentAxis }, plugins: { tooltip: { callbacks: {
+          label: function (c) { var t = rows[c.dataIndex]; return [t.n_reviews + " reviews, " + pct(t.prevalence) + " (CI " + pct(t.prevalence_ci[0]) + "–" + pct(t.prevalence_ci[1]) + ")", "rating impact " + signed(t.rating_impact) + "★"]; }
+        } } } })
+      });
+    }
+    if (D.complaint_themes.length) themeChart("c-complaints", D.complaint_themes, v("--red"));
+    if (D.praise_themes.length) themeChart("c-praise", D.praise_themes.slice().sort(function (a, b) { return b.prevalence - a.prevalence; }), v("--blue"));
+
+    if (D.comparison.length) {
+      var rows = D.comparison.slice().sort(function (a, b) { return b.target - a.target; }).slice(0, 10);
+      make("c-compare", {
+        type: "bar", plugins: [annotate],
+        data: { labels: rows.map(function (t) { return t.name; }), datasets: [
+          bar(v("--blue-light"), { label: "earlier", data: rows.map(function (t) { return t.base * 100; }) }),
+          bar(v("--blue"), { label: "recent", data: rows.map(function (t) { return t.target * 100; }),
+            ends: rows.map(function (t) { return t.status.indexOf("signal") >= 0 || t.status === "emerging" ? "▲ " + t.status.replace(" (unconfirmed)", "") : (t.status === "fading" ? "▼ fading" : ""); }) })
+        ] },
+        options: base(true, { layout: { padding: { right: 112 } }, scales: { x: percentAxis }, plugins: { legend: { display: true }, tooltip: { callbacks: {
+          label: function (c) { return c.dataset.label + ": " + c.parsed.x.toFixed(1) + "% of reviews"; },
+          afterBody: function (items) { return "status: " + rows[items[0].dataIndex].status; }
+        } } } })
+      });
+    }
+
+    make("c-stars", {
+      type: "bar", plugins: [annotate],
+      data: { labels: D.stars.map(function (s) { return s.star + "★"; }), datasets: [bar(v("--blue"), {
+        maxBarThickness: 44, label: "share of reviews",
+        data: D.stars.map(function (s) { return s.share * 100; }),
+        ci: D.stars.map(function (s) { return [s.ci_low * 100, s.ci_high * 100]; }),
+        ends: D.stars.map(function (s) { return pct(s.share); })
+      })] },
+      options: base(false, { scales: { y: percentAxis }, plugins: { tooltip: { callbacks: {
+        label: function (c) { var s = D.stars[c.dataIndex]; return s.count + " reviews, " + pct(s.share, 1) + " (CI " + pct(s.ci_low, 1) + "–" + pct(s.ci_high, 1) + ")"; }
+      } } } })
+    });
+
+    if (D.monthly.length) {
+      var M = D.monthly;
+      make("c-monthly", {
+        type: "line",
+        data: { labels: M.map(function (g) { return g.month; }), datasets: [
+          { label: "CI high", order: 2, data: M.map(function (g) { return g.ci_high * 100; }), borderWidth: 0, pointRadius: 0, pointHitRadius: 0, fill: "+1", backgroundColor: v("--grid") },
+          { label: "CI low", order: 2, data: M.map(function (g) { return g.ci_low * 100; }), borderWidth: 0, pointRadius: 0, pointHitRadius: 0, fill: false },
+          { label: "1–2★ share", order: 0, data: M.map(function (g) { return g.share * 100; }), borderColor: v("--red"), backgroundColor: v("--red"),
+            borderWidth: 2, pointRadius: 4, pointHoverRadius: 6, pointBorderColor: v("--surface"), pointBorderWidth: 2, tension: 0 }
+        ] },
+        options: base(false, { interaction: { mode: "index", intersect: false }, scales: { y: deepMerge({ max: 100 }, percentAxis) }, plugins: { tooltip: {
+          filter: function (i) { return i.datasetIndex === 2; },
+          callbacks: { label: function (c) { var g = M[c.dataIndex]; return [pct(g.share) + " of " + g.n + " reviews were 1–2★ (CI " + pct(g.ci_low) + "–" + pct(g.ci_high) + ")", "average " + g.mean.toFixed(2) + "★"]; } }
+        } } })
+      });
+    }
+
+    if (D.stars_vs_text.length) {
+      var R = D.stars_vs_text, tot = R.map(function (r) { return r.negative + r.neutral + r.positive || 1; });
+      var seg = function (key, color, label) {
+        return bar(color, { label: label, borderSkipped: false, borderRadius: 0, borderColor: v("--surface"), borderWidth: 1, maxBarThickness: 26,
+          data: R.map(function (r, i) { return r[key] / tot[i] * 100; }) });
+      };
+      make("c-svt", {
+        type: "bar",
+        data: { labels: R.map(function (r) { return r.star + "★"; }), datasets: [seg("negative", v("--red"), "negative"), seg("neutral", v("--neutral"), "neutral"), seg("positive", v("--blue"), "positive")] },
+        options: base(true, { layout: { padding: { right: 8 } }, scales: { x: deepMerge({ stacked: true, max: 100 }, percentAxis), y: { stacked: true } }, plugins: { legend: { display: true }, tooltip: { callbacks: {
+          label: function (c) { var r = R[c.dataIndex]; return c.dataset.label + ": " + r[c.dataset.label] + " of " + tot[c.dataIndex] + " (" + c.parsed.x.toFixed(0) + "%)"; },
+          afterBody: function (items) { var r = R[items[0].dataIndex]; return "with a complaint: " + pct(r.complaint.share); }
+        } } } })
+      });
+    }
+
+    if (D.most_mentioned.length) {
+      var T = D.most_mentioned;
+      make("c-mentions", {
+        type: "bar", plugins: [annotate],
+        data: { labels: T.map(function (t) { return t.term; }), datasets: [
+          bar(v("--red"), { label: "in negative reviews", borderSkipped: false, borderRadius: 0, borderColor: v("--surface"), borderWidth: 1, data: T.map(function (t) { return t.negative / t.n * 100; }) }),
+          bar(v("--blue"), { label: "in other reviews", borderColor: v("--surface"), borderWidth: 1, data: T.map(function (t) { return t.not_negative / t.n * 100; }),
+            ends: T.map(function (t) { return pct(t.share) + " · " + Math.round(t.negative / t.count * 100) + "% neg."; }) })
+        ] },
+        options: base(true, { layout: { padding: { right: 100 } }, scales: { x: deepMerge({ stacked: true }, percentAxis), y: { stacked: true } }, plugins: { legend: { display: true }, tooltip: { callbacks: {
+          label: function (c) { var t = T[c.dataIndex]; return c.dataset.label + ": " + (c.datasetIndex === 0 ? t.negative : t.not_negative) + " reviews"; },
+          afterBody: function (items) { var t = T[items[0].dataIndex]; return t.count + " of " + t.n + " reviews (" + pct(t.share) + ")"; }
+        } } } })
+      });
+    }
+
+    if (D.distinctive) {
+      var neg = D.distinctive.negative, pos = D.distinctive.positive, all = neg.concat(pos);
+      var zmax = Math.max.apply(null, all.map(function (t) { return Math.abs(t.z); })) * 1.35;
+      make("c-distinct", {
+        type: "bar", plugins: [annotate],
+        data: { labels: all.map(function (t) { return t.term; }), datasets: [bar(all.map(function (t, i) { return i < neg.length ? v("--red") : v("--blue"); }), {
+          label: "z-score", borderSkipped: "start",
+          data: all.map(function (t, i) { return i < neg.length ? Math.abs(t.z) : -Math.abs(t.z); }),
+          ends: all.map(function (t, i) { return pct(i < neg.length ? t.share_a : t.share_b); })
+        })] },
+        options: base(true, { layout: { padding: { left: 0, right: 8 } }, scales: { x: { min: -zmax, max: zmax, ticks: { includeBounds: false },
+            title: { display: true, text: "← typical of other reviews · z-score · typical of negative reviews →", color: v("--muted") } } },
+          plugins: { tooltip: { callbacks: {
+          label: function (c) { var t = all[c.dataIndex]; return ["in " + pct(t.share_a, 1) + " of negative reviews", "in " + pct(t.share_b, 1) + " of the others", "z = " + t.z.toFixed(2)]; }
+        } } } })
+      });
+    }
+
+    if (D.drivers) {
+      var dl = D.drivers.low, dh = D.drivers.high, dr = dl.concat(dh);
+      var cmax = Math.max.apply(null, dr.map(function (t) { return Math.abs(t.coef); })) * 1.35;
+      make("c-drivers", {
+        type: "bar", plugins: [annotate],
+        data: { labels: dr.map(function (t) { return t.term; }), datasets: [bar(dr.map(function (t) { return t.coef >= 0 ? v("--red") : v("--blue"); }), {
+          label: "odds ratio", borderSkipped: "start",
+          data: dr.map(function (t) { return t.coef; }),
+          ends: dr.map(function (t) { return "×" + t.odds_ratio.toFixed(2); })
+        })] },
+        options: base(true, { layout: { padding: { left: 0, right: 8 } }, scales: { x: { min: -cmax, max: cmax,
+            ticks: { includeBounds: false, callback: function (x) { return "×" + Math.exp(x).toFixed(2); } },
+            title: { display: true, text: "← towards 4–5★ · odds of a 1–2★ rating · towards 1–2★ →", color: v("--muted") } } },
+          plugins: { tooltip: { callbacks: {
+          label: function (c) { var t = dr[c.dataIndex]; return ["×" + t.odds_ratio.toFixed(2) + " odds of a 1–2★ rating", "mentioned in " + t.df + " reviews, sign stable in " + pct(t.stability) + " of bootstraps"]; }
+        } } } })
+      });
+    }
+  }
+  draw();
+  if (window.matchMedia) window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", draw);
+})();
+</script>
+</body>
+</html>

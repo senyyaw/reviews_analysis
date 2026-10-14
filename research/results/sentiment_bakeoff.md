@@ -1,6 +1,6 @@
 # Sentiment model comparison: results (2026-10-13)
 
-Produced by `research/sentiment_bakeoff.py`. Raw numbers are in `sentiment_bakeoff.json`. Protocol: DESIGN.md §5.3–5.5.
+Produced by `research/sentiment_bakeoff.py`. Raw numbers are in `sentiment_bakeoff.json`. Protocol: README, Sentiment.
 
 ### D1-human (n=100)
 | model | macro-F1 [95% CI] | acc | MCC | neg R / P (argmax) | neg R / P (@0.30) | complaint R (@0.30) | McNemar p vs best |

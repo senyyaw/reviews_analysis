@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>App Store Review Reports</title>
+<meta name="description" content="App Store review analysis reports: metrics, sentiment, themes and recommendations per collection.">
+<style>
+:root { color-scheme: light; --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --border: rgba(11,11,11,0.10); --blue: #2a78d6; }
+@media (prefers-color-scheme: dark) { :root:where(:not([data-theme="light"])) { color-scheme: dark; --page: #0d0d0d;
+  --surface: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781; --grid: #2c2c2a;
+  --border: rgba(255,255,255,0.10); --blue: #3987e5; } }
+:root[data-theme="dark"] { color-scheme: dark; --page: #0d0d0d; --surface: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+  --muted: #898781; --grid: #2c2c2a; --border: rgba(255,255,255,0.10); --blue: #3987e5; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif; }
+main { max-width: 1000px; margin: 0 auto; padding: 32px 16px 64px; }
+h1 { font-size: 26px; margin: 0 0 6px; }
+p { color: var(--ink-2); margin: 4px 0 12px; }
+a { color: var(--blue); }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 4px 16px; overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+th { color: var(--ink-2); font-weight: 600; font-size: 13px; }
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
+tr:last-child td { border-bottom: 0; }
+footer { margin-top: 32px; color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>App Store review reports</h1>
+  <p>Each report shows the rating metrics, text sentiment, complaint and praise themes, what to fix first, recent
+    changes and the drift monitor for one collection. Raw reviews download as CSV from each report.
+    {% if api_url %}The same data is served by the REST API: <a href="{{ api_url }}/docs">{{ api_url }}/docs</a>.{% endif %}</p>
+  <div class="card"><table>
+    <tr><th>App</th><th>Collection</th><th class="n">Reviews</th><th class="n">Average</th><th class="n">Negative text</th><th class="n">With a complaint</th><th>Data</th></tr>
+    {% for summary, metrics, insights in entries %}
+    <tr>
+      <td>{{ summary.app.name }}</td>
+      <td><a href="{{ summary.collection_id }}.html">{{ summary.sample }}</a> <span style="color:var(--muted)">({{ summary.strategy }})</span></td>
+      <td class="n">{{ metrics.metrics.n }}</td>
+      <td class="n">{{ "%.2f" | format(metrics.metrics.rating.mean) }}★</td>
+      <td class="n">{{ "%.0f" | format(insights.sentiment.distribution.negative.share * 100) }}%</td>
+      <td class="n">{{ "%.0f" | format(insights.sentiment.complaint.share * 100) }}%</td>
+      <td><a href="data/{{ summary.collection_id }}.reviews.csv">CSV</a> · <a href="data/{{ summary.collection_id }}.insights.json">JSON</a></td>
+    </tr>
+    {% endfor %}
+  </table></div>
+  <footer>review-analysis {{ version }} · generated {{ generated }}</footer>
+</main>
+</body>
+</html>

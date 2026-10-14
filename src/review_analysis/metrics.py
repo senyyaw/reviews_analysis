@@ -18,6 +18,7 @@ import math
 import statistics
 from collections import Counter, defaultdict
 from collections.abc import Sequence
+from typing import Any
 
 from pydantic import BaseModel
 from scipy import stats
@@ -169,3 +170,23 @@ def representativeness(sample: Sequence[Review], pool: Sequence[Review]) -> Repr
         chi2_p_value=float(p_value),
         max_star_share_gap=max(gaps),
     )
+
+
+def stars_vs_text(pool: Sequence[Review], sentiment: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    """Star rating x text sentiment crosstab, and the share of reviews with a complaint per star."""
+    table: dict[str, dict[str, int]] = {
+        str(s): {"negative": 0, "neutral": 0, "positive": 0} for s in range(1, 6)
+    }
+    complaints: Counter[int] = Counter()
+    totals: Counter[int] = Counter()
+    for r in pool:
+        s = sentiment[r.review_id]
+        table[str(r.rating)][s["label"]] += 1
+        totals[r.rating] += 1
+        complaints[r.rating] += bool(s["complaint"])
+    return {
+        "counts": table,
+        "complaint_share": {
+            str(s): wilson(complaints[s], totals[s]).model_dump() for s in range(1, 6)
+        },
+    }

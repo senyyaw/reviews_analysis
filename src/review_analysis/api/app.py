@@ -12,11 +12,19 @@ Endpoints (all JSON unless noted):
   GET  /v1/collections/{collection_id}/reviews    raw reviews, ?format=json|csv (download)
   GET  /v1/collections/{collection_id}/metrics    rating metrics with confidence intervals
   GET  /v1/collections/{collection_id}/insights   sentiment, topics, phrases, drivers, themes
+  GET  /v1/collections/{collection_id}/report     the same as an HTML report with charts
+  GET  /v1/compare?base=&target=                  emerging / fading themes and phrases
 Errors are RFC 9457 problem+json.
+
+Serving analysed snapshots needs only the core dependencies; results are computed once and cached
+next to the snapshot. Collecting and analysing new reviews needs the `nlp` extra (spaCy, lingua,
+ONNX models). Heavy modules are therefore imported inside the endpoints that use them.
 """
 
 import csv
+import importlib.util
 import io
+import uuid
 from collections import Counter
 from collections.abc import Callable, Iterator
 from contextlib import asynccontextmanager
@@ -25,9 +33,9 @@ from typing import Annotated, Any, Literal
 
 from fastapi import FastAPI, Path, Query, Request
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse, StreamingResponse
+from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse, StreamingResponse
 
-from review_analysis import __version__, analysis
+from review_analysis import __version__
 from review_analysis.api.jobs import Job, JobManager
 from review_analysis.api.schemas import (
     CollectionSummary,
@@ -38,7 +46,7 @@ from review_analysis.api.schemas import (
     SentimentSummary,
 )
 from review_analysis.api.settings import Settings
-from review_analysis.api.store import CollectionNotFoundError, CollectionStore
+from review_analysis.api.store import CollectionNotFoundError, CollectionStore, read_jsonl
 from review_analysis.errors import (
     AppNotFoundError,
     InvalidInputError,
@@ -47,6 +55,7 @@ from review_analysis.errors import (
 )
 from review_analysis.http import PoliteClient
 from review_analysis.metrics import compute_metrics, representativeness, wilson
+from review_analysis.snapshot import load_pool, load_sample
 from review_analysis.sources.lookup import lookup_app
 
 AppId = Annotated[int, Path(gt=0, description="App Store id, e.g. 1232780281 (Notion)")]
@@ -73,6 +82,18 @@ CSV_FIELDS = [
     "complaint",
     "p_complaint",
 ]
+
+
+NLP_MODULES = ("spacy", "lingua", "onnxruntime", "sklearn", "tokenizers", "vaderSentiment")
+
+
+def nlp_installed() -> bool:
+    """True when the `nlp` extra is installed (needed to collect and analyse new reviews)."""
+    return all(importlib.util.find_spec(m) is not None for m in NLP_MODULES)
+
+
+class NotAvailableError(Exception):
+    """A result that cannot be produced for this collection (maps to 409)."""
 
 
 def _problem(status: int, title: str, detail: str, request: Request) -> JSONResponse:
@@ -149,12 +170,30 @@ def create_app(
     async def _other(request: Request, exc: ReviewAnalysisError) -> JSONResponse:
         return _problem(400, "Request failed", str(exc), request)
 
+    @app.exception_handler(NotAvailableError)
+    async def _na(request: Request, exc: NotAvailableError) -> JSONResponse:
+        return _problem(409, "Not available", str(exc), request)
+
+    @app.exception_handler(ModuleNotFoundError)
+    async def _no_nlp(request: Request, exc: ModuleNotFoundError) -> JSONResponse:
+        return _problem(
+            503,
+            "Analysis stack not installed",
+            f"This result is not cached yet and computing it needs the 'nlp' extra "
+            f"(missing module: {exc.name}). Install with: uv sync --extra nlp",
+            request,
+        )
+
     @app.exception_handler(RequestValidationError)
     async def _validation(request: Request, exc: RequestValidationError) -> JSONResponse:
         detail = "; ".join(f"{'.'.join(map(str, e['loc']))}: {e['msg']}" for e in exc.errors())
         return _problem(422, "Invalid input", detail, request)
 
     # --- health ------------------------------------------------------------------------------
+    @app.get("/", include_in_schema=False)
+    def root() -> RedirectResponse:
+        return RedirectResponse("/docs")
+
     @app.get("/health", tags=["meta"])
     def health() -> dict[str, str]:
         return {"status": "ok", "version": __version__}
@@ -193,12 +232,21 @@ def create_app(
                 "Docker to collect new reviews.",
                 request,
             )
+        if router_factory is None and not nlp_installed():
+            return _problem(
+                503,
+                "Analysis stack not installed",
+                "Collecting needs the 'nlp' extra (language ID, spaCy, ONNX models): "
+                "uv sync --extra nlp",
+                request,
+            )
         with client_factory() as client:  # fail fast on an unknown app, before queueing
             app_info = lookup_app(client, app_id, body.storefronts[0])
         from review_analysis import pipeline
 
         stamp = datetime.now(UTC).strftime("%Y%m%d-%H%M%S")
-        snap = settings.snapshots_dir / f"app{app_id}_{stamp}"
+        # unique per job: two requests in the same second must not share a snapshot directory
+        snap = settings.snapshots_dir / f"app{app_id}_{stamp}-{uuid.uuid4().hex[:6]}"
         samples = [(body.strategy, body.count, body.seed)]
 
         def work(progress: Callable[[str], None]) -> list[str]:
@@ -218,7 +266,9 @@ def create_app(
             progress("sentiment + complaint detection")
             pipeline.sentiment_snapshot(snap, router())
             progress("themes (sentence sentiment + theme classifier)")
-            pipeline.themes_snapshot(snap, router(), classifier())
+            tagged = pipeline.themes_snapshot(snap, router(), classifier())
+            if tagged.get("skipped"):
+                progress("themes skipped: the taxonomy covers other apps; phrase insights only")
             progress("done")
             return [f"{snap.name}.{d.name}" for d in defs] + [f"{snap.name}.pool"]
 
@@ -263,6 +313,7 @@ def create_app(
                 "csv": f"{base}/reviews?format=csv",
                 "metrics": f"{base}/metrics",
                 "insights": f"{base}/insights",
+                "report": f"{base}/report",
             },
         )
 
@@ -326,21 +377,16 @@ def create_app(
         }
 
     def _review_rows(snap: Any, sample: str, with_analysis: bool) -> list[dict[str, Any]]:
-        if with_analysis:
-            data = analysis.load(snap)
-            ids = data.ids(sample)
-            reviews = analysis.reviews_of(data, ids)
-        else:
-            from review_analysis.snapshot import load_pool, load_sample
-
-            reviews = load_pool(snap) if sample == "pool" else load_sample(snap, sample)[1]
+        reviews = load_pool(snap) if sample == "pool" else load_sample(snap, sample)[1]
+        processed = read_jsonl(snap / "processed.jsonl") if with_analysis else {}
+        scores = read_jsonl(snap / "sentiment.jsonl") if with_analysis else {}
         rows = []
         for r in reviews:
             row: dict[str, Any] = r.model_dump(
                 mode="json", exclude={"source", "fetched_at", "app_id"}
             )
             if with_analysis:
-                p, s = data.processed[r.review_id], data.sentiment[r.review_id]
+                p, s = processed[r.review_id], scores[r.review_id]
                 row |= {
                     "lang": p["lang"],
                     "translated": p["translated"],
@@ -355,22 +401,11 @@ def create_app(
             rows.append(row)
         return rows
 
-    @app.get(
-        "/v1/collections/{collection_id}/metrics",
-        tags=["analysis"],
-        response_model=MetricsResponse,
-        responses={404: PROBLEM},
-    )
-    def get_metrics(collection_id: CollectionId) -> MetricsResponse:
-        """Average rating with 95% CI (finite-population corrected for random samples), star
-        distribution with Wilson CIs, breakdowns by storefront and month, the listing-vs-written
-        gap, and, for analysed snapshots, how star ratings relate to the text."""
+    def metrics_of(collection_id: str) -> dict[str, Any]:
         snap, sample = store.resolve(collection_id)
         man = store.manifest(snap)
 
         def compute() -> dict[str, Any]:
-            from review_analysis.snapshot import load_pool, load_sample
-
             pool = load_pool(snap)
             reviews = pool if sample == "pool" else load_sample(snap, sample)[1]
             definition = store.sample_def(snap, sample)
@@ -387,37 +422,40 @@ def create_app(
                     "reviews skew negative (people with a problem write).",
                 },
                 "representativeness": representativeness(reviews, pool).model_dump()
-                if is_random
+                if is_random and len(reviews) >= 2
                 else None,
             }
             if store.analysed(snap):
-                data = analysis.load(snap)
-                out["stars_vs_text"] = analysis.stars_vs_text(reviews, data.sentiment)
+                from review_analysis.metrics import stars_vs_text
+
+                out["stars_vs_text"] = stars_vs_text(reviews, read_jsonl(snap / "sentiment.jsonl"))
             return out
 
-        return MetricsResponse.model_validate(store.cached(snap, sample, "metrics", compute))
+        return dict(store.cached(snap, sample, "metrics", compute))
 
     @app.get(
-        "/v1/collections/{collection_id}/insights",
+        "/v1/collections/{collection_id}/metrics",
         tags=["analysis"],
-        response_model=InsightsResponse,
-        responses={404: PROBLEM, 409: PROBLEM},
+        response_model=MetricsResponse,
+        responses={404: PROBLEM},
     )
-    def get_insights(collection_id: CollectionId, request: Request) -> Any:
-        """NLP insights: sentiment and complaint shares (fine-tuned models), most-mentioned
-        product aspects with tone, distinctive phrases of negative vs other reviews (Fightin'
-        Words), rating drivers (logistic regression, bootstrap-stable), themes."""
+    def get_metrics(collection_id: CollectionId) -> MetricsResponse:
+        """Average rating with 95% CI (finite-population corrected for random samples), star
+        distribution with Wilson CIs, breakdowns by storefront and month, the listing-vs-written
+        gap, and, for analysed snapshots, how star ratings relate to the text."""
+        return MetricsResponse.model_validate(metrics_of(collection_id))
+
+    def insights_of(collection_id: str) -> dict[str, Any]:
         snap, sample = store.resolve(collection_id)
         if not store.analysed(snap):
-            return _problem(
-                409,
-                "Not analysed yet",
-                "Run preprocessing and sentiment for this "
-                "snapshot first (the collection job does this).",
-                request,
+            raise NotAvailableError(
+                "Not analysed yet: run preprocessing and sentiment for this snapshot first "
+                "(the collection job does this)."
             )
 
         def compute() -> dict[str, Any]:
+            from review_analysis import analysis
+
             data = analysis.load(snap)
             ids = data.ids(sample)
             labels = Counter(data.sentiment[r]["label"] for r in ids)
@@ -428,6 +466,20 @@ def create_app(
                 notes.append(
                     f"Small collection (n={n}): phrase and driver statistics need a "
                     "few hundred reviews; use the pool collection for those."
+                )
+            theme_stats = analysis.theme_insights(data, ids)
+            keyword_block = analysis.keyword_insights(data, ids)
+            negative_block = analysis.negative_keywords(data, ids)
+            driver_block = analysis.driver_insights(data, ids)
+            recommendations = analysis.recommendations(theme_stats)
+            if not theme_stats:
+                notes.append(
+                    "No themes for this app: the theme taxonomy (data/themes.json) is built per "
+                    "app and covers Notion. Recommendations come from the phrases that set "
+                    "negative reviews apart; build a taxonomy to get named themes (README)."
+                )
+                recommendations = analysis.phrase_recommendations(
+                    data, ids, keyword_block, driver_block, negative_block
                 )
             return {
                 "collection_id": collection_id,
@@ -441,58 +493,125 @@ def create_app(
                 "most_mentioned": analysis.most_mentioned(
                     {r: data.terms[r] for r in ids if r in data.terms}, data.sentiment
                 ),
-                "distinctive_terms": analysis.keyword_insights(data, ids),
-                "drivers": analysis.driver_insights(data, ids),
-                "themes": (theme_stats := analysis.theme_insights(data, ids)),
-                "recommendations": analysis.recommendations(theme_stats),
-                "notes": notes
-                + (
-                    []
-                    if theme_stats
-                    else ["Themes are not assigned for this snapshot yet (theme_labels.jsonl)."]
-                ),
+                "negative_keywords": negative_block,
+                "distinctive_terms": keyword_block,
+                "drivers": driver_block,
+                "themes": theme_stats,
+                "recommendations": recommendations,
+                "notes": notes,
             }
 
-        return InsightsResponse.model_validate(store.cached(snap, sample, "insights", compute))
+        return dict(store.cached(snap, sample, "insights", compute))
 
-    @app.get("/v1/compare", tags=["analysis"], responses={404: PROBLEM, 422: PROBLEM})
+    @app.get(
+        "/v1/collections/{collection_id}/insights",
+        tags=["analysis"],
+        response_model=InsightsResponse,
+        responses={404: PROBLEM, 409: PROBLEM},
+    )
+    def get_insights(collection_id: CollectionId) -> Any:
+        """NLP insights: sentiment and complaint shares (fine-tuned models), most-mentioned
+        product aspects with tone, distinctive phrases of negative vs other reviews (Fightin'
+        Words), rating drivers (logistic regression, bootstrap-stable), themes, and the top
+        recommendations (complaint themes ranked by prevalence x rating drag, with quotes)."""
+        return InsightsResponse.model_validate(insights_of(collection_id))
+
+    def comparison_of(base: str, target: str) -> dict[str, Any]:
+        snap_a, sample_a = store.resolve(base)
+        snap_b, sample_b = store.resolve(target)
+        if snap_a != snap_b:
+            raise InvalidInputError(
+                "base and target must come from the same snapshot (same app and collection run)"
+            )
+        if not store.analysed(snap_a):
+            raise NotAvailableError("this snapshot is not analysed yet")
+
+        def compute() -> dict[str, Any]:
+            from review_analysis import analysis
+
+            data = analysis.load(snap_a)
+            dates = {r.review_id: r.date for r in data.pool}
+            target_ids = data.ids(sample_b)
+            start = min(dates[r] for r in target_ids)
+            in_target = set(target_ids)
+            base_ids = [r for r in data.ids(sample_a) if dates[r] < start and r not in in_target]
+            if not base_ids:
+                raise NotAvailableError(f"no reviews of '{base}' are older than '{target}'")
+            rows = analysis.theme_comparison(data, base_ids, target_ids)
+            if not rows:
+                raise NotAvailableError("themes are not assigned for this snapshot")
+            return {
+                "base": base,
+                "target": target,
+                "n_base": len(base_ids),
+                "n_target": len(target_ids),
+                "target_window_start": start.isoformat(),
+                "themes": rows,
+                "emerging_phrases": analysis.emerging_phrases(data, base_ids, target_ids),
+            }
+
+        return dict(store.cached(snap_a, f"{sample_a}~{sample_b}", "compare", compute))
+
+    @app.get("/v1/compare", tags=["analysis"], responses={404: PROBLEM, 409: PROBLEM, 422: PROBLEM})
     def compare(
-        request: Request,
         base: str = Query(..., description="earlier collection, e.g. notion_2026-10-13.A_random"),
         target: str = Query(..., description="recent collection, e.g. notion_2026-10-13.B_recent"),
     ) -> Any:
         """Which complaint and praise themes are emerging, fading or persistent: theme prevalence
         in `target` vs `base` with two-proportion tests and Benjamini-Hochberg correction. Reviews
         of `base` that fall inside `target`'s time window are excluded, so the comparison is
-        earlier vs recent."""
-        snap_a, sample_a = store.resolve(base)
-        snap_b, sample_b = store.resolve(target)
-        if snap_a != snap_b:
-            return _problem(
-                422,
-                "Invalid input",
-                "base and target must come from the same snapshot (same app and collection run)",
-                request,
-            )
-        data = analysis.load(snap_a)
-        dates = {r.review_id: r.date for r in data.pool}
-        target_ids = data.ids(sample_b)
-        start = min(dates[r] for r in target_ids)
-        base_ids = [r for r in data.ids(sample_a) if dates[r] < start and r not in set(target_ids)]
-        rows = analysis.theme_comparison(data, base_ids, target_ids)
-        if not rows:
-            return _problem(
-                409, "Not available", "themes are not assigned for this snapshot", request
-            )
-        return {
-            "base": base,
-            "target": target,
-            "n_base": len(base_ids),
-            "n_target": len(target_ids),
-            "target_window_start": start.isoformat(),
-            "themes": rows,
-            "emerging_phrases": analysis.emerging_phrases(data, base_ids, target_ids),
-        }
+        earlier vs recent. Taxonomy-free emerging phrases are included as a drift signal."""
+        return comparison_of(base, target)
+
+    def default_comparison(collection_id: str) -> dict[str, Any] | None:
+        """For the report: this collection vs the snapshot's most-recent sample, if it has one."""
+        snap, _ = store.resolve(collection_id)
+        recent = [
+            c
+            for c in store.collection_ids()
+            if c.startswith(f"{snap.name}.")
+            and (d := store.sample_def(snap, c.rpartition(".")[2])) is not None
+            and d.strategy == "recent"
+        ]
+        if not recent:
+            return None
+        target = recent[0]
+        base = f"{snap.name}.pool" if target == collection_id else collection_id
+        try:
+            return comparison_of(base, target)
+        except (NotAvailableError, InvalidInputError, ModuleNotFoundError):
+            return None
+
+    @app.get(
+        "/v1/collections/{collection_id}/report",
+        tags=["analysis"],
+        response_class=HTMLResponse,
+        responses={404: PROBLEM, 409: PROBLEM},
+    )
+    def get_report(collection_id: CollectionId) -> HTMLResponse:
+        """The metrics and insights of a collection as a self-contained HTML report with
+        interactive charts (open it in a browser)."""
+        from review_analysis.report import render_report
+
+        html = render_report(
+            summary(collection_id).model_dump(mode="json"),
+            metrics_of(collection_id),
+            insights_of(collection_id),
+            default_comparison(collection_id),
+        )
+        return HTMLResponse(html)
+
+    def report_inputs(collection_id: str) -> tuple[dict[str, Any], ...]:
+        """summary, metrics, insights and comparison of a collection (static site export)."""
+        return (
+            summary(collection_id).model_dump(mode="json"),
+            metrics_of(collection_id),
+            insights_of(collection_id),
+            default_comparison(collection_id) or {},
+        )
+
+    app.state.report_inputs = report_inputs
+    app.state.store = store
 
     return app
 

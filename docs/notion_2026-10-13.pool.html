@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notion: Notes, Tasks, AI review report</title>
+<meta name="description" content="App Store review analysis for Notion: Notes, Tasks, AI: notion_2026-10-13.pool">
+<style>
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+  --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,0.10);
+  --blue: #2a78d6; --blue-light: #86b6ef; --red: #e34948; --orange: #eb6834; --neutral: #c3c2b7;
+  --good: #006300; --chip: #f0efec;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+    --blue: #3987e5; --blue-light: #184f95; --red: #e66767; --orange: #d95926; --neutral: #5a5955;
+    --good: #0ca30c; --chip: #383835;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+  --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+  --blue: #3987e5; --blue-light: #184f95; --red: #e66767; --orange: #d95926; --neutral: #5a5955;
+  --good: #0ca30c; --chip: #383835;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink);
+  font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif; }
+main { max-width: 1120px; margin: 0 auto; padding: 24px 16px 64px; }
+h1 { font-size: 26px; line-height: 1.2; margin: 0 0 4px; }
+h2 { font-size: 19px; margin: 40px 0 4px; }
+h3 { font-size: 15px; margin: 0 0 2px; }
+p { margin: 4px 0 8px; }
+a { color: var(--blue); }
+.sub, .note { color: var(--ink-2); }
+.note { font-size: 13px; }
+.muted { color: var(--muted); }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+.grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.kpis { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); margin-top: 20px; }
+.kpi .v { font-size: 26px; font-weight: 600; line-height: 1.2; }
+.kpi .l { color: var(--ink-2); font-size: 13px; }
+.kpi .c { color: var(--muted); font-size: 12px; }
+.chart { position: relative; width: 100%; }
+.links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.links a { font-size: 13px; padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px;
+  text-decoration: none; background: var(--surface); }
+.rec { display: grid; gap: 6px; }
+.rec + .rec { margin-top: 12px; }
+.rank { display: inline-block; min-width: 24px; height: 24px; border-radius: 12px; background: var(--chip);
+  text-align: center; font-weight: 600; font-size: 13px; line-height: 24px; margin-right: 6px; }
+.chip { display: inline-block; font-size: 12px; padding: 1px 8px; border-radius: 999px; background: var(--chip);
+  color: var(--ink-2); margin-left: 6px; }
+blockquote { margin: 0; padding: 6px 10px; border-left: 3px solid var(--axis); color: var(--ink-2);
+  font-size: 14px; overflow-wrap: anywhere; }
+blockquote .muted { font-size: 12px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 5px 8px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+th { color: var(--ink-2); font-weight: 600; }
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.scroll { overflow-x: auto; }
+details { margin-top: 10px; }
+summary { cursor: pointer; color: var(--ink-2); font-size: 13px; }
+.fallback { display: none; color: var(--ink-2); font-size: 13px; }
+.no-chart .fallback { display: block; }
+.no-chart .chart { display: none; }
+footer { margin-top: 48px; color: var(--muted); font-size: 12px; }
+@media (max-width: 520px) { h1 { font-size: 22px; } .kpi .v { font-size: 22px; } }
+</style>
+</head>
+<body>
+<main id="top">
+  <header>
+    <p class="sub">App Store review analysis · pool · notion_2026-10-13.pool</p>
+    <h1>Notion: Notes, Tasks, AI: 1143 reviews</h1>
+    <p class="sub">Notion Labs, Incorporated · written reviews from 2025-10-13 to 2026-10-12 ·
+      storefronts us, gb, ca, au, in, ie, nz · pool of 1143 reviews in the window</p>
+    <div class="links">
+      <a href="data/notion_2026-10-13.pool.reviews.csv">Download reviews (CSV)</a>
+      <a href="data/notion_2026-10-13.pool.reviews.csv">Reviews (JSON)</a>
+      <a href="data/notion_2026-10-13.pool.metrics.json">Metrics (JSON)</a>
+      <a href="data/notion_2026-10-13.pool.insights.json">Insights (JSON)</a>
+    </div>
+  </header>
+
+  <section class="kpis" aria-label="Key numbers">
+    <div class="card kpi"><div class="v">3.13★</div><div class="l">average rating</div>
+      <div class="c">95% CI 3.03–3.23</div></div>
+    <div class="card kpi"><div class="v">30% · 39%</div><div class="l">1★ · 5★ reviews</div>
+      <div class="c">median 3.0★</div></div>
+    <div class="card kpi"><div class="v">51%</div><div class="l">negative text (model)</div>
+      <div class="c">2% neutral, 47% positive</div></div>
+    <div class="card kpi"><div class="v">65%</div><div class="l">contain a complaint</div>
+      <div class="c">including complaints inside 4–5★ reviews</div></div>
+    <div class="card kpi"><div class="v">4.78★</div><div class="l">App Store listing</div>
+      <div class="c">90,377 ratings, most without text</div></div>
+  </section>
+  <p class="note">Written reviews skew negative compared with the listing: people with a problem write. Read the
+    shares below as "what reviewers say", not as the opinion of all users.
+</p>
+
+  <h2 id="fix-first">What to fix first</h2>
+  <p class="sub">Complaint themes ranked by priority = share of reviews × how far below the rest those reviews rate.
+    Every number is computed from the reviews; actions come from the reviewed theme taxonomy; quotes are verbatim.</p>
+  <div class="card">
+    <div class="rec">
+      <h3><span class="rank">1</span>App stability &amp; crashes</h3>
+      <p class="note">14% of reviews (95% CI 12%–16%); reviews mentioning it average 2.0★, 1.3★ below the rest</p>
+<p><strong>Action:</strong> Prioritise crash/freeze fixes: triage crash reports by device and OS, add a stability gate to releases, and target long pages and large workspaces first.</p>      <blockquote>“I love Notion, but *all the time* I find myself trying to update a field on a table and the app just won&#39;t let me type, exit the page, or do anything except select.” <span class="muted">(3★)</span></blockquote>
+      <blockquote>“Love Notion, but the app is so buggy.” <span class="muted">(1★)</span></blockquote>
+    </div>
+    <div class="rec">
+      <h3><span class="rank">2</span>AI forced / intrusive</h3>
+      <p class="note">10% of reviews (95% CI 9%–12%); reviews mentioning it average 1.9★, 1.4★ below the rest</p>
+<p><strong>Action:</strong> Give users control over AI: an off switch or a quieter AI entry point, and keep core note-taking free of AI clutter.</p>      <blockquote>“Notion is amazing but I hate ai and it is so hard to work around please make options for us available.” <span class="muted">(2★)</span></blockquote>
+      <blockquote>“Good... but the AI features have ruined it.” <span class="muted">(3★)</span></blockquote>
+    </div>
+    <div class="rec">
+      <h3><span class="rank">3</span>iPhone / mobile app experience</h3>
+      <p class="note">12% of reviews (95% CI 10%–14%); reviews mentioning it average 2.1★, 1.2★ below the rest</p>
+<p><strong>Action:</strong> Close the mobile-desktop gap: bring the most-missed settings and features to iPhone and fix mobile-only bugs before adding new features.</p>      <blockquote>“This has been a problem for a while now and I would appreciate attention to this matter - a fix, and workaround (that actually works - accessibility settings per app and increasing it there also doesn&#39;t work).” <span class="muted">(4★)</span></blockquote>
+      <blockquote>“The overall trajectory of the platform has been great since then, but the mobile app has always had issues.” <span class="muted">(1★)</span></blockquote>
+    </div>
+    <div class="rec">
+      <h3><span class="rank">4</span>UI / UX &amp; usability</h3>
+      <p class="note">11% of reviews (95% CI 10%–13%); reviews mentioning it average 2.1★, 1.1★ below the rest</p>
+<p><strong>Action:</strong> Simplify the interface: reduce clutter and navigation depth, and test design changes with existing users before rollout.</p>      <blockquote>“However the collaboration process is a little complicated and annoying sometimes.” <span class="muted">(3★)</span></blockquote>
+      <blockquote>“The three-dots at the top right of each image was always very useful to quickly use other options such as captioning, but now its gone.” <span class="muted">(4★)</span></blockquote>
+    </div>
+    <div class="rec">
+      <h3><span class="rank">5</span>iPad-specific issues</h3>
+      <p class="note">9% of reviews (95% CI 7%–11%); reviews mentioning it average 2.0★, 1.3★ below the rest</p>
+<p><strong>Action:</strong> Treat iPad as a first-class platform: fix landscape/layout, Apple Pencil and hardware-keyboard input, and test every release on iPad.</p>      <blockquote>“The overall and features work great however when using with a appropriate IPad and Keyboard with trackpad doesn&#39;t seem to work and makes this super unproductive.” <span class="muted">(2★)</span></blockquote>
+      <blockquote>“I&#39;m glad I can use notion on iPad, but man... I use this for simple writing, google docs level stuff, and this app has a lot off issues.” <span class="muted">(2★)</span></blockquote>
+    </div>
+  </div>
+
+  <h2 id="themes">Themes: what users complain about and what they love</h2>
+  <p class="sub">Share of reviews mentioning each theme (95% CI). The label adds the rating impact: how many stars
+    those reviews average below (−) or above (+) the others. Coverage: 92% of reviews
+    have at least one theme; labels by Qwen/Qwen3.8-27B-FP8.</p>
+  <div class="grid">
+    <div class="card js-chart"><h3>Complaint themes, by priority</h3>
+      <div class="chart" style="height: 502px"><canvas id="c-complaints" role="img" aria-label="Bar chart of complaint themes by share of reviews"></canvas></div>
+      <p class="fallback">Charts need JavaScript and an internet connection (Chart.js); the table has the same data.</p>
+      <details><summary>Data table</summary><div class="scroll"><table>
+        <tr><th>Theme</th><th class="n">Reviews</th><th class="n">Share (95% CI)</th><th class="n">Impact (95% CI)</th></tr>
+        <tr><td>App stability &amp; crashes</td><td class="n">163</td><td class="n">14% (12%–16%)</td>
+          <td class="n">−1.3★ (−1.5 to −1.1)</td></tr>
+        <tr><td>AI forced / intrusive</td><td class="n">117</td><td class="n">10% (9%–12%)</td>
+          <td class="n">−1.4★ (−1.6 to −1.2)</td></tr>
+        <tr><td>iPhone / mobile app experience</td><td class="n">132</td><td class="n">12% (10%–14%)</td>
+          <td class="n">−1.2★ (−1.4 to −0.9)</td></tr>
+        <tr><td>UI / UX &amp; usability</td><td class="n">129</td><td class="n">11% (10%–13%)</td>
+          <td class="n">−1.1★ (−1.4 to −0.9)</td></tr>
+        <tr><td>iPad-specific issues</td><td class="n">102</td><td class="n">9% (7%–11%)</td>
+          <td class="n">−1.3★ (−1.5 to −1.1)</td></tr>
+        <tr><td>Updates &amp; compatibility</td><td class="n">82</td><td class="n">7% (6%–9%)</td>
+          <td class="n">−1.6★ (−1.8 to −1.3)</td></tr>
+        <tr><td>Performance &amp; loading speed</td><td class="n">96</td><td class="n">8% (7%–10%)</td>
+          <td class="n">−1.3★ (−1.5 to −1.0)</td></tr>
+        <tr><td>Typing &amp; text editing</td><td class="n">74</td><td class="n">6% (5%–8%)</td>
+          <td class="n">−1.3★ (−1.6 to −1.1)</td></tr>
+        <tr><td>Missing features &amp; feature bugs</td><td class="n">141</td><td class="n">12% (11%–14%)</td>
+          <td class="n">−0.6★ (−0.9 to −0.4)</td></tr>
+        <tr><td>Pricing &amp; subscriptions</td><td class="n">69</td><td class="n">6% (5%–8%)</td>
+          <td class="n">−1.1★ (−1.5 to −0.7)</td></tr>
+        <tr><td>AI quality &amp; limits</td><td class="n">52</td><td class="n">5% (3%–6%)</td>
+          <td class="n">−0.9★ (−1.3 to −0.5)</td></tr>
+        <tr><td>Data loss</td><td class="n">32</td><td class="n">3% (2%–4%)</td>
+          <td class="n">−1.3★ (−1.7 to −0.8)</td></tr>
+        <tr><td>Account &amp; login</td><td class="n">23</td><td class="n">2% (1%–3%)</td>
+          <td class="n">−1.6★ (−2.0 to −1.1)</td></tr>
+        <tr><td>Customer support</td><td class="n">27</td><td class="n">2% (2%–3%)</td>
+          <td class="n">−1.3★ (−1.8 to −0.8)</td></tr>
+        <tr><td>Sync &amp; offline access</td><td class="n">21</td><td class="n">2% (1%–3%)</td>
+          <td class="n">−0.6★ (−1.2 to +0.0)</td></tr>
+        <tr><td>Localisation &amp; language support</td><td class="n">6</td><td class="n">1% (0%–1%)</td>
+          <td class="n">−1.0★ (−2.5 to +0.6)</td></tr>
+        <tr><td>Learning curve &amp; onboarding</td><td class="n">65</td><td class="n">6% (4%–7%)</td>
+          <td class="n">+0.1★ (−0.4 to +0.5)</td></tr>
+      </table></div></details>
+    </div>
+    <div class="card js-chart"><h3>Praise themes</h3>
+      <div class="chart" style="height: 268px"><canvas id="c-praise" role="img" aria-label="Bar chart of praise themes by share of reviews"></canvas></div>
+      <p class="fallback">Charts need JavaScript; the table has the same data.</p>
+      <details><summary>Data table</summary><div class="scroll"><table>
+        <tr><th>Theme</th><th class="n">Reviews</th><th class="n">Share (95% CI)</th><th class="n">Impact</th></tr>
+        <tr><td>Versatility &amp; use cases</td><td class="n">249</td><td class="n">22% (19%–24%)</td><td class="n">+1.8★</td></tr>
+        <tr><td>Organisation &amp; structure</td><td class="n">207</td><td class="n">18% (16%–20%)</td><td class="n">+1.9★</td></tr>
+        <tr><td>Ease of use &amp; design</td><td class="n">94</td><td class="n">8% (7%–10%)</td><td class="n">+1.0★</td></tr>
+        <tr><td>Reliability, sync &amp; platforms</td><td class="n">77</td><td class="n">7% (5%–8%)</td><td class="n">+0.2★</td></tr>
+        <tr><td>AI features &amp; integrations</td><td class="n">71</td><td class="n">6% (5%–8%)</td><td class="n">+1.4★</td></tr>
+        <tr><td>Customisation &amp; templates</td><td class="n">50</td><td class="n">4% (3%–6%)</td><td class="n">+1.4★</td></tr>
+        <tr><td>Free tier &amp; value</td><td class="n">40</td><td class="n">3% (3%–5%)</td><td class="n">+1.7★</td></tr>
+        <tr><td>Support &amp; community</td><td class="n">11</td><td class="n">1% (1%–2%)</td><td class="n">+1.2★</td></tr>
+      </table></div></details>
+    </div>
+  </div>
+
+  <h2 id="recent">Recent vs earlier</h2>
+  <p class="sub">notion_2026-10-13.B_recent (n = 100, from 2026-08-25) vs the
+    1043 earlier reviews of notion_2026-10-13.pool. Two-proportion tests with Benjamini–Hochberg
+    correction across all themes: "emerging" is confirmed after correction, "signal" is p &lt; 0.05 before correction only.</p>
+  <div class="grid">
+    <div class="card js-chart"><h3>Complaint themes, earlier vs recent</h3>
+      <div class="chart" style="height: 420px"><canvas id="c-compare" role="img" aria-label="Grouped bar chart of complaint theme shares, earlier vs recent"></canvas></div>
+      <p class="fallback">Charts need JavaScript; the table has the changes.</p>
+    </div>
+    <div class="card">
+      <h3>Changes worth watching</h3>
+      <div class="scroll"><table>
+        <tr><th>Theme</th><th class="n">Earlier</th><th class="n">Recent</th><th class="n">p</th><th class="n">q (BH)</th><th>Status</th></tr>
+        <tr><td>Typing &amp; text editing</td><td class="n">6%</td><td class="n">15%</td>
+          <td class="n">0.000</td><td class="n">0.01</td><td>emerging</td></tr>
+      </table></div>
+      <h3 style="margin-top:16px">Rising phrases (no taxonomy needed)</h3>
+      <p class="note">Words over-represented in recent reviews (Fightin' Words): new problems show up here first.</p>
+      <div class="scroll"><table>
+        <tr><th>Phrase</th><th class="n">Earlier</th><th class="n">Recent</th></tr>
+        <tr><td>add</td><td class="n">6%</td><td class="n">10%</td></tr>
+        <tr><td>simple</td><td class="n">4%</td><td class="n">6%</td></tr>
+        <tr><td>different</td><td class="n">2%</td><td class="n">4%</td></tr>
+        <tr><td>ipad</td><td class="n">9%</td><td class="n">16%</td></tr>
+        <tr><td>upgrade</td><td class="n">1%</td><td class="n">4%</td></tr>
+        <tr><td>color</td><td class="n">1%</td><td class="n">4%</td></tr>
+        <tr><td>etc</td><td class="n">2%</td><td class="n">5%</td></tr>
+        <tr><td>person</td><td class="n">0%</td><td class="n">3%</td></tr>
+      </table></div>
+    </div>
+  </div>
+
+  <h2 id="ratings">Ratings</h2>
+  <div class="grid">
+    <div class="card js-chart"><h3>Rating distribution</h3>
+      <p class="note">Share of reviews per star, 95% Wilson CI.</p>
+      <div class="chart" style="height: 260px"><canvas id="c-stars" role="img" aria-label="Bar chart of the rating distribution"></canvas></div>
+      <details><summary>Data table</summary><table>
+        <tr><th>Stars</th><th class="n">Reviews</th><th class="n">Share (95% CI)</th></tr>
+<tr><td>1★</td><td class="n">343</td><td class="n">30.0% (27.4%–32.7%)</td></tr><tr><td>2★</td><td class="n">144</td><td class="n">12.6% (10.8%–14.6%)</td></tr><tr><td>3★</td><td class="n">116</td><td class="n">10.1% (8.5%–12.0%)</td></tr><tr><td>4★</td><td class="n">98</td><td class="n">8.6% (7.1%–10.3%)</td></tr><tr><td>5★</td><td class="n">442</td><td class="n">38.7% (35.9%–41.5%)</td></tr>      </table></details>
+    </div>
+    <div class="card js-chart"><h3>1–2★ reviews by month</h3>
+      <p class="note">Share of low ratings per month with 95% CI; hover for the average rating and n.</p>
+      <div class="chart" style="height: 260px"><canvas id="c-monthly" role="img" aria-label="Line chart of the share of 1-2 star reviews by month"></canvas></div>
+      <details><summary>Data table</summary><div class="scroll"><table>
+        <tr><th>Month</th><th class="n">Reviews</th><th class="n">Average</th><th class="n">1–2★ share</th></tr>
+<tr><td>2025-10</td><td class="n">57</td><td class="n">2.65★</td><td class="n">53%</td></tr><tr><td>2025-11</td><td class="n">94</td><td class="n">3.11★</td><td class="n">45%</td></tr><tr><td>2025-12</td><td class="n">92</td><td class="n">3.25★</td><td class="n">40%</td></tr><tr><td>2026-01</td><td class="n">123</td><td class="n">3.15★</td><td class="n">43%</td></tr><tr><td>2026-02</td><td class="n">119</td><td class="n">3.06★</td><td class="n">41%</td></tr><tr><td>2026-03</td><td class="n">123</td><td class="n">3.02★</td><td class="n">43%</td></tr><tr><td>2026-04</td><td class="n">88</td><td class="n">2.93★</td><td class="n">49%</td></tr><tr><td>2026-05</td><td class="n">111</td><td class="n">3.34★</td><td class="n">41%</td></tr><tr><td>2026-06</td><td class="n">93</td><td class="n">3.78★</td><td class="n">27%</td></tr><tr><td>2026-07</td><td class="n">86</td><td class="n">3.57★</td><td class="n">34%</td></tr><tr><td>2026-08</td><td class="n">64</td><td class="n">2.84★</td><td class="n">50%</td></tr><tr><td>2026-09</td><td class="n">68</td><td class="n">2.71★</td><td class="n">47%</td></tr><tr><td>2026-10</td><td class="n">25</td><td class="n">2.44★</td><td class="n">64%</td></tr>      </table></div></details>
+    </div>
+  </div>
+
+  <h2 id="text">What the text says at each star rating</h2>
+  <p class="sub">Text sentiment from the fine-tuned model, per star rating. Stars and text disagree most at 3–4★:
+    a "4★ with a complaint" is a fixable problem the star average hides.</p>
+  <div class="card js-chart">
+    <div class="chart" style="height: 240px"><canvas id="c-svt" role="img" aria-label="Stacked bar chart of text sentiment per star rating"></canvas></div>
+    <details><summary>Data table</summary><table>
+      <tr><th>Stars</th><th class="n">Negative</th><th class="n">Neutral</th><th class="n">Positive</th><th class="n">With a complaint</th></tr>
+<tr><td>1★</td><td class="n">329</td><td class="n">4</td><td class="n">10</td><td class="n">99%</td></tr><tr><td>2★</td><td class="n">131</td><td class="n">2</td><td class="n">11</td><td class="n">100%</td></tr><tr><td>3★</td><td class="n">80</td><td class="n">3</td><td class="n">33</td><td class="n">97%</td></tr><tr><td>4★</td><td class="n">28</td><td class="n">6</td><td class="n">64</td><td class="n">89%</td></tr><tr><td>5★</td><td class="n">13</td><td class="n">7</td><td class="n">422</td><td class="n">14%</td></tr>    </table></details>
+  </div>
+
+  <h2 id="topics">What users talk about</h2>
+  <div class="grid">
+    <div class="card js-chart"><h3>Most-mentioned product aspects</h3>
+      <p class="note">Share of reviews mentioning each aspect, split by the review's tone.</p>
+      <div class="chart" style="height: 430px"><canvas id="c-mentions" role="img" aria-label="Stacked bar chart of the most-mentioned aspects"></canvas></div>
+    </div>
+    <div class="card js-chart"><h3>Phrases that set negative reviews apart</h3>
+      <p class="note">Fightin' Words z-scores: right = typical of negative reviews, left = typical of the rest. Generic
+        sentiment words are removed, so what remains are product aspects.</p>
+      <div class="chart" style="height: 510px"><canvas id="c-distinct" role="img" aria-label="Diverging bar chart of distinctive phrases"></canvas></div>
+    </div>
+  </div>
+  <div class="card js-chart" style="margin-top:16px"><h3>Rating drivers</h3>
+    <p class="note">Odds of a 1–2★ (vs 4–5★) rating when a review mentions the aspect: logistic regression, cross-validated
+      AUC 0.91, only aspects whose sign holds in ≥ 90% of 200 bootstraps. Associations, not causes.</p>
+    <div class="chart" style="height: 510px"><canvas id="c-drivers" role="img" aria-label="Diverging bar chart of rating drivers"></canvas></div>
+  </div>
+
+  <h2 id="drift">Drift monitor: complaints no theme covers</h2>
+  <p class="sub">445 of 2579 complaint sentences (17%) fit no theme.
+    A rising share or a new recurring word means a new problem: the trigger to refresh the theme taxonomy.</p>
+  <div class="grid">
+    <div class="card"><h3>Recurring words</h3>
+      <p><span class="chip">fix · 24</span><span class="chip">years · 12</span><span class="chip">better · 11</span><span class="chip">notes · 10</span><span class="chip">needs · 9</span><span class="chip">issue · 9</span><span class="chip">fixed · 8</span><span class="chip">point · 8</span><span class="chip">wish · 8</span><span class="chip">issues · 7</span><span class="chip">frustrating · 7</span><span class="chip">writing · 7</span></p></div>
+    <div class="card"><h3>Examples</h3>
+<blockquote>“If this can get fixed then the app would easily go back up to 5 stars.” <span class="muted">(3★)</span></blockquote><blockquote>“I&#39;ve been very pleased with motion the past few years, but recently I&#39;ve run into a problem.” <span class="muted">(4★)</span></blockquote><blockquote>“I have so much data here I almost have to use it - but in the back of my mind I kind of want out.” <span class="muted">(2★)</span></blockquote><blockquote>“1 star because it interrupted what I was doing for a review” <span class="muted">(1★)</span></blockquote><blockquote>“Feel free to let me know when you fix this cause I wish I could use this app.” <span class="muted">(1★)</span></blockquote></div>
+  </div>
+
+
+  <h2 id="method">Method and caveats</h2>
+  <div class="card note">
+    <p><strong>Sentiment and complaints:</strong> fine-tuned RoBERTa (en) / XLM-R (other languages), int8 ONNX. Negative if P(negative) ≥ 0.30 (missing a negative review costs
+      more than a false alarm). A separate head flags complaints, also inside positive reviews.</p>
+<p><strong>Phrases:</strong> Fightin&#39; Words (Monroe et al. 2008), informative Dirichlet prior from 14 other productivity apps + this corpus; document-level counts; generic sentiment and filler words removed.</p><p><strong>Drivers:</strong> L2 logistic regression, 1-2 vs 4-5 stars, aspect n-grams; C by 5-fold CV; 200 bootstraps, sign stability &gt;= 0.9.</p><p><strong>Themes:</strong> Sentence-level themes from a human-approved taxonomy (data/themes.json); labels by Qwen/Qwen3.8-27B-FP8; impact = mean stars of reviews mentioning the theme minus the rest (Welch 95% CI).</p>    <p><strong>Uncertainty:</strong> shares use Wilson 95% intervals; the mean rating a t-interval.</p>
+  </div>
+  <footer>review-analysis 0.1.0 · generated 2026-10-14 14:09 UTC · collected 2026-10-13</footer>
+</main>
+
+<script id="report-data" type="application/json">{"comparison": [{"base": 0.14285714285714285, "kind": "complaint", "name": "App stability \u0026 crashes", "status": "persistent", "target": 0.14}, {"base": 0.08053691275167785, "kind": "complaint", "name": "Performance \u0026 loading speed", "status": "persistent", "target": 0.12}, {"base": 0.08437200383509108, "kind": "complaint", "name": "iPad-specific issues", "status": "persistent", "target": 0.14}, {"base": 0.11505273250239693, "kind": "complaint", "name": "iPhone / mobile app experience", "status": "persistent", "target": 0.12}, {"base": 0.09971236816874401, "kind": "complaint", "name": "AI forced / intrusive", "status": "persistent", "target": 0.13}, {"base": 0.046021093000958774, "kind": "complaint", "name": "AI quality \u0026 limits", "status": "no significant change", "target": 0.04}, {"base": 0.11313518696069032, "kind": "complaint", "name": "UI / UX \u0026 usability", "status": "persistent", "target": 0.11}, {"base": 0.05656759348034516, "kind": "complaint", "name": "Learning curve \u0026 onboarding", "status": "persistent", "target": 0.06}, {"base": 0.020134228187919462, "kind": "complaint", "name": "Sync \u0026 offline access", "status": "no significant change", "target": 0.0}, {"base": 0.027804410354745925, "kind": "complaint", "name": "Data loss", "status": "no significant change", "target": 0.03}, {"base": 0.06040268456375839, "kind": "complaint", "name": "Pricing \u0026 subscriptions", "status": "persistent", "target": 0.06}, {"base": 0.019175455417066157, "kind": "complaint", "name": "Account \u0026 login", "status": "no significant change", "target": 0.03}, {"base": 0.06999041227229147, "kind": "complaint", "name": "Updates \u0026 compatibility", "status": "persistent", "target": 0.09}, {"base": 0.05656759348034516, "kind": "complaint", "name": "Typing \u0026 text editing", "status": "emerging", "target": 0.15}, {"base": 0.024928092042186004, "kind": "complaint", "name": "Customer support", "status": "no significant change", "target": 0.01}, {"base": 0.005752636625119847, "kind": "complaint", "name": "Localisation \u0026 language support", "status": "no significant change", "target": 0.0}, {"base": 0.1236816874400767, "kind": "complaint", "name": "Missing features \u0026 feature bugs", "status": "persistent", "target": 0.12}], "complaint_themes": [{"id": "c_stability", "n_reviews": 163, "name": "App stability \u0026 crashes", "prevalence": 0.1426071741032371, "prevalence_ci": [0.12353141369236008, 0.16407717970456204], "priority": 0.18130233720784902, "rating_impact": -1.2713409290096407}, {"id": "c_ai_intrusive", "n_reviews": 117, "name": "AI forced / intrusive", "prevalence": 0.10236220472440945, "prevalence_ci": [0.08610012189843896, 0.12128814174636188], "priority": 0.14187042409172537, "rating_impact": -1.3859649122807016}, {"id": "c_mobile", "n_reviews": 132, "name": "iPhone / mobile app experience", "prevalence": 0.11548556430446194, "prevalence_ci": [0.09823126117285276, 0.13531580565198764], "priority": 0.13506805714567574, "rating_impact": -1.1695665857386923}, {"id": "c_ui_ux", "n_reviews": 129, "name": "UI / UX \u0026 usability", "prevalence": 0.11286089238845144, "prevalence_ci": [0.09579860856702774, 0.13251669762180476], "priority": 0.12638545921404798, "rating_impact": -1.1198339525709833}, {"id": "c_ipad", "n_reviews": 102, "name": "iPad-specific issues", "prevalence": 0.08923884514435695, "prevalence_ci": [0.07405777935991564, 0.10717168110484562], "priority": 0.11485523963683214, "rating_impact": -1.2870543029892072}, {"id": "c_updates_compat", "n_reviews": 82, "name": "Updates \u0026 compatibility", "prevalence": 0.07174103237095363, "prevalence_ci": [0.05817146789937717, 0.08817958832533132], "priority": 0.1120684608109189, "rating_impact": -1.5621250086204916}, {"id": "c_performance", "n_reviews": 96, "name": "Performance \u0026 loading speed", "prevalence": 0.08398950131233596, "prevalence_ci": [0.06926949609640762, 0.10149644309633782], "priority": 0.10579408232996663, "rating_impact": -1.2596107927411653}, {"id": "c_typing_editing", "n_reviews": 74, "name": "Typing \u0026 text editing", "prevalence": 0.0647419072615923, "prevalence_ci": [0.05188394302290441, 0.08051575150578297], "priority": 0.08591278756198506, "rating_impact": -1.3270042727479583}, {"id": "c_feature_gaps", "n_reviews": 141, "name": "Missing features \u0026 feature bugs", "prevalence": 0.12335958005249344, "prevalence_ci": [0.10554700549513488, 0.14369534323772926], "priority": 0.07759546523750399, "rating_impact": -0.629018558627426}, {"id": "c_pricing", "n_reviews": 69, "name": "Pricing \u0026 subscriptions", "prevalence": 0.06036745406824147, "prevalence_ci": [0.047977558632729275, 0.07570253483594491], "priority": 0.06627174396496527, "rating_impact": -1.0978058456805115}, {"id": "c_ai_quality", "n_reviews": 52, "name": "AI quality \u0026 limits", "prevalence": 0.045494313210848646, "prevalence_ci": [0.03486054697491693, 0.059172902889712414], "priority": 0.0393355963410165, "rating_impact": -0.8646266657265742}, {"id": "c_data_loss", "n_reviews": 32, "name": "Data loss", "prevalence": 0.02799650043744532, "prevalence_ci": [0.01990016531862254, 0.03925488030595403], "priority": 0.036233544614303954, "rating_impact": -1.2942169216921693}, {"id": "c_account", "n_reviews": 23, "name": "Account \u0026 login", "prevalence": 0.020122484689413824, "prevalence_ci": [0.01344557885377127, 0.03001418486278156], "priority": 0.031302337207849015, "rating_impact": -1.555590062111801}, {"id": "c_support", "n_reviews": 27, "name": "Customer support", "prevalence": 0.023622047244094488, "prevalence_ci": [0.016284554815184198, 0.03415088974937918], "priority": 0.030995117545790648, "rating_impact": -1.3121266427718041}, {"id": "c_sync_offline", "n_reviews": 21, "name": "Sync \u0026 offline access", "prevalence": 0.01837270341207349, "prevalence_ci": [0.012047881889987871, 0.027924041402559684], "priority": 0.010510384062954695, "rating_impact": -0.5720651897122484}, {"id": "c_localisation", "n_reviews": 6, "name": "Localisation \u0026 language support", "prevalence": 0.005249343832020997, "prevalence_ci": [0.0024079756805414788, 0.011405144431966503], "priority": 0.005099296624861206, "rating_impact": -0.9714160070360598}, {"id": "c_learning_curve", "n_reviews": 65, "name": "Learning curve \u0026 onboarding", "prevalence": 0.0568678915135608, "prevalence_ci": [0.04486683071347916, 0.07183758190718448], "priority": -0.004040890992522038, "rating_impact": 0.07105751391465676}], "distinctive": {"negative": [{"df_a": 44, "df_b": 2, "share_a": 0.07586206896551724, "share_b": 0.003616636528028933, "term": "unusable", "z": 3.687798584274456}, {"df_a": 52, "df_b": 4, "share_a": 0.0896551724137931, "share_b": 0.007233273056057866, "term": "not work", "z": 3.491204459504361}, {"df_a": 87, "df_b": 17, "share_a": 0.15, "share_b": 0.03074141048824593, "term": "ipad", "z": 3.425451826448139}, {"df_a": 84, "df_b": 12, "share_a": 0.14482758620689656, "share_b": 0.0216998191681736, "term": "update", "z": 3.092649355134935}, {"df_a": 43, "df_b": 7, "share_a": 0.07413793103448275, "share_b": 0.012658227848101266, "term": "buggy", "z": 3.009537464940609}, {"df_a": 38, "df_b": 6, "share_a": 0.06551724137931035, "share_b": 0.0108499095840868, "term": "slow", "z": 2.6855877923723694}, {"df_a": 44, "df_b": 5, "share_a": 0.07586206896551724, "share_b": 0.009041591320072333, "term": "delete", "z": 2.67400110967178}, {"df_a": 57, "df_b": 13, "share_a": 0.09827586206896552, "share_b": 0.023508137432188065, "term": "bug", "z": 2.6602061709457874}, {"df_a": 52, "df_b": 12, "share_a": 0.0896551724137931, "share_b": 0.0216998191681736, "term": "type", "z": 2.609975239809757}, {"df_a": 27, "df_b": 1, "share_a": 0.04655172413793104, "share_b": 0.0018083182640144665, "term": "constantly", "z": 2.5587583877665576}], "positive": [{"df_a": 14, "df_b": 88, "share_a": 0.02413793103448276, "share_b": 0.15913200723327306, "term": "life", "z": -7.658300355942516}, {"df_a": 11, "df_b": 67, "share_a": 0.01896551724137931, "share_b": 0.12115732368896925, "term": "organize", "z": -6.56596075541849}, {"df_a": 20, "df_b": 59, "share_a": 0.034482758620689655, "share_b": 0.10669077757685352, "term": "tool", "z": -5.34616615999592}, {"df_a": 23, "df_b": 60, "share_a": 0.039655172413793106, "share_b": 0.10849909584086799, "term": "help", "z": -5.148456923319612}, {"df_a": 15, "df_b": 50, "share_a": 0.02586206896551724, "share_b": 0.09041591320072333, "term": "easy", "z": -5.003361139705427}, {"df_a": 6, "df_b": 30, "share_a": 0.010344827586206896, "share_b": 0.054249547920433995, "term": "personal", "z": -4.283830139058898}, {"df_a": 6, "df_b": 28, "share_a": 0.010344827586206896, "share_b": 0.05063291139240506, "term": "brain", "z": -4.16399932745512}, {"df_a": 2, "df_b": 23, "share_a": 0.0034482758620689655, "share_b": 0.04159132007233273, "term": "organization", "z": -4.101920720382382}, {"df_a": 13, "df_b": 35, "share_a": 0.022413793103448276, "share_b": 0.06329113924050633, "term": "task", "z": -3.9608254204051008}, {"df_a": 7, "df_b": 28, "share_a": 0.01206896551724138, "share_b": 0.05063291139240506, "term": "track", "z": -3.9483478961943694}]}, "drivers": {"high": [{"coef": -1.1792822671688241, "df": 100, "odds_ratio": 0.3074993618049349, "stability": 1.0, "term": "life"}, {"coef": -1.0002946333027363, "df": 78, "odds_ratio": 0.36777106760269646, "stability": 1.0, "term": "tool"}, {"coef": -0.7026354310108361, "df": 20, "odds_ratio": 0.49527831048409504, "stability": 1.0, "term": "appreciate"}, {"coef": -0.6806458312296735, "df": 53, "odds_ratio": 0.5062899089221568, "stability": 1.0, "term": "free"}, {"coef": -0.6525931132463341, "df": 76, "odds_ratio": 0.5206938066055442, "stability": 1.0, "term": "organize"}, {"coef": -0.6234808828424041, "df": 26, "odds_ratio": 0.5360751712676477, "stability": 1.0, "term": "allow"}, {"coef": -0.618912815446512, "df": 25, "odds_ratio": 0.5385296005102667, "stability": 1.0, "term": "organization"}, {"coef": -0.6102351449696573, "df": 20, "odds_ratio": 0.543223117871493, "stability": 1.0, "term": "school"}, {"coef": -0.6078427236625302, "df": 26, "odds_ratio": 0.5445242922912905, "stability": 0.995, "term": "wish"}, {"coef": -0.598166981703774, "df": 59, "odds_ratio": 0.5498185404192644, "stability": 1.0, "term": "version"}], "low": [{"coef": 1.306969508483327, "df": 81, "odds_ratio": 3.6949591855627, "stability": 1.0, "term": "update"}, {"coef": 1.214310432270715, "df": 53, "odds_ratio": 3.36797081940607, "stability": 1.0, "term": "not work"}, {"coef": 1.0481728664673624, "df": 44, "odds_ratio": 2.8524345749924054, "stability": 1.0, "term": "unusable"}, {"coef": 1.041886648630322, "df": 38, "odds_ratio": 2.8345597911430516, "stability": 1.0, "term": "delete"}, {"coef": 1.0027319177638305, "df": 20, "odds_ratio": 2.725718103894815, "stability": 1.0, "term": "useless"}, {"coef": 0.9783268633275806, "df": 20, "odds_ratio": 2.660001969821097, "stability": 1.0, "term": "money"}, {"coef": 0.9778828892060322, "df": 36, "odds_ratio": 2.658821259904947, "stability": 1.0, "term": "slow"}, {"coef": 0.93466733046354, "df": 33, "odds_ratio": 2.5463662183519378, "stability": 1.0, "term": "crash"}, {"coef": 0.9260679858842727, "df": 205, "odds_ratio": 2.524563018788053, "stability": 1.0, "term": "ai"}, {"coef": 0.9026647453143914, "df": 85, "odds_ratio": 2.4661660674426167, "stability": 1.0, "term": "ipad"}]}, "monthly": [{"ci_high": 0.6501283201887471, "ci_low": 0.3991801621874118, "count": 30, "mean": 2.6491228070175437, "month": "2025-10", "n": 57, "share": 0.5263157894736842}, {"ci_high": 0.5474301365667823, "ci_low": 0.3503637013365734, "count": 42, "mean": 3.106382978723404, "month": "2025-11", "n": 94, "share": 0.44680851063829785}, {"ci_high": 0.5043402491079584, "ci_low": 0.3078495879261849, "count": 37, "mean": 3.25, "month": "2025-12", "n": 92, "share": 0.40217391304347827}, {"ci_high": 0.5191911976337309, "ci_low": 0.34678322304814124, "count": 53, "mean": 3.154471544715447, "month": "2026-01", "n": 123, "share": 0.43089430894308944}, {"ci_high": 0.5015990484168, "ci_low": 0.3274488951553069, "count": 49, "mean": 3.0588235294117645, "month": "2026-02", "n": 119, "share": 0.4117647058823529}, {"ci_high": 0.5191911976337309, "ci_low": 0.34678322304814124, "count": 53, "mean": 3.024390243902439, "month": "2026-03", "n": 123, "share": 0.43089430894308944}, {"ci_high": 0.5913446960184866, "ci_low": 0.3868786464057155, "count": 43, "mean": 2.9318181818181817, "month": "2026-04", "n": 88, "share": 0.48863636363636365}, {"ci_high": 0.5074199461374632, "ci_low": 0.32713457628753195, "count": 46, "mean": 3.3423423423423424, "month": "2026-05", "n": 111, "share": 0.4144144144144144}, {"ci_high": 0.3667622156556944, "ci_low": 0.18921308125080688, "count": 25, "mean": 3.78494623655914, "month": "2026-06", "n": 93, "share": 0.26881720430107525}, {"ci_high": 0.44217439241027795, "ci_low": 0.24616548577577763, "count": 29, "mean": 3.5697674418604652, "month": "2026-07", "n": 86, "share": 0.3372093023255814}, {"ci_high": 0.6189790525605299, "ci_low": 0.3810209474394701, "count": 32, "mean": 2.84375, "month": "2026-08", "n": 64, "share": 0.5}, {"ci_high": 0.5875907791127207, "ci_low": 0.35673106421198947, "count": 32, "mean": 2.7058823529411766, "month": "2026-09", "n": 68, "share": 0.47058823529411764}, {"ci_high": 0.7975211922554178, "ci_low": 0.44518497748164865, "count": 16, "mean": 2.44, "month": "2026-10", "n": 25, "share": 0.64}], "most_mentioned": [{"ci_high": 0.23748826109783147, "ci_low": 0.1898725243934746, "count": 241, "n": 1133, "negative": 158, "not_negative": 83, "share": 0.21270962047661077, "term": "ai"}, {"ci_high": 0.14869571758289188, "ci_low": 0.10977608298419113, "count": 145, "n": 1133, "negative": 102, "not_negative": 43, "share": 0.12797881729920565, "term": "page"}, {"ci_high": 0.1100115386028287, "ci_low": 0.07633059131953399, "count": 104, "n": 1133, "negative": 87, "not_negative": 17, "share": 0.09179170344218888, "term": "ipad"}, {"ci_high": 0.10810724560677784, "ci_low": 0.07471636379633018, "count": 102, "n": 1133, "negative": 14, "not_negative": 88, "share": 0.09002647837599294, "term": "life"}, {"ci_high": 0.1052472181717668, "ci_low": 0.07229861045245928, "count": 99, "n": 1133, "negative": 79, "not_negative": 20, "share": 0.08737864077669903, "term": "fix"}, {"ci_high": 0.10238272869838871, "ci_low": 0.0698853191469554, "count": 96, "n": 1133, "negative": 84, "not_negative": 12, "share": 0.08473080317740513, "term": "update"}, {"ci_high": 0.0899134585496635, "ci_low": 0.05948420592052537, "count": 83, "n": 1133, "negative": 23, "not_negative": 60, "share": 0.07325684024713151, "term": "help"}, {"ci_high": 0.08798618893233076, "ci_low": 0.057892955018603476, "count": 81, "n": 1133, "negative": 59, "not_negative": 22, "share": 0.07149161518093557, "term": "mobile"}, {"ci_high": 0.08605631664010864, "ci_low": 0.05630430679157097, "count": 79, "n": 1133, "negative": 20, "not_negative": 59, "share": 0.06972639011473963, "term": "tool"}, {"ci_high": 0.08509037639699682, "ci_low": 0.05551098677505545, "count": 78, "n": 1133, "negative": 11, "not_negative": 67, "share": 0.06884377758164166, "term": "organize"}, {"ci_high": 0.0802501481858923, "ci_low": 0.05155491368802334, "count": 73, "n": 1133, "negative": 37, "not_negative": 36, "share": 0.06443071491615181, "term": "add"}, {"ci_high": 0.0802501481858923, "ci_low": 0.05155491368802334, "count": 73, "n": 1133, "negative": 37, "not_negative": 36, "share": 0.06443071491615181, "term": "find"}, {"ci_high": 0.07733711160874293, "ci_low": 0.049190169486290736, "count": 70, "n": 1133, "negative": 57, "not_negative": 13, "share": 0.0617828773168579, "term": "bug"}, {"ci_high": 0.07733711160874293, "ci_low": 0.049190169486290736, "count": 70, "n": 1133, "negative": 45, "not_negative": 25, "share": 0.0617828773168579, "term": "version"}, {"ci_high": 0.07539113650569593, "ci_low": 0.047617624070083124, "count": 68, "n": 1133, "negative": 39, "not_negative": 29, "share": 0.06001765225066196, "term": "change"}], "praise_themes": [{"id": "p_versatility", "n_reviews": 249, "name": "Versatility \u0026 use cases", "prevalence": 0.2178477690288714, "prevalence_ci": [0.19488404418975178, 0.24270168743939732], "priority": null, "rating_impact": 1.7811379747176628}, {"id": "p_organisation", "n_reviews": 207, "name": "Organisation \u0026 structure", "prevalence": 0.18110236220472442, "prevalence_ci": [0.1598568481076298, 0.2044842346174085], "priority": null, "rating_impact": 1.8610646599777039}, {"id": "p_ease_of_use", "n_reviews": 94, "name": "Ease of use \u0026 design", "prevalence": 0.08223972003499562, "prevalence_ci": [0.06767742001913488, 0.09960067874960526], "priority": null, "rating_impact": 1.0142587672149768}, {"id": "p_performance", "n_reviews": 77, "name": "Reliability, sync \u0026 platforms", "prevalence": 0.0673665791776028, "prevalence_ci": [0.05423664291979334, 0.08339481224490196], "priority": null, "rating_impact": 0.17768816549304356}, {"id": "p_ai", "n_reviews": 71, "name": "AI features \u0026 integrations", "prevalence": 0.0621172353455818, "prevalence_ci": [0.0495378100567911, 0.07763012383588834], "priority": null, "rating_impact": 1.3749605844019341}, {"id": "p_customisation", "n_reviews": 50, "name": "Customisation \u0026 templates", "prevalence": 0.04374453193350831, "prevalence_ci": [0.033337457546580226, 0.05720815189404384], "priority": null, "rating_impact": 1.38772186642269}, {"id": "p_pricing", "n_reviews": 40, "name": "Free tier \u0026 value", "prevalence": 0.03499562554680665, "prevalence_ci": [0.025804011905741442, 0.047302395414856244], "priority": null, "rating_impact": 1.6756572982774252}, {"id": "p_support_community", "n_reviews": 11, "name": "Support \u0026 community", "prevalence": 0.009623797025371828, "prevalence_ci": [0.005382174742706391, 0.017150546429814784], "priority": null, "rating_impact": 1.150819145518792}], "stars": [{"ci_high": 0.3272897626897846, "ci_low": 0.2742244688676124, "count": 343, "n": 1143, "share": 0.300087489063867, "star": 1}, {"ci_high": 0.14648286669206118, "ci_low": 0.10799124267681086, "count": 144, "n": 1143, "share": 0.12598425196850394, "star": 2}, {"ci_high": 0.1203499740689411, "ci_low": 0.08529436936385709, "count": 116, "n": 1143, "share": 0.10148731408573929, "star": 3}, {"ci_high": 0.10339016137391235, "ci_low": 0.07086361824283835, "count": 98, "n": 1143, "share": 0.0857392825896763, "star": 4}, {"ci_high": 0.4152688686133374, "ci_low": 0.35889346393232086, "count": 442, "n": 1143, "share": 0.3867016622922135, "star": 5}], "stars_vs_text": [{"complaint": {"ci_high": 0.9983994967457184, "ci_low": 0.9789923097374047, "count": 341, "n": 343, "share": 0.9941690962099126}, "negative": 329, "neutral": 4, "positive": 10, "star": 1}, {"complaint": {"ci_high": 1.0, "ci_low": 0.9740163628569635, "count": 144, "n": 144, "share": 1.0}, "negative": 131, "neutral": 2, "positive": 11, "star": 2}, {"complaint": {"ci_high": 0.9865101724350616, "ci_low": 0.9146804594445852, "count": 112, "n": 116, "share": 0.9655172413793104}, "negative": 80, "neutral": 3, "positive": 33, "star": 3}, {"complaint": {"ci_high": 0.9361573005411425, "ci_low": 0.8101006663032684, "count": 87, "n": 98, "share": 0.8877551020408163}, "negative": 28, "neutral": 6, "positive": 64, "star": 4}, {"complaint": {"ci_high": 0.17329530373649576, "ci_low": 0.10896076808230813, "count": 61, "n": 442, "share": 0.13800904977375567}, "negative": 13, "neutral": 7, "positive": 422, "star": 5}]}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+(function () {
+  "use strict";
+  var D = JSON.parse(document.getElementById("report-data").textContent);
+  if (!window.Chart) { document.body.classList.add("no-chart"); return; }
+  var charts = [];
+  function v(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+  function pct(x, d) { return (x * 100).toFixed(d || 0) + "%"; }
+  function signed(x) { return (x >= 0 ? "+" : "−") + Math.abs(x).toFixed(1); }
+
+  // Draws 95% CI whiskers (dataset.ci = [[lo, hi], ...] in data units) and end labels (dataset.ends).
+  var annotate = {
+    id: "annotate",
+    afterDatasetsDraw: function (chart) {
+      var ctx = chart.ctx, horizontal = chart.options.indexAxis === "y";
+      var vs = horizontal ? chart.scales.x : chart.scales.y;
+      chart.data.datasets.forEach(function (ds, i) {
+        var meta = chart.getDatasetMeta(i);
+        if (meta.hidden) return;
+        meta.data.forEach(function (el, j) {
+          var far = horizontal ? el.x : el.y;
+          ctx.save();
+          if (ds.ci && ds.ci[j]) {
+            var a = vs.getPixelForValue(ds.ci[j][0]), b = vs.getPixelForValue(ds.ci[j][1]);
+            ctx.strokeStyle = v("--ink-2"); ctx.lineWidth = 1.5; ctx.beginPath();
+            if (horizontal) { ctx.moveTo(a, el.y); ctx.lineTo(b, el.y); ctx.moveTo(a, el.y - 4); ctx.lineTo(a, el.y + 4); ctx.moveTo(b, el.y - 4); ctx.lineTo(b, el.y + 4); far = Math.max(far, b); }
+            else { ctx.moveTo(el.x, a); ctx.lineTo(el.x, b); ctx.moveTo(el.x - 4, a); ctx.lineTo(el.x + 4, a); ctx.moveTo(el.x - 4, b); ctx.lineTo(el.x + 4, b); far = Math.min(far, b); }
+            ctx.stroke();
+          }
+          if (ds.ends && ds.ends[j]) {
+            ctx.fillStyle = v("--ink-2"); ctx.font = "12px " + Chart.defaults.font.family;
+            var left = horizontal && el.x < el.base;
+            if (horizontal) { ctx.textBaseline = "middle"; ctx.textAlign = left ? "right" : "left"; ctx.fillText(ds.ends[j], left ? Math.min(el.x, far) - 6 : far + 6, el.y); }
+            else { ctx.textBaseline = "bottom"; ctx.textAlign = "center"; ctx.fillText(ds.ends[j], el.x, far - 4); }
+          }
+          ctx.restore();
+        });
+      });
+    }
+  };
+
+  function base(horizontal, extra) {
+    var grid = { color: v("--grid"), drawTicks: false }, ticks = { color: v("--muted"), padding: 6 };
+    var o = {
+      responsive: true, maintainAspectRatio: false, animation: false,
+      indexAxis: horizontal ? "y" : "x",
+      layout: { padding: { right: horizontal ? 96 : 8, top: horizontal ? 0 : 18 } },
+      interaction: { mode: "nearest", intersect: horizontal ? false : true, axis: horizontal ? "y" : "x" },
+      plugins: {
+        legend: { display: false, position: "top", align: "start", labels: { color: v("--ink-2"), boxWidth: 12, boxHeight: 12, usePointStyle: false } },
+        tooltip: { backgroundColor: v("--surface"), titleColor: v("--ink"), bodyColor: v("--ink-2"), borderColor: v("--axis"), borderWidth: 1, padding: 10 }
+      },
+      scales: {
+        x: { grid: horizontal ? grid : { display: false }, border: { display: !horizontal, color: v("--axis") }, ticks: ticks },
+        y: { grid: horizontal ? { display: false } : grid, border: { display: horizontal, color: v("--axis") }, ticks: { color: v("--ink-2"), padding: 6 } }
+      }
+    };
+    return deepMerge(o, extra || {});
+  }
+  function deepMerge(a, b) {
+    Object.keys(b).forEach(function (k) {
+      if (b[k] && typeof b[k] === "object" && !Array.isArray(b[k]) && a[k] && typeof a[k] === "object") deepMerge(a[k], b[k]);
+      else a[k] = b[k];
+    });
+    return a;
+  }
+  function bar(color, extra) {
+    return Object.assign({ backgroundColor: color, borderRadius: 4, borderSkipped: "start", maxBarThickness: 18, categoryPercentage: 0.8, barPercentage: 0.9 }, extra || {});
+  }
+  function make(id, cfg) {
+    var el = document.getElementById(id);
+    if (el) charts.push(new Chart(el, cfg));
+  }
+
+  function draw() {
+    charts.forEach(function (c) { c.destroy(); }); charts = [];
+    Chart.defaults.font.family = getComputedStyle(document.body).fontFamily;
+    Chart.defaults.font.size = 12;
+    Chart.defaults.color = v("--ink-2");
+    var percentAxis = { ticks: { callback: function (x) { return x + "%"; } }, beginAtZero: true };
+
+    function themeChart(id, rows, color) {
+      make(id, {
+        type: "bar", plugins: [annotate],
+        data: { labels: rows.map(function (t) { return t.name; }), datasets: [bar(color, {
+          label: "share of reviews",
+          data: rows.map(function (t) { return t.prevalence * 100; }),
+          ci: rows.map(function (t) { return [t.prevalence_ci[0] * 100, t.prevalence_ci[1] * 100]; }),
+          ends: rows.map(function (t) { return pct(t.prevalence) + " · " + signed(t.rating_impact) + "★"; })
+        })] },
+        options: base(true, { layout: { padding: { right: 112 } }, scales: { x: percentAxis }, plugins: { tooltip: { callbacks: {
+          label: function (c) { var t = rows[c.dataIndex]; return [t.n_reviews + " reviews, " + pct(t.prevalence) + " (CI " + pct(t.prevalence_ci[0]) + "–" + pct(t.prevalence_ci[1]) + ")", "rating impact " + signed(t.rating_impact) + "★"]; }
+        } } } })
+      });
+    }
+    if (D.complaint_themes.length) themeChart("c-complaints", D.complaint_themes, v("--red"));
+    if (D.praise_themes.length) themeChart("c-praise", D.praise_themes.slice().sort(function (a, b) { return b.prevalence - a.prevalence; }), v("--blue"));
+
+    if (D.comparison.length) {
+      var rows = D.comparison.slice().sort(function (a, b) { return b.target - a.target; }).slice(0, 10);
+      make("c-compare", {
+        type: "bar", plugins: [annotate],
+        data: { labels: rows.map(function (t) { return t.name; }), datasets: [
+          bar(v("--blue-light"), { label: "earlier", data: rows.map(function (t) { return t.base * 100; }) }),
+          bar(v("--blue"), { label: "recent", data: rows.map(function (t) { return t.target * 100; }),
+            ends: rows.map(function (t) { return t.status.indexOf("signal") >= 0 || t.status === "emerging" ? "▲ " + t.status.replace(" (unconfirmed)", "") : (t.status === "fading" ? "▼ fading" : ""); }) })
+        ] },
+        options: base(true, { layout: { padding: { right: 112 } }, scales: { x: percentAxis }, plugins: { legend: { display: true }, tooltip: { callbacks: {
+          label: function (c) { return c.dataset.label + ": " + c.parsed.x.toFixed(1) + "% of reviews"; },
+          afterBody: function (items) { return "status: " + rows[items[0].dataIndex].status; }
+        } } } })
+      });
+    }
+
+    make("c-stars", {
+      type: "bar", plugins: [annotate],
+      data: { labels: D.stars.map(function (s) { return s.star + "★"; }), datasets: [bar(v("--blue"), {
+        maxBarThickness: 44, label: "share of reviews",
+        data: D.stars.map(function (s) { return s.share * 100; }),
+        ci: D.stars.map(function (s) { return [s.ci_low * 100, s.ci_high * 100]; }),
+        ends: D.stars.map(function (s) { return pct(s.share); })
+      })] },
+      options: base(false, { scales: { y: percentAxis }, plugins: { tooltip: { callbacks: {
+        label: function (c) { var s = D.stars[c.dataIndex]; return s.count + " reviews, " + pct(s.share, 1) + " (CI " + pct(s.ci_low, 1) + "–" + pct(s.ci_high, 1) + ")"; }
+      } } } })
+    });
+
+    if (D.monthly.length) {
+      var M = D.monthly;
+      make("c-monthly", {
+        type: "line",
+        data: { labels: M.map(function (g) { return g.month; }), datasets: [
+          { label: "CI high", order: 2, data: M.map(function (g) { return g.ci_high * 100; }), borderWidth: 0, pointRadius: 0, pointHitRadius: 0, fill: "+1", backgroundColor: v("--grid") },
+          { label: "CI low", order: 2, data: M.map(function (g) { return g.ci_low * 100; }), borderWidth: 0, pointRadius: 0, pointHitRadius: 0, fill: false },
+          { label: "1–2★ share", order: 0, data: M.map(function (g) { return g.share * 100; }), borderColor: v("--red"), backgroundColor: v("--red"),
+            borderWidth: 2, pointRadius: 4, pointHoverRadius: 6, pointBorderColor: v("--surface"), pointBorderWidth: 2, tension: 0 }
+        ] },
+        options: base(false, { interaction: { mode: "index", intersect: false }, scales: { y: deepMerge({ max: 100 }, percentAxis) }, plugins: { tooltip: {
+          filter: function (i) { return i.datasetIndex === 2; },
+          callbacks: { label: function (c) { var g = M[c.dataIndex]; return [pct(g.share) + " of " + g.n + " reviews were 1–2★ (CI " + pct(g.ci_low) + "–" + pct(g.ci_high) + ")", "average " + g.mean.toFixed(2) + "★"]; } }
+        } } })
+      });
+    }
+
+    if (D.stars_vs_text.length) {
+      var R = D.stars_vs_text, tot = R.map(function (r) { return r.negative + r.neutral + r.positive || 1; });
+      var seg = function (key, color, label) {
+        return bar(color, { label: label, borderSkipped: false, borderRadius: 0, borderColor: v("--surface"), borderWidth: 1, maxBarThickness: 26,
+          data: R.map(function (r, i) { return r[key] / tot[i] * 100; }) });
+      };
+      make("c-svt", {
+        type: "bar",
+        data: { labels: R.map(function (r) { return r.star + "★"; }), datasets: [seg("negative", v("--red"), "negative"), seg("neutral", v("--neutral"), "neutral"), seg("positive", v("--blue"), "positive")] },
+        options: base(true, { layout: { padding: { right: 8 } }, scales: { x: deepMerge({ stacked: true, max: 100 }, percentAxis), y: { stacked: true } }, plugins: { legend: { display: true }, tooltip: { callbacks: {
+          label: function (c) { var r = R[c.dataIndex]; return c.dataset.label + ": " + r[c.dataset.label] + " of " + tot[c.dataIndex] + " (" + c.parsed.x.toFixed(0) + "%)"; },
+          afterBody: function (items) { var r = R[items[0].dataIndex]; return "with a complaint: " + pct(r.complaint.share); }
+        } } } })
+      });
+    }
+
+    if (D.most_mentioned.length) {
+      var T = D.most_mentioned;
+      make("c-mentions", {
+        type: "bar", plugins: [annotate],
+        data: { labels: T.map(function (t) { return t.term; }), datasets: [
+          bar(v("--red"), { label: "in negative reviews", borderSkipped: false, borderRadius: 0, borderColor: v("--surface"), borderWidth: 1, data: T.map(function (t) { return t.negative / t.n * 100; }) }),
+          bar(v("--blue"), { label: "in other reviews", borderColor: v("--surface"), borderWidth: 1, data: T.map(function (t) { return t.not_negative / t.n * 100; }),
+            ends: T.map(function (t) { return pct(t.share) + " · " + Math.round(t.negative / t.count * 100) + "% neg."; }) })
+        ] },
+        options: base(true, { layout: { padding: { right: 100 } }, scales: { x: deepMerge({ stacked: true }, percentAxis), y: { stacked: true } }, plugins: { legend: { display: true }, tooltip: { callbacks: {
+          label: function (c) { var t = T[c.dataIndex]; return c.dataset.label + ": " + (c.datasetIndex === 0 ? t.negative : t.not_negative) + " reviews"; },
+          afterBody: function (items) { var t = T[items[0].dataIndex]; return t.count + " of " + t.n + " reviews (" + pct(t.share) + ")"; }
+        } } } })
+      });
+    }
+
+    if (D.distinctive) {
+      var neg = D.distinctive.negative, pos = D.distinctive.positive, all = neg.concat(pos);
+      var zmax = Math.max.apply(null, all.map(function (t) { return Math.abs(t.z); })) * 1.35;
+      make("c-distinct", {
+        type: "bar", plugins: [annotate],
+        data: { labels: all.map(function (t) { return t.term; }), datasets: [bar(all.map(function (t, i) { return i < neg.length ? v("--red") : v("--blue"); }), {
+          label: "z-score", borderSkipped: "start",
+          data: all.map(function (t, i) { return i < neg.length ? Math.abs(t.z) : -Math.abs(t.z); }),
+          ends: all.map(function (t, i) { return pct(i < neg.length ? t.share_a : t.share_b); })
+        })] },
+        options: base(true, { layout: { padding: { left: 0, right: 8 } }, scales: { x: { min: -zmax, max: zmax, ticks: { includeBounds: false },
+            title: { display: true, text: "← typical of other reviews · z-score · typical of negative reviews →", color: v("--muted") } } },
+          plugins: { tooltip: { callbacks: {
+          label: function (c) { var t = all[c.dataIndex]; return ["in " + pct(t.share_a, 1) + " of negative reviews", "in " + pct(t.share_b, 1) + " of the others", "z = " + t.z.toFixed(2)]; }
+        } } } })
+      });
+    }
+
+    if (D.drivers) {
+      var dl = D.drivers.low, dh = D.drivers.high, dr = dl.concat(dh);
+      var cmax = Math.max.apply(null, dr.map(function (t) { return Math.abs(t.coef); })) * 1.35;
+      make("c-drivers", {
+        type: "bar", plugins: [annotate],
+        data: { labels: dr.map(function (t) { return t.term; }), datasets: [bar(dr.map(function (t) { return t.coef >= 0 ? v("--red") : v("--blue"); }), {
+          label: "odds ratio", borderSkipped: "start",
+          data: dr.map(function (t) { return t.coef; }),
+          ends: dr.map(function (t) { return "×" + t.odds_ratio.toFixed(2); })
+        })] },
+        options: base(true, { layout: { padding: { left: 0, right: 8 } }, scales: { x: { min: -cmax, max: cmax,
+            ticks: { includeBounds: false, callback: function (x) { return "×" + Math.exp(x).toFixed(2); } },
+            title: { display: true, text: "← towards 4–5★ · odds of a 1–2★ rating · towards 1–2★ →", color: v("--muted") } } },
+          plugins: { tooltip: { callbacks: {
+          label: function (c) { var t = dr[c.dataIndex]; return ["×" + t.odds_ratio.toFixed(2) + " odds of a 1–2★ rating", "mentioned in " + t.df + " reviews, sign stable in " + pct(t.stability) + " of bootstraps"]; }
+        } } } })
+      });
+    }
+  }
+  draw();
+  if (window.matchMedia) window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", draw);
+})();
+</script>
+</body>
+</html>

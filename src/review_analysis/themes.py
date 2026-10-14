@@ -37,6 +37,12 @@ def load_taxonomy(path: Path = THEMES_FILE) -> dict[str, list[dict[str, str]]]:
     return {"complaint": tax["complaint"], "praise": tax["praise"]}
 
 
+def taxonomy_apps(path: Path = THEMES_FILE) -> set[int]:
+    """App Store ids the taxonomy was built for. Its themes are specific to those apps' reviews."""
+    meta = json.loads(path.read_text(encoding="utf-8")).get("_meta", {})
+    return {int(a["id"]) for a in meta.get("apps", [])}
+
+
 def review_themes(sentence_labels: dict[str, list[str]]) -> dict[str, set[str]]:
     out: dict[str, set[str]] = defaultdict(set)
     for sid, themes in sentence_labels.items():

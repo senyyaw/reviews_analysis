@@ -1,6 +1,11 @@
 """Command-line entry point.
 
-review-analysis collect --app-id 1232780281 --out data/snapshots/notion
+review-analysis collect --app-id 1232780281 --out data/snapshots/notion   # ~5 min
+review-analysis preprocess --snapshot data/snapshots/notion [--translate]
+review-analysis analyze --snapshot data/snapshots/notion                  # sentiment + themes
+review-analysis figures --snapshot data/snapshots/notion --out reports    # PNG charts
+review-analysis export-site --out docs                                    # HTML reports
+review-analysis serve                                                     # REST API
 """
 
 import argparse
@@ -126,26 +131,27 @@ def _preprocess(args: argparse.Namespace) -> int:
 
 def _analyze(args: argparse.Namespace) -> int:
     import json
-    from dataclasses import asdict
 
+    from review_analysis import pipeline
     from review_analysis.sentiment import SentimentRouter
 
     snap = Path(args.snapshot)
-    rows = [
-        json.loads(line) for line in (snap / "processed.jsonl").read_text().splitlines() if line
-    ]
-    results = SentimentRouter().predict([r["text_model"] for r in rows], [r["lang"] for r in rows])
-    with (snap / "sentiment.jsonl").open("w", encoding="utf-8") as fh:
-        for row, res in zip(rows, results, strict=True):
-            fh.write(json.dumps({"review_id": row["review_id"], **asdict(res)}) + "\n")
-    counts: dict[str, int] = {}
-    for res in results:
-        counts[res.label] = counts.get(res.label, 0) + 1
-    print(
-        f"sentiment for {len(results)} reviews: {counts}; "
-        f"complaints: {sum(r.complaint for r in results)}; "
-        f"multilingual model used for {sum(r.model == 'sentiment-multi' for r in results)}"
-    )
+    router = SentimentRouter()
+    counts = pipeline.sentiment_snapshot(snap, router)
+    print(f"sentiment for {sum(counts.values())} reviews: {counts}")
+    if args.no_themes:
+        return 0
+    labels = snap / "theme_labels.jsonl"
+    if labels.exists() and not args.retag_themes:
+        sources = {json.loads(line).get("source") for line in labels.read_text().splitlines()}
+        if not any(str(src).startswith("classifier") for src in sources):
+            print(
+                f"themes: kept the existing labels from {', '.join(map(str, sources))} "
+                "(--retag-themes replaces them with the classifier)"
+            )
+            return 0
+    stats = pipeline.themes_snapshot(snap, router)
+    print(f"themes: {stats}")
     return 0
 
 
@@ -160,6 +166,46 @@ def _figures(args: argparse.Namespace) -> int:
     (out / "data" / "insights.json").write_text(json.dumps(data, indent=1, default=float))
     for path in viz.render_all(data, out / "figures"):
         print(f"wrote {path}")
+    return 0
+
+
+def _export_site(args: argparse.Namespace) -> int:
+    """Static HTML reports (and their data files) for every collection, e.g. for GitHub Pages."""
+    import json
+
+    from review_analysis.api.app import create_app
+    from review_analysis.api.settings import Settings
+    from review_analysis.report import render_index, render_report
+
+    app = create_app(Settings(snapshots_dir=Path(args.snapshots), allow_collection=False))
+    from fastapi.testclient import TestClient
+
+    inputs, store = app.state.report_inputs, app.state.store
+    client = TestClient(app)
+    out = Path(args.out)
+    (out / "data").mkdir(parents=True, exist_ok=True)
+    entries = []
+    for cid in store.collection_ids():
+        if args.snapshot and not cid.startswith(f"{args.snapshot}."):
+            continue
+        summary, metrics, insights, comparison = inputs(cid)
+        files = {
+            "csv": f"data/{cid}.reviews.csv",
+            "reviews": f"data/{cid}.reviews.csv",
+            "metrics": f"data/{cid}.metrics.json",
+            "insights": f"data/{cid}.insights.json",
+        }
+        csv = client.get(f"/v1/collections/{cid}/reviews", params={"format": "csv", "limit": 5000})
+        (out / files["csv"]).write_text(csv.text, encoding="utf-8")
+        (out / files["metrics"]).write_text(json.dumps(metrics, indent=1, default=float))
+        (out / files["insights"]).write_text(json.dumps(insights, indent=1, default=float))
+        html = render_report(summary, metrics, insights, comparison, links=files)
+        (out / f"{cid}.html").write_text(html, encoding="utf-8")
+        entries.append((summary, metrics, insights))
+        print(f"wrote {out / cid}.html")
+    (out / "index.html").write_text(render_index(entries, args.api_url), encoding="utf-8")
+    (out / ".nojekyll").write_text("")
+    print(f"wrote {out / 'index.html'}")
     return 0
 
 
@@ -180,7 +226,7 @@ def main(argv: list[str] | None = None) -> int:
     c.add_argument("--app-id", required=True)
     c.add_argument("--storefronts", default=DEFAULT_STOREFRONTS)
     c.add_argument("--window-days", type=int, default=365)
-    c.add_argument("--random-n", type=int, default=300)
+    c.add_argument("--random-n", type=int, default=100, help="sample A size (Notion report: 300)")
     c.add_argument("--recent-n", type=int, default=100)
     c.add_argument("--seed", type=int, default=42)
     c.add_argument("--max-pages", type=int, default=500, help="per storefront (20 reviews/page)")
@@ -198,8 +244,14 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("-v", "--verbose", action="store_true")
     p.set_defaults(func=_preprocess)
 
-    a = sub.add_parser("analyze", help="sentiment + complaint for every review in a snapshot")
+    a = sub.add_parser("analyze", help="sentiment + complaint per review, then sentence themes")
     a.add_argument("--snapshot", required=True)
+    a.add_argument("--no-themes", action="store_true", help="sentiment only")
+    a.add_argument(
+        "--retag-themes",
+        action="store_true",
+        help="replace existing LLM theme labels with the classifier's",
+    )
     a.add_argument("-v", "--verbose", action="store_true")
     a.set_defaults(func=_analyze)
 
@@ -208,6 +260,14 @@ def main(argv: list[str] | None = None) -> int:
     f.add_argument("--out", default="reports")
     f.add_argument("-v", "--verbose", action="store_true")
     f.set_defaults(func=_figures)
+
+    e = sub.add_parser("export-site", help="static HTML reports for every collection")
+    e.add_argument("--snapshots", default="data/snapshots")
+    e.add_argument("--snapshot", help="only this snapshot (directory name)")
+    e.add_argument("--out", default="docs")
+    e.add_argument("--api-url", default="", help="link the index page to a deployed API")
+    e.add_argument("-v", "--verbose", action="store_true")
+    e.set_defaults(func=_export_site)
 
     sv = sub.add_parser("serve", help="run the REST API (docs at /docs)")
     sv.add_argument("--host", default="127.0.0.1")

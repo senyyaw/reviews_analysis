@@ -4,29 +4,37 @@ version = "0.1.0"
 description = "Collect Apple App Store reviews, compute metrics and NLP insights, and serve them over a REST API."
 readme = "README.md"
 requires-python = ">=3.12,<3.14"
+# Core = what the API needs to SERVE analysed snapshots (read-only hosting, e.g. Vercel: ~200 MB).
+# The `nlp` extra adds the text-processing and model stack needed to COLLECT and ANALYSE new
+# reviews (language ID, spaCy, ONNX models, keyword/driver statistics). Local use: --extra nlp.
 dependencies = [
-    "emoji>=2.16",
-    "en-core-web-sm",
     "fastapi>=0.143",
-    "ftfy>=6.3",
     "httpx>=0.28,<1",
     "jinja2>=3.1",
-    "lingua-language-detector>=2.2.0",
-    "onnxruntime>=1.20",
     "pydantic>=2.9",
     "pydantic-settings>=2.5",
-    "scikit-learn>=1.9",
     "scipy>=1.14",
-    "spacy>=3.8,<3.9",
-    "tokenizers>=0.21",
     "uvicorn>=0.54",
-    "vadersentiment>=3.3",  # its lexicon defines "generic sentiment words" (keywords.py)
 ]
 
 [project.scripts]
 review-analysis = "review_analysis.cli:main"
 
+[tool.vercel]
+entrypoint = "app:app"  # read-only serverless deploy (app.py); see README, Deployment
+
 [project.optional-dependencies]
+nlp = [
+    "emoji>=2.16",
+    "en-core-web-sm",
+    "ftfy>=6.3",
+    "lingua-language-detector>=2.2.0",
+    "onnxruntime>=1.20",
+    "scikit-learn>=1.9",
+    "spacy>=3.8,<3.9",
+    "tokenizers>=0.21",
+    "vadersentiment>=3.3",  # its lexicon defines "generic sentiment words" (keywords.py)
+]
 report = [
     "matplotlib>=3.9",
 ]
@@ -81,7 +89,8 @@ files = ["src"]
 plugins = ["pydantic.mypy"]
 
 [[tool.mypy.overrides]]
-module = ["sklearn.*", "scipy.*", "onnxruntime.*", "vaderSentiment.*", "matplotlib.*"]
+# torch/transformers: the optional translate extra (CI type-checks without it)
+module = ["sklearn.*", "scipy.*", "onnxruntime.*", "vaderSentiment.*", "matplotlib.*", "torch.*", "transformers.*"]
 ignore_missing_imports = true
 
 [tool.uv.sources]
@@ -91,3 +100,4 @@ en-core-web-sm = { url = "https://github.com/explosion/spacy-models/releases/dow
 # Charts use typographic characters on purpose: ★ – × “ ” ≥
 "src/review_analysis/viz.py" = ["RUF001"]
 "src/review_analysis/analysis.py" = ["RUF001"]
+"src/review_analysis/report.py" = ["RUF001"]

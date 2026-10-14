@@ -8,7 +8,7 @@ significantly better than the multilingual model alone, and the English model al
 non-English text.
 
 Each model outputs 4 logits: softmax over [negative, neutral, positive], plus a sigmoid complaint
-score. Decision rule (DESIGN.md §5.4): negative if P(neg) >= 0.30, otherwise the argmax of
+score. Decision rule (README, Sentiment): negative if P(neg) >= 0.30, otherwise the argmax of
 neutral/positive. Complaint if P(complaint) >= 0.5.
 """
 

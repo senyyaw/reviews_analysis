@@ -1,0 +1,20 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # Git LFS objects are not fetched: the tests that need the ONNX models skip themselves,
+      # and CI does not spend the repository's LFS bandwidth.
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - run: uv sync --frozen --extra nlp --extra report
+      - run: uv run ruff check src tests research app.py
+      - run: uv run mypy
+      - run: uv run pytest -q

@@ -8,7 +8,7 @@ It reports, for sentiment and for complaint:
   weights give the estimate for the natural D1 distribution;
 - LLM vs LLM kappa on all 300 reviews, plus their disagreements (candidates for adjudication);
 - agreement on reviews the human marked "unsure" vs the rest.
-Decision rule (DESIGN.md §5.3): the LLM labels are used as a secondary test set only if
+Pre-registered decision rule: the LLM labels are used as a secondary test set only if
 human-LLM sentiment kappa >= 0.8.
 """
 

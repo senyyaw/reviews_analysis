@@ -1,0 +1,277 @@
+{
+ "collection_id": "notion_2026-10-13.B_recent",
+ "metrics": {
+  "n": 100,
+  "date_min": "2026-08-25",
+  "date_max": "2026-10-12",
+  "rating": {
+   "n": 100,
+   "mean": 2.54,
+   "sd": 1.6540125681981912,
+   "ci_low": 2.2118080224044165,
+   "ci_high": 2.8681919775955835,
+   "fpc_applied": false
+  },
+  "median_rating": 2.0,
+  "distribution": {
+   "1": {
+    "count": 45,
+    "n": 100,
+    "share": 0.45,
+    "ci_low": 0.3561453797951198,
+    "ci_high": 0.5475539700255787
+   },
+   "2": {
+    "count": 10,
+    "n": 100,
+    "share": 0.1,
+    "ci_low": 0.0552291370606751,
+    "ci_high": 0.17436566150491345
+   },
+   "3": {
+    "count": 15,
+    "n": 100,
+    "share": 0.15,
+    "ci_low": 0.0930598528365663,
+    "ci_high": 0.23283559590832364
+   },
+   "4": {
+    "count": 6,
+    "n": 100,
+    "share": 0.06,
+    "ci_low": 0.027786123963188192,
+    "ci_high": 0.1247681544589592
+   },
+   "5": {
+    "count": 24,
+    "n": 100,
+    "share": 0.24,
+    "ci_low": 0.16691325556948772,
+    "ci_high": 0.33232336349814473
+   }
+  },
+  "sentiment_by_stars": {
+   "negative": {
+    "count": 55,
+    "n": 100,
+    "share": 0.55,
+    "ci_low": 0.45244602997442135,
+    "ci_high": 0.6438546202048803
+   },
+   "neutral": {
+    "count": 15,
+    "n": 100,
+    "share": 0.15,
+    "ci_low": 0.0930598528365663,
+    "ci_high": 0.23283559590832364
+   },
+   "positive": {
+    "count": 30,
+    "n": 100,
+    "share": 0.3,
+    "ci_low": 0.2189488529493276,
+    "ci_high": 0.3958485463334666
+   }
+  },
+  "by_storefront": [
+   {
+    "key": "us",
+    "n": 62,
+    "mean_rating": 2.435483870967742,
+    "negative": {
+     "count": 36,
+     "n": 62,
+     "share": 0.5806451612903226,
+     "ci_low": 0.4566558474484658,
+     "ci_high": 0.6952241409222806
+    }
+   },
+   {
+    "key": "gb",
+    "n": 14,
+    "mean_rating": 2.7142857142857144,
+    "negative": {
+     "count": 7,
+     "n": 14,
+     "share": 0.5,
+     "ci_low": 0.26799202452413634,
+     "ci_high": 0.7320079754758637
+    }
+   },
+   {
+    "key": "au",
+    "n": 11,
+    "mean_rating": 2.5454545454545454,
+    "negative": {
+     "count": 6,
+     "n": 11,
+     "share": 0.5454545454545454,
+     "ci_low": 0.280091537409322,
+     "ci_high": 0.7872872837754024
+    }
+   },
+   {
+    "key": "ca",
+    "n": 10,
+    "mean_rating": 2.9,
+    "negative": {
+     "count": 4,
+     "n": 10,
+     "share": 0.4,
+     "ci_low": 0.16818032970623614,
+     "ci_high": 0.6873262302663417
+    }
+   },
+   {
+    "key": "in",
+    "n": 2,
+    "mean_rating": 1.5,
+    "negative": {
+     "count": 2,
+     "n": 2,
+     "share": 1.0,
+     "ci_low": 0.34238022750665303,
+     "ci_high": 1.0
+    }
+   },
+   {
+    "key": "nz",
+    "n": 1,
+    "mean_rating": 5.0,
+    "negative": {
+     "count": 0,
+     "n": 1,
+     "share": 0.0,
+     "ci_low": 0.0,
+     "ci_high": 0.7934506856227626
+    }
+   }
+  ],
+  "by_month": [
+   {
+    "key": "2026-08",
+    "n": 7,
+    "mean_rating": 1.2857142857142858,
+    "negative": {
+     "count": 7,
+     "n": 7,
+     "share": 1.0,
+     "ci_low": 0.6456695649333126,
+     "ci_high": 1.0
+    }
+   },
+   {
+    "key": "2026-09",
+    "n": 68,
+    "mean_rating": 2.7058823529411766,
+    "negative": {
+     "count": 32,
+     "n": 68,
+     "share": 0.47058823529411764,
+     "ci_low": 0.35673106421198947,
+     "ci_high": 0.5875907791127207
+    }
+   },
+   {
+    "key": "2026-10",
+    "n": 25,
+    "mean_rating": 2.44,
+    "negative": {
+     "count": 16,
+     "n": 25,
+     "share": 0.64,
+     "ci_low": 0.44518497748164865,
+     "ci_high": 0.7975211922554178
+    }
+   }
+  ],
+  "median_length_chars": 206.5,
+  "developer_response": {
+   "count": 0,
+   "n": 100,
+   "share": 0.0,
+   "ci_low": 3.469446951953614e-18,
+   "ci_high": 0.03699349820698568
+  },
+  "edited": {
+   "count": 0,
+   "n": 100,
+   "share": 0.0,
+   "ci_low": 3.469446951953614e-18,
+   "ci_high": 0.03699349820698568
+  }
+ },
+ "listing": {
+  "listing_avg_rating": 4.77527,
+  "listing_rating_count": 90377,
+  "written_reviews_mean": 2.54,
+  "note": "The listing average includes star-only ratings; written reviews skew negative (people with a problem write)."
+ },
+ "representativeness": null,
+ "stars_vs_text": {
+  "counts": {
+   "1": {
+    "negative": 41,
+    "neutral": 1,
+    "positive": 3
+   },
+   "2": {
+    "negative": 9,
+    "neutral": 0,
+    "positive": 1
+   },
+   "3": {
+    "negative": 12,
+    "neutral": 0,
+    "positive": 3
+   },
+   "4": {
+    "negative": 1,
+    "neutral": 0,
+    "positive": 5
+   },
+   "5": {
+    "negative": 2,
+    "neutral": 0,
+    "positive": 22
+   }
+  },
+  "complaint_share": {
+   "1": {
+    "count": 43,
+    "n": 45,
+    "share": 0.9555555555555556,
+    "ci_low": 0.8517248923056439,
+    "ci_high": 0.9877258732932802
+   },
+   "2": {
+    "count": 10,
+    "n": 10,
+    "share": 1.0,
+    "ci_low": 0.7224672001371107,
+    "ci_high": 0.9999999999999999
+   },
+   "3": {
+    "count": 15,
+    "n": 15,
+    "share": 1.0,
+    "ci_low": 0.7961166989641515,
+    "ci_high": 1.0
+   },
+   "4": {
+    "count": 4,
+    "n": 6,
+    "share": 0.6666666666666666,
+    "ci_low": 0.299993315138392,
+    "ci_high": 0.9032285888942195
+   },
+   "5": {
+    "count": 5,
+    "n": 24,
+    "share": 0.20833333333333334,
+    "ci_low": 0.09244825352851857,
+    "ci_high": 0.40470453253188665
+   }
+  }
+ }
+}

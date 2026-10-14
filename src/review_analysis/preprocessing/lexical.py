@@ -1,6 +1,6 @@
 """Track B: the lexical representation used for keywords and phrases.
 
-English text only (non-English reviews are translated first). Steps, justified in DESIGN.md §4:
+English text only (non-English reviews are translated first). Steps (README, Processing):
 lowercase -> product-term synonyms -> collapse elongations -> spaCy lemmas -> drop punctuation,
 emoji, placeholders and stopwords (negations are KEPT) -> per-sentence token lists, so phrases never
 cross a sentence boundary. No stemming and no spelling correction.

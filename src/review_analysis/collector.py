@@ -4,6 +4,10 @@
 cutoff date. We then fetch `overscan_pages` more, because edited reviews may be slightly out of
 order. Raw pages are cached on disk as they arrive, so an interrupted run resumes instead of
 starting over.
+
+When Apple keeps failing for one storefront (sustained HTTP 429 after every retry), that storefront
+stops with a warning and the run continues: the pool then holds its newest reviews only, which the
+warning says. The run fails only if nothing at all could be collected, or the time budget ran out.
 """
 
 import json
@@ -13,6 +17,7 @@ from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
 
+from review_analysis.errors import BudgetExceededError, UpstreamError
 from review_analysis.http import PoliteClient
 from review_analysis.models import Review, StorefrontStats
 from review_analysis.sources import apple_web
@@ -50,6 +55,7 @@ def collect_window(
     duplicates = 0
     all_stats: list[StorefrontStats] = []
     warnings: list[str] = []
+    failure: UpstreamError | None = None
 
     for cc in storefronts:
         stats = StorefrontStats(storefront=cc)
@@ -60,7 +66,18 @@ def collect_window(
                 stats.stop_reason = "max_pages"
                 warnings.append(f"{cc}: stopped at max_pages={max_pages_per_storefront}")
                 break
-            page = _load_or_fetch(client, app_id, cc, offset, raw_dir)
+            try:
+                page = _load_or_fetch(client, app_id, cc, offset, raw_dir)
+            except BudgetExceededError:
+                raise
+            except UpstreamError as exc:
+                failure = exc
+                stats.stop_reason = "upstream_error"
+                warnings.append(
+                    f"{cc}: stopped after {stats.pages_fetched} pages ({exc}); the pool holds "
+                    f"only the newest {stats.reviews_in_window} reviews of this storefront"
+                )
+                break
             stats.pages_fetched += 1
             if page.end_of_reviews or page.items_seen == 0:
                 stats.stop_reason = "end_of_reviews"
@@ -103,6 +120,8 @@ def collect_window(
             warnings.append(f"{cc}: skipped {stats.invalid_skipped} malformed review(s)")
         all_stats.append(stats)
 
+    if failure is not None and not by_id:
+        raise failure
     reviews = sorted(by_id.values(), key=lambda r: (r.date, r.review_id), reverse=True)
     return PoolResult(
         app_id=app_id,

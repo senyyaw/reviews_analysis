@@ -1,0 +1,31 @@
+{
+  "n_reviews": 466,
+  "languages": {
+    "en": 456,
+    "und": 3,
+    "es": 3,
+    "ar": 2,
+    "zh": 1,
+    "tr": 1
+  },
+  "language_methods": {
+    "detector": 461,
+    "short_uncertain": 3,
+    "english_cue": 2
+  },
+  "translated": 0,
+  "untranslated": 7,
+  "short": 8,
+  "emoji_only": 0,
+  "exact_duplicates": 0,
+  "near_duplicate_groups": 0,
+  "near_duplicate_reviews": 0,
+  "domain_stopwords": [
+    "app",
+    "application",
+    "like",
+    "nebula",
+    "notion",
+    "reading"
+  ]
+}

@@ -1,7 +1,7 @@
 """Assemble the data behind every insight chart from a snapshot. It is pure data, saved as JSON.
 
 The same JSON feeds the static PNG figures (viz.py) and the interactive HTML report. Each block
-answers one product question (DESIGN.md §6):
+answers one product question:
 - star_distribution     How do recent reviews (B) compare with the whole year (A)?
 - monthly               When did ratings change? (pool, 12 months, with CIs)
 - stars_vs_text         Where do complaints hide? (stars x text sentiment, complaint share)
@@ -19,7 +19,7 @@ from typing import Any
 from review_analysis import keywords, themes
 from review_analysis.drivers import driver_analysis
 from review_analysis.keywords import doc_terms, fightin_words, sensitivity, top_terms
-from review_analysis.metrics import mean_ci, wilson
+from review_analysis.metrics import mean_ci, stars_vs_text, wilson
 from review_analysis.models import Review
 from review_analysis.preprocessing import lexical, normalize
 from review_analysis.snapshot import load_pool, load_sample
@@ -96,23 +96,6 @@ def monthly(pool: list[Review]) -> list[dict[str, Any]]:
     return rows
 
 
-def stars_vs_text(pool: list[Review], sentiment: dict[str, dict[str, Any]]) -> dict[str, Any]:
-    table: dict[str, dict[str, int]] = {
-        str(s): {"negative": 0, "neutral": 0, "positive": 0} for s in range(1, 6)
-    }
-    complaints: Counter[int] = Counter()
-    totals: Counter[int] = Counter()
-    for r in pool:
-        s = sentiment[r.review_id]
-        table[str(r.rating)][s["label"]] += 1
-        totals[r.rating] += 1
-        complaints[r.rating] += bool(s["complaint"])
-    return {
-        "counts": table,
-        "complaint_share": {str(s): _prop(complaints[s], totals[s]) for s in range(1, 6)},
-    }
-
-
 def most_mentioned(
     terms: dict[str, set[str]], sentiment: dict[str, dict[str, Any]], k: int = 20
 ) -> dict[str, Any]:
@@ -179,6 +162,7 @@ def _background(domain: frozenset[str]) -> list[set[str]]:
 
 MIN_GROUP_KEYWORDS = 20  # documents per side for Fightin' Words
 MIN_GROUP_DRIVERS = 30  # 1-2 star and 4-5 star reviews each for the driver model
+MIN_CHANGE_SHARE, CHANGE_RATIO = 0.03, 1.5  # emerging phrase: >= 3% of reviews and >= 1.5x before
 
 
 def keyword_insights(data: SnapshotData, ids: list[str], k: int = 12) -> dict[str, Any]:
@@ -208,6 +192,33 @@ def keyword_insights(data: SnapshotData, ids: list[str], k: int = 12) -> dict[st
         "negative": [asdict(t) for t in neg_top],
         "positive": [asdict(t) for t in pos_top],
         "prior_sensitivity_top12_overlap": sensitivity(neg, rest, background, k=k),
+    }
+
+
+def negative_keywords(
+    data: SnapshotData, ids: list[str], k: int = 12, min_reviews: int = 2
+) -> dict[str, Any]:
+    """The most common aspect phrases in negative reviews, kept only when they are more common there
+    than in the other reviews. Plain document counts with no significance test, so it works on any
+    collection size (Fightin' Words, the tested version, needs >= 20 reviews per side)."""
+    terms = {r: data.terms[r] for r in ids if r in data.terms}
+    neg = [t for r, t in terms.items() if data.sentiment[r]["label"] == "negative"]
+    rest = [t for r, t in terms.items() if data.sentiment[r]["label"] != "negative"]
+    df_neg: Counter[str] = Counter(x for t in neg for x in t if len(x.split()) <= 2)
+    df_rest: Counter[str] = Counter(x for t in rest for x in t)
+    share = {w: (c / len(neg), df_rest[w] / max(1, len(rest))) for w, c in df_neg.items()}
+    ranked = sorted(df_neg, key=lambda w: (-df_neg[w], share[w][1], w))
+    out = [
+        {"term": w, "count": df_neg[w], "share_negative": share[w][0], "share_other": share[w][1]}
+        for w in ranked
+        if df_neg[w] >= min_reviews and share[w][0] > share[w][1]
+    ][:k]
+    return {
+        "n_negative": len(neg),
+        "n_other": len(rest),
+        "method": "share of negative reviews mentioning each aspect phrase, kept when higher than "
+        "in the other reviews; counts only, no significance test",
+        "terms": out,
     }
 
 
@@ -345,7 +356,11 @@ def emerging_phrases(
     if min(len(recent), len(earlier)) < MIN_GROUP_KEYWORDS:
         return {"available": False}
     fw = fightin_words(recent, earlier, _background(data.domain))
-    up, down = top_terms(fw, k=k)
+    up, down = top_terms(fw, k=len(fw))
+    # With groups of very different sizes the prior can make an unchanged phrase "significant"
+    # (it pulls the small group harder), so a change must also be visible in the raw shares.
+    up = [t for t in up if t.share_a >= max(MIN_CHANGE_SHARE, CHANGE_RATIO * t.share_b)][:k]
+    down = [t for t in down if t.share_b >= max(MIN_CHANGE_SHARE, CHANGE_RATIO * t.share_a)][:k]
     return {
         "available": True,
         "n_recent": len(recent),
@@ -401,6 +416,102 @@ def recommendations(
                 "rating_impact": t["rating_impact"],
                 "trend": trend["status"] if trend else None,
                 "quotes": t["quotes"][:2],
+                "source": "themes",
+            }
+        )
+        if len(out) == k:
+            break
+    return out
+
+
+def phrase_recommendations(
+    data: SnapshotData,
+    ids: list[str],
+    keywords_block: dict[str, Any],
+    drivers_block: dict[str, Any],
+    negative_block: dict[str, Any] | None = None,
+    k: int = 5,
+    min_share: float = 0.03,
+    min_reviews: int = 3,
+) -> list[dict[str, Any]]:
+    """Taxonomy-free areas of improvement, for apps without a theme taxonomy: the phrases most
+    distinctive of negative reviews (Fightin' Words), with their rating-driver odds ratio when the
+    driver model is stable for them, and verbatim example sentences. On collections too small for
+    the test, the most common phrases of negative reviews are used instead and labelled as counts.
+    They say where to look, not yet what to do; the action is to read the evidence."""
+    if keywords_block.get("available"):
+        candidates = [
+            (t["term"], t["share_a"], t["share_b"], t["df_a"], f"Fightin' Words z = {t['z']:.1f}")
+            for t in keywords_block["negative"]
+            if t["share_a"] >= min_share
+        ]
+        tested = True
+    elif negative_block and negative_block["n_negative"]:
+        n_neg = negative_block["n_negative"]
+        candidates = [
+            (
+                t["term"],
+                t["share_negative"],
+                t["share_other"],
+                t["count"],
+                f"{t['count']} of {n_neg} negative reviews; too few for a significance test",
+            )
+            for t in negative_block["terms"]
+            if t["count"] >= min_reviews
+        ]
+        tested = False
+    else:
+        return []
+    odds = {d["term"]: d["odds_ratio"] for d in drivers_block.get("towards_low", [])}
+    negative = [r for r in ids if r in data.terms and data.sentiment[r]["label"] == "negative"]
+    out = []
+    for term, share_neg, share_other, count, test in candidates:
+        stem = term.split()[-1][:4].lower()
+        hits = sorted(
+            (r for r in negative if term in data.terms[r]),
+            key=lambda r: (data.processed[r]["rating"], r),
+        )
+        quotes = []
+        for r in hits:
+            p = data.processed[r]
+            sentence = next(
+                (x for x in p["sentences"] if stem in x.lower() and 25 <= len(x) <= 220), None
+            )
+            if sentence:
+                translation = p["text_en"] if p["translated"] else None
+                quotes.append(
+                    {
+                        "text": sentence,
+                        "translation": translation,
+                        "rating": p["rating"],
+                        "review_id": r,
+                    }
+                )
+            if len(quotes) == 2:
+                break
+        ratio = odds.get(term)
+        out.append(
+            {
+                "theme": None,
+                "phrase": term,
+                "name": f"Reviews about \u201c{term}\u201d",
+                "evidence": f"in {share_neg:.0%} of negative reviews vs {share_other:.0%} "
+                f"of the others ({test})"
+                + (
+                    f"; mentioning it multiplies the odds of a 1–2★ rating by {ratio:.2f}"
+                    if ratio
+                    else ""
+                ),
+                "action": f"Read the negative reviews that mention \u201c{term}\u201d (CSV, "
+                "sentiment=negative) and turn the recurring problem into a ticket. For a product "
+                "you track, build a theme taxonomy (README) to get named themes with actions.",
+                "priority": share_neg - share_other,
+                "prevalence": share_neg,
+                "rating_impact": None,
+                "trend": None,
+                "quotes": quotes,
+                "source": "phrases" if tested else "phrase counts",
+                "n_reviews": count,
             }
         )
         if len(out) == k:

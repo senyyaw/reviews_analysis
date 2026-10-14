@@ -1,0 +1,56 @@
+{
+  "app": {
+    "app_id": 1459969523,
+    "name": "Nebula: Spiritual Guidance",
+    "seller": "Spiritual Nebula Limited",
+    "storefront": "us",
+    "listing_avg_rating": 4.57383,
+    "listing_rating_count": 170851,
+    "version": "6.62.0",
+    "current_version_release_date": "2026-10-08T14:53:14Z",
+    "genre": "Lifestyle"
+  },
+  "since": "2026-07-16T14:01:07.873270Z",
+  "collected_at": "2026-10-14T14:06:36.491050Z",
+  "storefronts": [
+    {
+      "storefront": "us",
+      "pages_fetched": 17,
+      "reviews_seen": 340,
+      "reviews_in_window": 315,
+      "invalid_skipped": 0,
+      "oldest_date_seen": "2026-07-10T05:54:00Z",
+      "stop_reason": "reached_cutoff"
+    },
+    {
+      "storefront": "gb",
+      "pages_fetched": 9,
+      "reviews_seen": 180,
+      "reviews_in_window": 151,
+      "invalid_skipped": 0,
+      "oldest_date_seen": "2026-06-21T08:41:17Z",
+      "stop_reason": "reached_cutoff"
+    }
+  ],
+  "pool_size": 466,
+  "duplicates_removed": 0,
+  "warnings": [],
+  "collector_version": "0.1.0",
+  "params": {
+    "app_id": 1459969523,
+    "storefronts": [
+      "us",
+      "gb"
+    ],
+    "window_days": 90,
+    "samples": [
+      [
+        "random",
+        100,
+        42
+      ]
+    ],
+    "max_pages": 60,
+    "since": "2026-07-16T14:01:07.873270+00:00"
+  }
+}
