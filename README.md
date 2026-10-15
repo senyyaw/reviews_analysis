@@ -15,6 +15,7 @@ Everything runs offline on free, open models. No paid API is called at any point
 
 | | |
 |---|---|
+| **Video demo** | [Watch on Google Drive](https://drive.google.com/file/d/1LGWQQntM97DQc6TjWt6lYoaA3HEJDTFf/view?usp=sharing) |
 | **Sample report** (Notion, 1,143 reviews) | [`reports/REPORT.md`](reports/REPORT.md) |
 | **Interactive HTML reports** | **https://senyyaw.github.io/reviews_analysis/** (GitHub Pages, built from [`docs/`](docs/)) |
 | **Charts** | 13 PNGs in [`reports/figures/`](reports/figures/) |
@@ -33,6 +34,7 @@ Everything runs offline on free, open models. No paid API is called at any point
 | Actionable insights / areas of improvement | Problem areas ranked by prevalence × rating drag, each with evidence and verbatim quotes, a recent-vs-earlier comparison and a drift monitor ([insights](#6-actionable-insights-themes-and-ranked-problem-areas)) |
 | REST API: collect, metrics + insights, raw-data download | [API reference](#api) |
 | README and sample report | This file and [`reports/REPORT.md`](reports/REPORT.md) |
+| Video demo | [Google Drive](https://drive.google.com/file/d/1LGWQQntM97DQc6TjWt6lYoaA3HEJDTFf/view?usp=sharing) |
 | Bonus: visualisations | 13 static charts plus an interactive HTML report per collection (`/report`) |
 | Bonus: cloud deployment | Vercel (free Hobby plan) for the API, GitHub Pages for the reports, and Docker for anywhere ([deployment](#deployment)) |
 

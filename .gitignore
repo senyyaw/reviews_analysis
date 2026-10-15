@@ -14,3 +14,6 @@ data/snapshots/**/raw/
 
 # Cached sentence embeddings (re-computable, ~40 MB)
 research/results/themes/emb_*.npy
+
+# Collections created by API calls (app<id>_<timestamp>-<hex>): runtime data, not committed examples
+data/snapshots/app[0-9]*_*/
